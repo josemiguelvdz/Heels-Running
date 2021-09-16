@@ -4,20 +4,35 @@
   <meta charset="utf-8">
   <title>HTML</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="test.css">
+  <link rel="stylesheet" href="css\bootstrap.css">
+  <link rel="js" href="js\bootstrap.js">
 </head>
 
+
 <body>
-  <div id= "header">
-    <div class id="logo">
-      <img class id="img_logo" src="imgs\logo.png">
+  <!-- Image and text -->
+  <nav id="menu" class="navbar sticky-top navbar-dark bg-dark">
+    <a class="navbar-brand" href="redes.html">
+      <img src="imgs\logo.png" width="80" height="30" class="d-inline-block align-top" alt="">
+      Html Games
+    </a> 
+    <form class="form-inline">
+      <button class="btn btn-outline-success" type="button">Main button</button>
+    </form>
+  </nav>
 
-      <button id="main_button"><a href="index.html">Main Page</a></button>
-    </div>
-
-    
-
-  </div>
   
+  <div id="game">
+  </div>
+
+  <div id="instructions">
+    <div id="ins_title">
+      <h1>Controles del juego</h1> 
+    </div>
+    <div id="ins_text" style="text-align: center;">
+      <p>WASD to move</p>
+    </div>
+  </div>
+
 </body>
 </html>
