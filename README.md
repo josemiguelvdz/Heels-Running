@@ -76,7 +76,7 @@ Logotipo y portada del juego
 
 
 ##### SISTEMA DE GESTIÓN 
-Para realizar la gestión de las tareas a realizar utilizaremos pivotal tracker. El proyecto puede accederse desde www.pivotaltracker.com/n/projects/2470812
+Pivotal
 
 
 ##### SISTEMA DE COMUNICACIÓN
