@@ -1,8 +1,6 @@
 # PVLI
 Captura del juego:
 
-![unnamed]()
-
 ## Redes
 
 Disponible en:
@@ -32,8 +30,6 @@ Plataformas: Web
 
 Logotipo y portada del juego
 
-
-![unnamed]()
 
 
 #### RESUMEN DE OBJETIVOS, REGLAS Y DINÁMICAS
