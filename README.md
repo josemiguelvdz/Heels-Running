@@ -1,3 +1,12 @@
+## Ideas Rayo
+_historia_
+Mi idea es hacer una cinemática inicial, donde se cuente el contexto de por qué estas escapando de la poli.
+La primera fase del juego sería un runner hacia la derecha como teniamos pensado, solo que si que tendría final. El final sería conocer a la pava.
+Luego tener otra fase con la pava mas dificil o algo asi hasta que llegue un punto en el que escapen juntos y se acabe el juego
+_modo infinito_
+modo infinito de correr hacia la derecha para conseguir la mayor puntuación posible.
+
+
 # PVLI
 Captura del juego:
 
