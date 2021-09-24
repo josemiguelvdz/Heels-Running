@@ -24,7 +24,7 @@ Pivotal:
 
 Nombre del juego: Heels Running
 
-Documento de diseño de videojueg
+Documento de diseño de videojuego
 
 -  HitchCorp
 
