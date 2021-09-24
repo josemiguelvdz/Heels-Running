@@ -47,7 +47,10 @@ Plataformas: Web
 
 Logotipo y portada del juego
 
-
+### Obstáculos
+REFERENCIAS JET PACK
+- Poner avisos de un proyectil que venga de la derecha (fuera de cámara) y que posteriormente salga hacia nosotros
+- Poner personas por la calle que pueda atravesar el personaje, para dar ambientación
 
 #### Niveles
 - Nivel único, donde el jugador escapará usando los edificios, escaleras y la distribución el nivel. Al final de dicho nivel se encuentra el tren de escape.
@@ -82,6 +85,9 @@ En cambio, si nos toca el policía perderemos y se reiniciará el nivel.
 #### ESTÉTICA
  - Se ambienta en una ciudad de los '60, con una paleta de colores en blanco y negro.
  - Además, la persecución ocurre en una ciudad.
+
+ - El juego está ambientado en la película north by northwest, de esta manera queremos reflejar en el juego el agobio y el frenetismo que siente el protagonista al ser
+   perseguido tanto por la policia como por una mafia.
 
 
 ##### MÚSICA
