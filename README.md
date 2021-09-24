@@ -23,9 +23,13 @@ Pivotal:
 ### GDD:
 
 Nombre del juego: Heels Running
-Documento de diseño de videojuego
+
+Documento de diseño de videojueg
+
 -  CokHit Corp. -
+-  
 Versión 0.2 - 24/09/2021
+
 Versión 0.1 - 20/09/2021
 
 #### Resumen
