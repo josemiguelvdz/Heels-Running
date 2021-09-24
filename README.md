@@ -26,7 +26,7 @@ Nombre del juego: Heels Running
 
 Documento de diseño de videojueg
 
--  CokHit Corp. -
+-  HitchCorp
 
 Versión 0.2 - 24/09/2021
 
