@@ -80,7 +80,8 @@ En cambio, si nos toca el policía perderemos y se reiniciará el nivel.
 
 
 #### ESTÉTICA
- - Se ambienta en una ciudad de los '60. 
+ - Se ambienta en una ciudad de los '60, con una paleta de colores en blanco y negro.
+ - Además, la persecución ocurre en una ciudad.
 
 
 ##### MÚSICA
