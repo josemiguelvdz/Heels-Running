@@ -91,7 +91,7 @@ En cambio, si nos toca el policía perderemos y se reiniciará el nivel.
 
 
 ##### SISTEMA DE COMUNICACIÓN
-Los miembros del equipo de desarrollo nos comunicaremos mediante nuestro propio servidor de Discord, donde tenemos distintos canales para comunicarnos y intercambiar información útil.
+Los miembros del equipo de desarrollo nos comunicaremos mediante nuestro propio servidor de Discord, donde tenemos distintos canales para comunicarnos e intercambiar información útil.
 
 ##### Referencias
 - North by northwest, _Alfred Hitchcock._ 
