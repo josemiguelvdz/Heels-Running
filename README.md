@@ -55,15 +55,23 @@ REFERENCIAS JET PACK
 #### Niveles
 - Nivel único, donde el jugador escapará usando los edificios, escaleras y la distribución el nivel. Al final de dicho nivel se encuentra el tren de escape.
 
+### Diseño de niveles
+
+- Parte 1: Ciudad
+- Parte 2: Tren
+- Parte 3: Parte de arriba de edificios
 
 #### MECÁNICAS Y CONTROLES BASE
 - El jugador se puede mover hacia la izquierda y la derecha, además de saltar y agacharse.
 
 POWER UPS:
-- Correr más rápido.
-- Escudo para protegerte de un golpe y no tener penalización.
+- Correr más rápido. (Café)
+- Escudo para protegerte de un golpe y no tener penalización. (Maíz)
+- Restar segundos al contador de tiempo para mejorar las marcas. (Reloj verde)
 
-- Objeto para multiplicar x2 la puntuación obtenida durante unos segundos.
+DEBUFFS:
+- Afectar al movimiento del personaje.(Botella de Alcohol)
+- Sumar segundos al contador de tiempo. (Reloj rojo)
 
 ##### JUGADOR
 - Movimiento: A - Izquierda | D - Derecha | S - Agacharse | Space - Saltar.
