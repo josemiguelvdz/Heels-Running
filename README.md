@@ -76,6 +76,9 @@ DEBUFFS:
 - Movimiento: A - Izquierda | D - Derecha | S - Agacharse | Space - Saltar.
 - Power-ups: J - Usar Power Up.
 
+![CONTROLES](https://user-images.githubusercontent.com/75903737/135342961-4da3302f-c63e-4f39-a737-03efd70c9e71.jpg)
+
+
 
 ##### SISTEMA DE VIDA 
 - En este juego no tenemos un sistema de vida como tal; Cuando somos golpeados por un obstáculo perdemos velocidad y puntuación como penalización.
