@@ -58,7 +58,7 @@ REFERENCIAS JET PACK
 
 POWER UPS:
 - Correr más rápido. (Café)
-- Escudo para protegerte de un golpe y no tener penalización. (Maíz)
+- Escudo para protegerte de un golpe y no tener penalización. (Traje elegante)
 - Restar segundos al contador de tiempo para mejorar las marcas. (Reloj verde)
 
 DEBUFFS:
