@@ -1,9 +1,13 @@
 # Heels Running
-Captura del juego:
+Boceto del juego:
+
+![49_sin_titulo_20210929211726](https://user-images.githubusercontent.com/75903737/135341234-18b81a0c-78b1-4804-a54c-226416f95339.png)
 
 ## Redes
 
 Disponible en: https://github.com/josemiguelvdz/PVLI
+
+Twitter: https://twitter.com/Hitch_Corp
 
 Pivotal:
 
