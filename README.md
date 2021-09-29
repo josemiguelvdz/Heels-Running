@@ -14,6 +14,9 @@ Nombre del juego: Heels Running
 Documento de diseño de videojuego
 
 -  HitchCorp
+
+![unknown](https://user-images.githubusercontent.com/75903737/135341022-3484ffb8-e9ce-4f82-8740-6db7b09cdaf4.png)
+
 Versión 0.3 - 29/09/2021
 
 Versión 0.2 - 24/09/2021
