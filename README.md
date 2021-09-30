@@ -50,6 +50,8 @@ Logotipo y portada del juego:
 REFERENCIAS JET PACK
 - Poner avisos de un proyectil que venga de la derecha (fuera de cámara) y que posteriormente salga hacia nosotros
 - Poner personas por la calle que pueda atravesar el personaje, para dar ambientación
+REFERENCIAS EXTREME PAMPLONA:
+-Cajas como obstaculos , al pegarles una patada puedes obtener un power up
 
 #### Niveles
 - Nivel único, donde el jugador escapará usando los edificios, escaleras y la distribución el nivel. Al final de dicho nivel se encuentra el tren de escape.
@@ -57,11 +59,12 @@ REFERENCIAS JET PACK
 ### Diseño de niveles
 
 - Parte 1: Ciudad
-- Parte 2: Tren
-- Parte 3: Parte de arriba de edificios
+- Parte 2: Azotea de edificios
+- Parte 3: Tren
+
 
 #### MECÁNICAS Y CONTROLES BASE
-- El jugador se puede mover hacia la izquierda y la derecha, además de saltar y agacharse.
+- El jugador se puede mover hacia la izquierda y la derecha, además de saltar y agacharse para esquivar los distintos obstaculos
 
 POWER UPS:
 - Correr más rápido. (Café)
