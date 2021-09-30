@@ -3,6 +3,8 @@ Boceto del juego:
 
 ![49_sin_titulo_20210929211726](https://user-images.githubusercontent.com/75903737/135341234-18b81a0c-78b1-4804-a54c-226416f95339.png)
 
+![50_sin_titulo_20210930095648](https://user-images.githubusercontent.com/75903737/135530685-4473cfb8-8ab0-4678-be5d-2e054892399b.png)
+
 ## Redes
 
 Disponible en: https://github.com/josemiguelvdz/PVLI
@@ -20,6 +22,7 @@ Documento de diseño de videojuego
 -  HitchCorp
 
 ![unknown](https://user-images.githubusercontent.com/75903737/135341022-3484ffb8-e9ce-4f82-8740-6db7b09cdaf4.png)
+
 
 Versión 0.3 - 29/09/2021
 
@@ -75,12 +78,15 @@ DEBUFFS:
 - Afectar al movimiento del personaje.(Botella de Alcohol)
 - Sumar segundos al contador de tiempo. (Reloj rojo)
 
+#### MECÁNICAS DE ESCENARIO
+- Cajas, que al romperse cuando el jugador le pega una patada, pueden contener en su interior un Power Up.
+- Vallas, muros, carteles (o equivalentes), que el jugador debe esquivar. En el caso de que el jugador no logre esquivarlas a tiempo, chocará contra ellas perdiendo velocidad.
+
 ##### JUGADOR
 - Movimiento: A - Izquierda | D - Derecha | S - Agacharse | Space - Saltar.
 - Power-ups: J - Usar Power Up.
 
-![CONTROLES](https://user-images.githubusercontent.com/75903737/135342961-4da3302f-c63e-4f39-a737-03efd70c9e71.jpg)
-
+![tecladitoo](https://user-images.githubusercontent.com/75903737/135531121-8187e0db-e0e2-465c-bf9a-3b6b939efafc.png)
 
 
 ##### SISTEMA DE VIDA 
@@ -99,8 +105,13 @@ En cambio, si nos toca el policía perderemos y se reiniciará el nivel.
  - Se ambienta en una ciudad de los '60, con una paleta de colores en blanco y negro.
  - Además, la persecución ocurre en una ciudad.
 
- - El juego está ambientado en la película north by northwest, de esta manera queremos reflejar en el juego el agobio y el frenetismo que siente el protagonista al ser
+![pixel-art-paisaje-urbano-town-street-8-bit-paisaje-ciudad-juego-arcade-urbano-nocturno-diurno_102902](https://user-images.githubusercontent.com/75903737/135530540-ad4418be-77c9-469d-9018-b463fac664ea.jpg)
+
+
+ - El juego está ambientado en la película North by Northwest, de esta manera queremos reflejar en el juego el agobio y el frenetismo que siente el protagonista al ser
    perseguido tanto por la policia como por una mafia.
+
+![tumblr_oeas2thUAX1soktugo1_1280](https://user-images.githubusercontent.com/75903737/135530663-ab12e85d-13d7-4fef-9c3f-eba14aa7c239.png)
 
 
 ##### MÚSICA
@@ -118,4 +129,4 @@ En cambio, si nos toca el policía perderemos y se reiniciará el nivel.
 Los miembros del equipo de desarrollo nos comunicaremos mediante nuestro propio servidor de Discord, donde tenemos distintos canales para comunicarnos e intercambiar información útil.
 
 ##### Referencias
-- North by northwest, _Alfred Hitchcock._ 
+- North by Northwest, _Alfred Hitchcock._ 
