@@ -51,7 +51,7 @@ Nuestro protagonista, no tiene mucho con lo que enfrentarse a los mafiosos o a l
 Logotipo y portada del juego:
 
 ### Obstáculos--
-- Un proyectil que se avisará en la pantalla, que después de unos segundos, aparecerá y pasará por la pantalla de derecha a izquierda o viceversa.
+- Un proyectil que se avisará en la pantalla, que después de unos segundos, aparecerá y pasará por la pantalla de derecha a izquierda o viceversa. Si el jugador entra en contacto con un proyectil, perderá velocidad.
 - Cajas, que, dependiendo si les damos una patada, tendrán un efecto u otro. Si atravesamos las cajas sin dar una patada, romperemos la caja (que no soltará nada) y además nos veremos perjudicados perdiendo velocidad. En cambio, si rompemos la caja de una patada, la caja soltará un Power Up y nuestra velocidad no se verá reducida.
 - Objetos estáticos: En este apartado encontraremos todos aquellos objetos que sean estáticos y cuya única funcionalidad sea interrumpir el paso del jugador, dificultando así la huida y haciendo que el jugador pierda velocidad al chocar con ellos. Estos objetos son : Muros, Vallas, Carteles publicitarios, Bocas de riego de la calle, Coches, Bicicletas, (aquí tenemos que poner todos los que se nos ocurran para que haya variedad, ya que sería solo un sprite estático y si hay pocos objetos se hace muy repetitivo).
 - Materiales de construcción que caerán desde arriba. Para que el jugador pueda esquivarlos deberá deslizarse en el momento justo.
@@ -100,12 +100,11 @@ DEBUFFS:
 
 ### MECÁNICAS DE ENEMIGOS
 POLICIA:
-- Saltar y deslizarse.
-- Disparar
-- Arrestar al jugador
+- La policía es el enemigo que nos perseguirá. Siempre estará detrás del jugador siguiéndole el rastro. Podrá saltar y deslizarse como el jugador para evitar los obstáculos. Además, también podrá disparar balas/proyectiles al jugador desde atrás. Las balas seguirán al jugador en el momento de ser disparadas. Si el jugador cambia de posición podrá esquivarlas.
+- Por último, si entra en contacto con el jugador, éste perderá la partida.
 
 MAFIA:
--Disparar
+- Se trata de enemigos estáticos cuya función es molestar al jugador. Aparecerán de vez en cuando y le dispararán de la misma forma que la policía.
 
 ##### JUGADOR
 - Movimiento : S - Deslizarse / D - Dar Patadas / SpaceBar - Saltar / Enter - Pasar Diálogo 
