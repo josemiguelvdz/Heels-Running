@@ -96,15 +96,12 @@ POLICIA:
 
 MAFIA:
 -Disparar
--Saltar
--Deslizarse
 
 ##### JUGADOR
-- Movimiento : S - Agacharse / D - Dar Patadas / SpaceBar - Saltar / Enter - Pasar Diálogo 
+- Movimiento : S - Deslizarse / D - Dar Patadas / SpaceBar - Saltar / Enter - Pasar Diálogo 
 - Configuracion : Escape  - Ajustes / Mouse - Volumen , Reiniciar , Renaudar y Ver Controles
-- Power-ups: J - Usar Power Up.
 
-![image](https://user-images.githubusercontent.com/82502179/135830717-360b3800-75ba-42a7-be32-1cde833899e1.png)
+![image](https://user-images.githubusercontent.com/82502179/135831539-1940dc6a-53a3-47bf-a413-72842f9ce580.png)
 
 
 ##### SISTEMA DE VIDA 
@@ -131,6 +128,13 @@ En cambio, si nos toca el policía perderemos y se reiniciará el nivel.
 
 ![tumblr_oeas2thUAX1soktugo1_1280](https://user-images.githubusercontent.com/75903737/135530663-ab12e85d-13d7-4fef-9c3f-eba14aa7c239.png)
 
+### INTERFAZ
+
+IN GAME:
+
+AJUSTES:
+
+![image](https://user-images.githubusercontent.com/82502179/135831201-d99d2c15-30d2-4995-b7cf-446afbe15fba.png)
 
 ##### MÚSICA
 - 
