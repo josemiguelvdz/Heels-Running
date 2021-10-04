@@ -139,6 +139,8 @@ MENÚ PAUSA:
 ![image](https://user-images.githubusercontent.com/82502179/135832810-a93768e0-9c32-49c0-971a-081ed674a36b.png)
 
  - CONFIGURACIÓN:
+
+ ![image](https://user-images.githubusercontent.com/82502179/135833132-6b0f2b2b-30ce-466b-b3be-7978900435a3.png)
  
 
 ![image](https://user-images.githubusercontent.com/82502179/135832931-d133a8f5-a120-492b-882c-e4a947dabc56.png)
