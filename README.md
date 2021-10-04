@@ -41,19 +41,22 @@ Plataformas: Web
 
 
 #### Descripción
-- Heels Running es un juego de scroll lateral, donde nos encarnamos en la piel de un publicista que está siendo perseguido por la policía. Tendremos que huir lo más rápido que podamos para poder lograr escapar, aprovechando los distintos objetos/power-ups que nos proporciona el nivel.
+- Heels Running se trata de un runner con scroll lateral donde el personaje es un publicista, Tary Grant, al cúal persiguen por una confusión de identidad.
 
-- El juego comenzará con una cinématica que te explicará la historia de por qué estás ahí, te confunden con un agente secreto y la mafia te persigue. Después de esta cinemática, empezará el juego con scroll lateral.
+- El objetivo principal es huir de nuestros perseguidores hasta lograr escapar, para ello tendremos que esquivar obstáculos, tratando de no morir cuando nos disparen los mafiosos, como de que no nos arresten mientras nos persiga la policía. 
 
-- Al llegar al final del recorrido y después de huir por la ciudad de la mafia y la policía, llegamos a un tren (que será nuestra vía de escape), donde aparecerá una cinemática y acabará el juego.
+- Tary se encontrará con distintos objetos que le ayudarán durante su huida (powerUps) , aunque también se encontrará con otros objetos que nos retrasarán (debuffs).
+Nuestro protagonista, no tiene mucho con lo que enfrentarse a los mafiosos o a la policía, pero sí que es capaz de romper algunos obstáculos frágiles, los cuales podrían contener objetos beneficiosos para él y asi conseguir escapar.
 
 Logotipo y portada del juego:
 
 ### Obstáculos--
 - Un proyectil que se avisará en la pantalla, que después de unos segundos, aparecerá y pasará por la pantalla de derecha a izquierda o viceversa.
 - Cajas, que, dependiendo si les damos una patada, tendrán un efecto u otro. Si atravesamos las cajas sin dar una patada, romperemos la caja (que no soltará nada) y además nos veremos perjudicados perdiendo velocidad. En cambio, si rompemos la caja de una patada, la caja soltará un Power Up y nuestra velocidad no se verá reducida.
-- Vallas, carteles y muros que, al contrario que las cajas, no se pueden romper y deberán ser esquivados. Si chocamos contra ellos, perderemos velocidad.
+- Objetos estáticos: En este apartado encontraremos todos aquellos objetos que sean estáticos y cuya única funcionalidad sea interrumpir el paso del jugador, dificultando así la huida y haciendo que el jugador pierda velocidad al chocar con ellos. Estos objetos son : Muros, Vallas, Carteles publicitarios, Bocas de riego de la calle, Coches, Bicicletas, (aquí tenemos que poner todos los que se nos ocurran para que haya variedad, ya que sería solo un sprite estático y si hay pocos objetos se hace muy repetitivo).
 - Materiales de construcción que caerán desde arriba. Para que el jugador pueda esquivarlos deberá deslizarse en el momento justo.
+- Toldos: Los toldos ayudarán al jugador a impulsarse hacia arriba ya sea para coger un Power up o alcanzar una zona más elevada.
+
 
 #### Niveles--
 - Tendremos dos niveles:
@@ -70,9 +73,16 @@ Logotipo y portada del juego:
 - Parte 2: Azotea de edificios
 - Parte 3: Tren
 
+### Relato breve y parcial de una partida típica
+- Al comienzo del juego, tras el diálogo principal (en caso de Modo Historia), aparecemos en el primer escenario, la ciudad, donde somos perseguidos por la policía, el jugador se moverá automáticamente hacia la derecha, y nosotros tendremos que tratar de esquivar los obstáculos saltando o deslizandonos, o incluso destruyendolos si fuera posible. Una vez lleguemos al tren, comenzará la huida por encima del mismo (esto no está incluido como tal en la película, pero al ser un juego runner y el protagonista escapar en un tren, hemos decidido adaptarlo para nuestro juego) donde tendremos que aguantar hasta llegar al túnel final donde la policía no será capaz de alcanzarnos y conseguiremos huir. Durante todo esto tendremos tanto el apoyo de los Power Ups como el retraso de los Debuffs.
+
 
 #### MECÁNICAS Y CONTROLES BASE--
-- El jugador tendrá la capacidad de saltar y deslizarse en lo que a movimiento se refiere, ya que se moverá automáticamente hacia la derecha. Por otro lado, puede dar patadas a las cajas para romperlas y obtener Power Ups.
+- Saltar: Movimiento que consiste en un impulso vertical, además, podremos controlar la trayectoria en el aire. Cuanto más se mantenga el botón de salto más alto se llegará, hasta un máximo de altura. Solo podemos volver a saltar cuando volvamos a tocar el suelo u otra plataforma en la que podamos caminar, es decir, no se puede saltar en el aire.
+Recibir daño: Recibiremos daño, cuando no seamos capaces de esquivar los disparos de los mafiosos o los objetos que caigan desde las ventanas en el escenario de la ciudad.
+- Deslizarse: El jugador podrá deslizarse de manera que sea capaz de esquivar rápidamente obstáculos como los carteles publicitarios en la zona del tren o los objetos caídos de la ciudad. 
+- Destruir obstáculos: De la mecánica anterior deriva la mecánica de destruir objetos, ya que deslizandonos contra un objetos podremos destruirlo si este es ‘’destruible’’, siendo posible que este nos dropee un Power Up.
+- Coger consumibles: Los consumibles, tanto Power Ups como los Debuffs, aparecerán aleatoriamente en el mapa, o al destruir ciertos objetos con una probabilidad, al cogerlos instantáneamente se nos otorgará el poder de ese consumible por un cierto periodo de tiempo.
 
 POWER UPS:
 - Incrementar la Velocidad del jugador. (Café)
@@ -161,3 +171,8 @@ Los miembros del equipo de desarrollo nos comunicaremos mediante nuestro propio 
 
 ##### Referencias
 - North by Northwest, _Alfred Hitchcock._ 
+- JetPack Joyride
+- Extreme Pamplona
+- Subway Surfer
+- Dan the Man
+
