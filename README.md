@@ -45,7 +45,7 @@ Plataformas: Web
 
 - El juego comenzará con una cinématica que te explicará la historia de por qué estás ahí, te confunden con un agente secreto y la mafia te persigue. Después de esta cinemática, empezará el juego con scroll lateral.
 
-- Al llegar al final del recorrido y después de huir por la ciudad de la mafia, llegamos a un tren (que será nuestra vía de escape), donde aparecerá una cinemática y acabará el juego.
+- Al llegar al final del recorrido y después de huir por la ciudad de la mafia y la policía, llegamos a un tren (que será nuestra vía de escape), donde aparecerá una cinemática y acabará el juego.
 
 Logotipo y portada del juego:
 
