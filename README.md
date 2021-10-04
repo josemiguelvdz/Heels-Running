@@ -30,6 +30,21 @@ Versión 0.2 - 24/09/2021
 
 Versión 0.1 - 20/09/2021
 
+#### Requisitos
+
+MÍNIMO:
+SO: Windows 7, Windows 8, Windows 10 (64-bit)
+Procesador: Intel Core i3 2.00 GHz or AMD equivalent
+Memoria: 1 GB de RAM
+Gráficos: NVIDIA GeForce GT 240 / AMD Radeon HD 4670 / Intel HD Graphics 4000
+
+RECOMENDADO:
+SO: Windows 10 (64-bit)
+Procesador: Intel Core i5 / AMD FX @ 2.4GHz
+Memoria: 2 GB de RAM
+Gráficos: NVIDIA GeForce GTX 470 / AMD Radeon HD 6870
+
+
 #### Resumen
 
 Géneros: Side Scroller/Scroll Lateral, Plataformas en 2D, Acción
@@ -49,6 +64,11 @@ Plataformas: Web
 Nuestro protagonista, no tiene mucho con lo que enfrentarse a los mafiosos o a la policía, pero sí que es capaz de romper algunos obstáculos frágiles, los cuales podrían contener objetos beneficiosos para él y asi conseguir escapar.
 
 Logotipo y portada del juego:
+
+#### Modos
+-Modo Historia: En este modo, primero nos encontraremos con un diálogo a modo de introducción de la historia, con el objetivo de que el jugador se meta en el papel del protagonista y comprenda por qué nos están persiguiendo. Después comenzará el nivel en el que nos perseguirá la policía, a la vez que somos molestados por los mafiosos.
+
+-Modo Un Jugador: En este modo jugaremos directamente sin tener que visualizar los diálogos, ya que al ser un juego runner en el que se espera que el jugador juegue muchas partidas tratando de mejorar su mejor marca,  sería aburrido si cada vez que quiere jugar tiene que verse el mismo diálogo.
 
 ### Obstáculos--
 - Un proyectil que se avisará en la pantalla, que después de unos segundos, aparecerá y pasará por la pantalla de derecha a izquierda o viceversa. Si el jugador entra en contacto con un proyectil, perderá velocidad.
@@ -99,6 +119,7 @@ DEBUFFS:
 - Vallas, muros, carteles (o equivalentes), que el jugador debe esquivar. En el caso de que el jugador no logre esquivarlas a tiempo, chocará contra ellas perdiendo velocidad.
 
 ### MECÁNICAS DE ENEMIGOS
+
 POLICIA:
 - La policía es el enemigo que nos perseguirá. Siempre estará detrás del jugador siguiéndole el rastro. Podrá saltar y deslizarse como el jugador para evitar los obstáculos. Además, también podrá disparar balas/proyectiles al jugador desde atrás. Las balas seguirán al jugador en el momento de ser disparadas. Si el jugador cambia de posición podrá esquivarlas.
 - Por último, si entra en contacto con el jugador, éste perderá la partida.
