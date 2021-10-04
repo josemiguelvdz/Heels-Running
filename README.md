@@ -92,7 +92,8 @@ MAFIA:
 -Disparar
 
 ##### JUGADOR
-- Movimiento: A - Izquierda | D - Derecha | S - Agacharse | Space - Saltar.
+- Movimiento : S - Agacharse / D - Dar Patadas / SpaceBar - Saltar / Enter - Pasar Diálogo 
+- Configuracion : Escape  - Ajustes / Mouse - Volumen , Reiniciar , Renaudar y Ver Controles
 - Power-ups: J - Usar Power Up.
 
 ![tecladitoo](https://user-images.githubusercontent.com/75903737/135531121-8187e0db-e0e2-465c-bf9a-3b6b939efafc.png)
@@ -125,7 +126,6 @@ En cambio, si nos toca el policía perderemos y se reiniciará el nivel.
 
 ##### MÚSICA
 - 
-
 
 ##### ARQUITECTURA DEL JUEGO
 - 
