@@ -104,7 +104,7 @@ MAFIA:
 - Configuracion : Escape  - Ajustes / Mouse - Volumen , Reiniciar , Renaudar y Ver Controles
 - Power-ups: J - Usar Power Up.
 
-![tecladitoo](https://user-images.githubusercontent.com/75903737/135531121-8187e0db-e0e2-465c-bf9a-3b6b939efafc.png)
+![image](https://user-images.githubusercontent.com/82502179/135830717-360b3800-75ba-42a7-be32-1cde833899e1.png)
 
 
 ##### SISTEMA DE VIDA 
