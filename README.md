@@ -41,7 +41,7 @@ Plataformas: Web
 
 
 #### Descripción
-- Heels Running es un juego de scroll lateral, donde nos encarnamos en la piel de un periodista que está siendo perseguido por la policía. Tendremos que huir lo más rápido que podamos para poder lograr escapar, aprovechando los distintos objetos/power-ups que nos proporciona el nivel.
+- Heels Running es un juego de scroll lateral, donde nos encarnamos en la piel de un publicista que está siendo perseguido por la policía. Tendremos que huir lo más rápido que podamos para poder lograr escapar, aprovechando los distintos objetos/power-ups que nos proporciona el nivel.
 
 - El juego comenzará con una cinématica que te explicará la historia de por qué estás ahí, te confunden con un agente secreto y la mafia te persigue. Después de esta cinemática, empezará el juego con scroll lateral.
 
