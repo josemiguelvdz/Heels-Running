@@ -97,7 +97,7 @@ En cambio, si nos toca el policía perderemos y se reiniciará el nivel.
 #### DINÁMICAS
 - El objetivo de este juego es escapar de la policía. Nos estará esperando un tren al final del mapa que será nuestra vía de escape.
 - Si durante la persecución nos pilla la policía, habremos perdido y se reiniciará el nivel.
-- Habrá obstáculos que nos dificultarán la persecución, pero también habrá power-ups para ayudarnos.
+- Durante la persecución aparecerán personajes de la mafia y obstáculos que pondrán las cosas difíciles, aunque también habrá power-ups para ayudarnos.
 - Ganaremos cuando lleguemos al final del nivel, donde nos esperará un tren para escapar.
 
 
