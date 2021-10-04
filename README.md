@@ -132,9 +132,20 @@ En cambio, si nos toca el policía perderemos y se reiniciará el nivel.
 
 IN GAME:
 
-AJUSTES:
+![image](https://user-images.githubusercontent.com/82502179/135832649-0e07c1ab-b084-479b-bb13-7e8df9a95743.png)
+
+MENÚ PAUSA:
+
+![image](https://user-images.githubusercontent.com/82502179/135832810-a93768e0-9c32-49c0-971a-081ed674a36b.png)
+
+ - CONFIGURACIÓN:
+ 
+
+
+  
 
 ![image](https://user-images.githubusercontent.com/82502179/135831201-d99d2c15-30d2-4995-b7cf-446afbe15fba.png)
+
 
 ##### MÚSICA
 - 
