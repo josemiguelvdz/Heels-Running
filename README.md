@@ -49,25 +49,30 @@ Plataformas: Web
 
 Logotipo y portada del juego:
 
-### Obstáculos------------
-REFERENCIAS JET PACK
-- Poner avisos de un proyectil que venga de la derecha (fuera de cámara) y que posteriormente salga hacia nosotros
-- Poner personas por la calle que pueda atravesar el personaje, para dar ambientación
-REFERENCIAS EXTREME PAMPLONA:
--Cajas como obstaculos , al pegarles una patada puedes obtener un power up
+### Obstáculos--
+- Un proyectil que se avisará en la pantalla, que después de unos segundos, aparecerá y pasará por la pantalla de derecha a izquierda o viceversa.
+- Cajas, que, dependiendo si les damos una patada, tendrán un efecto u otro. Si atravesamos las cajas sin dar una patada, romperemos la caja (que no soltará nada) y además nos veremos perjudicados perdiendo velocidad. En cambio, si rompemos la caja de una patada, la caja soltará un Power Up y nuestra velocidad no se verá reducida.
+- Vallas, carteles y muros que, al contrario que las cajas, no se pueden romper y deberán ser esquivados. Si chocamos contra ellos, perderemos velocidad.
+- Materiales de construcción que caerán desde arriba. Para que el jugador pueda esquivarlos deberá deslizarse en el momento justo.
 
-#### Niveles-------
-- Nivel único, donde el jugador escapará usando los edificios, escaleras y la distribución el nivel. Al final de dicho nivel se encuentra el tren de escape.
+#### Niveles--
+- Tendremos dos niveles:
 
-### Diseño de niveles -----
+## Ciudad y edificios
+- Nivel ambientado en una ciudad, con calles y edificios, personas... Seremos perseguidos por la policía. Después de conseguir escapar por la ciudad, llegaremos a las azoteas de los edificios. Tendremos que saltar de azotea en azotea y llegar así al final del nivel. Una vez alcanzado el final comenzará el segundo y último nivel.
+
+## Tren
+- Ocurrirá encima de un tren, tendremos que esquivar la misma dinámica de obstáculos que en la ciudad y para ganar pasaremos por un tunel deslizándonos, el cual la policía no podrá atravesar, logrando así escapar y completar el juego.
+
+### Diseño de niveles
 
 - Parte 1: Ciudad
 - Parte 2: Azotea de edificios
 - Parte 3: Tren
 
 
-#### MECÁNICAS Y CONTROLES BASE---
-- El jugador tendrá la capacidad de saltar y deslizarse en lo que a movimiento se refiere, ya que se moverá automáticamente hacia la derecha. Por otro lado, puede dar patadas a las cajas para romperlas y activar los power ups.
+#### MECÁNICAS Y CONTROLES BASE--
+- El jugador tendrá la capacidad de saltar y deslizarse en lo que a movimiento se refiere, ya que se moverá automáticamente hacia la derecha. Por otro lado, puede dar patadas a las cajas para romperlas y obtener Power Ups.
 
 POWER UPS:
 - Incrementar la Velocidad del jugador. (Café)
