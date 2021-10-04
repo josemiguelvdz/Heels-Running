@@ -67,7 +67,7 @@ REFERENCIAS EXTREME PAMPLONA:
 
 
 #### MECÁNICAS Y CONTROLES BASE
-- El jugador se puede mover hacia la izquierda y la derecha, además de saltar y agacharse para esquivar los distintos obstaculos
+- El jugador tendrá la capacidad de saltar y deslizarse en lo que a movimiento se refiere, ya que se moverá automáticamente hacia la derecha. Por otro lado, puede dar patadas a las cajas para romperlas y activar los power ups.
 
 POWER UPS:
 - Correr más rápido. (Café)
@@ -82,6 +82,15 @@ DEBUFFS:
 - Cajas, que al romperse cuando el jugador le pega una patada, pueden contener en su interior un Power Up.
 - Vallas, muros, carteles (o equivalentes), que el jugador debe esquivar. En el caso de que el jugador no logre esquivarlas a tiempo, chocará contra ellas perdiendo velocidad.
 
+### MECÁNICAS DE ENEMIGOS
+POLICIA:
+- Saltar y deslizarse.
+- Disparar
+- Arrestar al jugador
+
+MAFIA:
+-Disparar
+
 ##### JUGADOR
 - Movimiento: A - Izquierda | D - Derecha | S - Agacharse | Space - Saltar.
 - Power-ups: J - Usar Power Up.
@@ -90,7 +99,7 @@ DEBUFFS:
 
 
 ##### SISTEMA DE VIDA 
-- En este juego no tenemos un sistema de vida como tal; Cuando somos golpeados por un obstáculo perdemos velocidad y puntuación como penalización.
+- En este juego no tenemos un sistema de vida como tal; Cuando somos golpeados por un obstáculo o una bala perdemos velocidad y puntuación como penalización.
 En cambio, si nos toca el policía perderemos y se reiniciará el nivel.
 
 
