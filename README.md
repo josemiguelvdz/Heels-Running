@@ -49,37 +49,38 @@ Plataformas: Web
 
 Logotipo y portada del juego:
 
-### Obstáculos
+### Obstáculos------------
 REFERENCIAS JET PACK
 - Poner avisos de un proyectil que venga de la derecha (fuera de cámara) y que posteriormente salga hacia nosotros
 - Poner personas por la calle que pueda atravesar el personaje, para dar ambientación
 REFERENCIAS EXTREME PAMPLONA:
 -Cajas como obstaculos , al pegarles una patada puedes obtener un power up
 
-#### Niveles
+#### Niveles-------
 - Nivel único, donde el jugador escapará usando los edificios, escaleras y la distribución el nivel. Al final de dicho nivel se encuentra el tren de escape.
 
-### Diseño de niveles
+### Diseño de niveles -----
 
 - Parte 1: Ciudad
 - Parte 2: Azotea de edificios
 - Parte 3: Tren
 
 
-#### MECÁNICAS Y CONTROLES BASE
+#### MECÁNICAS Y CONTROLES BASE---
 - El jugador tendrá la capacidad de saltar y deslizarse en lo que a movimiento se refiere, ya que se moverá automáticamente hacia la derecha. Por otro lado, puede dar patadas a las cajas para romperlas y activar los power ups.
 
 POWER UPS:
-- Correr más rápido. (Café)
+- Incrementar la Velocidad del jugador. (Café)
 - Escudo para protegerte de un golpe y no tener penalización. (Traje elegante)
 - Restar segundos al contador de tiempo para mejorar las marcas. (Reloj verde)
 
 DEBUFFS:
-- Afectar al movimiento del personaje.(Botella de Alcohol)
+- Afectar al movimiento del personaje(Los controles se cambian).(Botella de Alcohol)
 - Sumar segundos al contador de tiempo. (Reloj rojo)
 
 #### MECÁNICAS DE ESCENARIO
 - Cajas, que al romperse cuando el jugador le pega una patada, pueden contener en su interior un Power Up.
+- Si el jugador no esquiva la caja saltando y la pasa sin darle una patada esta le ralentizara , acercándole asi a la policía y sin recibir ningun power up
 - Vallas, muros, carteles (o equivalentes), que el jugador debe esquivar. En el caso de que el jugador no logre esquivarlas a tiempo, chocará contra ellas perdiendo velocidad.
 
 ### MECÁNICAS DE ENEMIGOS
@@ -90,6 +91,8 @@ POLICIA:
 
 MAFIA:
 -Disparar
+-Saltar
+-Deslizarse
 
 ##### JUGADOR
 - Movimiento : S - Agacharse / D - Dar Patadas / SpaceBar - Saltar / Enter - Pasar Diálogo 
