@@ -141,10 +141,7 @@ MENÚ PAUSA:
  - CONFIGURACIÓN:
  
 
-
-  
-
-![image](https://user-images.githubusercontent.com/82502179/135831201-d99d2c15-30d2-4995-b7cf-446afbe15fba.png)
+![image](https://user-images.githubusercontent.com/82502179/135832931-d133a8f5-a120-492b-882c-e4a947dabc56.png)
 
 
 ##### MÚSICA
