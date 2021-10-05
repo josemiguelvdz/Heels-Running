@@ -102,7 +102,7 @@ Al comienzo del juego, tras el diálogo principal (en caso de Modo Historia), ap
 #### 2.2. Dinámica
 
 - Para ganar tendremos que conseguir huir de la policía con éxito, llegando hasta la zona del tren donde conseguiremos escapar. Si nos matan los mafiosos o somos arrestados por la policía, habremos perdido y se reiniciará el nivel.
-- La estrategia que esperamos que desarrolle el jugador es que vaya  esquivando obstáculos y disparos utilizando las distintas mecánicas que posee, asi como cogiendo solo los Power Ups intentando no coger los Debuffs, y derribando cajas para tener mayor probabilidad de obtener Power Ups, de manera que intente supera su recórd de tiempo partida a partida.
+- La estrategia que esperamos que desarrolle el jugador es que vaya  esquivando obstáculos y disparos utilizando las distintas mecánicas que posee, asi como cogiendo los Power Ups, evitando los Debuffs y derribando cajas para tener mayor probabilidad de obtener Power Ups, de manera que intente supera su recórd de tiempo partida a partida.
 
 #### 2.3.Estética
 
