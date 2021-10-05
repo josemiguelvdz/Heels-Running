@@ -53,11 +53,11 @@ Gráficos: NVIDIA GeForce GTX 470 / AMD Radeon HD 6870
 
 #### Descripción
 
-- Heels Running se trata de un runner con scroll lateral donde el personaje es un publicista, Tary Grant, al cúal persiguen por una confusión de identidad.
+- Heels Running se trata de un runner con scroll lateral donde el personaje es un publicista, Roger, al cúal persiguen por una confusión de identidad.
 
 - El objetivo principal es huir de nuestros perseguidores hasta lograr escapar, para ello tendremos que esquivar obstáculos, tratando de no morir cuando nos disparen los mafiosos, como de que no nos arresten mientras nos persiga la policía. 
 
-- Tary se encontrará con distintos objetos que le ayudarán durante su huida (powerUps) , aunque también se encontrará con otros objetos que nos retrasarán (debuffs).
+- Roger se encontrará con distintos objetos que le ayudarán durante su huida (powerUps) , aunque también se encontrará con otros objetos que nos retrasarán (debuffs).
 Nuestro protagonista, no tiene mucho con lo que enfrentarse a los mafiosos o a la policía, pero sí que es capaz de romper algunos obstáculos frágiles, los cuales podrían contener objetos beneficiosos para él y asi conseguir escapar.
 
 Logotipo y portada del juego:
