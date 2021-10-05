@@ -98,7 +98,7 @@ Al comienzo del juego, tras el diálogo principal (en caso de Modo Historia), ap
 - Toldos: Los toldos ayudarán al jugador a impulsarse hacia arriba ya sea para coger un Power up o alcanzar una zona más elevada.
 - Proyectil: Un proyectil que se avisará en la pantalla, que después de unos segundos, aparecerá y pasará por la pantalla de derecha a izquierda o viceversa. Si el jugador entra en contacto con un proyectil, perderá velocidad.
 - Objetos cayentes: Objetos que caerán desde arriba a cierta velocidad.Estos objetos son macetas o materiales de construcción. Para que el jugador pueda esquivarlos deberá deslizarse en el momento justo.
-
+-Salmon: En referencia a uno de los alimentos de la película, cuando el jugador obtenga este objeto , recuperara vida , facilitandole su supervivencia de la policía.
 #### 2.2. Dinámica
 
 - Para ganar tendremos que conseguir huir de la policía con éxito, llegando hasta la zona del tren donde conseguiremos escapar. Si nos matan los mafiosos o somos arrestados por la policía, habremos perdido y se reiniciará el nivel.
