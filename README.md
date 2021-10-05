@@ -181,7 +181,9 @@ MAFIA:
 #### Power Ups
 
 -Café: Este PowerUp hace referencia a algo que consume mucho el protagonista de nuestro videojuego en la película de Alfred, por lo que nos incrementará la velocidad para poder escapar más facilmente de la policía y evitar ser arrestados.
+
 -Smoking: Este smoking también hace referencia a como iba vestido nuestro prota, por lo que este Power Up nos ofrecerá un escudo de modo que no obtengamos ningún tipo de daño o penalización.
+
 -Reloj Verde: Dado que nuestro juego se trata de completar el nivel en el menor tiempo posible, este Power Up nos restará tiempo a la runner, lo que nos ayudará a concluir nuestras partidas con un tiempo mejor.
 
 #### Debuffs
