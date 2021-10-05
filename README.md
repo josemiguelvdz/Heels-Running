@@ -168,13 +168,13 @@ Nivel ambientado en una ciudad, con calles y edificios, personas... Seremos pers
 #### 4.2 Personajes y enemigos
 
 PROTAGONISTA:
-- Nuestro protagonista es Tary, un publicista al cuál la mafia esta tratando de matar por ser confundido con un agente del F.B.I y el cual será perseguido por la policía tras un juicio.
+- Nuestro protagonista es Roger, un publicista al cuál la mafia esta tratando de matar por ser confundido con un agente del F.B.I y el cual será perseguido por la policía tras un juicio.
 
 POLICIA:
 - La policía es el enemigo que nos perseguirá. Siempre estará detrás del jugador siguiéndole el rastro. Podrá saltar y deslizarse como el jugador para evitar los obstáculos. Además, también podrá disparar balas/proyectiles al jugador desde atrás. Las balas seguirán al jugador en el momento de ser disparadas. Si el jugador cambia de posición podrá esquivarlas. Por último, si entra en contacto con el jugador, éste perderá la partida.
 
 MAFIA:
-- Se trata de enemigos estáticos cuya función es molestar al jugador. Aparecerán de vez en cuando y le dispararán a matar ya que estos piensan que Tary es un agente infiltrado del F.B.I.
+- Se trata de enemigos estáticos cuya función es molestar al jugador. Aparecerán de vez en cuando y le dispararán a matar ya que estos piensan que Roger es un agente infiltrado del F.B.I.
 
 #### 4.3. Objetos
 
