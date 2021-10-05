@@ -89,7 +89,7 @@ Al comienzo del juego, tras el diálogo principal (en caso de Modo Historia), ap
 - Recibir daño: Recibiremos daño, cuando no seamos capaces de esquivar los disparos de los mafiosos o los objetos que caigan desde las ventanas en el escenario de la ciudad, cuando nos quedemos sin vida, moriremos.
 - Deslizar:  El jugador podrá deslizarse de manera que sea capaz de esquivar rápidamente obstáculos como los carteles publicitarios en la zona del tren o los objetos caídos de la ciudad. 
 - Destruir obstáculos: De la mecánica anterior deriva la mecánica de destruir objetos, ya que deslizandonos contra un objetos podremos destruirlo si este es ‘’destruible’’, siendo posible que este nos dropee un Power Up.
-- Coger consumibles: Los consumibles, tanto Power Ups como los Debuffs, aparecerán aleatoriamente en el mapa, o al destruir ciertos objetos con una probabilidad, al cogerlos instantáneamente se nos otorgará el poder de ese consumible por un cierto periodo de tiempo.
+- Coger consumibles: Los consumibles, tanto Power Ups como los Debuffs, aparecerán aleatoriamente en el mapa, o al destruir ciertos objetos los cuales los soltaran acorde a una probabilidad, al cogerlos instantáneamente se nos otorgará el poder de ese consumible por un cierto periodo de tiempo.
 
 #### 2.1.2. Mecánicas de escenario
 
