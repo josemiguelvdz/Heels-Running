@@ -15,11 +15,11 @@ Pivotal:
 
 ### GDD:
 
-Nombre del juego: Heels Running
-Documento de diseño de videojuego
-HitchCorp
-Rodrigo Cabello Hernández, Daniel Ruiz Figueroa, Diego Rol Sánchez, José Miguel Villacañas Díaz-Hellín
-https://github.com/josemiguelvdz/PVLI
+- Nombre del juego: Heels Running
+- Documento de diseño de videojuego
+- HitchCorp
+- Rodrigo Cabello Hernández, Daniel Ruiz Figueroa, Diego Rol Sánchez, José Miguel Villacañas Díaz-Hellín
+- https://github.com/josemiguelvdz/PVLI
 
 
 ![unknown](https://user-images.githubusercontent.com/75903737/135341022-3484ffb8-e9ce-4f82-8740-6db7b09cdaf4.png)
@@ -27,9 +27,9 @@ https://github.com/josemiguelvdz/PVLI
 
 #### Resumen
 
-Géneros: Side Scroller/Scroll Lateral, Plataformas en 2D, Acción.
-Público objetivo: Todos los públicos.
-Plataformas de juego: Web.
+- Géneros: Side Scroller/Scroll Lateral, Plataformas en 2D, Acción.
+- Público objetivo: Todos los públicos.
+- Plataformas de juego: Web.
 
 #### Modos 
 
@@ -64,10 +64,10 @@ Logotipo y portada del juego:
 
  #### Versiones del documento
 
-0.1 Mecánicas e Historia. (20/09/2021)
-0.2 Estética, dinámica, y ajustes en las mecánicas. (24/09/2021)
-0.3 Controles básicos, power Ups, debuffs. (29/09/2021)
-0.4 Ajuste completo del GDD, dejando claros todos los aspectos del mismo. (5/10/2021)
+- 0.1 Mecánicas e Historia. (20/09/2021)
+- 0.2 Estética, dinámica, y ajustes en las mecánicas. (24/09/2021)
+- 0.3 Controles básicos, power Ups, debuffs. (29/09/2021)
+- 0.4 Ajuste completo del GDD, dejando claros todos los aspectos del mismo. (5/10/2021)
 
 #### Tabla de contenidos
 
@@ -85,31 +85,31 @@ Al comienzo del juego, tras el diálogo principal (en caso de Modo Historia), ap
 
 #### 2.1.1. Mecánicas del personaje
 
--Saltar: Movimiento que consiste en un impulso vertical, además, podremos controlar la trayectoria en el aire. Cuanto más se mantenga el botón de salto más alto se llegará, hasta un máximo de altura. Solo podemos volver a saltar cuando volvamos a tocar el suelo u otra plataforma en la que podamos caminar, es decir, no se puede saltar en el aire.
--Recibir daño: Recibiremos daño, cuando no seamos capaces de esquivar los disparos de los mafiosos o los objetos que caigan desde las ventanas en el escenario de la ciudad.
--Deslizar:  El jugador podrá deslizarse de manera que sea capaz de esquivar rápidamente obstáculos como los carteles publicitarios en la zona del tren o los objetos caídos de la ciudad. 
--Destruir obstáculos: De la mecánica anterior deriva la mecánica de destruir objetos, ya que deslizandonos contra un objetos podremos destruirlo si este es ‘’destruible’’, siendo posible que este nos dropee un Power Up.
--Coger consumibles: Los consumibles, tanto Power Ups como los Debuffs, aparecerán aleatoriamente en el mapa, o al destruir ciertos objetos con una probabilidad, al cogerlos instantáneamente se nos otorgará el poder de ese consumible por un cierto periodo de tiempo.
+- Saltar: Movimiento que consiste en un impulso vertical, además, podremos controlar la trayectoria en el aire. Cuanto más se mantenga el botón de salto más alto se llegará, hasta un máximo de altura. Solo podemos volver a saltar cuando volvamos a tocar el suelo u otra plataforma en la que podamos caminar, es decir, no se puede saltar en el aire.
+- Recibir daño: Recibiremos daño, cuando no seamos capaces de esquivar los disparos de los mafiosos o los objetos que caigan desde las ventanas en el escenario de la ciudad, cuando nos quedemos sin vida, moriremos.
+- Deslizar:  El jugador podrá deslizarse de manera que sea capaz de esquivar rápidamente obstáculos como los carteles publicitarios en la zona del tren o los objetos caídos de la ciudad. 
+- Destruir obstáculos: De la mecánica anterior deriva la mecánica de destruir objetos, ya que deslizandonos contra un objetos podremos destruirlo si este es ‘’destruible’’, siendo posible que este nos dropee un Power Up.
+- Coger consumibles: Los consumibles, tanto Power Ups como los Debuffs, aparecerán aleatoriamente en el mapa, o al destruir ciertos objetos con una probabilidad, al cogerlos instantáneamente se nos otorgará el poder de ese consumible por un cierto periodo de tiempo.
 
 #### 2.1.2. Mecánicas de escenario
 
--Cajas: Son obstáculos que encontramos en el escenario de la ciudad, estos nos molestarán en el camino, dificultando nuestra huida, sin embargo, seremos capaces de destruirlas gracias al deslizamiento, y al destruirlas tendrán cierta probabilidad de dejar caer tanto un Power Up como un Debuff, por lo que pueden ser beneficiosas o perjudiciales (Con más probabilidad serán beneficiosas).
--Objetos estáticos: En este apartado encontraremos todos aquellos objetos que sean estáticos y cuya única funcionalidad sea interrumpir el paso del jugador, dificultando así la huida y haciendo que el jugador pierda velocidad al chocar con ellos. Estos objetos son : Muros, Vallas, Carteles publicitarios, Bocas de riego de la calle, Coches, Bicicletas, (aquí tenemos que poner todos los que se nos ocurran para que haya variedad, ya que sería solo un sprite estático y si hay pocos objetos se hace muy repetitivo).
--Toldos: Los toldos ayudarán al jugador a impulsarse hacia arriba ya sea para coger un Power up o alcanzar una zona más elevada.
--Proyectil: Un proyectil que se avisará en la pantalla, que después de unos segundos, aparecerá y pasará por la pantalla de derecha a izquierda o viceversa. Si el jugador entra en contacto con un proyectil, perderá velocidad.
+- Cajas: Son obstáculos que encontramos en el escenario de la ciudad, estos nos molestarán en el camino, dificultando nuestra huida, sin embargo, seremos capaces de destruirlas gracias al deslizamiento, y al destruirlas tendrán cierta probabilidad de dejar caer tanto un Power Up como un Debuff, por lo que pueden ser beneficiosas o perjudiciales (Con más probabilidad serán beneficiosas).
+- Objetos estáticos: En este apartado encontraremos todos aquellos objetos que sean estáticos y cuya única funcionalidad sea interrumpir el paso del jugador, dificultando así la huida y haciendo que el jugador pierda velocidad al chocar con ellos. Estos objetos son : Muros, Vallas, Carteles publicitarios, Bocas de riego de la calle, Coches, Bicicletas, (aquí tenemos que poner todos los que se nos ocurran para que haya variedad, ya que sería solo un sprite estático y si hay pocos objetos se hace muy repetitivo).
+- Toldos: Los toldos ayudarán al jugador a impulsarse hacia arriba ya sea para coger un Power up o alcanzar una zona más elevada.
+- Proyectil: Un proyectil que se avisará en la pantalla, que después de unos segundos, aparecerá y pasará por la pantalla de derecha a izquierda o viceversa. Si el jugador entra en contacto con un proyectil, perderá velocidad.
 - Objetos cayentes: Objetos que caerán desde arriba a cierta velocidad.Estos objetos son macetas o materiales de construcción. Para que el jugador pueda esquivarlos deberá deslizarse en el momento justo.
 
 #### 2.2. Dinámica
 
-Para ganar tendremos que conseguir huir de la policía con éxito, llegando hasta la zona del tren donde conseguiremos escapar. Si nos matan los mafiosos o somos arrestados por la policía, habremos perdido y se reiniciará el nivel.
-La estrategia que esperamos que desarrolle el jugador es que vaya  esquivando obstáculos y disparos utilizando las distintas mecánicas que posee, asi como cogiendo solo los Power Ups intentando no coger los Debuffs, y derribando cajas para tener mayor probabilidad de obtener Power Ups, de manera que intente supera su recórd de tiempo partida a partida.
+- Para ganar tendremos que conseguir huir de la policía con éxito, llegando hasta la zona del tren donde conseguiremos escapar. Si nos matan los mafiosos o somos arrestados por la policía, habremos perdido y se reiniciará el nivel.
+- La estrategia que esperamos que desarrolle el jugador es que vaya  esquivando obstáculos y disparos utilizando las distintas mecánicas que posee, asi como cogiendo solo los Power Ups intentando no coger los Debuffs, y derribando cajas para tener mayor probabilidad de obtener Power Ups, de manera que intente supera su recórd de tiempo partida a partida.
 
 #### 2.3.Estética
 
-Queremos transmitir sensaciones como el agobio, al ser constantemente perseguidos por la policía y disparados por la mafia, y el frenetismo al no poder parar en ningún momento de la partida. Además también queremos transmitir la autosuperación, haciendo que los jugadores se sientan atraídos por el juego por el simple hecho de querer supersarse a si mismos.
-Heels Running se ambienta en una ciudad de los años sesenta, con una paleta de colores en blanco y negro, para transmitir al jugador la sensación de que se encuentra en la época correcta.
-La idea del juego está desarrollada gracias a una gran película de Alfred Hitchcock, llamada North by Northwest, cuya historia queda reflejada con algunos ajustes en nuestro juego, de manera que este acabe siendo lo más divertido posible.
-El escenario será visible hasta donde veamos en nuestra cámara, y solo tendremos que preocuparnos por nuestro entorno inmediato, es decir, de no morir y no ser arrestados.
+- Queremos transmitir sensaciones como el agobio, al ser constantemente perseguidos por la policía y disparados por la mafia, y el frenetismo al no poder parar en ningún momento de la partida. Además también queremos transmitir la autosuperación, haciendo que los jugadores se sientan atraídos por el juego por el simple hecho de querer supersarse a si mismos.
+- Heels Running se ambienta en una ciudad de los años sesenta, con una paleta de colores en blanco y negro, para transmitir al jugador la sensación de que se encuentra en la época correcta.
+- La idea del juego está desarrollada gracias a una gran película de Alfred Hitchcock, llamada North by Northwest, cuya historia queda reflejada con algunos ajustes en nuestro juego, de manera que este acabe siendo lo más divertido posible.
+- El escenario será visible hasta donde veamos en nuestra cámara, y solo tendremos que preocuparnos por nuestro entorno inmediato, es decir, de no morir y no ser arrestados.
 
 ![pixel-art-paisaje-urbano-town-street-8-bit-paisaje-ciudad-juego-arcade-urbano-nocturno-diurno_102902](https://user-images.githubusercontent.com/75903737/135530540-ad4418be-77c9-469d-9018-b463fac664ea.jpg)
 
@@ -131,8 +131,8 @@ Luego dentro del juego tendremos otro menú de pausa donde podremos reaunudar el
  
 
 #### 3.1. Configuración
--Configuración de volumen: Podremos cambiar tanto la música como el sonido de nuestro videojuego.
--Configuración de video: Podremos poner el juego en pantalla completa o quitarlo de pantalla completa.
+- Configuración de volumen: Podremos cambiar tanto la música como el sonido de nuestro videojuego.
+- Configuración de video: Podremos poner el juego en pantalla completa o quitarlo de pantalla completa.
 
 #### 3.2. Interfaz
 
@@ -149,16 +149,20 @@ También mostraremos el Power Up o Debuff que hayamos cogido (en caso de cogerlo
 ![image](https://user-images.githubusercontent.com/82502179/135831539-1940dc6a-53a3-47bf-a413-72842f9ce580.png)
 
 #### 4. Contenido
-Todos los sprites de los objetos, cajas, muros, etc, así como los sprites del jugador, de la policía y de los mafiosos.
-Tendremos sonidos para los disparos, para el salto del jugador, para el choque de los objetos cayentes al suelo, para la destrucción de cajas, etc.
-También tendremos sonidos para el entorno.
+- Todos los sprites de los objetos, cajas, muros, etc, así como los sprites del jugador, de la policía y de los mafiosos.
+- Tendremos sonidos para los disparos, para el salto del jugador, para el choque de los objetos cayentes al suelo, para la destrucción de cajas, etc.
+- También tendremos sonidos para el entorno.
 
 #### 4.1 Niveles
 
 -Tendremos dos niveles:
-## Ciudad y edificios
+
+#### Ciudad y edificios
+
 Nivel ambientado en una ciudad, con calles y edificios, personas... Seremos perseguidos por la policía. Después de conseguir escapar por la ciudad, llegaremos a las azoteas de los edificios. Tendremos que saltar de azotea en azotea y llegar así al final del nivel. Una vez alcanzado el final comenzará el segundo y último nivel.
-## Tren
+
+#### Tren
+
 - Ocurrirá encima de un tren, tendremos que esquivar la misma dinámica de obstáculos que en la ciudad y para ganar pasaremos por un tunel deslizándonos, el cual la policía no podrá atravesar, logrando así escapar y completar el juego.
 
 #### 4.2 Personajes y enemigos
@@ -185,10 +189,6 @@ MAFIA:
 -Alcohol: Dado que en la película los mafiosos nos obligan a beber alcohol, hemos utilizado este debuff de manera que si lo consumimos adquiriremos una disminución de velocidad por un cierto periodo de tiempo, lo que facilitará el arresto a la policía.
 
 -Reloj Rojo: Al contrario que el reloj verde explicado con anterioridad, este debuff nos sumará tiempo adicional al tiempo de la partida, lo que hará que concluyamos la partida con un mayor tiempo.
-
-##### SISTEMA DE VIDA 
-- En este juego no tenemos un sistema de vida como tal; Cuando somos golpeados por un obstáculo o una bala perdemos velocidad y puntuación como penalización.
-En cambio, si nos toca el policía perderemos y se reiniciará el nivel.
 
 ##### MÚSICA
 - 
