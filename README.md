@@ -121,11 +121,9 @@ Dado que deslizarse va a ser como un pequeño dash, este tendrá un cooldown par
 
 ![pixel-art-paisaje-urbano-town-street-8-bit-paisaje-ciudad-juego-arcade-urbano-nocturno-diurno_102902](https://user-images.githubusercontent.com/75903737/135530540-ad4418be-77c9-469d-9018-b463fac664ea.jpg)
 
-![tumblr_oeas2thUAX1soktugo1_1280](https://user-images.githubusercontent.com/75903737/135530663-ab12e85d-13d7-4fef-9c3f-eba14aa7c239.png)
-
 #### Menús y modos de juego
 
-Menú con el logo del juego, botón para jugar en modo Historia y otro para jugar sin la historia, si se pulsan comienza la experiencia de juego. Otro botón para la configuración del juego, si lo pulsas abres una ventana para configurar los diferentes aspectos del videojuego (volumen, ver los controles o poner la pantalla completa), botón para cerrar el juego, botón en una esquina con el logo de nuestra empresa, si lo pulsas, despliega una ventana con los nombres de los creadores del juego.
+Menú con el logo del juego, botón para jugar , si se pulsa comienza la experiencia de juego. Otro botón para la configuración del juego, si lo pulsas abres una ventana para configurar los diferentes aspectos del videojuego (volumen, ver los controles o poner la pantalla completa), botón para cerrar el juego, botón en una esquina con el logo de nuestra empresa, si lo pulsas, despliega una ventana con los nombres de los creadores del juego.
 
 *Falta imágen del menú principal de juego*
 
@@ -153,25 +151,19 @@ También mostraremos el Power Up o Debuff que hayamos cogido (en caso de cogerlo
 
 - Movimiento : S - Deslizarse / D - Dar Patadas / SpaceBar - Saltar
 - Configuracion : Escape  - Ajustes / Mouse - Volumen , Reiniciar , Renaudar y Ver Controles
-
-![image](https://user-images.githubusercontent.com/82502179/135831539-1940dc6a-53a3-47bf-a413-72842f9ce580.png)
+- 
+![Controles](https://user-images.githubusercontent.com/82502179/136591999-e16dc5bb-e5f0-48f6-8ce7-6f1b51889c09.png)
 
 #### 4. Contenido
 - Todos los sprites de los objetos, cajas, muros, etc, así como los sprites del jugador, de la policía y de los mafiosos.
 - Tendremos sonidos para los disparos, para el salto del jugador, para el choque de los objetos cayentes al suelo, para la destrucción de cajas, etc.
 - También tendremos sonidos para el entorno.
 
-#### 4.1 Niveles
+#### 4.1 Nivel
 
--Tendremos dos niveles:
+#### Ciudad
 
-#### Ciudad y edificios
-
-Nivel ambientado en una ciudad, con calles y edificios, personas... Seremos perseguidos por la policía. Después de conseguir escapar por la ciudad, llegaremos a las azoteas de los edificios. Tendremos que saltar de azotea en azotea y llegar así al final del nivel. Una vez alcanzado el final comenzará el segundo y último nivel.
-
-#### Tren
-
-- Ocurrirá encima de un tren, tendremos que esquivar la misma dinámica de obstáculos que en la ciudad y para ganar pasaremos por un tunel deslizándonos, el cual la policía no podrá atravesar, logrando así escapar y completar el juego.
+Nivel ambientado en una ciudad, con calles y edificios, personas... Seremos perseguidos por la policía y la mafia. Tras atravesar la ciudad, llegaremos a una estación del tren para escapar.
 
 #### 4.2 Personajes y enemigos
 
