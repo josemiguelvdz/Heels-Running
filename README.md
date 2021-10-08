@@ -31,7 +31,7 @@ Pivotal:
 - Público objetivo: Todos los públicos.
 - Plataformas de juego: Web.
 
-- Heels Running se trata de un runner con scroll lateral donde nuestro objetivo principal es huir de nuestros perseguidores hasta lograr escapar, para ello tendremos que esquivar obstáculos, tratando tanto de no morir cuando nos disparen los mafiosos, como de que no nos arreste la policía. 
+- Heels Running se trata de un runner con scroll lateral en cuál nuestro personaje se mueve automáticamente hacia la derecha y cuyo objetivo principal es huir de nuestros perseguidores hasta lograr escapar, para ello tendremos que esquivar obstáculos, tratando tanto de no morir cuando nos disparen los mafiosos, como de que no nos arreste la policía. 
 
 A lo largo de la run se encontrará con distintos objetos que nos ayudarán durante la huida (powerUps) , aunque también se encontrará con otros objetos que nos retrasarán (debuffs). Nuestro protagonista será capaz de romper algunos obstáculos frágiles, los cuales podrían contener poweUps.
 
@@ -53,7 +53,7 @@ Logotipo y portada del juego: ---
 
 #### 1.1. Relato breve y parcial de una partida típica
 
-Al comienzo del juego, aparecemos en la ciudad, donde somos perseguidos por la policía, el jugador se moverá automáticamente hacia la derecha, y nosotros tendremos que tratar de esquivar los obstáculos saltando o deslizandonos, o incluso destruyendolos si fuera posible. Una vez lleguemos al tren, comenzará la huida por encima del mismo (esto no está incluido como tal en la película, pero al ser un juego runner y el protagonista escapar en un tren, hemos decidido adaptarlo para nuestro juego) donde tendremos que aguantar hasta llegar al túnel final donde la policía no será capaz de alcanzarnos y conseguiremos huir. Durante todo esto tendremos tanto el apoyo de los Power Ups como el retraso de los Debuffs.
+El juego transcurre en una ciudad, donde somos perseguidos por la policía y atacados por la mafia, nosotros tendremos que tratar de esquivar los obstáculos saltando o deslizandonos, o incluso destruyendolos si fuera posible (cajas). De esta manera para acabar la partidad tendremos que llegar a la estación del tren.
 
 #### 2. Jugabilidad
 
@@ -61,29 +61,61 @@ Al comienzo del juego, aparecemos en la ciudad, donde somos perseguidos por la p
 
 #### 2.1.1. Mecánicas del personaje
 
+- Movimiento horizontal: El personaje se mueve a una velocidad constante la cuál puede verse afectada al chocar con obstáculos.
+
 - Saltar: Movimiento que consiste en un impulso vertical, además, podremos controlar la trayectoria en el aire. Cuanto más se mantenga el botón de salto más alto se llegará, hasta un máximo de altura. Solo podemos volver a saltar cuando volvamos a tocar el suelo u otra plataforma en la que podamos caminar, es decir, no se puede saltar en el aire.
-- Recibir daño: Recibiremos daño, cuando no seamos capaces de esquivar los disparos de los mafiosos o los objetos que caigan desde las ventanas en el escenario de la ciudad, cuando nos quedemos sin vida, moriremos.
-- Deslizar:  El jugador podrá deslizarse de manera que sea capaz de esquivar rápidamente obstáculos como los carteles publicitarios en la zona del tren o los objetos caídos de la ciudad. 
+
+- Sistema de Vida: El jugador dispondrá de 3 corazones de vida.
+
+- Recibir daño: Recibiremos daño, cuando no seamos capaces de esquivar los disparos de los mafiosos los cuales no quitarán 1 corazón o los objetos que caigan desde las ventanas en el escenario de la ciudad que nos quitarán medio corazón, cuando nos quedemos sin corazones, moriremos.
+
+- Deslizar:  El jugador podrá deslizarse de manera que sea capaz de atravesar obstáculos que no puden saltarse o para tratar de esquivar los objetos que caen de las ventanas.
+Dado que deslizarse va a ser como un pequeño dash, este tendrá un cooldown para no abusar de él. 
+
 - Destruir obstáculos: De la mecánica anterior deriva la mecánica de destruir objetos, ya que deslizandonos contra un objetos podremos destruirlo si este es ‘’destruible’’, siendo posible que este nos dropee un Power Up.
-- Coger consumibles: Los consumibles, tanto Power Ups como los Debuffs, aparecerán aleatoriamente en el mapa, o al destruir ciertos objetos los cuales los soltaran acorde a una probabilidad, al cogerlos instantáneamente se nos otorgará el poder de ese consumible por un cierto periodo de tiempo.
+
+- Coger PowerUps/Debuffs: Al cogerlos, se activará automáticamente durante un periodo de tiempo.
+
+#### 4.3. Objetos
+
+#### Power Ups
+
+-Café: Este PowerUp hace referencia a algo que consume mucho el protagonista de nuestro videojuego en la película de Alfred, por lo que nos incrementará la velocidad para poder escapar más facilmente de la policía y evitar ser arrestados.
+
+-Smoking: Este smoking también hace referencia a como iba vestido nuestro prota, por lo que este Power Up nos ofrecerá un escudo de modo que no obtengamos ningún tipo de daño o penalización.
+
+-Reloj Verde: Dado que nuestro juego se trata de completar el nivel en el menor tiempo posible, este Power Up nos restará tiempo a la runner, lo que nos ayudará a concluir nuestras partidas con un tiempo mejor.
+
+#### Debuffs
+
+-Alcohol: Dado que en la película los mafiosos nos obligan a beber alcohol, hemos utilizado este debuff de manera que si lo consumimos adquiriremos una disminución de velocidad por un cierto periodo de tiempo, lo que facilitará el arresto a la policía.
+
+-Reloj Rojo: Al contrario que el reloj verde explicado con anterioridad, este debuff nos sumará tiempo adicional al tiempo de la partida, lo que hará que concluyamos la partida con un mayor tiempo.
+
 
 #### 2.1.2. Mecánicas de escenario
 
-- Cajas: Son obstáculos que encontramos en el escenario de la ciudad, estos nos molestarán en el camino, dificultando nuestra huida, sin embargo, seremos capaces de destruirlas gracias al deslizamiento, y al destruirlas tendrán cierta probabilidad de dejar caer tanto un Power Up como un Debuff, por lo que pueden ser beneficiosas o perjudiciales (Con más probabilidad serán beneficiosas).
-- Objetos estáticos: En este apartado encontraremos todos aquellos objetos que sean estáticos y cuya única funcionalidad sea interrumpir el paso del jugador, dificultando así la huida y haciendo que el jugador pierda velocidad al chocar con ellos. Estos objetos son : Muros, Vallas, Carteles publicitarios, Bocas de riego de la calle, Coches, Bicicletas, (aquí tenemos que poner todos los que se nos ocurran para que haya variedad, ya que sería solo un sprite estático y si hay pocos objetos se hace muy repetitivo).
-- Toldos: Los toldos ayudarán al jugador a impulsarse hacia arriba ya sea para coger un Power up o alcanzar una zona más elevada.
-- Proyectil: Un proyectil que se avisará en la pantalla, que después de unos segundos, aparecerá y pasará por la pantalla de derecha a izquierda o viceversa. Si el jugador entra en contacto con un proyectil, perderá velocidad.
-- Objetos cayentes: Objetos que caerán desde arriba a cierta velocidad.Estos objetos son macetas o materiales de construcción. Para que el jugador pueda esquivarlos deberá deslizarse en el momento justo.
--Salmon: En referencia a uno de los alimentos de la película, cuando el jugador obtenga este objeto , recuperara vida , facilitandole su supervivencia de la policía.
+- Cajas: Son obstáculos que encontramos en el escenario de la ciudad, estos nos molestarán en el camino, dificultando nuestra huida, sin embargo, seremos capaces de destruirlas de tres maneras:
+     -Atravesandolas/Deslizandonos: No habrá probabilidades de obtener un poweUp y .
+     -Patada: tendrán cierta probabilidad de dejar caer tanto un Power Up.
+     
+- Objetos estáticos: En este apartado encontraremos todos aquellos objetos que sean estáticos y cuya única funcionalidad sea interrumpir el paso del jugador, dificultando así la huida y haciendo que el jugador pierda velocidad al chocar con ellos. Estos objetos son : Muros, Vallas, Carteles de tiendas, Bocas de riego de la calle, Coches, Bicicletas, (aquí tenemos que poner todos los que se nos ocurran para que haya variedad, ya que sería solo un sprite estático y si hay pocos objetos se hace muy repetitivo).
+
+- Objetos cayentes: Objetos que caerán desde arriba y nos harán daño. Estos objetos son macetas o materiales de construcción. Para que el jugador pueda esquivarlos deberá deslizarse en el momento justo.
+
+-Salmon: En referencia a uno de los alimentos de la película, cuando el jugador obtenga este objeto , recuperara vida , facilitandole su supervivencia de los mafiosos y de los objetos arrojados por la ventana.
 #### 2.2. Dinámica
 
-- Para ganar tendremos que conseguir huir de la policía con éxito, llegando hasta la zona del tren donde conseguiremos escapar. Si nos matan los mafiosos o somos arrestados por la policía, habremos perdido y se reiniciará el nivel.
-- La estrategia que esperamos que desarrolle el jugador es que vaya  esquivando obstáculos y disparos utilizando las distintas mecánicas que posee, asi como cogiendo los Power Ups, evitando los Debuffs y derribando cajas para tener mayor probabilidad de obtener Power Ups, de manera que intente supera su recórd de tiempo partida a partida.
+- Para ganar tendremos que conseguir huir de la policía con éxito, llegando hasta la zona del tren donde conseguiremos escapar. Si nos matan los disparos de los mafiosos o somos arrestados por la policía, habremos perdido y se dará la opción al jugador de reiniciar el nivel.
+
+- La estrategia que esperamos que desarrolle el jugador es que vaya  esquivando obstáculos y disparos utilizando las distintas mecánicas que posee, asi como cogiendo los Power Ups, evitando los Debuffs, de manera que intente supera su recórd de tiempo partida a partida.
 
 #### 2.3.Estética
 
 - Queremos transmitir sensaciones como el agobio, al ser constantemente perseguidos por la policía y disparados por la mafia, y el frenetismo al no poder parar en ningún momento de la partida. Además también queremos transmitir la autosuperación, haciendo que los jugadores se sientan atraídos por el juego por el simple hecho de querer supersarse a si mismos.
+-
 - Heels Running se ambienta en una ciudad de los años sesenta, con una paleta de colores en blanco y negro, para transmitir al jugador la sensación de que se encuentra en la época correcta.
+-
 - La idea del juego está desarrollada gracias a una gran película de Alfred Hitchcock, llamada North by Northwest, cuya historia queda reflejada con algunos ajustes en nuestro juego, de manera que este acabe siendo lo más divertido posible.
 - El escenario será visible hasta donde veamos en nuestra cámara, y solo tendremos que preocuparnos por nuestro entorno inmediato, es decir, de no morir y no ser arrestados.
 
@@ -119,7 +151,7 @@ También mostraremos el Power Up o Debuff que hayamos cogido (en caso de cogerlo
 
 #### 3.3. Controles
 
-- Movimiento : S - Deslizarse / D - Dar Patadas / SpaceBar - Saltar / Enter - Pasar Diálogo 
+- Movimiento : S - Deslizarse / D - Dar Patadas / SpaceBar - Saltar
 - Configuracion : Escape  - Ajustes / Mouse - Volumen , Reiniciar , Renaudar y Ver Controles
 
 ![image](https://user-images.githubusercontent.com/82502179/135831539-1940dc6a-53a3-47bf-a413-72842f9ce580.png)
@@ -151,22 +183,6 @@ POLICIA:
 
 MAFIA:
 - Se trata de enemigos estáticos cuya función es molestar al jugador. Aparecerán de vez en cuando y le dispararán a matar ya que estos piensan que Roger es un agente infiltrado del F.B.I.
-
-#### 4.3. Objetos
-
-#### Power Ups
-
--Café: Este PowerUp hace referencia a algo que consume mucho el protagonista de nuestro videojuego en la película de Alfred, por lo que nos incrementará la velocidad para poder escapar más facilmente de la policía y evitar ser arrestados.
-
--Smoking: Este smoking también hace referencia a como iba vestido nuestro prota, por lo que este Power Up nos ofrecerá un escudo de modo que no obtengamos ningún tipo de daño o penalización.
-
--Reloj Verde: Dado que nuestro juego se trata de completar el nivel en el menor tiempo posible, este Power Up nos restará tiempo a la runner, lo que nos ayudará a concluir nuestras partidas con un tiempo mejor.
-
-#### Debuffs
-
--Alcohol: Dado que en la película los mafiosos nos obligan a beber alcohol, hemos utilizado este debuff de manera que si lo consumimos adquiriremos una disminución de velocidad por un cierto periodo de tiempo, lo que facilitará el arresto a la policía.
-
--Reloj Rojo: Al contrario que el reloj verde explicado con anterioridad, este debuff nos sumará tiempo adicional al tiempo de la partida, lo que hará que concluyamos la partida con un mayor tiempo.
 
 ##### MÚSICA
 - 
