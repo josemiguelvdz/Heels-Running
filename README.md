@@ -25,42 +25,17 @@ Pivotal:
 ![unknown](https://user-images.githubusercontent.com/75903737/135341022-3484ffb8-e9ce-4f82-8740-6db7b09cdaf4.png)
 
 
-#### Resumen
+#### Descripción y Resumen
 
 - Géneros: Side Scroller/Scroll Lateral, Plataformas en 2D, Acción.
 - Público objetivo: Todos los públicos.
 - Plataformas de juego: Web.
 
-#### Modos 
+- Heels Running se trata de un runner con scroll lateral donde nuestro objetivo principal es huir de nuestros perseguidores hasta lograr escapar, para ello tendremos que esquivar obstáculos, tratando tanto de no morir cuando nos disparen los mafiosos, como de que no nos arreste la policía. 
 
--Modo Historia: En este modo, primero nos encontraremos con un diálogo a modo de introducción de la historia, con el objetivo de que el jugador se meta en el papel del protagonista y comprenda por qué nos están persiguiendo. Después comenzará el nivel en el que nos perseguirá la policía, a la vez que somos molestados por los mafiosos.
+A lo largo de la run se encontrará con distintos objetos que nos ayudarán durante la huida (powerUps) , aunque también se encontrará con otros objetos que nos retrasarán (debuffs). Nuestro protagonista será capaz de romper algunos obstáculos frágiles, los cuales podrían contener poweUps.
 
--Modo Un Jugador: En este modo jugaremos directamente sin tener que visualizar los diálogos, ya que al ser un juego runner en el que se espera que el jugador juegue muchas partidas tratando de mejorar su mejor marca,  sería aburrido si cada vez que quiere jugar tiene que verse el mismo diálogo.
-
-#### Requisitos
-
-MÍNIMO:
-SO: Windows 7, Windows 8, Windows 10 (64-bit)
-Procesador: Intel Core i3 2.00 GHz or AMD equivalent
-Memoria: 1 GB de RAM
-Gráficos: NVIDIA GeForce GT 240 / AMD Radeon HD 4670 / Intel HD Graphics 4000
-
-RECOMENDADO:
-SO: Windows 10 (64-bit)
-Procesador: Intel Core i5 / AMD FX @ 2.4GHz
-Memoria: 2 GB de RAM
-Gráficos: NVIDIA GeForce GTX 470 / AMD Radeon HD 6870
-
-#### Descripción
-
-- Heels Running se trata de un runner con scroll lateral donde el personaje es un publicista, Roger, al cúal persiguen por una confusión de identidad.
-
-- El objetivo principal es huir de nuestros perseguidores hasta lograr escapar, para ello tendremos que esquivar obstáculos, tratando de no morir cuando nos disparen los mafiosos, como de que no nos arresten mientras nos persiga la policía. 
-
-- Roger se encontrará con distintos objetos que le ayudarán durante su huida (powerUps) , aunque también se encontrará con otros objetos que nos retrasarán (debuffs).
-Nuestro protagonista, no tiene mucho con lo que enfrentarse a los mafiosos o a la policía, pero sí que es capaz de romper algunos obstáculos frágiles, los cuales podrían contener objetos beneficiosos para él y asi conseguir escapar.
-
-Logotipo y portada del juego:
+Logotipo y portada del juego: ---
 
  #### Versiones del documento
 
@@ -68,16 +43,17 @@ Logotipo y portada del juego:
 - 0.2 Estética, dinámica, y ajustes en las mecánicas. (24/09/2021)
 - 0.3 Controles básicos, power Ups, debuffs. (29/09/2021)
 - 0.4 Ajuste completo del GDD, dejando claros todos los aspectos del mismo. (5/10/2021)
+- ----------------------------------------------------------------------------------------------------------------------
 
 #### Tabla de contenidos
 
 #### 1. Aspectos generales
 
-*Aqui ponemos un boceto y explicamos lo que estaría pasando en ese momento*
+*Aqui ponemos una captura del nivel y explicamos lo que estaría pasando en ese momento*
 
 #### 1.1. Relato breve y parcial de una partida típica
 
-Al comienzo del juego, tras el diálogo principal (en caso de Modo Historia), aparecemos en el primer escenario, la ciudad, donde somos perseguidos por la policía, el jugador se moverá automáticamente hacia la derecha, y nosotros tendremos que tratar de esquivar los obstáculos saltando o deslizandonos, o incluso destruyendolos si fuera posible. Una vez lleguemos al tren, comenzará la huida por encima del mismo (esto no está incluido como tal en la película, pero al ser un juego runner y el protagonista escapar en un tren, hemos decidido adaptarlo para nuestro juego) donde tendremos que aguantar hasta llegar al túnel final donde la policía no será capaz de alcanzarnos y conseguiremos huir. Durante todo esto tendremos tanto el apoyo de los Power Ups como el retraso de los Debuffs.
+Al comienzo del juego, aparecemos en la ciudad, donde somos perseguidos por la policía, el jugador se moverá automáticamente hacia la derecha, y nosotros tendremos que tratar de esquivar los obstáculos saltando o deslizandonos, o incluso destruyendolos si fuera posible. Una vez lleguemos al tren, comenzará la huida por encima del mismo (esto no está incluido como tal en la película, pero al ser un juego runner y el protagonista escapar en un tren, hemos decidido adaptarlo para nuestro juego) donde tendremos que aguantar hasta llegar al túnel final donde la policía no será capaz de alcanzarnos y conseguiremos huir. Durante todo esto tendremos tanto el apoyo de los Power Ups como el retraso de los Debuffs.
 
 #### 2. Jugabilidad
 
