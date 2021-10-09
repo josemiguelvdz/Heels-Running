@@ -171,10 +171,10 @@ PROTAGONISTA:
 - Nuestro protagonista es Roger, un publicista al cuál la mafia esta tratando de matar por ser confundido con un agente del F.B.I y el cual será perseguido por la policía tras un juicio.
 
 POLICIA:
-- La policía es el enemigo que nos perseguirá. Siempre estará detrás del jugador siguiéndole el rastro. Podrá saltar y deslizarse como el jugador para evitar los obstáculos. Además, también podrá disparar balas/proyectiles al jugador desde atrás. Las balas seguirán al jugador en el momento de ser disparadas. Si el jugador cambia de posición podrá esquivarlas. Por último, si entra en contacto con el jugador, éste perderá la partida.
+- La policía es el enemigo que nos perseguirá. Siempre estará detrás del jugador siguiéndole el rastro. Si el jugador está a una altura diferente a la policio, entonces se motrará detrás de este un icono de un helicóptero que simulará que nos pasan a perseguir por el aire. Por último, si entra en contacto con el jugador, éste perderá la partida.
 
 MAFIA:
-- Se trata de enemigos estáticos cuya función es molestar al jugador. Aparecerán de vez en cuando y le dispararán a matar ya que estos piensan que Roger es un agente infiltrado del F.B.I.
+- Se trata de enemigos estáticos cuya función es matar al jugador. Aparecerán de vez en cuando en ventanas. Se avisará al jugador mostrando el icono de un mafioso en el límite de la pantalla derecha, indicandole que cuando llegue aparece un mafioso.
 
 ##### MÚSICA
 - 
