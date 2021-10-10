@@ -72,7 +72,7 @@ El juego transcurre en una ciudad, donde somos perseguidos por la policía y ata
 - Deslizar:  El jugador podrá deslizarse de manera que sea capaz de atravesar obstáculos que no puden saltarse o para tratar de esquivar los objetos que caen de las ventanas.
 Dado que deslizarse va a ser como un pequeño dash, este tendrá un cooldown para no abusar de él. 
 
-- Destruír obstáculos: De la mecánica anterior deriva la mecánica de destruir objetos, ya que deslizandonos contra un objetos podremos destruirlo si este es ‘’destruible’’, siendo posible que este nos dropeé un Power Up.
+- Destruir obstáculos: De la mecánica anterior deriva la mecánica de destruir objetos, ya que deslizandonos contra un objetos podremos destruirlo si este es ‘’destruible’’, siendo posible que este nos dropeé un Power Up.
 
 - Coger PowerUps/Debuffs: Al cogerlos, se activará automáticamente durante un periodo de tiempo.
 
