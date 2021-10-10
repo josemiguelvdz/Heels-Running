@@ -2,27 +2,38 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>HTML</title>
+  <title>Heels Running</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="css\bootstrap.css">
+  <link rel="js" href="js\bootstrap.js">
+  <script src="./lib/phaser.min.js"></script>
 </head>
 
+
 <body>
-  <h1>JUEGO</h1>
-  <div id= "header">
-    <ul class="nav">
-      <li><a href="">Inicio</a></li>
-      <li><a href="video.html">Vídeo</a></li>
-      <li><a href="test.html">TEST</a></li>
-      <li><a href="redes.html">Redes</a>
-        <ul>
-          <li><a href="">Github</a></li>
-        </ul>
-      </li>
-      
-      
-    </ul>
+  <!-- Image and text -->
+  <nav id="menu" class="navbar sticky-top navbar-dark bg-dark">
+    <a class="navbar-brand" href="redes.html">
+      <img src="imgs\logo.png" width="80" height="30" class="d-inline-block align-top" alt="">
+      Hitch Corp
+    </a> 
+    <form class="form-inline">
+      <button class="btn btn-outline-success" type="button">Redes</button>
+    </form>
+  </nav>
+
+  <div id="game">
+    <script src="./src/game.js" type="module"></script>
   </div>
   
+  <div id="instructions">
+    <div id="ins_title">
+      <h1>Controles del juego</h1> 
+    </div>
+    <div id="ins_text" style="text-align: center;">
+      <p>WASD to move</p>
+    </div>
+  </div>
+
 </body>
 </html>

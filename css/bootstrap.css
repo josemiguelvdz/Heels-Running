@@ -8978,12 +8978,3 @@ a.text-dark:hover, a.text-dark:focus {
   text-align: center;
   margin-top: 100px;
 }
-
-#game {
-  display: block;
-  background-color:#434343;
-  width: 640px;
-  height: 480px;
-  margin: auto;
-  margin-top: 100px;
-}
