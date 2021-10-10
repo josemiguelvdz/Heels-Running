@@ -72,7 +72,7 @@ El juego transcurre en una ciudad, donde somos perseguidos por la policía y ata
 - Deslizar:  El jugador podrá deslizarse de manera que sea capaz de atravesar obstáculos que no puden saltarse o para tratar de esquivar los objetos que caen de las ventanas.
 Dado que deslizarse va a ser como un pequeño dash, este tendrá un cooldown para no abusar de él. 
 
-- Destruir obstáculos: De la mecánica anterior deriva la mecánica de destruir objetos, ya que deslizandonos contra un objetos podremos destruirlo si este es ‘’destruible’’, siendo posible que este nos dropee un Power Up.
+- Destruír obstáculos: De la mecánica anterior deriva la mecánica de destruir objetos, ya que deslizandonos contra un objetos podremos destruirlo si este es ‘’destruible’’, siendo posible que este nos dropeé un Power Up.
 
 - Coger PowerUps/Debuffs: Al cogerlos, se activará automáticamente durante un periodo de tiempo.
 
@@ -82,28 +82,28 @@ Dado que deslizarse va a ser como un pequeño dash, este tendrá un cooldown par
 
 -Café: Este PowerUp hace referencia a algo que consume mucho el protagonista de nuestro videojuego en la película de Alfred, por lo que nos incrementará la velocidad para poder escapar más facilmente de la policía y evitar ser arrestados.
 
--Smoking: Este smoking también hace referencia a como iba vestido nuestro prota, por lo que este Power Up nos ofrecerá un escudo de modo que no obtengamos ningún tipo de daño o penalización.
+-Smoking: Este smoking también hace referencia a como iba vestido nuestro protagonista, por lo que este Power Up nos ofrecerá un escudo de modo que no obtengamos ningún tipo de daño o penalización.
 
--Reloj Verde: Dado que nuestro juego se trata de completar el nivel en el menor tiempo posible, este Power Up nos restará tiempo a la runner, lo que nos ayudará a concluir nuestras partidas con un tiempo mejor.
+-Reloj Verde: Dado que nuestro juego se trata de completar el nivel en el menor tiempo posible, este Power Up nos restará tiempo a la run, lo que nos ayudará a concluir nuestras partidas con un tiempo mejor.
 
 #### Debuffs
 
 -Alcohol: Dado que en la película los mafiosos nos obligan a beber alcohol, hemos utilizado este debuff de manera que si lo consumimos adquiriremos una disminución de velocidad por un cierto periodo de tiempo, lo que facilitará el arresto a la policía.
 
--Reloj Rojo: Al contrario que el reloj verde explicado con anterioridad, este debuff nos sumará tiempo adicional al tiempo de la partida, lo que hará que concluyamos la partida con un mayor tiempo.
+-Reloj Rojo: Al contrario que el reloj verde explicado con anterioridad, este debuff nos sumará tiempo adicionql al tiempo de la partida, lo que hará que concluyamos la partida con un mayor tiempo.
 
 
 #### 2.1.2. Mecánicas de escenario
 
 - Cajas: Son obstáculos que encontramos en el escenario de la ciudad, estos nos molestarán en el camino, dificultando nuestra huida, sin embargo, seremos capaces de destruirlas de tres maneras:
-     -Atravesandolas/Deslizandonos: No habrá probabilidades de obtener un poweUp y .
+     -Atravesandolas/Deslizandonos: No habrá probabilidades de obtener un poweUp.
      -Patada: tendrán cierta probabilidad de dejar caer tanto un Power Up.
      
 - Objetos estáticos: En este apartado encontraremos todos aquellos objetos que sean estáticos y cuya única funcionalidad sea interrumpir el paso del jugador, dificultando así la huida y haciendo que el jugador pierda velocidad al chocar con ellos. Estos objetos son : Muros, Vallas, Carteles de tiendas, Bocas de riego de la calle, Coches, Bicicletas, (aquí tenemos que poner todos los que se nos ocurran para que haya variedad, ya que sería solo un sprite estático y si hay pocos objetos se hace muy repetitivo).
 
 - Objetos cayentes: Objetos que caerán desde arriba y nos harán daño. Estos objetos son macetas o materiales de construcción. Para que el jugador pueda esquivarlos deberá deslizarse en el momento justo.
 
--Salmon: En referencia a uno de los alimentos de la película, cuando el jugador obtenga este objeto , recuperara vida , facilitandole su supervivencia de los mafiosos y de los objetos arrojados por la ventana.
+-Salmon: En referencia a uno de los alimentos de la película, cuando el jugador obtenga este objeto , recuperara vida , facilitándole su supervivencia de los mafiosos y de los objetos arrojados por la ventana.
 #### 2.2. Dinámica
 
 - Para ganar tendremos que conseguir huir de la policía con éxito, llegando hasta la zona del tren donde conseguiremos escapar. Si nos matan los disparos de los mafiosos o somos arrestados por la policía, habremos perdido y se dará la opción al jugador de reiniciar el nivel.
@@ -163,7 +163,7 @@ También mostraremos el Power Up o Debuff que hayamos cogido (en caso de cogerlo
 
 #### Ciudad
 
-Nivel ambientado en una ciudad, con calles y edificios, personas... Seremos perseguidos por la policía y la mafia. Tras atravesar la ciudad, llegaremos a una estación del tren para escapar.
+Nivel ambientado en una ciudad, con calles y edificios, personas... Seremos perseguidos por la policía ,y a su vez tendremos que esquivar a la mafia a lo largo de la partida. Tras atravesar la ciudad, llegaremos a una estación del tren para escapar.
 
 #### 4.2 Personajes y enemigos
 
@@ -171,10 +171,10 @@ PROTAGONISTA:
 - Nuestro protagonista es Roger, un publicista al cuál la mafia esta tratando de matar por ser confundido con un agente del F.B.I y el cual será perseguido por la policía tras un juicio.
 
 POLICIA:
-- La policía es el enemigo que nos perseguirá. Siempre estará detrás del jugador siguiéndole el rastro. Si el jugador está a una altura diferente a la policio, entonces se motrará detrás de este un icono de un helicóptero que simulará que nos pasan a perseguir por el aire. Por último, si entra en contacto con el jugador, éste perderá la partida.
+- La policía es el enemigo que nos perseguirá. Siempre estará detrás del jugador siguiéndole el rastro. Si el jugador está a una altura diferente a la policia, entonces se motrará detrás de este un icono de un helicóptero que simulará que nos pasan a perseguir por el aire. Por último, si entra en contacto con el jugador, éste perderá la partida.
 
 MAFIA:
-- Se trata de enemigos estáticos cuya función es matar al jugador. Aparecerán de vez en cuando en ventanas. Se avisará al jugador mostrando el icono de un mafioso en el límite de la pantalla derecha, indicandole que cuando llegue aparece un mafioso.
+- Se trata de enemigos estáticos cuya función es matar al jugador. Aparecerán de vez en cuando en ventanas. Se avisará al jugador mostrando el icono de un mafioso en el límite de la pantalla derecha, indicándole que cuando llegue aparece un mafioso.
 
 ##### MÚSICA
 - 
