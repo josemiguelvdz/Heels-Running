@@ -8978,3 +8978,21 @@ a.text-dark:hover, a.text-dark:focus {
   text-align: center;
   margin-top: 100px;
 }
+
+.container{
+  display: flex;
+  flex-direction: row;
+  -ms-flex-align: center;
+  justify-content: space-between;
+  margin-top: 200px;
+
+
+  width: auto;
+  height: 300px;
+}
+.container p{
+  font-family: Verdana;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 25px;
+}

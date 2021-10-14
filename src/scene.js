@@ -75,7 +75,7 @@ export default class Level extends Phaser.Scene {
     const cam = this.cameras.main;
     const speed = 3;
 
-   // cam.scrollX += speed;
+    // cam.scrollX += speed;
   }
 
   spawnStar() {
