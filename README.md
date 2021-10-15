@@ -76,23 +76,6 @@ Dado que deslizarse va a ser como un pequeño dash, este tendrá un cooldown par
 
 - Coger PowerUps/Debuffs: Al cogerlos, se activará automáticamente durante un periodo de tiempo.
 
-#### 4.3. Objetos
-
-#### Power Ups
-
--Café: Este PowerUp hace referencia a algo que consume mucho el protagonista de nuestro videojuego en la película de Alfred, por lo que nos incrementará la velocidad para poder escapar más facilmente de la policía y evitar ser arrestados.
-
--Smoking: Este smoking también hace referencia a como iba vestido nuestro protagonista, por lo que este Power Up nos ofrecerá un escudo de modo que no obtengamos ningún tipo de daño o penalización.
-
--Reloj Verde: Dado que nuestro juego se trata de completar el nivel en el menor tiempo posible, este Power Up nos restará tiempo a la run, lo que nos ayudará a concluir nuestras partidas con un tiempo mejor.
-
-#### Debuffs
-
--Alcohol: Dado que en la película los mafiosos nos obligan a beber alcohol, hemos utilizado este debuff de manera que si lo consumimos adquiriremos una disminución de velocidad por un cierto periodo de tiempo, lo que facilitará el arresto a la policía.
-
--Reloj Rojo: Al contrario que el reloj verde explicado con anterioridad, este debuff nos sumará tiempo adicionql al tiempo de la partida, lo que hará que concluyamos la partida con un mayor tiempo.
-
-
 #### 2.1.2. Mecánicas de escenario
 
 - Cajas: Son obstáculos que encontramos en el escenario de la ciudad, estos nos molestarán en el camino, dificultando nuestra huida, sin embargo, seremos capaces de destruirlas de tres maneras:
@@ -175,6 +158,23 @@ POLICIA:
 
 MAFIA:
 - Se trata de enemigos estáticos cuya función es matar al jugador. Aparecerán de vez en cuando en ventanas. Se avisará al jugador mostrando el icono de un mafioso en el límite de la pantalla derecha, indicándole que cuando llegue aparece un mafioso.
+
+#### 4.3. Objetos
+
+#### Power Ups
+
+-Café: Este PowerUp hace referencia a algo que consume mucho el protagonista de nuestro videojuego en la película de Alfred, por lo que nos incrementará la velocidad para poder escapar más facilmente de la policía y evitar ser arrestados.
+
+-Smoking: Este smoking también hace referencia a como iba vestido nuestro protagonista, por lo que este Power Up nos ofrecerá un escudo de modo que no obtengamos ningún tipo de daño o penalización.
+
+-Reloj Verde: Dado que nuestro juego se trata de completar el nivel en el menor tiempo posible, este Power Up nos restará tiempo a la run, lo que nos ayudará a concluir nuestras partidas con un tiempo mejor.
+
+#### Debuffs
+
+-Alcohol: Dado que en la película los mafiosos nos obligan a beber alcohol, hemos utilizado este debuff de manera que si lo consumimos adquiriremos una disminución de velocidad por un cierto periodo de tiempo, lo que facilitará el arresto a la policía.
+
+-Reloj Rojo: Al contrario que el reloj verde explicado con anterioridad, este debuff nos sumará tiempo adicionql al tiempo de la partida, lo que hará que concluyamos la partida con un mayor tiempo.
+
 
 ##### MÚSICA
 - 
