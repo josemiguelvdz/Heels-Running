@@ -96,9 +96,7 @@ Dado que deslizarse va a ser como un pequeño dash, este tendrá un cooldown par
 #### 2.3.Estética
 
 - Queremos transmitir sensaciones como el agobio, al ser constantemente perseguidos por la policía y disparados por la mafia, y el frenetismo al no poder parar en ningún momento de la partida. Además también queremos transmitir la autosuperación, haciendo que los jugadores se sientan atraídos por el juego por el simple hecho de querer supersarse a si mismos.
--
 - Heels Running se ambienta en una ciudad de los años sesenta, con una paleta de colores en blanco y negro, para transmitir al jugador la sensación de que se encuentra en la época correcta.
--
 - La idea del juego está desarrollada gracias a una gran película de Alfred Hitchcock, llamada North by Northwest, cuya historia queda reflejada con algunos ajustes en nuestro juego, de manera que este acabe siendo lo más divertido posible.
 - El escenario será visible hasta donde veamos en nuestra cámara, y solo tendremos que preocuparnos por nuestro entorno inmediato, es decir, de no morir y no ser arrestados.
 
@@ -134,7 +132,6 @@ También mostraremos el Power Up o Debuff que hayamos cogido (en caso de cogerlo
 
 - Movimiento : S - Deslizarse / D - Dar Patadas / SpaceBar - Saltar
 - Configuracion : Escape  - Ajustes / Mouse - Volumen , Reiniciar , Renaudar y Ver Controles
-- 
 ![Controles](https://user-images.githubusercontent.com/82502179/136591999-e16dc5bb-e5f0-48f6-8ce7-6f1b51889c09.png)
 
 #### 4. Contenido
