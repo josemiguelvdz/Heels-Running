@@ -102,7 +102,7 @@ Dado que deslizarse va a ser como un pequeño dash, este tendrá un cooldown par
 
 ![pixel-art-paisaje-urbano-town-street-8-bit-paisaje-ciudad-juego-arcade-urbano-nocturno-diurno_102902](https://user-images.githubusercontent.com/75903737/135530540-ad4418be-77c9-469d-9018-b463fac664ea.jpg)
 
-#### Menús y modos de juego
+#### Menús
 
 Menú con el logo del juego, botón para jugar , si se pulsa comienza la experiencia de juego. Otro botón para la configuración del juego, si lo pulsas abres una ventana para configurar los diferentes aspectos del videojuego (volumen, ver los controles o poner la pantalla completa), botón para cerrar el juego, botón en una esquina con el logo de nuestra empresa, si lo pulsas, despliega una ventana con los nombres de los creadores del juego.
 
