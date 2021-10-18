@@ -1,13 +1,13 @@
 import Boot from "./boot.js";
 import Level from "./scene.js";
 
-
 let config = {
-    type: Phaser.AUTO,
-    width:  840,
+    type: Phaser.CANVAS,
+    canvas: document.getElementById('myCanvas'),
+    width: 840,
     height: 600,
     scale: {
-        // mode: Phaser.Scale.FIT,  
+        //mode: Phaser.Scale.FIT,  
         autoCenter: Phaser.Scale.CENTER_HORIZONTALLY
     },
     pixelArt: true,
