@@ -41,13 +41,11 @@ export default class Player extends Phaser.GameObjects.Sprite {
     
   }
   preUpdate(t,dt) {
-   
-    
     super.preUpdate(t,dt);
     this.animatePlayer();
-    if (this.cursors.up.isDown && this.body.onFloor()) {
-      this.body.setVelocityY(this.jumpSpeed);
-    }
+
+    //this.body.setVelocityX(this.speed); //Movimiento continuo del jugador hacia la derecha
+
     if (this.cursors.left.isDown) {
       this.body.setVelocityX(-this.speed);
       
@@ -57,9 +55,11 @@ export default class Player extends Phaser.GameObjects.Sprite {
     }
     else {
       this.body.setVelocityX(0);
-      
     }
+
+    if (this.cursors.up.isDown && this.body.onFloor()) {
+      this.body.setVelocityY(this.jumpSpeed);
     }
   }
   
-
+}
