@@ -1,6 +1,6 @@
 import Player from './player.js';
 import Platform from './platform.js';
-import Star from './star.js';
+import Salmon from './salmon.js';
 
 const createAligned = (scene, totalWidth, texture, scrollFactor) => {
 
@@ -31,6 +31,7 @@ export default class Level extends Phaser.Scene {
    * Creación de los elementos de la escena principal de juego
    */
   create() {
+    
     const width = this.scale.width;
     const height = this.scale.height;
     const totalWidth = width*10;
@@ -48,8 +49,23 @@ export default class Level extends Phaser.Scene {
 
 
     this.player = new Player(this, 200, 300);
-    this.platform = new Platform(this, this.player, this.player.y, 400);
-    this.star = new Star(this, 300, 200);
+    
+
+    
+
+  
+    //Fisicas
+    //Creacion de un grupo , y le añadimos un collider entre uno y otro
+    //Primero los hemos añadido a un grupo para poder detectar cuando colisionan entre ellos
+    
+    this.salmon= new Salmon( this,300, 300);
+    this.platform = new Platform(this, this.player,this.salmon, this.player.y, 400);
+    this.salmons = this.physics.add.staticGroup();
+    
+     this.salmons.add(this.salmon);
+     this.physics.add.collider(this.player, this.salmons);
+  
+    
     //LAS ANIMACIONES SE CREAN EN LA ESCENA 
     
     this.anims.create({
@@ -74,7 +90,10 @@ export default class Level extends Phaser.Scene {
   update(){
     const cam = this.cameras.main;
     const speed = 3;
-
+    //Metodo que comprueba las colisiones 
+   this.collideSalmon();
+    
+    
     // cam.scrollX += speed;
   }
 
@@ -84,5 +103,14 @@ export default class Level extends Phaser.Scene {
 
     this.star = new Star(this, this.star_x, this.star_y);
   }
-
+    
+  collideSalmon()
+  {
+    if(this.physics.collide(this.player, this.salmon))
+       {
+         console.log("Ha chocado");
+         this.salmon.destroy();
+         this.player.speed=500;
+       } 
+  }
 }

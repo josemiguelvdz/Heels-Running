@@ -61,5 +61,5 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.body.setVelocityY(this.jumpSpeed);
     }
   }
-  
+   
 }
