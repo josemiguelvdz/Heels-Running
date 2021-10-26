@@ -1,8 +1,10 @@
 
 import scene from './scene.js'
+
+
 export default class Player extends Phaser.GameObjects.Sprite {
 
-  constructor(scene, x, y) {
+  constructor(scene, x, y,nLifes) {
     super(scene, x, y, 'idle');
     
     this.score = 0;
@@ -13,8 +15,25 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
     this.speed = 300;
     this.jumpSpeed = -400;
-    
+    this.numLifes=nLifes;
+
     this.cursors = this.scene.input.keyboard.createCursorKeys();
+
+    this.scene.anims.create({
+      key: 'idle_anim',
+      frames: this.anims.generateFrameNumbers('idle', { start: 0, end: 3 }),
+      frameRate: 8, // Velocidad de la animación
+      repeat: -1    // Animación en bucle
+    });
+    this.scene.anims.create({
+      key: 'run_anim',
+      frames: this.anims.generateFrameNumbers('run', { start: 0, end: 7 }),
+      frameRate: 8, // Velocidad de la animación
+      repeat: -1    // Animación en bucle
+    });
+
+
+
   }
    animatePlayer()
   {

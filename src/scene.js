@@ -1,6 +1,6 @@
 import Player from './player.js';
 import Platform from './platform.js';
-import Salmon from './salmon.js';
+import powerUp from './powerUp.js';
 
 const createAligned = (scene, totalWidth, texture, scrollFactor) => {
 
@@ -48,38 +48,32 @@ export default class Level extends Phaser.Scene {
     this.cameras.main.setBounds(0, 0, width*5, height);
 
 
-    this.player = new Player(this, 200, 300);
+   
     
-
-    
+  
+   
 
   
     //Fisicas
     //Creacion de un grupo , y le añadimos un collider entre uno y otro
     //Primero los hemos añadido a un grupo para poder detectar cuando colisionan entre ellos
     
-    this.salmon= new Salmon( this,300, 300);
-    this.platform = new Platform(this, this.player,this.salmon, this.player.y, 400);
-    this.salmons = this.physics.add.staticGroup();
+    this.player = new Player(this, 200, 300,3);
+    this.salmon= new powerUp( this,this.player,300, 300,'salmonFish');
+    this.redTimer= new powerUp( this,this.player,450, 300,'redTimer');
+    this.coffe1= new powerUp( this,this.player,600, 300,'coffe');
+    this.coffe2= new powerUp( this,this.player,800, 300,'coffe');
+   
+   
+    //Esto no hay alguna forma de encapsularlo?
     
-     this.salmons.add(this.salmon);
-     this.physics.add.collider(this.player, this.salmons);
   
+     this.platform = new Platform(this, this.player,this.salmon, this.player.y, 400);
+      
     
-    //LAS ANIMACIONES SE CREAN EN LA ESCENA 
     
-    this.anims.create({
-        key: 'idle_anim',
-        frames: this.anims.generateFrameNumbers('idle', { start: 0, end: 3 }),
-        frameRate: 8, // Velocidad de la animación
-        repeat: -1    // Animación en bucle
-      });
-      this.anims.create({
-        key: 'run_anim',
-        frames: this.anims.generateFrameNumbers('run', { start: 0, end: 7 }),
-        frameRate: 8, // Velocidad de la animación
-        repeat: -1    // Animación en bucle
-      });
+     //Arrays de los distintos objetos del juego
+    this.createGroups();
     
       
       
@@ -91,26 +85,30 @@ export default class Level extends Phaser.Scene {
     const cam = this.cameras.main;
     const speed = 3;
     //Metodo que comprueba las colisiones 
-   this.collideSalmon();
+    
     
     
     // cam.scrollX += speed;
   }
+  createGroups()
+  {
+       //No se como hacer para crear un collider entre dos grupos 
+       //Se me ocurre hacer un array
+    
+    //COLISION ENTRE PECES Y PLATAFORMAS
+    //GRUPO DE LAS PLATAFORMAS
+    this.platforms= this.physics.add.staticGroup();
+     this.platforms.add(this.platform);
+    this.physics.add.collider(this.salmon, this.platforms);
 
-  spawnStar() {
-    this.star_x = Math.floor(Math.random() * (300 - 200 + 1) + 200);
-    this.star_y = Math.floor(Math.random() * (300 - 200 + 1) + 200);
-
-    this.star = new Star(this, this.star_x, this.star_y);
+  //GRUPO DE LOS SALMONES - COLISION CON PLATAFORMAS
+  this.salmons = this.physics.add.staticGroup();
+  this.salmons.add(this.salmon);
+  this.physics.add.collider(this.platform, this.salmons);  
+  
+    
+    
+    this.physics.add.collider(this.redTimer, this.platforms);
   }
     
-  collideSalmon()
-  {
-    if(this.physics.collide(this.player, this.salmon))
-       {
-         console.log("Ha chocado");
-         this.salmon.destroy();
-         this.player.speed=500;
-       } 
-  }
 }
