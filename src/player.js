@@ -14,6 +14,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.body.setCollideWorldBounds();
 
     this.speed = 300;
+    this.speedAux= this.speed;
     this.jumpSpeed = -400;
     this.numLifes=nLifes;
 
