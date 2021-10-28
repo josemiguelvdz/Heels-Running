@@ -18,13 +18,13 @@ export default class Boot extends Phaser.Scene {
       this.load.image('road', 'road.png');
       this.load.image('crosswalk', 'crosswalk.png');
       this.load.image('houses1', 'houses1.png');
+      this.load.image('houses2', 'houses2.png');
 
 
 
       this.load.setPath('./assets/sprites');
       this.load.spritesheet('idle','idlespritesheet.png',{frameWidth:64, frameHeight:64})
       this.load.spritesheet('run','runspritesheet.png',{frameWidth:64, frameHeight:64})
-      this.load.spritesheet('boxDestruction', 'boxAnimation.png', {frameWidth:64, frameHeight:64});
 
 
       this.load.image('salmonFish', 'salmonFish.png');
@@ -32,6 +32,7 @@ export default class Boot extends Phaser.Scene {
       this.load.image('redTimer', 'redTimer.png');
       this.load.image('player', 'player.png');
       this.load.image('platform', 'platform.png');
+      this.load.image('ground', 'ground.png');
       this.load.image('power', 'star.png');
       this.load.image('box', 'box.png');
 

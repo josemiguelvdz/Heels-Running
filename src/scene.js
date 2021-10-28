@@ -1,6 +1,7 @@
 import Player from './player.js';
 import Platform from './platform.js';
 import powerUp from './powerUp.js';
+import Ground from './ground.js';
 
 const createAligned = (scene, totalWidth, texture, scrollFactor) => {
 
@@ -19,6 +20,13 @@ const createAligned = (scene, totalWidth, texture, scrollFactor) => {
   
 }
 
+const scaleBuilding = (platform, width, height,  buildingScaleFactor) => {
+  platform.setSize(width, height*(buildingScaleFactor*2-1));
+  platform.setScale(1, buildingScaleFactor);
+  platform.body.setSize(platform.width, platform.height, true);
+}
+
+
 export default class Level extends Phaser.Scene {
   /**
    * Constructor de la escena
@@ -36,7 +44,8 @@ export default class Level extends Phaser.Scene {
     const height = this.scale.height;
     const totalWidth = width*10;
 
-    this.add.image(width * 0.5, height * 0.5, 'sky')
+    this.add.image(width*0.5, height*0.5, 'sky')
+      .setScale(1.2, 1)
       .setScrollFactor(0);
 
     createAligned(this, totalWidth, 'backhouse', 0.25);
@@ -44,21 +53,15 @@ export default class Level extends Phaser.Scene {
     createAligned(this, totalWidth, 'houses1', 0.5);
     createAligned(this, totalWidth, 'road', 1);
     createAligned(this, totalWidth, 'crosswalk', 1);
-
-    this.cameras.main.setBounds(0, 0, width*5, height);
-
-
-
-  
-   
     
      //creamos los distintos elementos del juego
      //Los asociamos al grupo para las colisiones 
-     this.createObjects();
+     this.createObjects(width, height, totalWidth);
       this.createGroups();
     
     
-      
+      this.cameras.main.setBounds(0, 0, width*5, height);
+      this.cameras.main.startFollow(this.player);
 
 
   }
@@ -68,19 +71,25 @@ export default class Level extends Phaser.Scene {
     const speed = 3;
     //Metodo que comprueba las colisiones 
     
-    
-    
     // cam.scrollX += speed;
   }
   
   createGroups()
   {
-    //COLISION ENTRE PECES Y PLATAFORMAS
     //GRUPO DE LAS PLATAFORMAS
-     this.platforms= this.physics.add.staticGroup();
+     this.platforms = this.physics.add.staticGroup();
      this.platforms.add(this.platform);
-     this.physics.add.collider(this.player,this.platforms);
+     this.physics.add.collider(this.player,this.platforms);    // COLISION ENTRE PLAYER Y PLATAFORMAS
+     this.physics.add.collider(this.salmon,this.platforms);    //COLISION ENTRE SALMON Y PLATAFORMAS
 
+     // GRUPO DE LOS EDIFICIOS
+     this.buildings = this.physics.add.staticGroup();
+     this.buildings.add(this.building);
+     this.buildings.add(this.building2);
+     this.buildings.add(this.building3);
+     this.buildings.add(this.building4);
+     this.buildings.add(this.building5);
+     this.physics.add.collider(this.player,this.buildings);
 
      //GRUPO DE LOS SALMONES 
      //Falta que funcione para grupos
@@ -93,39 +102,51 @@ export default class Level extends Phaser.Scene {
     this.redTimers = this.physics.add.staticGroup();
     this.redTimers.add(this.redTimer);
     this.physics.add.collider(this.player,this.redTimer,onCollision);
-     //GRUPO DELOS CAFÉS
+     //GRUPO DE LOS CAFÉS
      //Falta que funcione para grupos 
      this.coffes = this.physics.add.staticGroup();
      this.coffes.add(this.coffe1);
-     this.coffes.add(this.coffe2);
      this.physics.add.collider(this.player,this.coffe1,onCollision);
-     this.physics.add.collider(this.player,this.coffe2,onCollision);
-      
-    
     
     }
-  createObjects()
+  createObjects(width, height, totalWidth)
   {
-    this.player = new Player(this, 200, 300,3);
-    this.salmon= new powerUp( this,this.player,300, 300,'salmonFish',this.time);
+    this.player = new Player(this, 200, 300, 3);
+
+    for(let i = 0; i < totalWidth; i+=200){
+      this.ground = new Ground(this, this.player, i, height);
+    }
+    
+    this.salmon= new powerUp( this,this.player, 300, 300,'salmonFish',this.time);
     this.salmon.factoryPowerUp();
-    this.redTimer= new powerUp( this,this.player,450, 300,'redTimer',this.time);
+    this.redTimer= new powerUp( this,this.player, width+100, 300,'redTimer',this.time);
     this.redTimer.factoryPowerUp();
-    this.coffe1= new powerUp( this,this.player,600, 300,'coffe',this.time);
+    this.coffe1= new powerUp( this,this.player, 600, 300,'coffe',this.time);
     this.coffe1.factoryPowerUp();
-    this.coffe2= new powerUp( this,this.player,800, 300,'coffe',this.time);
-    this.coffe2.factoryPowerUp();
-    this.platform = new Platform(this, this.player,this.salmon, this.player.y, 400); 
+    this.platform = new Platform(this, this.player.y, 400); 
+
+    this.building = new Platform(this, width*2, height);
+    scaleBuilding(this.building, this.building.width, this.building.height, 5);
+
+    this.building2 = new Platform(this, width*2+this.building.width, height);
+    scaleBuilding(this.building2, this.building2.width, this.building2.height, 8);
+
+    this.building3 = new Platform(this, width*2+this.building2.width*2, height);
+    scaleBuilding(this.building3, this.building3.width, this.building3.height, 6);
+
+    this.building4 = new Platform(this, width*2+this.building3.width*3, height);
+    scaleBuilding(this.building4, this.building4.width, this.building4.height, 3);
+
+    this.building5 = new Platform(this, width*2+this.building4.width*4, height);
+    scaleBuilding(this.building5, this.building5.width, this.building5.height, 8);
   }
+  
 
 }
 
 //Funcion externa que se ejecuta al producirse una colision
 function onCollision(obj1,obj2) {
-  
-  
-  obj2.handleCollision(obj2.nameImg);
-  
+  obj2.handleCollision(obj2.nameImg); 
 }
 
 
