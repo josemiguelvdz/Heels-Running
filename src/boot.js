@@ -24,14 +24,16 @@ export default class Boot extends Phaser.Scene {
       this.load.setPath('./assets/sprites');
       this.load.spritesheet('idle','idlespritesheet.png',{frameWidth:64, frameHeight:64})
       this.load.spritesheet('run','runspritesheet.png',{frameWidth:64, frameHeight:64})
-     
+      this.load.spritesheet('boxDestruction', 'boxAnimation.png', {frameWidth:64, frameHeight:64});
+
+
       this.load.image('salmonFish', 'salmonFish.png');
       this.load.image('coffe', 'coffe.png');
       this.load.image('redTimer', 'redTimer.png');
       this.load.image('player', 'player.png');
       this.load.image('platform', 'platform.png');
       this.load.image('power', 'star.png');
-    
+      this.load.image('box', 'box.png');
 
 
     }

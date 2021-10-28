@@ -51,18 +51,6 @@ export default class Level extends Phaser.Scene {
 
   
    
-
-  
-    //Fisicas
-    //Creacion de un grupo , y le añadimos un collider entre uno y otro
-    //Primero los hemos añadido a un grupo para poder detectar cuando colisionan entre ellos
-    
-
-   
-   
-
-
-    
     
      //creamos los distintos elementos del juego
      //Los asociamos al grupo para las colisiones 
@@ -112,7 +100,10 @@ export default class Level extends Phaser.Scene {
      this.coffes.add(this.coffe2);
      this.physics.add.collider(this.player,this.coffe1,onCollision);
      this.physics.add.collider(this.player,this.coffe2,onCollision);
-  }
+      
+    
+    
+    }
   createObjects()
   {
     this.player = new Player(this, 200, 300,3);
@@ -124,9 +115,9 @@ export default class Level extends Phaser.Scene {
     this.coffe1.factoryPowerUp();
     this.coffe2= new powerUp( this,this.player,800, 300,'coffe',this.time);
     this.coffe2.factoryPowerUp();
-    this.platform = new Platform(this, this.player,this.salmon, this.player.y, 400);
-  
+    this.platform = new Platform(this, this.player,this.salmon, this.player.y, 400); 
   }
+
 }
 
 //Funcion externa que se ejecuta al producirse una colision
@@ -136,4 +127,5 @@ function onCollision(obj1,obj2) {
   obj2.handleCollision(obj2.nameImg);
   
 }
+
 

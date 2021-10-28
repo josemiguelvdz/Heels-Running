@@ -24,16 +24,23 @@ export default class powerUp extends Phaser.GameObjects.Sprite {
     this.nameImg= nombreImg;
 
     this.time=temp;
+   this.firstposY= 568;
+   this.timeLine;
+   if(this.nameImg!=='salmonFish' &&this.nameImg!=='redTimer')this.createTweenMovement();
    
     
   }
 
   preUpdate() {
     super.preUpdate();
-   
+    
+     
+  }
+  update()
+  {
+    super.update();
   
   }
-  
   factoryPowerUp()
   {    
     //No da error al añadir las factorias pero no funciona
@@ -89,9 +96,54 @@ export default class powerUp extends Phaser.GameObjects.Sprite {
    }   
  adjustSpeed()
  {  
-  console.log("mira como huele");
+  
   this.player.speed=this.player.speedAux;
  }
+
+
+createTweenMovement()
+{
+
+  this.timeLine = this.scene.tweens.createTimeline();
+  this.timeLine.add({
+   targets: this,
+   y: this.firstposY-20,
+   ease: 'Power1',
+   
+   duration: 2000
+
+});
+ this.timeLine.add({
+   targets: this,
+   y: this.firstposY/2.3,
+   ease: 'Power1',
+   duration: 2000
+
+});
+this.timeLine.add({
+  targets: this,
+  y: this.firstposY,
+  ease: 'powerUp',
+  duration: 2000
+ });
+ this.timeLine.add({
+  targets: this,
+  y: this.firstposY-20,
+  ease: 'Power1',
+  duration: 2000
+ });
+ this.timeLine.add({
+  targets: this,
+  y: this.firstposY/2.3,
+  ease: 'Power1',
+  duration: 2000
+
+});
+ 
+console.log(this.timeLine);
+this.timeLine.loop=-1;
+this.timeLine.play();
+}
 
 
 }
