@@ -19,9 +19,6 @@ Pivotal: https://www.pivotaltracker.com/n/projects/2532298
 - Documento de diseño de videojuego
 - HitchCorp
 - Rodrigo Cabello Hernández, Daniel Ruiz Figueroa, Diego Rol Sánchez, José Miguel Villacañas Díaz-Hellín
-- https://github.com/josemiguelvdz/PVLI
-- PÁgina Pública del Juego: https://josemiguelvdz.github.io/PVLI/
-- Pivotal :https://www.pivotaltracker.com/n/projects/2532298
 
 Capturas del Juego:
 
