@@ -7,7 +7,7 @@ Boceto del juego:
 
 ## Redes
 
-Disponible en: https://josemiguelvdz.github.io
+Disponible en: https://josemiguelvdz.github.io/PVLI
 
 Twitter: https://twitter.com/Hitch_Corp
 
