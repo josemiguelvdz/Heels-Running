@@ -20,7 +20,7 @@ Pivotal:
 - HitchCorp
 - Rodrigo Cabello Hernández, Daniel Ruiz Figueroa, Diego Rol Sánchez, José Miguel Villacañas Díaz-Hellín
 - https://github.com/josemiguelvdz/PVLI
-- Pagina Pública del Juego: https://josemiguelvdz.github.io/PVLI/
+- PÁgina Pública del Juego: https://josemiguelvdz.github.io/PVLI/
 - Pivotal :https://www.pivotaltracker.com/n/projects/2532298
 
 Capturas del Juego:
