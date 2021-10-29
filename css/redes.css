@@ -4,7 +4,7 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-:root {
+ :root {
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -8974,37 +8974,192 @@ a.text-dark:hover, a.text-dark:focus {
 }
 /*# sourceMappingURL=bootstrap.css.map */ 
 
-#ins_title {
-  text-align: center;
-  margin-top: 100px;
+
+
+*, *:before, *:after {
+	border: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
-
-.container{
-  display: flex;
-  flex-direction: row;
-  -ms-flex-align: center;
-  justify-content: space-between;
-  margin-top: 200px;
-
-
-  width: auto;
-  height: 300px;
+:root {
+	font-size: 19px;
+	--cardW: 14em;
+	--cardH: 8em;
+	--cardZInc: 2em;
 }
-.container p{
-  font-family: Verdana;
-  text-align: center;
-  margin-top: 10px;
-  font-size: 25px;
-}
-
-#game_canvas {
-  margin-top: 30px;
-}
-
 body {
-  background: rgb(63,94,251);
-  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(77,33,106,1) 100%);
+	font: 1em "Open Sans", sans-serif;
+	height: 100vh;
+	overflow-x: hidden;
 }
+main {
+	display: block;
+	margin: auto;
+	position: relative;
+	height: calc(var(--cardH) * 36 - 30.5em);
+
+}
+/* Grid */
+.cards, .stack {
+	transform-style: preserve-3d;
+}
+.cards {
+	--scroll: 0;
+	display: grid;
+	grid-template: repeat(36, var(--cardH)) / var(--cardW);
+	grid-gap: 1.5em;
+	position: fixed;
+	top: 50%;
+  margin-top: 150px;
+  margin-left: 250px;
+	left: 50%;
+	transform: translateX(-50%) rotateX(45deg) rotateZ(45deg) translateY(var(--scroll));
+	transform-origin: 50% 0;
+}
+.stack {
+	display: block;
+	position: relative;
+}
+.contents {
+	color: #000;
+	font-size: 0.5em;
+	line-height: 1.25;
+	-webkit-font-smoothing: antialiased;
+}
+.stack:nth-of-type(even) .contents {
+	color: #fff;
+}
+.contents h2 {
+	color: #aff;
+	font-size: 2em;
+	font-weight: 400;
+	margin-bottom: 0.25em;
+}
+.contents span {
+	margin-right: 0.75em;
+}
+.city {
+	margin-top: 11.75em;
+}
+/* Card backgrounds */
+.stack:nth-of-type(4n + 2) .card {
+	background-position: 0 100%;
+}
+.stack:nth-of-type(4n + 3) .card {
+	background-position: 100% 0;
+}
+.stack:nth-of-type(4n + 4) .card {
+	background-position: 100% 100%;
+}
+.stack:nth-child(8n + 5) .card,
+.stack:nth-child(8n + 6) .card,
+.stack:nth-child(8n + 7) .card,
+.stack:nth-child(8n + 8) .card {
+	filter: hue-rotate(90deg);
+	-webkit-filter: hue-rotate(90deg);
+}
+.stack:nth-child(12n + 9) .card,
+.stack:nth-child(12n + 10) .card,
+.stack:nth-child(12n + 11) .card,
+.stack:nth-child(12n + 12) .card {
+	filter: hue-rotate(180deg);
+	-webkit-filter: hue-rotate(180deg);
+}
+/* Card hover */
+.stack:hover .top, .stack:focus .top {
+	transform: translateZ(calc(var(--cardZInc)*4));
+}
+.stack:hover .mid-top, .stack:focus .mid-top {
+	transform: translateZ(calc(var(--cardZInc)*3));
+}
+.stack:hover .mid-bottom, .stack:focus .mid-bottom {
+	transform: translateZ(calc(var(--cardZInc)*2));
+}
+.stack:hover .bottom, .stack:focus .bottom {
+	transform: translateZ(var(--cardZInc));
+}
+.stack:hover .shadow, .stack:focus .shadow {
+	filter: blur(5px);
+	-webkit-filter: blur(5px);
+	opacity: 0.2;
+}
+/* Other card styles */
+.card {
+	background-image: url(https://i.postimg.cc/Vspg0Nn2/business-card-backgrounds.png);
+	background-size: 200% 200%;
+	box-shadow: -1px -1px 0 rgba(0,0,0,0.2) inset;
+	color: #000;
+	padding: 0.75em;
+	position: absolute;
+	transition: all 0.3s;
+	width: 100%;
+	height: 100%;
+}
+.top {
+	transform: translateZ(4px);
+	z-index: 4;
+}
+.mid-top {
+	transform: translateZ(3px);
+	z-index: 3;
+}
+.mid-bottom {
+	transform: translateZ(2px);
+	z-index: 2;
+}
+.bottom {
+	transform: translateZ(1px);
+	z-index: 1;
+}
+.shadow {
+	background: #000;
+	filter: blur(2px);
+	-webkit-filter: blur(2px);
+	opacity: 0.4;
+}
+
+/* Alter grid at breakpoints */
+@media screen and (min-width: 361px) {
+	main {
+		height: calc(var(--cardH) * 18 - 1.5em);
+	}
+	.cards {
+		grid-template: repeat(18, var(--cardH)) / repeat(2, var(--cardW));
+	}
+}
+@media screen and (min-width: 641px) {
+	main {
+		height: calc(var(--cardH) * 12 - 1.5em);
+	}
+	.cards {
+		grid-template: repeat(12, var(--cardH)) / repeat(3, var(--cardW));
+	}
+}
+@media screen and (min-width: 961px) {
+	main {
+		height: calc(var(--cardH) * 9 - 1.5em);
+	}
+	.cards {
+		grid-template: repeat(9, var(--cardH)) / repeat(4, var(--cardW));
+	}
+}
+@media screen and (min-width: 1281px) {
+	main {
+		height: calc(var(--cardH) * 8 - 1.5em);
+	}
+	.cards {
+		grid-template: repeat(8, var(--cardH)) / repeat(5, var(--cardW));
+	}
+}
+
+/* Dark mode optimization */
+@media screen and (prefers-color-scheme: dark) {
+	body {
+		background: #3d3d3d;
+	}
+}
+
 
 .box-area {
 	position: absolute;
