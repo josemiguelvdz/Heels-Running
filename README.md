@@ -22,6 +22,7 @@ Pivotal:
 - https://github.com/josemiguelvdz/PVLI
 - Pagina Pública del Juego: https://josemiguelvdz.github.io/PVLI/
 - Pivotal :https://www.pivotaltracker.com/n/projects/2532298
+
 Capturas del Juego:
 
 ![capt1](https://user-images.githubusercontent.com/62289530/139420667-6766daa2-f28e-474e-bfc2-5dc6d267c0a8.png)
