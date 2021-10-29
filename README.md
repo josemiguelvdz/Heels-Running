@@ -7,11 +7,11 @@ Boceto del juego:
 
 ## Redes
 
-Disponible en: https://github.com/josemiguelvdz/PVLI
+Disponible en: https://josemiguelvdz.github.io
 
 Twitter: https://twitter.com/Hitch_Corp
 
-Pivotal:
+Pivotal: https://www.pivotaltracker.com/n/projects/2532298
 
 ### GDD:
 
