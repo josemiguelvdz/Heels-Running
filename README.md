@@ -1,4 +1,4 @@
-# Heels Running
+# Heels Running 
 Boceto del juego:
 
 ![49_sin_titulo_20210929211726](https://user-images.githubusercontent.com/75903737/135341234-18b81a0c-78b1-4804-a54c-226416f95339.png)
@@ -20,6 +20,19 @@ Pivotal:
 - HitchCorp
 - Rodrigo Cabello Hernández, Daniel Ruiz Figueroa, Diego Rol Sánchez, José Miguel Villacañas Díaz-Hellín
 - https://github.com/josemiguelvdz/PVLI
+- PÁgina Pública del Juego: https://josemiguelvdz.github.io/PVLI/
+- Pivotal :https://www.pivotaltracker.com/n/projects/2532298
+
+Capturas del Juego:
+
+![capt1](https://user-images.githubusercontent.com/62289530/139420667-6766daa2-f28e-474e-bfc2-5dc6d267c0a8.png)
+
+![capt2ç](https://user-images.githubusercontent.com/62289530/139420677-0b4438d0-f7db-4bbb-b172-fd116c213633.png)
+
+
+
+
+
 
 
 ![unknown](https://user-images.githubusercontent.com/75903737/135341022-3484ffb8-e9ce-4f82-8740-6db7b09cdaf4.png)
@@ -85,8 +98,6 @@ Dado que deslizarse va a ser como un pequeño dash, este tendrá un cooldown par
 - Objetos estáticos: En este apartado encontraremos todos aquellos objetos que sean estáticos y cuya única funcionalidad sea interrumpir el paso del jugador, dificultando así la huida y haciendo que el jugador pierda velocidad al chocar con ellos. Estos objetos son : Muros, Vallas, Carteles de tiendas, Bocas de riego de la calle, Coches, Bicicletas, (aquí tenemos que poner todos los que se nos ocurran para que haya variedad, ya que sería solo un sprite estático y si hay pocos objetos se hace muy repetitivo).
 
 - Objetos cayentes: Objetos que caerán desde arriba y nos harán daño. Estos objetos son macetas o materiales de construcción. Para que el jugador pueda esquivarlos deberá deslizarse en el momento justo.
-
--Salmon: En referencia a uno de los alimentos de la película, cuando el jugador obtenga este objeto , recuperara vida , facilitándole su supervivencia de los mafiosos y de los objetos arrojados por la ventana.
 #### 2.2. Dinámica
 
 - Para ganar tendremos que conseguir huir de la policía con éxito, llegando hasta la zona del tren donde conseguiremos escapar. Si nos matan los disparos de los mafiosos o somos arrestados por la policía, habremos perdido y se dará la opción al jugador de reiniciar el nivel.
@@ -166,6 +177,8 @@ MAFIA:
 
 -Reloj Verde: Dado que nuestro juego se trata de completar el nivel en el menor tiempo posible, este Power Up nos restará tiempo a la run, lo que nos ayudará a concluir nuestras partidas con un tiempo mejor.
 
+-Salmon: En referencia a uno de los alimentos de la película, cuando el jugador obtenga este objeto , recuperara vida , facilitándole su supervivencia de los mafiosos y de los objetos arrojados por la ventana.
+
 #### Debuffs
 
 -Alcohol: Dado que en la película los mafiosos nos obligan a beber alcohol, hemos utilizado este debuff de manera que si lo consumimos adquiriremos una disminución de velocidad por un cierto periodo de tiempo, lo que facilitará el arresto a la policía.
@@ -177,7 +190,7 @@ MAFIA:
 - 
 
 ##### ARQUITECTURA DEL JUEGO
-- 
+- Diagrama UML: https://online.visual-paradigm.com/share.jsp?id=313637373030342d31#diagram:workspace=dtbpyfud&proj=0&id=1
 
 ##### SISTEMA DE GESTIÓN 
 
