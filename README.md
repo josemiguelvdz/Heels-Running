@@ -1,4 +1,4 @@
-# Heels Running
+# Heels Running 
 Boceto del juego:
 
 ![49_sin_titulo_20210929211726](https://user-images.githubusercontent.com/75903737/135341234-18b81a0c-78b1-4804-a54c-226416f95339.png)
@@ -20,6 +20,18 @@ Pivotal:
 - HitchCorp
 - Rodrigo Cabello Hernández, Daniel Ruiz Figueroa, Diego Rol Sánchez, José Miguel Villacañas Díaz-Hellín
 - https://github.com/josemiguelvdz/PVLI
+- Pagina Pública del Juego: https://josemiguelvdz.github.io/PVLI/
+- Pivotal :https://www.pivotaltracker.com/n/projects/2532298
+Capturas del Juego:
+
+![capt1](https://user-images.githubusercontent.com/62289530/139420667-6766daa2-f28e-474e-bfc2-5dc6d267c0a8.png)
+
+![capt2ç](https://user-images.githubusercontent.com/62289530/139420677-0b4438d0-f7db-4bbb-b172-fd116c213633.png)
+
+
+
+
+
 
 
 ![unknown](https://user-images.githubusercontent.com/75903737/135341022-3484ffb8-e9ce-4f82-8740-6db7b09cdaf4.png)
