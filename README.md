@@ -190,7 +190,7 @@ MAFIA:
 - 
 
 ##### ARQUITECTURA DEL JUEGO
-- 
+- Diagrama UML: https://online.visual-paradigm.com/share.jsp?id=313637373030342d31#diagram:workspace=dtbpyfud&proj=0&id=1
 
 ##### SISTEMA DE GESTIÓN 
 
