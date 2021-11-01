@@ -174,7 +174,7 @@ MAFIA:
 
 -Reloj Verde: Dado que nuestro juego se trata de completar el nivel en el menor tiempo posible, este Power Up nos restará tiempo a la run, lo que nos ayudará a concluir nuestras partidas con un tiempo mejor.
 
--Salmon: En referencia a uno de los alimentos de la película, cuando el jugador obtenga este objeto , recuperara vida , facilitándole su supervivencia de los mafiosos y de los objetos arrojados por la ventana.
+-Salmon: En referencia a uno de los alimentos de la película, cuando el jugador obtenga este objeto , recuperara vida (medio corazón) , facilitándole su supervivencia de los mafiosos y de los objetos arrojados por la ventana. 
 
 #### Debuffs
 
