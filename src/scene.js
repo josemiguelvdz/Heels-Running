@@ -1,4 +1,5 @@
 import Player from './player.js';
+import Police from './police.js';
 import Platform from './platform.js';
 import powerUp from './powerUp.js';
 import Ground from './ground.js';
@@ -61,7 +62,7 @@ export default class Level extends Phaser.Scene {
     
     
       this.cameras.main.setBounds(0, 0, width*5, height);
-      this.cameras.main.startFollow(this.player);
+      this.cameras.main.startFollow(this.police);
 
 
   }
@@ -107,14 +108,35 @@ export default class Level extends Phaser.Scene {
      this.coffes = this.physics.add.staticGroup();
      this.coffes.add(this.coffe1);
      this.physics.add.collider(this.player,this.coffe1,onCollision);
+    //GRUPO DE LAS PLATAFORMAS Y EL POLICIA
+    this.platforms = this.physics.add.staticGroup();
+    this.platforms.add(this.platform);
+    this.physics.add.collider(this.police,this.platforms);    // COLISION ENTRE PLAYER Y PLATAFORMAS
+   //COLISION ENTRE SALMON Y PLATAFORMAS
+
+    // GRUPO DE LOS EDIFICIOS Y EL POLICIA
+    this.buildings = this.physics.add.staticGroup();
+    this.buildings.add(this.building);
+    this.buildings.add(this.building2);
+    this.buildings.add(this.building3);
+    this.buildings.add(this.building4);
+    this.buildings.add(this.building5);
+    this.physics.add.collider(this.police,this.buildings);
+
+    //GRUPO DEL POLICIA Y EL PLAYER
+    this.physics.add.collider(this.player,this.police,onCollisionPolice);
     
-    }
+  }
+
+  
+
   createObjects(width, height, totalWidth)
   {
     this.player = new Player(this, 200, 300, 3);
+    this.police= new Police(this,0,300,3);
 
     for(let i = 0; i < totalWidth; i+=200){
-      this.ground = new Ground(this, this.player, i, height);
+      this.ground = new Ground(this, this.player,this.police, i, height);
     }
     
     this.salmon= new powerUp( this,this.player, 300, 300,'salmonFish',this.time);
@@ -127,7 +149,7 @@ export default class Level extends Phaser.Scene {
 
     this.building = new Platform(this, width*2, height);
     scaleBuilding(this.building, this.building.width, this.building.height, 5);
-
+    
     this.building2 = new Platform(this, width*2+this.building.width, height);
     scaleBuilding(this.building2, this.building2.width, this.building2.height, 8);
 
@@ -149,4 +171,6 @@ function onCollision(obj1,obj2) {
   obj2.handleCollision(obj2.nameImg); 
 }
 
-
+function  onCollisionPolice (obj1,obj2) {
+  obj2.catchP();
+}
