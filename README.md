@@ -13,6 +13,8 @@ Twitter: https://twitter.com/Hitch_Corp
 
 Pivotal: https://www.pivotaltracker.com/n/projects/2532298
 
+UML: https://app.creately.com/diagram/p9mz5a7aeDl/edit
+
 ### GDD:
 
 - Nombre del juego: Heels Running
