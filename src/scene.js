@@ -3,6 +3,9 @@ import Police from './police.js';
 import Platform from './platform.js';
 import powerUp from './powerUp.js';
 import Ground from './ground.js';
+import salmon from './Salmon.js';
+import coffe from './Coffe.js';
+import redTimer from './RedTimer.js'
 
 const createAligned = (scene, totalWidth, texture, scrollFactor) => {
 
@@ -62,7 +65,7 @@ export default class Level extends Phaser.Scene {
     
     
       this.cameras.main.setBounds(0, 0, width*5, height);
-      this.cameras.main.startFollow(this.police);
+      //this.cameras.main.startFollow(this.police);
 
 
   }
@@ -92,27 +95,29 @@ export default class Level extends Phaser.Scene {
      this.buildings.add(this.building5);
      this.physics.add.collider(this.player,this.buildings);
 
-     //GRUPO DE LOS SALMONES 
-     //Falta que funcione para grupos
+    
      this.salmons = this.physics.add.staticGroup();
      this.salmons.add(this.salmon);
      this.physics.add.collider(this.player,this.salmon,onCollision)
 
+     //Para crear la colision entre grupos usamos grupos estaticos por que si no no funciona
+
     //GRUPO DE LOS TIMERS
-    //Falta que funcione para grupos
+  
     this.redTimers = this.physics.add.staticGroup();
     this.redTimers.add(this.redTimer);
     this.physics.add.collider(this.player,this.redTimer,onCollision);
      //GRUPO DE LOS CAFÉS
-     //Falta que funcione para grupos 
+     
      this.coffes = this.physics.add.staticGroup();
      this.coffes.add(this.coffe1);
      this.physics.add.collider(this.player,this.coffe1,onCollision);
     //GRUPO DE LAS PLATAFORMAS Y EL POLICIA
+
     this.platforms = this.physics.add.staticGroup();
     this.platforms.add(this.platform);
     this.physics.add.collider(this.police,this.platforms);    // COLISION ENTRE PLAYER Y PLATAFORMAS
-   //COLISION ENTRE SALMON Y PLATAFORMAS
+
 
     // GRUPO DE LOS EDIFICIOS Y EL POLICIA
     this.buildings = this.physics.add.staticGroup();
@@ -139,12 +144,12 @@ export default class Level extends Phaser.Scene {
       this.ground = new Ground(this, this.player,this.police, i, height);
     }
     
-    this.salmon= new powerUp( this,this.player, 300, 300,'salmonFish',this.time);
-    this.salmon.factoryPowerUp();
-    this.redTimer= new powerUp( this,this.player, width+100, 300,'redTimer',this.time);
-    this.redTimer.factoryPowerUp();
-    this.coffe1= new powerUp( this,this.player, 600, 300,'coffe',this.time);
-    this.coffe1.factoryPowerUp();
+    this.salmon= new salmon( this,this.player, 300, 300,'salmonFish',this.time);
+    
+    this.redTimer= new redTimer( this,this.player, width+100, 300,'redTimer',this.time);
+    
+    this.coffe1= new coffe( this,this.player, 600, 300,'coffe',this.time);
+    
     this.platform = new Platform(this, this.player.y, 400); 
 
     this.building = new Platform(this, width*2, height);
@@ -168,7 +173,7 @@ export default class Level extends Phaser.Scene {
 
 //Funcion externa que se ejecuta al producirse una colision
 function onCollision(obj1,obj2) {
-  obj2.handleCollision(obj2.nameImg); 
+  obj2.handleCollision(); 
 }
 
 function  onCollisionPolice (obj1,obj2) {
