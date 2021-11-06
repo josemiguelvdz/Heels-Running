@@ -1,4 +1,5 @@
-import scene from './scene.js'
+import scene from './Scene.js'
+
 
 
 
@@ -29,26 +30,5 @@ export default class powerUp extends Phaser.GameObjects.Sprite {
    
     
   }
-
-  preUpdate() {
-    super.preUpdate();
-    
-     
-  }
-  //Redefinir con herencia 
-   handleCollision(name)
-   {
-   
-
-    
-   
-   }
-  collideRedTimer()
-  {
-        this.destroy();
-        // this.player.destroy();
- }
-
-
  
 }

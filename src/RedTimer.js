@@ -1,5 +1,5 @@
-import powerUp from './powerUp.js';
-import scene from './scene.js';
+import powerUp from './PowerUp.js';
+import scene from './Scene.js';
 
 export default class salmon extends powerUp {
 

@@ -1,5 +1,5 @@
 
-import scene from './scene.js'
+import scene from './Scene.js'
 export default class Ground extends Phaser.GameObjects.Sprite {
   constructor(scene, player,police, x, y) {
     super(scene, x, y, 'ground');

@@ -1,5 +1,5 @@
 
-import scene from './scene.js'
+import scene from './Scene.js'
 
 
 export default class Player extends Phaser.GameObjects.Sprite {

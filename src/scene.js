@@ -1,8 +1,8 @@
-import Player from './player.js';
-import Police from './police.js';
-import Platform from './platform.js';
-import powerUp from './powerUp.js';
-import Ground from './ground.js';
+import Player from './Player.js';
+import Police from './Police.js';
+import Platform from './Platform.js';
+import powerUp from './PowerUp.js';
+import Ground from './Ground.js';
 import salmon from './Salmon.js';
 import coffe from './Coffe.js';
 import redTimer from './RedTimer.js'
@@ -78,6 +78,10 @@ export default class Level extends Phaser.Scene {
     // cam.scrollX += speed;
   }
   
+
+
+
+
   createGroups()
   {
     //GRUPO DE LAS PLATAFORMAS
