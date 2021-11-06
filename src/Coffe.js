@@ -16,13 +16,21 @@ export default class coffe extends powerUp {
 
   }
 
-  //Redefin con herencia 
+  
+  /**
+   * Handles the collision with player
+   */
   handleCollision() {
 
     this.collideCoffe(this.scene);
 
   }
 
+  /**
+   * Creates an Event before the collision with player that acts after a 4 second delay
+   * @param  escena - used for creating an Event
+   * 
+   */
   collideCoffe(escena)
   {
        
@@ -37,12 +45,15 @@ export default class coffe extends powerUp {
        callbackScope: escena 
                             }); 
    }   
+   /**
+    * Called after the 4 delay of the created event,its function is to reduce player velocity up to its initial state
+    * 
+    */
  adjustSpeed()
  {  
  
   this.player.speed=this.player.speed-120;  //Hay que solucionar que la variable este cableada
 
- 
  }
 
 }

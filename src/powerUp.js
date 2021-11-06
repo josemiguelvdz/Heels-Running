@@ -3,8 +3,6 @@ import scene from './Scene.js'
 
 
 
-//Me falta hacer herencia sobre esta clase para ahorrarme los metodos 
-//No funciona la herencia de la herencia cuando se comprueban colisiones 
 export default class powerUp extends Phaser.GameObjects.Sprite {
 
    

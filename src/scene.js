@@ -81,7 +81,11 @@ export default class Level extends Phaser.Scene {
 
 
 
-
+/**
+ * Creates collision groups and adds colliders between them
+ * 
+ * 
+ */
   createGroups()
   {
     //GRUPO DE LAS PLATAFORMAS
@@ -138,7 +142,12 @@ export default class Level extends Phaser.Scene {
   }
 
   
-
+/**
+ * Create GameObjects and adjust its size
+ * @param {*} width -specifies individual ground width for its creation
+ * @param {*} height -specifies ground height for its creation
+ * @param {*} totalWidth -specifies total  ground width for its creation
+ */
   createObjects(width, height, totalWidth)
   {
     this.player = new Player(this, 200, 300, 3);
@@ -175,11 +184,19 @@ export default class Level extends Phaser.Scene {
 
 }
 
-//Funcion externa que se ejecuta al producirse una colision
+/**
+ * External function that is called when object collide
+ * @param {*} obj1 - Player 
+ * @param {*} obj2 - Object that player collides with
+ */
 function onCollision(obj1,obj2) {
   obj2.handleCollision(); 
 }
-
+/**
+ * External function that is called when object collide
+ * @param {*} obj1 - Player 
+ * @param {*} obj2 - Police 
+ */
 function  onCollisionPolice (obj1,obj2) {
   obj2.catchP();
 }

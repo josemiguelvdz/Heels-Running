@@ -16,12 +16,21 @@ export default class salmon extends powerUp {
 
   }
 
-  //Redefin con herencia 
+  
+  /**
+   * Handles the collision with player
+
+   */
   handleCollision() {
 
    this.collideRedTimer();
 
   }
+
+  /**
+   * Makes the power up dissapear and adds more time of the run 
+   * 
+   */
   collideRedTimer()
   {
         this.destroy();
