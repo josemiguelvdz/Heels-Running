@@ -1,13 +1,13 @@
 import powerUp from './PowerUp.js';
 import scene from './Scene.js';
 
-export default class redTimer extends powerUp {
+export default class greenTimer extends powerUp {
 
 
   constructor(scene, player, x, y, nombreImg, temp) {
     super(scene, player, x, y, nombreImg, temp); //Constructor de la clase base
 
-    this.lifesHealed = 1;
+    
   }
 
   preUpdate() {
@@ -23,15 +23,15 @@ export default class redTimer extends powerUp {
    */
   handleCollision() {
 
-   this.collideRedTimer();
+   this.collideGreenTimer();
 
   }
 
   /**
-   * Makes the power up dissapear and adds more time of the run 
+   * Makes the power up dissapear and reduces  time of the run 
    * 
    */
-  collideRedTimer()
+  collideGreenTimer()
   {
         this.destroy();
         //Aqui se llamaria al metodo que actualiza el tiempo de la run que se muestra en la interfaz

@@ -6,6 +6,7 @@ import Ground from './Ground.js';
 import salmon from './Salmon.js';
 import coffe from './Coffe.js';
 import redTimer from './RedTimer.js'
+import greenTimer from './GreenTimer.js';
 
 const createAligned = (scene, totalWidth, texture, scrollFactor) => {
 
@@ -160,6 +161,7 @@ export default class Level extends Phaser.Scene {
     this.salmon= new salmon( this,this.player, 300, 300,'salmonFish',this.time);
     
     this.redTimer= new redTimer( this,this.player, width+100, 300,'redTimer',this.time);
+    this.greenTimer= new greenTimer( this,this.player, 50, 200,'greenTimer',this.time);
     
     this.coffe1= new coffe( this,this.player, 600, 300,'coffe',this.time);
     
