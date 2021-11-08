@@ -68,7 +68,7 @@ export default class Level extends Phaser.Scene {
       this.cameras.main.setBounds(0, 0, width*5, height);
       //this.cameras.main.startFollow(this.police);
 
-      this.pauseBackGround = false;
+      this.activetePause = false;
 
       this.scape = this.input.keyboard.addKey('ESC');
       this.scape.on('down', () => {});
@@ -88,11 +88,21 @@ export default class Level extends Phaser.Scene {
   }
 
   pause(activetePause){
-    //this.physics.pause();
+
+    this.physics.pause();
+
     if(!this.activetePause){
+
        this.pauseBackGround = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'pauseBackGround').setScale(1.2, 1).setScrollFactor(0);
        this.pauseBackGround.alpha = 0.5;
        this.activetePause = true;
+
+       
+
+       this.exitButton = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'exitButton').setInteractive();
+       this.Button2 = this.exitButton;
+
+       this.Button2.on('pointerdown', () => {this.scene.start('menu'), this.activetePause = false});
   
      }
   }

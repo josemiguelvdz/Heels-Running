@@ -58,7 +58,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
   }
   preUpdate(t,dt) {
     super.preUpdate(t,dt);
-    this.animatePlayer();
+    if(!this.scene.activatePause){
+      this.animatePlayer();
+    }
 
     //this.body.setVelocityX(this.speed); //Movimiento continuo del jugador hacia la derecha
 
