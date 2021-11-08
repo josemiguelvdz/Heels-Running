@@ -95,16 +95,32 @@ export default class Level extends Phaser.Scene {
 
        this.pauseBackGround = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'pauseBackGround').setScale(1.2, 1).setScrollFactor(0);
        this.pauseBackGround.alpha = 0.5;
+       
        this.activetePause = true;
 
-       
+       this.resumeButton = this.add.image(this.scale.width*0.5, this.scale.height*0.3, 'resumeButton').setInteractive();
 
-       this.exitButton = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'exitButton').setInteractive();
-       this.Button2 = this.exitButton;
+       this.resumeButton.on('pointerdown', () => {
+         this.activetePause = false;
+         this.pauseBackGround.destroy();
+         this.exitButton.destroy();
+         this.resumeButton.destroy();
+         this.settingsButton.destroy();
+         this.physics.resume();
+        });
 
-       this.Button2.on('pointerdown', () => {this.scene.start('menu'), this.activetePause = false});
+        this.settingsButton = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'settingsButton').setInteractive();
+        this.settingsButton.on('pointerdown', () => {this.settings()});
+
+       this.exitButton = this.add.image(this.scale.width*0.5, this.scale.height*0.7, 'exitButton').setInteractive();
+
+       this.exitButton.on('pointerdown', () => {this.scene.start('menu'), this.activetePause = false});
   
      }
+  }
+
+  settings(){
+    console.log("Settings!!");
   }
   
 

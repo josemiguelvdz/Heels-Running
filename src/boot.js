@@ -39,8 +39,8 @@ export default class Boot extends Phaser.Scene {
 
       this.load.image('playButton' , 'PlayButton.png');
       this.load.image('exitButton', 'ExitButton.png');
-
-
+      this.load.image('resumeButton', 'resumeButton.png');
+      this.load.image('settingsButton', 'settingsButton.png');
     }
     /**
      * Creación de la escena. En este caso, solo cambiamos a la escena que representa el
