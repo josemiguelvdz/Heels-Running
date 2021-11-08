@@ -68,6 +68,10 @@ export default class Level extends Phaser.Scene {
       this.cameras.main.setBounds(0, 0, width*5, height);
       //this.cameras.main.startFollow(this.police);
 
+      this.pauseBackGround = false;
+
+      this.scape = this.input.keyboard.addKey('ESC');
+      this.scape.on('down', () => {});
 
   }
 
@@ -77,10 +81,22 @@ export default class Level extends Phaser.Scene {
     //Metodo que comprueba las colisiones 
     
     // cam.scrollX += speed;
+
+    if (Phaser.Input.Keyboard.JustDown(this.scape)) { 
+      this.pause(this.activetePause);
+    } 
+  }
+
+  pause(activetePause){
+    //this.physics.pause();
+    if(!this.activetePause){
+       this.pauseBackGround = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'pauseBackGround').setScale(1.2, 1).setScrollFactor(0);
+       this.pauseBackGround.alpha = 0.5;
+       this.activetePause = true;
+  
+     }
   }
   
-
-
 
 /**
  * Creates collision groups and adds colliders between them

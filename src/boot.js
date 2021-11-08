@@ -19,6 +19,7 @@ export default class Boot extends Phaser.Scene {
       this.load.image('crosswalk', 'crosswalk.png');
       this.load.image('houses1', 'houses1.png');
       this.load.image('houses2', 'houses2.png');
+      this.load.image('pauseBackGround', 'fondoNegro.png');
 
 
 
@@ -36,6 +37,8 @@ export default class Boot extends Phaser.Scene {
       this.load.image('ground', 'ground.png');
       this.load.image('box', 'box.png');
 
+      this.load.image('playButton' , 'PlayButton.png');
+
 
     }
     /**
@@ -43,7 +46,7 @@ export default class Boot extends Phaser.Scene {
      * nivel del juego
      */
     create() {
-      this.scene.start('level');
+      this.scene.start('menu');
       
     }
   }
