@@ -16,6 +16,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.jumpSpeed = -400;
     this.numLifes=nLifes;
 
+
+    this.arrested=false;
+
     this.cursors = this.scene.input.keyboard.createCursorKeys();
 
     this.scene.anims.create({
@@ -36,22 +39,17 @@ export default class Player extends Phaser.GameObjects.Sprite {
   }
    animatePlayer()
   {
-     if (Phaser.Input.Keyboard.JustDown(this.cursors.right)) {
+     if (Phaser.Input.Keyboard.JustDown(this.cursors.right) && !this.arrested) {
       this.setFlip(false,false);
       this.stop();
       this.play('run_anim');
     }
-    else if (Phaser.Input.Keyboard.JustDown(this.cursors.left)) {
+    else if (Phaser.Input.Keyboard.JustDown(this.cursors.left) && !this.arrested) {
       this.setFlip(true,false);
       this.stop();   
       this.play('run_anim');
     }
-    else if (Phaser.Input.Keyboard.JustUp(this.cursors.left)||Phaser.Input.Keyboard.JustUp(this.cursors.right))
-    {
-      this.stop();
-      this.play('idle_anim');
-    }
-    else if(this.body.speed===0)
+    else if (Phaser.Input.Keyboard.JustUp(this.cursors.left)||Phaser.Input.Keyboard.JustUp(this.cursors.right) && !this.arrested)
     {
       this.stop();
       this.play('idle_anim');
@@ -64,20 +62,33 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
     //this.body.setVelocityX(this.speed); //Movimiento continuo del jugador hacia la derecha
 
-    if (this.cursors.left.isDown) {
+    if (this.cursors.left.isDown && !this.arrested) {
       this.body.setVelocityX(-this.speed);
       
     }
-    else if (this.cursors.right.isDown) {
+    else if (this.cursors.right.isDown && !this.arrested)  {
       this.body.setVelocityX(this.speed);
     }
     else {
       this.body.setVelocityX(0);
     }
 
-    if (this.cursors.up.isDown && this.body.onFloor()) {
+    if (this.cursors.up.isDown && this.body.onFloor() && !this.arrested) {
       this.body.setVelocityY(this.jumpSpeed);
     }
+  }
+
+
+/**
+ * Method that is called when police collide player
+ * Put player speed to 0 and play idle animation
+ */
+  Arrestado(){
+    this.arrested=true;
+    this.speed=0;
+    this.jumpSpeed=0;
+    this.stop();
+    this.play('idle_anim');
   }
    
 }

@@ -195,10 +195,11 @@ function onCollision(obj1,obj2) {
   obj2.handleCollision(); 
 }
 /**
- * External function that is called when object collide
- * @param {*} obj1 - Player 
- * @param {*} obj2 - Police 
+ * External function that is called when pollice and player collide
+ * @param {*} obj1 - Player
+ * @param {*} obj2 - Police
  */
 function  onCollisionPolice (obj1,obj2) {
-  obj2.catchP();
+  obj1.Arrestado();
+  obj2.catchP(obj1);
 }

@@ -1,6 +1,6 @@
 import scene from './Scene.js'
 
-export default class Player extends Phaser.GameObjects.Sprite {
+export default class Police extends Phaser.GameObjects.Sprite {
 
     constructor(scene,x,y){
         super(scene, x, y, 'policeIdle');
@@ -19,6 +19,10 @@ export default class Player extends Phaser.GameObjects.Sprite {
     }
 
 
+    /**
+   * Animated the police depending on the moment
+   * 
+   */
     animatePolice(){
         if(this.catchRoger) this.play("idle_police",1);
     }
@@ -27,7 +31,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
         super.preUpdate(t,dt);
         this.animatePolice();
     
-       // this.body.setVelocityX(this.constantSpeed); //Movimiento continuo del jugador hacia la derecha
+       this.body.setVelocityX(this.constantSpeed); //Movimiento continuo del jugador hacia la derecha
 
     }
 
