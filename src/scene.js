@@ -73,18 +73,35 @@ export default class Level extends Phaser.Scene {
       this.scape = this.input.keyboard.addKey('ESC');
       this.scape.on('down', () => {});
 
+      this.kick = this.input.keyboard.addKey('K');
+      this.kick.on('down', () => {});
+
+      // // Crear zona de collider de patada
+      // let zone = this.add.zone(this.player.x+this.player.width, this.player.y, this.player.width, this.player.height).setRectangleDropZone(this.player.width, this.player.height);
+
+      // // visual zone
+      // //  Just a visual display of the drop zone
+      // let graphics = this.add.graphics();
+      // graphics.lineStyle(2, 0xffff00);
+      // graphics.strokeRect(zone.x - zone.input.hitArea.width / 2, zone.y - zone.input.hitArea.height / 2, zone.input.hitArea.width, zone.input.hitArea.height);
+
   }
 
   update(){
     const cam = this.cameras.main;
     const speed = 3;
-    //Metodo que comprueba las colisiones 
     
     // cam.scrollX += speed;
 
     if (Phaser.Input.Keyboard.JustDown(this.scape)) { 
       this.pause(this.activetePause);
     } 
+
+    // Comprueba si el jugador ha pulsado la tecla para dar una patada
+    if(Phaser.Input.Keyboard.JustDown(this.kick)){
+      this.player.Kick();
+    }
+
   }
 
   pause(activetePause){

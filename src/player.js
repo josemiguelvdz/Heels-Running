@@ -16,6 +16,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.jumpSpeed = -400;
     this.numLifes=nLifes;
 
+    this.kickCooldown = 100; // 3 segundos de cooldown
 
     this.arrested=false;
 
@@ -76,6 +77,13 @@ export default class Player extends Phaser.GameObjects.Sprite {
     if (this.cursors.up.isDown && this.body.onFloor() && !this.arrested) {
       this.body.setVelocityY(this.jumpSpeed);
     }
+
+
+    // Cooldown de la patada
+    if(this.kickCooldown > 0){
+      this.kickCooldown -= 1;
+    }
+
   }
 
 
@@ -89,6 +97,22 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.jumpSpeed=0;
     this.stop();
     this.play('idle_anim');
+  }
+
+/**
+ * Method that is called when the player presses
+ * "K" and wants to perform a kick
+ */
+  Kick(){
+    if(this.kickCooldown <= 0){
+      console.log("KICK");
+      // Debemos activar la animacion de la patada
+
+      // Crear collider de la patada
+
+      
+      this.kickCooldown = 100; // reestablecemos el cooldown
+    }
   }
    
 }

@@ -8992,6 +8992,7 @@ body {
 	font: 1em "Open Sans", sans-serif;
 	height: 100vh;
 	overflow-x: hidden;
+  background-color: #434343;
 }
 main {
 	display: block;
