@@ -4,8 +4,8 @@ import scene from './Scene.js';
 export default class coffe extends powerUp {
 
 
-  constructor(scene, player, x, y, nombreImg, temp) {
-    super(scene, player, x, y, nombreImg, temp); //Constructor de la clase base
+  constructor(scene, player, x, y, nombreImg, temp,moving) {
+    super(scene, player, x, y, nombreImg, temp,moving); //Constructor de la clase base
 
         this.speedAux= 120; //Incremento de velocidad que tiene el jugador 
   }

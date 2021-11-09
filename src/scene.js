@@ -61,6 +61,7 @@ export default class Level extends Phaser.Scene {
     
      //creamos los distintos elementos del juego
      //Los asociamos al grupo para las colisiones 
+     this.powerUpsArray=[];
      this.createObjects(width, height, totalWidth);
       this.createGroups();
     
@@ -71,7 +72,13 @@ export default class Level extends Phaser.Scene {
       this.activetePause = false;
 
       this.scape = this.input.keyboard.addKey('ESC');
-      this.scape.on('down', () => {});
+      this.scape.on('down', () => {
+     for(let i=0;i<this.powerUpsArray.length;i++)
+     {
+         this.powerUpsArray[i].tweenMovement.pause();
+     }
+        
+      });
 
       this.kick = this.input.keyboard.addKey('K');
       this.kick.on('down', () => {});
@@ -124,6 +131,11 @@ export default class Level extends Phaser.Scene {
          this.resumeButton.destroy();
          this.settingsButton.destroy();
          this.physics.resume();
+
+         for(let i=0;i<this.powerUpsArray.length;i++)
+         {
+             this.powerUpsArray[i].tweenMovement.resume();
+         }
         });
 
         this.settingsButton = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'settingsButton').setInteractive();
@@ -172,14 +184,16 @@ export default class Level extends Phaser.Scene {
 
     //GRUPO DE LOS TIMERS
   
-    this.redTimers = this.physics.add.staticGroup();
-    this.redTimers.add(this.redTimer);
+    this.timers = this.physics.add.staticGroup();
+    this.timers.add(this.redTimer);
+    this.timers.add(this.greenTimer)
     this.physics.add.collider(this.player,this.redTimer,onCollision);
+    this.physics.add.collider(this.player,this.greenTimer,onCollision);
      //GRUPO DE LOS CAFÉS
      
      this.coffes = this.physics.add.staticGroup();
      this.coffes.add(this.coffe1);
-     this.physics.add.collider(this.player,this.coffe1,onCollision);
+     this.physics.add.collider(this.player,this.coffe,onCollision);
     //GRUPO DE LAS PLATAFORMAS Y EL POLICIA
 
     this.platforms = this.physics.add.staticGroup();
@@ -217,12 +231,18 @@ export default class Level extends Phaser.Scene {
       this.ground = new Ground(this, this.player,this.police, i, height);
     }
     
-    this.salmon= new salmon( this,this.player, 300, 300,'salmonFish',this.time);
+
     
-    this.redTimer= new redTimer( this,this.player, width+100, 300,'redTimer',this.time);
-    this.greenTimer= new greenTimer( this,this.player, 50, 200,'greenTimer',this.time);
+    this.salmon= new salmon( this,this.player, 300, 300,'salmonFish',this.time,true);
+    this.powerUpsArray.push(this.salmon);
     
-    this.coffe1= new coffe( this,this.player, 600, 300,'coffe',this.time);
+    this.redTimer= new redTimer( this,this.player, width+100, 300,'redTimer',this.time,true);
+    this.powerUpsArray.push(this.redTimer);
+    this.greenTimer= new greenTimer( this,this.player, 50, 200,'greenTimer',this.time,false);
+    this.powerUpsArray.push(this.greenTimer);
+    
+    this.coffe1= new coffe( this,this.player, 600, 300,'coffe',this.time,false);
+    this.powerUpsArray.push(this.coffe1);
     
     this.platform = new Platform(this, this.player.y, 400); 
 

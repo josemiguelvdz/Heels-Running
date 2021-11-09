@@ -4,10 +4,12 @@ import scene from './Scene.js';
 export default class salmon extends powerUp {
 
 
-  constructor(scene, player, x, y, nombreImg, temp) {
-    super(scene, player, x, y, nombreImg, temp); //Constructor de la clase base
+  constructor(scene, player, x, y, nombreImg, temp,moving) {
+    super(scene, player, x, y, nombreImg, temp,moving); //Constructor de la clase base
 
+    this.move= moving;
     this.lifesHealed = 1;
+
   }
 
   preUpdate() {
@@ -33,5 +35,6 @@ export default class salmon extends powerUp {
     this.destroy();
     this.player.numLifes = this.player.numLifes + this.lifesHealed;
   }
+
 
 }

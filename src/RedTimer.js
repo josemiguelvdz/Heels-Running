@@ -4,10 +4,8 @@ import scene from './Scene.js';
 export default class redTimer extends powerUp {
 
 
-  constructor(scene, player, x, y, nombreImg, temp) {
-    super(scene, player, x, y, nombreImg, temp); //Constructor de la clase base
-
-    this.lifesHealed = 1;
+  constructor(scene, player, x, y, nombreImg, temp,moving) {
+    super(scene, player, x, y, nombreImg, temp,moving); //Constructor de la clase base
   }
 
   preUpdate() {
