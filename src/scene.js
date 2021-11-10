@@ -33,6 +33,7 @@ const scaleBuilding = (platform, width, height,  buildingScaleFactor) => {
 }
 
 
+
 export default class Level extends Phaser.Scene {
   /**
    * Constructor de la escena
@@ -96,7 +97,8 @@ export default class Level extends Phaser.Scene {
   update(){
     const cam = this.cameras.main;
     const speed = 3;
-    
+
+
     // cam.scrollX += speed;
 
     if (Phaser.Input.Keyboard.JustDown(this.scape)) { 
@@ -109,6 +111,7 @@ export default class Level extends Phaser.Scene {
     }
 
   }
+
 
   stop(activetePause){
 
@@ -196,7 +199,7 @@ export default class Level extends Phaser.Scene {
      
      this.coffes = this.physics.add.staticGroup();
      this.coffes.add(this.coffe1);
-     this.physics.add.collider(this.player,this.coffe,onCollision);
+     this.physics.add.collider(this.player,this.coffe1,onCollision);
     //GRUPO DE LAS PLATAFORMAS Y EL POLICIA
 
     this.platforms = this.physics.add.staticGroup();
@@ -215,9 +218,7 @@ export default class Level extends Phaser.Scene {
 
     //GRUPO DEL POLICIA Y EL PLAYER
     this.physics.add.collider(this.player,this.police,onCollisionPolice);
-    
   }
-
   
 /**
  * Create GameObjects and adjust its size
@@ -233,9 +234,7 @@ export default class Level extends Phaser.Scene {
     for(let i = 0; i < totalWidth; i+=200){
       this.ground = new Ground(this, this.player,this.police, i, height);
     }
-    
 
-    
     this.salmon= new salmon( this,this.player, 300, 300,'salmonFish',this.time,true);
     this.powerUpsArray.push(this.salmon);
     
