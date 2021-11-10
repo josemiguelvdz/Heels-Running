@@ -249,7 +249,7 @@ export default class Level extends Phaser.Scene {
     
     this.platform = new Platform(this, this.player.y, 400); 
 
-    //this.box = new box(this, this.player, 350, 300);
+    this.box = new box(this, this.player, 350, 300);
 
     this.building = new Platform(this, width*2, height);
     scaleBuilding(this.building, this.building.width, this.building.height, 5);

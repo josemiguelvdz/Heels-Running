@@ -9,14 +9,13 @@ export default class box extends Phaser.GameObjects.Sprite {
       this.body.setCollideWorldBounds();
 
       this.scene.physics.add.collider(player, this, (o1, o2) => {
-        this.animateBox();
+        o2.animateBox();
       });
 
       this.scene.anims.create({
         key: 'boxDestruction_anim',
         frames: this.anims.generateFrameNumbers('boxDestruction', { start: 0, end: 7 }),
         frameRate: 8, // Velocidad de la animación
-        repeat: -1
       });
     }
 
