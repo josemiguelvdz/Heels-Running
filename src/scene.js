@@ -8,6 +8,7 @@ import coffe from './Coffe.js';
 import redTimer from './RedTimer.js'
 import greenTimer from './GreenTimer.js';
 import box from './Box.js';
+import timer from './timer.js';
 
 const createAligned = (scene, totalWidth, texture, scrollFactor) => {
 
@@ -234,8 +235,8 @@ export default class Level extends Phaser.Scene {
       this.ground = new Ground(this, this.player,this.police, i, height);
     }
     
-
-    
+     
+    this.albertoContador= new timer(this);
     this.salmon= new salmon( this,this.player, 300, 300,'salmonFish',this.time,true);
     this.powerUpsArray.push(this.salmon);
     
