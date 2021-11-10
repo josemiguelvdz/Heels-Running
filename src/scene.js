@@ -7,6 +7,7 @@ import salmon from './Salmon.js';
 import coffe from './Coffe.js';
 import redTimer from './RedTimer.js'
 import greenTimer from './GreenTimer.js';
+import box from './Box.js';
 
 const createAligned = (scene, totalWidth, texture, scrollFactor) => {
 
@@ -73,12 +74,10 @@ export default class Level extends Phaser.Scene {
 
       this.scape = this.input.keyboard.addKey('ESC');
       this.scape.on('down', () => {
-     for(let i=0;i<this.powerUpsArray.length;i++)
-     {
-         this.powerUpsArray[i].tweenMovement.pause();
-     }
-        
-      });
+      for(let i=0;i<this.powerUpsArray.length;i++)
+      {
+          this.powerUpsArray[i].tweenMovement.pause();
+      }});
 
       this.kick = this.input.keyboard.addKey('K');
       this.kick.on('down', () => {});
@@ -101,7 +100,7 @@ export default class Level extends Phaser.Scene {
     // cam.scrollX += speed;
 
     if (Phaser.Input.Keyboard.JustDown(this.scape)) { 
-      this.pause(this.activetePause);
+      this.stop(this.activetePause);
     } 
 
     // Comprueba si el jugador ha pulsado la tecla para dar una patada
@@ -111,7 +110,7 @@ export default class Level extends Phaser.Scene {
 
   }
 
-  pause(activetePause){
+  stop(activetePause){
 
     this.physics.pause();
 
@@ -149,7 +148,11 @@ export default class Level extends Phaser.Scene {
   }
 
   settings(){
-    console.log("Settings!!");
+    
+    this.controls = this.add.image(this.scale.width*0.5, this.scale.height*0.4, 'controls').setScale(0.6, 0.7);
+    this.backButton = this.add.image(100, 70, 'backButton').setInteractive();
+
+    this.backButton.on('pointerdown', () => {this.controls.destroy(), this.backButton.destroy()});
   }
   
 
@@ -245,6 +248,8 @@ export default class Level extends Phaser.Scene {
     this.powerUpsArray.push(this.coffe1);
     
     this.platform = new Platform(this, this.player.y, 400); 
+
+    //this.box = new box(this, this.player, 350, 300);
 
     this.building = new Platform(this, width*2, height);
     scaleBuilding(this.building, this.building.width, this.building.height, 5);

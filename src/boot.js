@@ -27,6 +27,7 @@ export default class Boot extends Phaser.Scene {
       this.load.spritesheet('idle','idlespritesheet.png',{frameWidth:64, frameHeight:64})
       this.load.spritesheet('run','runspritesheet.png',{frameWidth:64, frameHeight:64})
       this.load.spritesheet('policeIdle','idlepolicespritesheet.png',{frameWidth:64,frameHeight:64})
+      this.load.spritesheet('boxDestruction', 'boxAnimation.png', {frameWidth:64, frameHeight:64});
 
 
       this.load.image('salmonFish', 'salmonFish.png');
@@ -41,13 +42,15 @@ export default class Boot extends Phaser.Scene {
       this.load.image('exitButton', 'ExitButton.png');
       this.load.image('resumeButton', 'resumeButton.png');
       this.load.image('settingsButton', 'settingsButton.png');
+      this.load.image('backButton', 'backButton.png');
+      this.load.image('controls', 'controls.png');
     }
     /**
      * Creación de la escena. En este caso, solo cambiamos a la escena que representa el
      * nivel del juego
      */
     create() {
-      this.scene.start('level');
+      this.scene.start('menu');
       
     }
   }
