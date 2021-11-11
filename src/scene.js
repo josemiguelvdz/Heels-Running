@@ -77,10 +77,12 @@ export default class Level extends Phaser.Scene {
 
       this.scape = this.input.keyboard.addKey('ESC');
       this.scape.on('down', () => {
+      this._chrono.changeTime();
       for(let i=0;i<this.powerUpsArray.length;i++)
       {
           this.powerUpsArray[i].tweenMovement.pause();
       }});
+      
 
       this.kick = this.input.keyboard.addKey('K');
       this.kick.on('down', () => {});
@@ -136,6 +138,7 @@ export default class Level extends Phaser.Scene {
          this.settingsButton.destroy();
          this.physics.resume();
 
+         this._chrono.changeTime();
          for(let i=0;i<this.powerUpsArray.length;i++)
          {
              this.powerUpsArray[i].tweenMovement.resume();
@@ -238,13 +241,13 @@ export default class Level extends Phaser.Scene {
     }
     
      
-    this.albertoContador= new chrono(this);
+    this._chrono= new chrono(this);
     this.salmon= new salmon( this,this.player, 300, 300,'salmonFish',this.time,true);
     this.powerUpsArray.push(this.salmon);
     
-    this.redTimer= new redTimer( this,this.player, width+100, 300,'redTimer',this.time,true,this.albertoContador);
+    this.redTimer= new redTimer( this,this.player, width+100, 300,'redTimer',this.time,true,this._chrono);
     this.powerUpsArray.push(this.redTimer);
-    this.greenTimer= new greenTimer( this,this.player, 50, 200,'greenTimer',this.time,false,this.albertoContador);
+    this.greenTimer= new greenTimer( this,this.player, 50, 200,'greenTimer',this.time,false,this._chrono);
     this.powerUpsArray.push(this.greenTimer);
     
     this.coffe1= new coffe( this,this.player, 600, 300,'coffe',this.time,false);
