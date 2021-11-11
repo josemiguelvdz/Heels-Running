@@ -3,22 +3,11 @@ export default class timer extends Phaser.GameObjects.GameObject {
       super(scene, 0, 0)
       this.scene.add.existing(this);
       this.internalTimer = 0;
-      this.timeElapsed = this.getTimeInMinutes()+ ' : ' + this.getTimeInSeconds()/60*this.getTimeInMinutes()
+      this.minutos=0;
+      this.segundos=0;
+      this.timeElapsed=this.minutos + ' : '+ this.segundos;
       this.text = this.scene.add.text(830,10,this.timeElapsed);
       this.writeTime();
-  }
-
-  getTimeInSeconds() {
-      return this.internalTimer;
-  }
-
-  getTimeInMinutes() { //Como solo devuelve minutos, los segundos extras se pierden, por ejemplo, si tenemos 2 minutos y 12 segundos, solo devuelve 2 minutos
-      return this.internalTimer / 60;
-  }
-
-  getTime()
-  {
-      return {minutos: this.internalTimer/60, segundos: this.internalTimer%60}; //Devuelve un objeto cuya primera componente son minutos y la segunda, segundos
   }
 
   destroyTimer() { //Si se llama destroy da error por cosas de Phaser
@@ -26,10 +15,19 @@ export default class timer extends Phaser.GameObjects.GameObject {
   }
 
   preUpdate(time, delta) {
-      this.internalTimer += Math.round(delta)
-       this.timeElapsed = this.getTimeInMinutes()+ ' : ' + this.getTimeInSeconds()/60*this.getTimeInMinutes();
-       this.text.setText( this.getTimeInMinutes()+ ' : ' + this.getTimeInSeconds()/60*this.getTimeInMinutes());
+      this.text.setText( this.timeElapsed);
+      this.segundos+=Math.round(delta);
+      if((this.segundos)/600 >100)
+      {
+          this.segundos=0;
+          this.minutos+=1;
+      }
+      if(this.segundos<10000){
+        this.timeElapsed =  this.minutos + ' : 0' + this.segundos.toString().substring(0,1);
+      }
+      else this.timeElapsed =  this.minutos + ' : ' + this.segundos.toString().substring(0,2);
       
+
   }
 
   writeTime(){
