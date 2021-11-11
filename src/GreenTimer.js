@@ -1,13 +1,14 @@
 import powerUp from './PowerUp.js';
 import scene from './Scene.js';
+import chrono from './Chrono.js';
 
 export default class greenTimer extends powerUp {
 
 
-  constructor(scene, player, x, y, nombreImg, temp,moving) {
+  constructor(scene, player, x, y, nombreImg, temp,moving,clockClass) {
     super(scene, player, x, y, nombreImg, temp,moving); //Constructor de la clase base
 
-    
+    this.timer=clockClass;
   }
 
   preUpdate() {
@@ -28,13 +29,13 @@ export default class greenTimer extends powerUp {
   }
 
   /**
-   * Makes the power up dissapear and reduces  time of the run 
+   * Makes the power up dissapear and reduces  time of the run using timer Object Reference
    * 
    */
   collideGreenTimer()
   {
         this.destroy();
-        //Aqui se llamaria al metodo que actualiza el tiempo de la run que se muestra en la interfaz
+        this.timer.reduceTime(0,1);
        
   }
   

@@ -8,7 +8,8 @@ import coffe from './Coffe.js';
 import redTimer from './RedTimer.js'
 import greenTimer from './GreenTimer.js';
 import box from './Box.js';
-import timer from './timer.js';
+import timer from './Chrono.js';
+import chrono from './Chrono.js';
 
 const createAligned = (scene, totalWidth, texture, scrollFactor) => {
 
@@ -237,13 +238,13 @@ export default class Level extends Phaser.Scene {
     }
     
      
-    this.albertoContador= new timer(this);
+    this.albertoContador= new chrono(this);
     this.salmon= new salmon( this,this.player, 300, 300,'salmonFish',this.time,true);
     this.powerUpsArray.push(this.salmon);
     
-    this.redTimer= new redTimer( this,this.player, width+100, 300,'redTimer',this.time,true);
+    this.redTimer= new redTimer( this,this.player, width+100, 300,'redTimer',this.time,true,this.albertoContador);
     this.powerUpsArray.push(this.redTimer);
-    this.greenTimer= new greenTimer( this,this.player, 50, 200,'greenTimer',this.time,false);
+    this.greenTimer= new greenTimer( this,this.player, 50, 200,'greenTimer',this.time,false,this.albertoContador);
     this.powerUpsArray.push(this.greenTimer);
     
     this.coffe1= new coffe( this,this.player, 600, 300,'coffe',this.time,false);

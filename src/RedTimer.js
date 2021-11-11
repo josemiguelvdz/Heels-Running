@@ -1,11 +1,15 @@
 import powerUp from './PowerUp.js';
 import scene from './Scene.js';
+import chrono from './Chrono.js';
 
 export default class redTimer extends powerUp {
 
 
-  constructor(scene, player, x, y, nombreImg, temp,moving) {
+  constructor(scene, player, x, y, nombreImg, temp,moving,clockClass) {
     super(scene, player, x, y, nombreImg, temp,moving); //Constructor de la clase base
+
+this.timer=clockClass;
+
   }
 
   preUpdate() {
@@ -26,13 +30,13 @@ export default class redTimer extends powerUp {
   }
 
   /**
-   * Makes the power up dissapear and adds more time of the run 
+   * Makes the power up dissapear and adds more time of the run using timer Object Reference
    * 
    */
   collideRedTimer()
   {
         this.destroy();
-        //Aqui se llamaria al metodo que actualiza el tiempo de la run que se muestra en la interfaz
+        this.timer.addTime(30,1);
        
   }
   
