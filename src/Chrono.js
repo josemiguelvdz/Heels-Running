@@ -28,7 +28,8 @@ export default class chrono extends Phaser.GameObjects.GameObject {
           this.minutos+=1;
       }
       if(this.segundos<10000){
-        this.timeElapsed =  this.minutos + ' : 0' + this.segundos.toString().substring(0,1);
+        if(this.segundos<1000)this.timeElapsed =  this.minutos + ' : 00';
+        else this.timeElapsed =  this.minutos + ' : 0' + this.segundos.toString().substring(0,1);
       }
       else this.timeElapsed =  this.minutos + ' : ' + this.segundos.toString().substring(0,2);
       
