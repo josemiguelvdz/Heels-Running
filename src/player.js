@@ -1,6 +1,4 @@
 
-import scene from './Scene.js'
-
 
 export default class Player extends Phaser.GameObjects.Sprite {
 
@@ -110,9 +108,15 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
       // Crear collider de la patada
 
-      
+        
       this.kickCooldown = 100; // reestablecemos el cooldown
     }
   }
+
+  /**
+ * That method return actual scene
+ * 
+ */
+  getActualScene() {return this.scene;}
    
 }

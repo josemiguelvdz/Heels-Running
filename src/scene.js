@@ -286,10 +286,13 @@ function onCollision(obj1,obj2) {
 }
 /**
  * External function that is called when pollice and player collide
+ * Stop the time of the run
  * @param {*} obj1 - Player
  * @param {*} obj2 - Police
  */
 function  onCollisionPolice (obj1,obj2) {
   obj1.Arrestado();
+  obj1.getActualScene()._chrono.changeTime();
   obj2.catchP(obj1);
 }
+
