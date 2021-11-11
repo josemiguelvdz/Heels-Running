@@ -3,6 +3,9 @@ export default class timer extends Phaser.GameObjects.GameObject {
       super(scene, 0, 0)
       this.scene.add.existing(this);
       this.internalTimer = 0;
+      this.timeElapsed = this.getTimeInMinutes()+ ' : ' + this.getTimeInSeconds()/60*this.getTimeInMinutes()
+      this.text = this.scene.add.text(830,10,this.timeElapsed);
+      this.writeTime();
   }
 
   getTimeInSeconds() {
@@ -24,17 +27,18 @@ export default class timer extends Phaser.GameObjects.GameObject {
 
   preUpdate(time, delta) {
       this.internalTimer += Math.round(delta)
-      this.writeTime();
+       this.timeElapsed = this.getTimeInMinutes()+ ' : ' + this.getTimeInSeconds()/60*this.getTimeInMinutes();
+       this.text.setText( this.getTimeInMinutes()+ ' : ' + this.getTimeInSeconds()/60*this.getTimeInMinutes());
+      
   }
 
   writeTime(){
-    let text = this.scene.add.text(850,10,this.getTimeInMinutes()+ ' : ' + this.getTimeInSeconds()/60*this.getTimeInMinutes());
-
+   
     // alineación del texto
-    text.setAlign('center');
+    this.text.setAlign('center');
 
     // Font style
-    text.setFont('Arial Black');
-    text.setFontSize(50);
+    this.text.setFont('Arial Black');
+    this.text.setFontSize(30);
   }
 }
