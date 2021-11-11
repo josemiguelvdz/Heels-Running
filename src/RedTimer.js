@@ -8,7 +8,7 @@ export default class redTimer extends powerUp {
   constructor(scene, player, x, y, nombreImg, temp,moving,clockClass) {
     super(scene, player, x, y, nombreImg, temp,moving); //Constructor de la clase base
 
-this.timer=clockClass;
+    this.timer=clockClass;
 
   }
 

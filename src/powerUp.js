@@ -16,7 +16,7 @@ export default class powerUp extends Phaser.GameObjects.Sprite {
     this.body.setCollideWorldBounds(); //Colision con los limies del mundo 
     this.y -= this.height;
     this.tweenMovement;
-
+    this.movesbyTween=moving;
     if(moving)
     {
       this.tweenMovement= this.scene.tweens.add({
@@ -39,4 +39,6 @@ export default class powerUp extends Phaser.GameObjects.Sprite {
    
     
   }
+
+
 }

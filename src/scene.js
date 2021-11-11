@@ -80,7 +80,7 @@ export default class Level extends Phaser.Scene {
       this._chrono.changeTime();
       for(let i=0;i<this.powerUpsArray.length;i++)
       {
-          this.powerUpsArray[i].tweenMovement.pause();
+        if(this.powerUpsArray[i].movesbyTween)this.powerUpsArray[i].tweenMovement.pause();
       }});
       
 
@@ -141,7 +141,7 @@ export default class Level extends Phaser.Scene {
          this._chrono.changeTime();
          for(let i=0;i<this.powerUpsArray.length;i++)
          {
-             this.powerUpsArray[i].tweenMovement.resume();
+             if(this.powerUpsArray[i].movesbyTween)this.powerUpsArray[i].tweenMovement.resume();
          }
         });
 
