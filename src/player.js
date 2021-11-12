@@ -107,7 +107,14 @@ export default class Player extends Phaser.GameObjects.Sprite {
       // Debemos activar la animacion de la patada
 
       // Crear collider de la patada
+            // Crear zona de collider de patada
+            let zone = this.scene.add.zone(this.x+this.width, this.y, this.width, this.height);
 
+            // visual zone
+            //  Just a visual display of the drop zone
+            let graphics = this.scene.add.graphics();
+            graphics.lineStyle(2, 0xffff00);
+            graphics.strokeRect(zone.x - zone.width / 2, zone.y - zone.height / 2, zone.width, zone.height);
         
       this.kickCooldown = 100; // reestablecemos el cooldown
     }

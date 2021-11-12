@@ -64,14 +64,7 @@ export default class Level extends Phaser.Scene {
       this.kick = this.input.keyboard.addKey('K');
       this.kick.on('down', () => {});
 
-      // // Crear zona de collider de patada
-      // let zone = this.add.zone(this.player.x+this.player.width, this.player.y, this.player.width, this.player.height).setRectangleDropZone(this.player.width, this.player.height);
 
-      // // visual zone
-      // //  Just a visual display of the drop zone
-      // let graphics = this.add.graphics();
-      // graphics.lineStyle(2, 0xffff00);
-      // graphics.strokeRect(zone.x - zone.input.hitArea.width / 2, zone.y - zone.input.hitArea.height / 2, zone.input.hitArea.width, zone.input.hitArea.height);
 
   }
 
