@@ -11,28 +11,6 @@ import box from './Box.js';
 import timer from './Chrono.js';
 import chrono from './Chrono.js';
 
-const createAligned = (scene, totalWidth, texture, scrollFactor) => {
-
-  const w = scene.textures.get(texture).getSourceImage().width
-  const count = Math.ceil(totalWidth / w) * scrollFactor;
-
-  let x = 0;
-
-  for(let i = 0; i < count; ++i){
-    const b = scene.add.image(x, scene.scale.height, texture)
-    .setOrigin(0, 1)
-    .setScrollFactor(scrollFactor);  
-
-    x += b.width; 
-  }
-  
-}
-
-const scaleBuilding = (platform, width, height,  buildingScaleFactor) => {
-  platform.setSize(width, height*(buildingScaleFactor*2-1));
-  platform.setScale(1, buildingScaleFactor);
-  platform.body.setSize(platform.width, platform.height, true);
-}
 
 
 
@@ -294,5 +272,42 @@ function  onCollisionPolice (obj1,obj2) {
   obj1.Arrestado();
   obj1.getActualScene()._chrono.changeTime();
   obj2.catchP(obj1);
+}
+
+/**
+ * External function that is called to generate the parallax objects
+ * @param {*} scene - Scene
+ * @param {*} totalWidth - Total Width of the Game
+ * @param {*} texture - Image/Sprite to be generated
+ * @param {*} scrollFactor - Scroll factor of the image
+ */
+function createAligned(scene, totalWidth, texture, scrollFactor) {
+
+  const w = scene.textures.get(texture).getSourceImage().width
+  const count = Math.ceil(totalWidth / w) * scrollFactor;
+
+  let x = 0;
+
+  for(let i = 0; i < count; ++i){
+    const b = scene.add.image(x, scene.scale.height, texture)
+    .setOrigin(0, 1)
+    .setScrollFactor(scrollFactor);  
+
+    x += b.width; 
+  }
+  
+}
+/**
+ * External function that is called to scalate the height of the buildings.
+ * This is used to generate buildings of different heights.
+ * @param {*} platform - Building
+ * @param {*} width - Width of the building
+ * @param {*} height - Height of the building
+ * @param {*} buildingScaleFactor - Scale factor of the building (only affects height)
+ */
+function scaleBuilding(platform, width, height,  buildingScaleFactor) {
+  platform.setSize(width, height*(buildingScaleFactor*2-1));
+  platform.setScale(1, buildingScaleFactor);
+  platform.body.setSize(platform.width, platform.height, true);
 }
 
