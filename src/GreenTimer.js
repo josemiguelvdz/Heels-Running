@@ -11,14 +11,11 @@ export default class GreenTimer extends powerUp {
 
   preUpdate() {
     super.preUpdate();
-
-
   }
 
   
   /**
    * Handles the collision with player
-
    */
   handleCollision() {
 
@@ -27,13 +24,13 @@ export default class GreenTimer extends powerUp {
   }
 
   /**
-   * Makes the power up dissapear and reduces  time of the run using timer Object Reference
+   *  Reduces  time of the run using timer Object Reference and makes the power up dissapear 
    * 
    */
   collideGreenTimer()
   {
-        this.destroy();
         this.timer.reduceTime(0,1);
+        this.destroyObject();
        
   }
   

@@ -168,8 +168,8 @@ export default class Level extends Phaser.Scene {
     this.timers = this.physics.add.staticGroup();
     this.timers.add(this.redTimer);
     this.timers.add(this.greenTimer)
-    this.physics.add.collider(this.player,this.timers,onCollision);
-     //this.physics.add.collider(this.player,this.timer,onCollision);
+    this.physics.add.collider(this.player,this.redTimer,onCollision);
+     this.physics.add.collider(this.player,this.greenTimer,onCollision);
      //GRUPO DE LOS CAFÉS
      
      this.coffes = this.physics.add.staticGroup();

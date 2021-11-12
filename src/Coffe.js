@@ -33,7 +33,7 @@ export default class Coffe extends powerUp {
   collideCoffe(escena)
   {
        
-       this.destroy();
+       
      
        this.player.speed=this.player.speed+this.speedAux;
 
@@ -43,6 +43,7 @@ export default class Coffe extends powerUp {
        callback: this.adjustSpeed, //No es la escena , se especifica segun donde este el metodo 
        callbackScope: escena 
                             }); 
+      this.destroyObject();
    }   
    /**
     * Called after the 4 delay of the created event,its function is to reduce player velocity up to its initial state

@@ -34,7 +34,12 @@ export default class PowerUp extends Phaser.GameObjects.Sprite {
     
    
     
+  }/**
+   * Used to destroy a power up after making its effect
+   */
+  destroyObject()
+  {
+    this.destroy();
   }
-
 
 }
