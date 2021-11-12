@@ -1,15 +1,14 @@
 import Player from './Player.js';
 import Police from './Police.js';
 import Platform from './Platform.js';
-import powerUp from './PowerUp.js';
+import PowerUp from './PowerUp.js';
 import Ground from './Ground.js';
-import salmon from './Salmon.js';
-import coffe from './Coffe.js';
-import redTimer from './RedTimer.js'
-import greenTimer from './GreenTimer.js';
-import box from './Box.js';
-import timer from './Chrono.js';
-import chrono from './Chrono.js';
+import Salmon from './salmon.js';
+import Coffe from './coffe.js';
+import RedTimer from './redTimer.js'
+import GreenTimer from './greenTimer.js';
+import Box from './box.js';
+import Chrono from './chrono.js';
 
 
 
@@ -55,7 +54,7 @@ export default class Level extends Phaser.Scene {
 
       this.scape = this.input.keyboard.addKey('ESC');
       this.scape.on('down', () => {
-      this._chrono.changeTime();
+      this.chrono.changeTime();
       for(let i=0;i<this.powerUpsArray.length;i++)
       {
         if(this.powerUpsArray[i].movesbyTween)this.powerUpsArray[i].tweenMovement.pause();
@@ -116,7 +115,7 @@ export default class Level extends Phaser.Scene {
          this.settingsButton.destroy();
          this.physics.resume();
 
-         this._chrono.changeTime();
+         this.chrono.changeTime();
          for(let i=0;i<this.powerUpsArray.length;i++)
          {
              if(this.powerUpsArray[i].movesbyTween)this.powerUpsArray[i].tweenMovement.resume();
@@ -176,8 +175,8 @@ export default class Level extends Phaser.Scene {
     this.timers = this.physics.add.staticGroup();
     this.timers.add(this.redTimer);
     this.timers.add(this.greenTimer)
-    this.physics.add.collider(this.player,this.redTimer,onCollision);
-    this.physics.add.collider(this.player,this.greenTimer,onCollision);
+    this.physics.add.collider(this.player,this.timers,onCollision);
+     //this.physics.add.collider(this.player,this.timer,onCollision);
      //GRUPO DE LOS CAFÉS
      
      this.coffes = this.physics.add.staticGroup();
@@ -219,21 +218,21 @@ export default class Level extends Phaser.Scene {
     }
     
      
-    this._chrono= new chrono(this);
-    this.salmon= new salmon( this,this.player, 300, 300,'salmonFish',this.time,true);
+    this.chrono= new Chrono(this);
+    this.salmon= new Salmon( this,this.player, 300, 300,'salmonFish',true);
     this.powerUpsArray.push(this.salmon);
     
-    this.redTimer= new redTimer( this,this.player, width+100, 300,'redTimer',this.time,true,this._chrono);
+    this.redTimer= new RedTimer( this,this.player, width+100, 300,'redTimer',true,this.chrono);
     this.powerUpsArray.push(this.redTimer);
-    this.greenTimer= new greenTimer( this,this.player, 50, 200,'greenTimer',this.time,false,this._chrono);
+    this.greenTimer= new GreenTimer( this,this.player, 50, 200,'greenTimer',false,this.chrono);
     this.powerUpsArray.push(this.greenTimer);
     
-    this.coffe1= new coffe( this,this.player, 600, 300,'coffe',this.time,false);
+    this.coffe1= new Coffe( this,this.player, 600, 300,'coffe',false);
     this.powerUpsArray.push(this.coffe1);
     
     this.platform = new Platform(this, this.player.y, 400); 
 
-    this.box = new box(this, this.player, 350, 300);
+    this.box = new Box(this, this.player, 350, 300);
 
     this.building = new Platform(this, width*2, height);
     scaleBuilding(this.building, this.building.width, this.building.height, 5);
@@ -270,7 +269,7 @@ function onCollision(obj1,obj2) {
  */
 function  onCollisionPolice (obj1,obj2) {
   obj1.Arrestado();
-  obj1.getActualScene()._chrono.changeTime();
+  obj1.getActualScene().chrono.changeTime();
   obj2.catchP(obj1);
 }
 

@@ -1,12 +1,11 @@
 import powerUp from './PowerUp.js';
-import scene from './Scene.js';
-import chrono from './Chrono.js';
-
-export default class redTimer extends powerUp {
 
 
-  constructor(scene, player, x, y, nombreImg, temp,moving,clockClass) {
-    super(scene, player, x, y, nombreImg, temp,moving); //Constructor de la clase base
+export default class RedTimer extends powerUp {
+
+
+  constructor(scene, player, x, y, nombreImg,moving,clockClass) {
+    super(scene, player, x, y, nombreImg,moving); //Constructor de la clase base
 
     this.timer=clockClass;
 

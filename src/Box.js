@@ -1,6 +1,5 @@
-import scene from './Scene.js';
 
-export default class box extends Phaser.GameObjects.Sprite {
+export default class Box extends Phaser.GameObjects.Sprite {
     constructor(scene, player, x, y) {
       super(scene, x, y, 'boxDestruction');
       this.scene.add.existing(this);

@@ -1,4 +1,4 @@
-export default class chrono extends Phaser.GameObjects.GameObject {
+export default class Chrono extends Phaser.GameObjects.GameObject {
   constructor(scene) {
       super(scene, 0, 0)
       this.scene.add.existing(this);

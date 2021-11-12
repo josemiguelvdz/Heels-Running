@@ -1,11 +1,10 @@
 import powerUp from './PowerUp.js';
-import scene from './Scene.js';
 
-export default class salmon extends powerUp {
+export default class Salmon extends powerUp {
 
 
-  constructor(scene, player, x, y, nombreImg, temp,moving) {
-    super(scene, player, x, y, nombreImg, temp,moving); //Constructor de la clase base
+  constructor(scene, player, x, y, nombreImg,moving) {
+    super(scene, player, x, y, nombreImg,moving); //Constructor de la clase base
 
     this.move= moving;
     this.lifesHealed = 1;

@@ -1,18 +1,14 @@
-import scene from './Scene.js'
 
-
-
-
-export default class powerUp extends Phaser.GameObjects.Sprite {
+export default class PowerUp extends Phaser.GameObjects.Sprite {
 
    
-   constructor(scene,player,x, y,nombreImg,temp,moving) {
+   constructor(scene,player,x, y,nombreImg,moving) {
    
     super(scene, x, y, nombreImg);
     console.log(nombreImg);
     
     this.scene.add.existing(this);
-    this.scene.physics.add.existing(this);
+    this.scene.physics.add.existing(this,false);
     this.body.setCollideWorldBounds(); //Colision con los limies del mundo 
     this.y -= this.height;
     this.tweenMovement;

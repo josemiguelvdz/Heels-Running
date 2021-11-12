@@ -1,4 +1,4 @@
-import scene from './Scene.js'
+
 
 export default class Police extends Phaser.GameObjects.Sprite {
 
