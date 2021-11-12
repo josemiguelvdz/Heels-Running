@@ -139,6 +139,7 @@ export default class Level extends Phaser.Scene {
  * 
  * 
  */
+// LOS GRUPOS NO FUNCIONAN CORRECTAMENTE
   createGroups()
   {
     //GRUPO DE LAS PLATAFORMAS
