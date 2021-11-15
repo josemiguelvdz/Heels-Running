@@ -12,6 +12,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.speed = 300;
     this.speedAux= this.speed;
     this.jumpSpeed = -400;
+    this.jumpImpulse = 1.5;
     this.numLifes=nLifes;
 
     this.kickCooldown = 100; // 3 segundos de cooldown
@@ -72,8 +73,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.body.setVelocityX(0);
     }
 
-    if (this.cursors.up.isDown && this.body.onFloor() && !this.arrested) {
-      this.body.setVelocityY(this.jumpSpeed);
+    if (this.cursors.up.isDown && this.body.onFloor() && !this.arrested) { // este es el salto
+      this.body.setVelocityY(this.jumpSpeed*this.jumpImpulse);
     }
 
 
