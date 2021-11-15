@@ -7,8 +7,13 @@ export default class Box extends Phaser.GameObjects.Sprite {
       this.body.setImmovable(true);
       this.body.setCollideWorldBounds();
 
+      this.collision = true;
+
       this.scene.physics.add.collider(player, this, (o1, o2) => {
-        o2.animateBox();
+        if(this.collision){
+          o2.animateBox();
+          this.collision = false;
+        }
       });
 
       this.scene.anims.create({
