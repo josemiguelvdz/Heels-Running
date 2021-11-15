@@ -64,8 +64,6 @@ export default class Level extends Phaser.Scene {
       this.kick = this.input.keyboard.addKey('K');
       this.kick.on('down', () => {});
 
-
-
   }
 
   update(){
@@ -81,7 +79,19 @@ export default class Level extends Phaser.Scene {
 
     // Comprueba si el jugador ha pulsado la tecla para dar una patada
     if(Phaser.Input.Keyboard.JustDown(this.kick)){
-      this.player.Kick();
+      this.zone = this.add.zone(this.player.x+this.player.width*1.3, this.player.y, this.player.width, this.player.height);
+      this.physics.world.enable(this.zone);
+      this.zone.body.setAllowGravity(false);
+      this.zone.body.setImmovable(false);
+
+      this.physics.add.collider(this.zone, this.redTimer, onCollision);
+
+      this.delete_zone = this.time.addEvent({ 
+        delay: 300, 
+        callback: this.DestroyZone, 
+        args: [this.zone], 
+        loop: false });
+            
     }
 
   }
@@ -243,9 +253,15 @@ export default class Level extends Phaser.Scene {
     this.building5 = new Platform(this, width*2+this.building4.width*4, height);
     scaleBuilding(this.building5, this.building5.width, this.building5.height, 8);
   }
-  
+
+  DestroyZone(args){
+    args.destroy();
+  }
+    
 
 }
+
+
 
 /**
  * External function that is called when object collide

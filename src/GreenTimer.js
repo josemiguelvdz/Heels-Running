@@ -20,7 +20,7 @@ export default class GreenTimer extends powerUp {
   handleCollision() {
 
    this.collideGreenTimer();
-
+    
   }
 
   /**
