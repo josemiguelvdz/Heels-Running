@@ -1,8 +1,8 @@
-import Player from './Player.js';
-import Police from './Police.js';
-import Platform from './Platform.js';
-import PowerUp from './PowerUp.js';
-import Ground from './Ground.js';
+import Player from './player.js';
+import Police from './police.js';
+import Platform from './platform.js';
+import PowerUp from './powerUp.js';
+import Ground from './ground.js';
 import Salmon from './salmon.js';
 import Coffe from './coffe.js';
 import RedTimer from './redTimer.js'
@@ -265,7 +265,7 @@ export default class Level extends Phaser.Scene {
 
 /**
  * External function that is called when object collide
- * @param {*} obj1 - Player 
+ * @param {*} obj1 - Player or Kick zone
  * @param {*} obj2 - Object that player collides with
  */
 function onCollision(obj1,obj2) {

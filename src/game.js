@@ -1,6 +1,6 @@
-import Boot from "./Boot.js";
-import Level from "./Scene.js";
-import Menu from "./Menu.js";
+import Boot from "./boot.js";
+import Level from "./scene.js";
+import Menu from "./menu.js";
 
 let config = {
     type: Phaser.CANVAS,

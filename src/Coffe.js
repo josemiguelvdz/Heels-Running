@@ -1,4 +1,4 @@
-import powerUp from './PowerUp.js';
+import powerUp from './powerUp.js';
 
 export default class Coffe extends powerUp {
 
