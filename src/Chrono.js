@@ -6,6 +6,7 @@ export default class Chrono extends Phaser.GameObjects.GameObject {
       this.minutos=0;
       this.segundos=0;
       this.timeElapsed=this.minutos + ' : '+ this.segundos;
+      this.segundosReales=0;
       this.text = this.scene.add.text(905,15,this.timeElapsed);
       this.writeTime();
       this.pause=false;
@@ -26,10 +27,23 @@ export default class Chrono extends Phaser.GameObjects.GameObject {
             this.minutos+=1;
         }
         if(this.segundos<10000){ // si los segundos tienen menos de dos cifras
-          if(this.segundos<1000)this.timeElapsed =  this.minutos + ' : 00'; // Si todavía no ha llegado a 1 segundo escribe 00
-          else this.timeElapsed =  this.minutos + ' : 0' + this.segundos.toString().substring(0,1); // Si todavía no ha llegado a 10 segundos escribe 0
+          if(this.segundos<1000)
+          {
+            this.timeElapsed =  this.minutos + ' : 00'; // Si todavía no ha llegado a 1 segundo escribe 00
+          }
+          else 
+          {
+            this.segundosReales=this.segundos.toString().substring(0,1);
+            this.timeElapsed =  this.minutos + ' : 0' + this.segundos.toString().substring(0,1); // Si todavía no ha llegado a 10 segundos escribe 0
+          }
         }
-        else this.timeElapsed =  this.minutos + ' : ' + this.segundos.toString().substring(0,2);
+        else 
+        {
+          this.segundosReales=this.segundos.toString().substring(0,2);
+         
+          this.timeElapsed =  this.minutos + ' : ' + this.segundos.toString().substring(0,2);
+        }
+       
       }
   }
 /**

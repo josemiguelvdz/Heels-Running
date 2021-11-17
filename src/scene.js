@@ -9,6 +9,7 @@ import RedTimer from './redTimer.js'
 import GreenTimer from './greenTimer.js';
 import Box from './box.js';
 import Chrono from './chrono.js';
+import Esmoquin from './esmoquin.js';
 
 
 
@@ -58,7 +59,11 @@ export default class Level extends Phaser.Scene {
       for(let i=0;i<this.powerUpsArray.length;i++)
       {
         if(this.powerUpsArray[i].movesbyTween)this.powerUpsArray[i].tweenMovement.pause();
-      }});
+      }
+      this.player.deactivePowerUpTimes();
+      this.player.contador.changeTime();
+      
+     });
       
 
       this.kick = this.input.keyboard.addKey('K');
@@ -119,10 +124,13 @@ export default class Level extends Phaser.Scene {
          this.physics.resume();
 
          this.chrono.changeTime();
+         this.player.contador.changeTime();
          for(let i=0;i<this.powerUpsArray.length;i++)
          {
              if(this.powerUpsArray[i].movesbyTween)this.powerUpsArray[i].tweenMovement.resume();
          }
+         this.player.activatePowerUpTimes();
+
         });
 
         this.settingsButton = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'settingsButton').setInteractive();
@@ -156,8 +164,7 @@ export default class Level extends Phaser.Scene {
      this.platforms = this.physics.add.staticGroup();
      this.platforms.add(this.platform);
      this.physics.add.collider(this.player,this.platforms);    // COLISION ENTRE PLAYER Y PLATAFORMAS
-     this.physics.add.collider(this.salmon,this.platforms);    //COLISION ENTRE SALMON Y PLATAFORMAS
-
+    
      // GRUPO DE LOS EDIFICIOS
      this.buildings = this.physics.add.staticGroup();
      this.buildings.add(this.building);
@@ -168,19 +175,28 @@ export default class Level extends Phaser.Scene {
      this.physics.add.collider(this.player,this.buildings);
 
     
-     this.salmons = this.physics.add.staticGroup();
-     this.salmons.add(this.salmon);
-     this.physics.add.collider(this.player,this.salmon,onCollision)
+    //  this.salmons = this.physics.add.group();
+    //  this.salmons.add(this.salmon);
+    //  this.physics.add.collider(this.player,this.salmons,onCollision)
+     
+
+
+    this.esmoquins = this.physics.add.group();
+     this.esmoquins.add(this.esmoquin);
+    this.physics.add.collider(this.player,this.esmoquins,onCollision)
+
+
+
+
 
      //Para crear la colision entre grupos usamos grupos estaticos por que si no no funciona
 
     //GRUPO DE LOS TIMERS
   
-    this.timers = this.physics.add.staticGroup();
+    this.timers = this.physics.add.group();
     this.timers.add(this.redTimer);
     this.timers.add(this.greenTimer)
     this.physics.add.collider(this.player,this.timers,onCollision);
-     this.physics.add.collider(this.player,this.timers,onCollision);
      //GRUPO DE LOS CAFÉS
      
      this.coffes = this.physics.add.staticGroup();
@@ -223,15 +239,18 @@ export default class Level extends Phaser.Scene {
     
      
     this.chrono= new Chrono(this);
-    this.salmon= new Salmon( this,this.player, 300, 300,'salmonFish',true);
-    this.powerUpsArray.push(this.salmon);
+    // this.salmon= new Salmon( this,this.player, 300, 100,'salmonFish',true);
+    // this.powerUpsArray.push(this.salmon);
+
+    this.esmoquin= new Esmoquin( this,this.player, 300, 100,'esmoquin',true);
+    this.powerUpsArray.push(this.esmoquin);
     
-    this.redTimer= new RedTimer( this,this.player, width+100, 300,'redTimer',true,this.chrono);
+    this.redTimer= new RedTimer( this,this.player, width+100, 200,'redTimer',true,this.chrono);
     this.powerUpsArray.push(this.redTimer);
-    this.greenTimer= new GreenTimer( this,this.player, 50, 200,'greenTimer',false,this.chrono);
+    this.greenTimer= new GreenTimer( this,this.player, 50, 100,'greenTimer',true,this.chrono);
     this.powerUpsArray.push(this.greenTimer);
     
-    this.coffe1= new Coffe( this,this.player, 600, 300,'coffe',false);
+    this.coffe1= new Coffe( this,this.player, 600, 100,'coffe',true);
     this.powerUpsArray.push(this.coffe1);
     
     this.platform = new Platform(this, this.player.y, 400); 

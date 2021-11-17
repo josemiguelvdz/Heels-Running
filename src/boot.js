@@ -34,6 +34,7 @@ export default class Boot extends Phaser.Scene {
       this.load.image('coffe', 'coffe.png');
       this.load.image('redTimer', 'redtimer.png');
       this.load.image('greenTimer', 'greentimer.png');
+      this.load.image('esmoquin', 'esmoquin.png');
       this.load.image('platform', 'platform.png');
       this.load.image('ground', 'ground.png');
       this.load.image('box', 'box.png');
@@ -44,6 +45,7 @@ export default class Boot extends Phaser.Scene {
       this.load.image('settingsButton', 'settingsButton.png');
       this.load.image('backButton', 'backButton.png');
       this.load.image('controls', 'controls.png');
+      
     }
     /**
      * Creación de la escena. En este caso, solo cambiamos a la escena que representa el

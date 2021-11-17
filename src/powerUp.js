@@ -17,7 +17,7 @@ export default class PowerUp extends Phaser.GameObjects.Sprite {
     {
       this.tweenMovement= this.scene.tweens.add({
       targets: this,
-      y: 700, //Cantidad de desplazamiento
+      y: 400, //Cantidad de desplazamiento
       duration: 1500,
       ease: 'Power',
       yoyo: true,

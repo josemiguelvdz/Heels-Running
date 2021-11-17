@@ -1,4 +1,4 @@
-
+import Chrono from "./chrono.js";
 
 export default class Player extends Phaser.GameObjects.Sprite {
 
@@ -14,6 +14,15 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.jumpSpeed = -400;
     this.jumpImpulse = 1.5;
     this.numLifes=nLifes;
+    this.esmoquinShield=false;
+
+   //Atributos relacionados con el esmoquin
+    this.offsetTime=0;
+    this.checkTiempo=false;  //Bool para verificar si se puede o no contar 
+    this.contador= new Chrono(this.scene); //Contador para poder activar y desactivar powrr ups con el tiempo 
+    this.durationEsmoquin=0; //Para la duracion del esmoquin 
+
+
 
 
     this.arrested=false;
@@ -76,26 +85,82 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.body.setVelocityY(this.jumpSpeed*this.jumpImpulse);
     }
 
+    //Parte del power up esmoquin
+   
+    if(this.checkTiempo) //Si se se puede verificar el tiempo 
+    {
+     
+    
+     if(this.durationEsmoquin== this.contador.segundosReales-this.offsetTime) //Verificamos que haya pasado el tiempo 
+     {
+       this.config2EsmoquinShield();
+       //Faltaria invocar esteticamente a lo que refleja que el jugador tiene el esmoquin(interfaz, sprite..etc);
+     }
+    }
+
+
+  
 
   }
 
 
 /**
  * Method that is called when police collide player
- * Put player speed to 0 and play idle animation
+ * Set player speed to 0 and plays idle animation
+ * Also pauses time of the smoking power up if active
  */
   Arrestado(){
     this.arrested=true;
     this.speed=0;
     this.jumpSpeed=0;
+    this.segundosIniciales=0;  
+    this.checkTiempo =false; 
     this.stop();
     this.play('idle_anim');
   }
-
+  
   /**
- * That method return actual scene
+ * This method returns the actual scene
  * 
  */
   getActualScene() {return this.scene;}
+
+  /**
+   * 
+   * Activates and Deactivates shield for not recieving damage of enemies
+   *  @param {*} durationesm -duration in seconds of the efect of the power up 
+   */
+  configEsmoquinShield(durationesm)
+  {
+ 
+    this.esmoquinShield=true; //Ahora no recibe daño
+    this.offsetTime=this.contador.segundosReales;  //Vemos desde donde empieza a contar los 5 segundos 
+    this.checkTiempo =true; //Se puede verificar si han pasado los 5 segundos 
+    this.durationEsmoquin=durationesm; //Ajustamos cuanto tiene que durar a lo que nos diga el power up
+  }
+  config2EsmoquinShield()
+  {
+    
+    this.esmoquinShield=false; //Ahora puede recibir daño 
+    this.segundosIniciales=0;  //Como no cuenta lo ponemos a 0
+    this.checkTiempo =false; //No verifica el tiempo
+  }
+  /**
+   * Used for deactivate a power up if you are in pause menu 
+   */
+  deactivePowerUpTimes()
+   {
+     
+    
+    this.checkTiempo =false;
+  }
+   /**
+   * Used for activate power up if you are not  in pause menu 
+   */
+ activatePowerUpTimes()
+  {
+   
+   this.checkTiempo =true;
+ }
    
 }
