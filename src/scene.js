@@ -200,7 +200,7 @@ export default class Level extends Phaser.Scene {
     this.physics.add.collider(this.player,this.timers,onCollision);
      //GRUPO DE LOS CAFÉS
      
-     this.coffes = this.physics.add.staticGroup();
+     this.coffes = this.physics.add.group();
      this.coffes.add(this.coffe1);
      this.physics.add.collider(this.player,this.coffes,onCollision);
     //GRUPO DE LAS PLATAFORMAS Y EL POLICIA
@@ -233,7 +233,7 @@ export default class Level extends Phaser.Scene {
   {
     this.player = new Player(this, 200, 300, 3);
     this.police= new Police(this,0,300,3);
-    this.gangster = new Gangster(this, 500, 50);
+    this.gangster = new Gangster(this, this.player, 500, 50);
 
     for(let i = 0; i < totalWidth; i+=200){
       this.ground = new Ground(this, this.player,this.police, this.gangster, i, height);
