@@ -22,7 +22,7 @@ export default class Salmon extends powerUp {
    */
   handleCollision() {
 
-    this.collideEsmoquin();
+    this.collideSalmon();
 
   }
 /**

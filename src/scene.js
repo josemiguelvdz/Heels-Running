@@ -76,7 +76,7 @@ export default class Level extends Phaser.Scene {
     const cam = this.cameras.main;
     const speed = 3;
 
-      console.log(this.redTimer.y)
+     
     // cam.scrollX += speed;
 
     if (Phaser.Input.Keyboard.JustDown(this.scape)) { 
@@ -176,10 +176,11 @@ export default class Level extends Phaser.Scene {
      this.physics.add.collider(this.player,this.buildings);
 
     
-    //  this.salmons = this.physics.add.group();
-    //  this.salmons.add(this.salmon);
-    //  this.physics.add.collider(this.player,this.salmons,onCollision)
-     
+     this.salmons = this.physics.add.group();
+     this.salmons.add(this.salmon);
+     this.physics.add.overlap(this.player,this.salmons,(o1,o2)=> {
+      onCollision(o1,o2);
+   })
 
 
     this.esmoquins = this.physics.add.group();
@@ -246,8 +247,8 @@ export default class Level extends Phaser.Scene {
     
      
     this.chrono= new Chrono(this);
-    // this.salmon= new Salmon( this,this.player, 300, 100,'salmonFish',true);
-    // this.powerUpsArray.push(this.salmon);
+     this.salmon= new Salmon( this,this.player, 800, 100,'salmonFish',true);
+     this.powerUpsArray.push(this.salmon);
 
     this.esmoquin= new Esmoquin( this,this.player, 300, 100,'esmoquin',true);
     this.powerUpsArray.push(this.esmoquin);
