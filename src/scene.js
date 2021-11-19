@@ -76,7 +76,7 @@ export default class Level extends Phaser.Scene {
     const cam = this.cameras.main;
     const speed = 3;
 
-
+      console.log(this.redTimer.y)
     // cam.scrollX += speed;
 
     if (Phaser.Input.Keyboard.JustDown(this.scape)) { 
@@ -184,8 +184,9 @@ export default class Level extends Phaser.Scene {
 
     this.esmoquins = this.physics.add.group();
      this.esmoquins.add(this.esmoquin);
-    this.physics.add.collider(this.player,this.esmoquins,onCollision)
-
+    this.physics.add.collider(this.player,this.esmoquins,(o1,o2)=> {
+      onCollision(o1,o2);
+   })
 
 
 
@@ -197,12 +198,16 @@ export default class Level extends Phaser.Scene {
     this.timers = this.physics.add.group();
     this.timers.add(this.redTimer);
     this.timers.add(this.greenTimer)
-    this.physics.add.collider(this.player,this.timers,onCollision);
+    this.physics.add.overlap(this.player,this.timers,(o1,o2)=> {
+     onCollision(o1,o2);
+  });
      //GRUPO DE LOS CAFÉS
      
      this.coffes = this.physics.add.group();
      this.coffes.add(this.coffe1);
-     this.physics.add.collider(this.player,this.coffes,onCollision);
+     this.physics.add.overlap(this.player,this.coffes,(o1,o2)=> {
+      onCollision(o1,o2);
+   });
     //GRUPO DE LAS PLATAFORMAS Y EL POLICIA
 
     this.platforms = this.physics.add.staticGroup();
@@ -247,7 +252,7 @@ export default class Level extends Phaser.Scene {
     this.esmoquin= new Esmoquin( this,this.player, 300, 100,'esmoquin',true);
     this.powerUpsArray.push(this.esmoquin);
     
-    this.redTimer= new RedTimer( this,this.player, width+100, 200,'redTimer',true,this.chrono);
+    this.redTimer= new RedTimer( this,this.player, 500, 100,'redTimer',true,this.chrono);
     this.powerUpsArray.push(this.redTimer);
     this.greenTimer= new GreenTimer( this,this.player, 50, 100,'greenTimer',true,this.chrono);
     this.powerUpsArray.push(this.greenTimer);
