@@ -5,7 +5,6 @@ export default class Bullet extends Phaser.GameObjects.Sprite {
 
         this.scene.add.existing(this);
         //this.scene.physics.add.existing(this);
-        player.scale.y 
         this.scale = 0.2;
 
         this.rotation = (player.x - this.x, player.y - this.y)*-1;

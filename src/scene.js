@@ -136,7 +136,7 @@ export default class Level extends Phaser.Scene {
         });
 
         this.settingsButton = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'settingsButton').setInteractive();
-        this.settingsButton.on('pointerdown', () => {this.settings()});
+        this.settingsButton.on('pointerdown', () => {this.settings(), this.resumeButton.destroy(), this.settingsButton.destroy(), this.exitButton.destroy()});
 
        this.exitButton = this.add.image(this.scale.width*0.5, this.scale.height*0.7, 'exitButton').setInteractive();
 
@@ -150,7 +150,8 @@ export default class Level extends Phaser.Scene {
     this.controls = this.add.image(this.scale.width*0.5, this.scale.height*0.4, 'controls').setScale(0.6, 0.7);
     this.backButton = this.add.image(100, 70, 'backButton').setInteractive();
 
-    this.backButton.on('pointerdown', () => {this.controls.destroy(), this.backButton.destroy()});
+    this.backButton.on('pointerdown', () => {
+      this.controls.destroy(), this.backButton.destroy(), this.pauseBackGround.destroy(), this.activetePause = false, this.stop(this.activetePause)});
   }
   
 
