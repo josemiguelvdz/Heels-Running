@@ -8,8 +8,9 @@ export default class PowerUp extends Phaser.GameObjects.Sprite {
     console.log(nombreImg);
     
     this.scene.add.existing(this);
-    this.scene.physics.add.existing(this,false);
+    this.scene.physics.add.existing(this);
     this.body.setCollideWorldBounds(); //Colision con los limies del mundo 
+    this.body.moves=false;
     this.y -= this.height;
     this.tweenMovement;
     this.movesbyTween=moving;
@@ -19,7 +20,7 @@ export default class PowerUp extends Phaser.GameObjects.Sprite {
       targets: this,
       y: 400, //Cantidad de desplazamiento
       duration: 1500,
-      ease: 'Power',
+      ease: 'Linear',
       yoyo: true,
       repeat: -1,
       delay: 200 //Tiempo que tarda en empezar
