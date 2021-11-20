@@ -11,6 +11,7 @@ import Box from './box.js';
 import Chrono from './chrono.js';
 import Esmoquin from './esmoquin.js';
 import Gangster from './gangster.js';
+import FallingObject from './fallingObject.js';
 
 
 
@@ -158,7 +159,6 @@ export default class Level extends Phaser.Scene {
  * 
  * 
  */
-// LOS GRUPOS NO FUNCIONAN CORRECTAMENTE
   createGroups()
   {
     //GRUPO DE LAS PLATAFORMAS
@@ -185,7 +185,7 @@ export default class Level extends Phaser.Scene {
 
     this.esmoquins = this.physics.add.group();
      this.esmoquins.add(this.esmoquin);
-    this.physics.add.collider(this.player,this.esmoquins,(o1,o2)=> {
+    this.physics.add.overlap(this.player,this.esmoquins,(o1,o2)=> {
       onCollision(o1,o2);
    })
 
@@ -209,6 +209,16 @@ export default class Level extends Phaser.Scene {
      this.physics.add.overlap(this.player,this.coffes,(o1,o2)=> {
       onCollision(o1,o2);
    });
+     //GRUPO DE LOS OBJETOS CAYENTES CON EL SUELO Y EL PLAYER
+     this.fallObjs= this.physics.add.group();
+    this.fallObjs.add(this.fallObjEx);
+    this.physics.add.overlap(this.player,this.fallObjs,(o1,o2)=> {
+      console.log("Huele a que entra");
+      o2.handleCollisionFallObj(true);
+   });
+
+
+
     //GRUPO DE LAS PLATAFORMAS Y EL POLICIA
 
     this.platforms = this.physics.add.staticGroup();
@@ -227,6 +237,10 @@ export default class Level extends Phaser.Scene {
 
     //GRUPO DEL POLICIA Y EL PLAYER
     this.physics.add.collider(this.player,this.police,onCollisionPolice);
+
+
+
+
   }
   
 /**
@@ -260,6 +274,9 @@ export default class Level extends Phaser.Scene {
     
     this.coffe1= new Coffe( this,this.player, 600, 100,'coffe',true);
     this.powerUpsArray.push(this.coffe1);
+
+    this.fallObjEx = new FallingObject(this,this.player, 800, 300,'salmonFish');
+    console.log(this.fallObjEx);
     
     this.platform = new Platform(this, this.player.y, 400); 
 

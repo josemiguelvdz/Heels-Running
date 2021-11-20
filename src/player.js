@@ -67,7 +67,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
   preUpdate(t,dt) {
     super.preUpdate(t,dt);
     this.animatePlayer();
-
+    console.log(this.numLifes);
     //this.body.setVelocityX(this.speed); //Movimiento continuo del jugador hacia la derecha
 
     if (this.cursors.left.isDown && !this.arrested) {
@@ -162,5 +162,25 @@ export default class Player extends Phaser.GameObjects.Sprite {
    
    this.checkTiempo =true;
  }
-   
+ /**
+  * Adds lifes to player and updates the UI
+  * @param {*} nLAdd number of lifes to add
+  */
+   addLife(nLAdd)
+   {
+     if(this.numLifes<3)this.numLifes+=nLAdd;
+     //Actualizar interfaz
+   }
+   /**
+    * Reduces lifes of player if not protected by esmoquin , updates the UI, and restarts de game if lifes are 0
+    * 
+    * @param {*} nLlose number of lifes to lose
+    */
+   loseLife(nLlose)
+   {
+     if(!this.esmoquinShield)this.numLifes-=nLlose;
+    //Actualizar interfaz
+    //Si la vida es menor a 1 tiene que salir un texto de has perdido o algo asi 
+    //Y que te lleve al menu de inicio
+   }
 }

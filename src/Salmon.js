@@ -31,7 +31,7 @@ export default class Salmon extends powerUp {
  * 
  */
   collideSalmon() {
-    this.player.numLifes = this.player.numLifes + this.lifesHealed;
+    this.player
     this.destroyObject();
   }
 
