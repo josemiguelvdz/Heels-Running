@@ -19,20 +19,20 @@ export default class Gangster extends Phaser.GameObjects.Sprite {
 
     cooldownShoot(player){
         
+        console.log(this.body.y);
         this.scene.time.addEvent( {
-            delay: 2000, 
+            delay: 2000,  
             callback: this.shoot,
-            args: [this.scene, this.body.x, player],
+            args: [this.scene, this.body.x, this.body.y, player],
             callbackScope: false,
             loop: true
         });
             
     }
 
-    shoot(scene, x, player){
+    shoot(scene, x, y, player){
 
-        console.log("Disparo BB");
-        new Bullet(scene, player, x, 368);
+        new Bullet(scene, player, x, y);
 
     }
 

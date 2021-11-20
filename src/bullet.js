@@ -5,18 +5,16 @@ export default class Bullet extends Phaser.GameObjects.Sprite {
 
         this.scene.add.existing(this);
         //this.scene.physics.add.existing(this);
-
+        player.scale.y 
         this.scale = 0.2;
 
-        this.jug = player;
-
-        this.rotation = Phaser.Math.Angle.Between(this.x, this.y, this.jug.x, this.jug.y);
-
+        this.rotation = (player.x - this.x, player.y - this.y)*-1;
     }
 
     preUpdate(){
         super.preUpdate();
         
-        //this.body.setVelocityX(100);
+        console.log(this.rotation);
+        //this.body.setVelocity(1,1)*this.rotation;
     }
 }
