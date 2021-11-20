@@ -8,32 +8,40 @@ export default class Gangster extends Phaser.GameObjects.Sprite {
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
 
-        this.cooldownShoot(player);
+        this.jugador = player;
+        this.segundos = 0;
+    }
+
+    preUpdate(time, delta){
+        super.preUpdate(time, delta);
+        this.animateGangster();
+
+        if(!this.scene.isPaused()){
+            this.segundos+=Math.round(delta);
+
+            if((this.segundos) > 2000)
+            {
+                this.segundos = 0;
+                this.shoot();
+            }
+        }
+    }
+
+    shoot(){
+
+        new Bullet(this.scene, this.jugador, this.x, this.y);
 
     }
 
-    /*preUpdate(){
-        super.preUpdate();
-        console.log(this.body.y);
-    }*/
+    animateGangster(){
 
-    cooldownShoot(player){
-        
-        console.log(this.body.y);
-        this.scene.time.addEvent( {
-            delay: 2000,  
-            callback: this.shoot,
-            args: [this.scene, this.body.x, this.body.y, player],
-            callbackScope: false,
-            loop: true
-        });
-            
-    }
+        if (this.jugador.x < this.x) {
+            this.setFlip(false,false);
+        }
 
-    shoot(scene, x, y, player){
-
-        new Bullet(scene, player, x, y);
-
+        else{
+            this.setFlip(true, false);
+        }
     }
 
 }

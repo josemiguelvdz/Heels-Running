@@ -45,15 +45,17 @@ export default class Level extends Phaser.Scene {
     
      //creamos los distintos elementos del juego
      //Los asociamos al grupo para las colisiones 
+     this.activetePause = false;
+
      this.powerUpsArray=[];
      this.createObjects(width, height, totalWidth);
-      this.createGroups();
+     this.createGroups();
     
     
       this.cameras.main.setBounds(0, 0, width*5, height);
       //this.cameras.main.startFollow(this.police);
 
-      this.activetePause = false;
+      
 
       this.scape = this.input.keyboard.addKey('ESC');
       this.scape.on('down', () => {
@@ -152,6 +154,10 @@ export default class Level extends Phaser.Scene {
 
     this.backButton.on('pointerdown', () => {
       this.controls.destroy(), this.backButton.destroy(), this.pauseBackGround.destroy(), this.activetePause = false, this.stop(this.activetePause)});
+  }
+
+  isPaused(){
+    return this.activetePause;
   }
   
 
@@ -306,7 +312,6 @@ export default class Level extends Phaser.Scene {
     
 
 }
-
 
 
 /**
