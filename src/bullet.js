@@ -13,7 +13,6 @@ export default class Bullet extends Phaser.GameObjects.Sprite {
     preUpdate(){
         super.preUpdate();
         
-        console.log(this.rotation);
         //this.body.setVelocity(1,1)*this.rotation;
     }
 }
