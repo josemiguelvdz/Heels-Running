@@ -239,8 +239,11 @@ export default class Level extends Phaser.Scene {
     //GRUPO DEL POLICIA Y EL PLAYER
     this.physics.add.collider(this.player,this.police,onCollisionPolice);
 
-
-
+    this.boxes = this.physics.add.group();
+    this.boxes.add(this.box);
+    this.physics.add.collider(this.player, this.boxes,(o1,o2)=> {
+      onCollision(o1,o2);
+    });
 
   }
   
@@ -255,12 +258,12 @@ export default class Level extends Phaser.Scene {
     this.player = new Player(this, 200, 300, 3);
     this.police= new Police(this,0,300,3);
     this.gangster = new Gangster(this, this.player, 500, 450);
+    this.box = new Box(this, this.player, 350, 300);
 
     for(let i = 0; i < totalWidth; i+=200){
-      this.ground = new Ground(this, this.player,this.police, this.gangster, i, height);
+      this.ground = new Ground(this, this.player,this.police, this.gangster, this.box, i, height);
     }
     
-     
     this.chrono= new Chrono(this);
      this.salmon= new Salmon( this,this.player, 800, 100,'salmonFish',true);
      this.powerUpsArray.push(this.salmon);
@@ -280,8 +283,6 @@ export default class Level extends Phaser.Scene {
     console.log(this.fallObjEx);
     
     this.platform = new Platform(this, this.player.y, 400); 
-
-    this.box = new Box(this, this.player, 350, 300);
 
     this.building = new Platform(this, width*2, height);
     scaleBuilding(this.building, this.building.width, this.building.height, 5);
