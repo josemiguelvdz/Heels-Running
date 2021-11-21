@@ -28,6 +28,8 @@ export default class Boot extends Phaser.Scene {
       this.load.spritesheet('run','runspritesheet.png',{frameWidth:64, frameHeight:64})
       this.load.spritesheet('policeIdle','idlepolicespritesheet.png',{frameWidth:64,frameHeight:64})
       this.load.spritesheet('boxDestruction', 'boxAnimation.png', {frameWidth:64, frameHeight:64});
+      this.load.spritesheet('smokeAnimation','humoSpriteSheet.png',{frameWidth:64,frameHeight:64});
+      this.load.spritesheet('helicopterAnimation','helicopterSpritesheet.png',{frameWidth:64,frameHeight:64});
 
 
       this.load.image('salmonFish', 'salmonFish.png');

@@ -8,8 +8,10 @@ export default class Chrono extends Phaser.GameObjects.GameObject {
       this.timeElapsed=this.minutos + ' : '+ this.segundos;
       this.segundosReales=0;
       this.text = this.scene.add.text(905,15,this.timeElapsed);
+      this.text.setScrollFactor(0);
       this.writeTime();
       this.pause=false;
+      this.fin=false;
   }
  /**
   * destroy object at the end of the program
@@ -18,7 +20,7 @@ export default class Chrono extends Phaser.GameObjects.GameObject {
       this.destroy(true) //Se destruye al final del frame
   }
   preUpdate(time, delta) {
-      if(!this.pause){ // Si no está pausado suma el tiempo
+      if(!this.pause && !this.fin){ // Si no está pausado suma el tiempo
         this.text.setText( this.timeElapsed);
         this.segundos+=Math.round(delta);
         if((this.segundos)/600 >100) // Si ha llegado a 60 segundos, los reinicia y suma los minutos
@@ -34,16 +36,14 @@ export default class Chrono extends Phaser.GameObjects.GameObject {
           else 
           {
             this.segundosReales=this.segundos.toString().substring(0,1);
-            this.timeElapsed =  this.minutos + ' : 0' + this.segundos.toString().substring(0,1); // Si todavía no ha llegado a 10 segundos escribe 0
+            this.timeElapsed =  this.minutos + ' : 0' + this.segundosReales.toString().substring(0,1); // Si todavía no ha llegado a 10 segundos escribe 0
           }
         }
         else 
         {
           this.segundosReales=this.segundos.toString().substring(0,2);
-         
-          this.timeElapsed =  this.minutos + ' : ' + this.segundos.toString().substring(0,2);
+          this.timeElapsed =  this.minutos + ' : ' + this.segundosReales.toString().substring(0,2);
         }
-       
       }
   }
 /**
@@ -81,7 +81,7 @@ export default class Chrono extends Phaser.GameObjects.GameObject {
   reduceTime( secsExtra ,minsExtra)
   {
     if(this.minutos>= minsExtra)  this.minutos-=minsExtra;
-  
+    
   }
 
   /**
@@ -90,5 +90,9 @@ export default class Chrono extends Phaser.GameObjects.GameObject {
  */
   changeTime(){
     this.pause=!this.pause;
+  }
+
+  finish(){
+    this.fin=true;
   }
 }

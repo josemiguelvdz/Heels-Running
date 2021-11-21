@@ -53,7 +53,7 @@ export default class Level extends Phaser.Scene {
     
     
       this.cameras.main.setBounds(0, 0, width*5, height);
-      //this.cameras.main.startFollow(this.police);
+      this.cameras.main.startFollow(this.player);
 
       
 
@@ -230,7 +230,7 @@ export default class Level extends Phaser.Scene {
 
     this.platforms = this.physics.add.staticGroup();
     this.platforms.add(this.platform);
-    this.physics.add.collider(this.police,this.platforms);    // COLISION ENTRE PLAYER Y PLATAFORMAS
+    this.physics.add.collider(this.police,this.platforms,helicopter);    // COLISION ENTRE PLAYER Y PLATAFORMAS
 
 
     // GRUPO DE LOS EDIFICIOS Y EL POLICIA
@@ -240,10 +240,11 @@ export default class Level extends Phaser.Scene {
     this.buildings.add(this.building3);
     this.buildings.add(this.building4);
     this.buildings.add(this.building5);
-    this.physics.add.collider(this.police,this.buildings);
+    this.physics.add.collider(this.police,this.buildings,helicopter);
 
     //GRUPO DEL POLICIA Y EL PLAYER
     this.physics.add.collider(this.player,this.police,onCollisionPolice);
+
 
     this.boxes = this.physics.add.staticGroup();
     this.boxes.add(this.box);
@@ -267,7 +268,7 @@ export default class Level extends Phaser.Scene {
     this.box = new Box(this, 350, 535);
 
     for(let i = 0; i < totalWidth; i+=200){
-      this.ground = new Ground(this, this.player,this.police, this.gangster, i, height);
+      this.ground = new Ground(this,this.police,this.player, this.gangster, i, height);
     }
     
     this.chrono= new Chrono(this);
@@ -309,8 +310,6 @@ export default class Level extends Phaser.Scene {
   DestroyZone(args){
     args.destroy();
   }
-    
-
 }
 
 
@@ -330,7 +329,7 @@ function onCollision(obj1,obj2) {
  */
 function  onCollisionPolice (obj1,obj2) {
   obj1.Arrestado();
-  obj1.getActualScene().chrono.changeTime();
+  obj1.getActualScene().chrono.finish();
   obj2.catchP(obj1);
 }
 
@@ -370,4 +369,14 @@ function scaleBuilding(platform, width, height,  buildingScaleFactor) {
   platform.setScale(1, buildingScaleFactor);
   platform.body.setSize(platform.width, platform.height, true);
 }
+/**
+ * External function that is called to transform the polico into a helicopter.
+ * @param {*} obj1 - Police
+ */
+function helicopter(obj1){
+    obj1.y=20;
+    obj1.helicopter=true;
+    obj1.body.setAllowGravity(false);
+}
+
 
