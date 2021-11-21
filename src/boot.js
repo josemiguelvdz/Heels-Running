@@ -33,7 +33,9 @@ export default class Boot extends Phaser.Scene {
 
       // barra de vida
       this.load.atlas("healthBar","healthBar.png","healthBar.json");
-
+      // circulo de power ups
+      this.load.atlas("powerUpBar", "powerUpBar.png", "powerUpBar.json");
+      
       this.load.image("hudTest", "hud.png");
 
 
