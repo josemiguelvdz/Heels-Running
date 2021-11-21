@@ -32,6 +32,8 @@ export default class PowerUpBar extends Phaser.GameObjects.GameObject {
     else if(this.alcohols.contains(currentPowerUp)){
       this.redCircle.setVisible(true);
     }
+
+    console.log("test");
   }
 
 
