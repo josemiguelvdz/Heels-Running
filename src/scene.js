@@ -8,6 +8,7 @@ import RedTimer from './redTimer.js'
 import GreenTimer from './greenTimer.js';
 import Box from './box.js';
 import Chrono from './chrono.js';
+import Alcohol from './alcohol.js';
 import Esmoquin from './esmoquin.js';
 import Gangster from './gangster.js';
 import FallingObject from './fallingObject.js';
@@ -224,6 +225,11 @@ export default class Level extends Phaser.Scene {
      this.physics.add.overlap(this.player,this.coffes,(o1,o2)=> {
       onCollision(o1,o2);
    });
+   this.alcohols = this.physics.add.group();
+   this.alcohols.add(this.alcoholEx);
+   this.physics.add.overlap(this.player,this.alcohols,(o1,o2)=> {
+    onCollision(o1,o2);
+ });
      //GRUPO DE LOS OBJETOS CAYENTES CON EL SUELO Y EL PLAYER
      this.fallObjs= this.physics.add.group();
     this.fallObjs.add(this.fallObjEx);
@@ -291,9 +297,12 @@ export default class Level extends Phaser.Scene {
     // AÑADIR TODOS LOS GRUPOS
     
     
-    this.chrono= new Chrono(this);
+     this.chrono= new Chrono(this);
      this.salmon= new Salmon( this,this.player, 800, 100,'salmonFish',true);
      this.powerUpsArray.push(this.salmon);
+
+     this.alcoholEx= new Alcohol( this,this.player, 800, 100,'vino',true);
+     this.powerUpsArray.push(this.alcoholEx);
 
     this.esmoquin= new Esmoquin( this,this.player, 300, 100,'esmoquin',true);
     this.powerUpsArray.push(this.esmoquin);
@@ -306,11 +315,11 @@ export default class Level extends Phaser.Scene {
     this.coffe1= new Coffe( this,this.player, 600, 100,'coffe',true);
     this.powerUpsArray.push(this.coffe1);
 
-    this.fallObjEx = new FallingObject(this,this.player, 800, 300,'salmonFish');
+    this.fallObjEx = new FallingObject(this,this.player, 800, 300,'maceta');
     console.log(this.fallObjEx);
-    this.fallObjEx2 = new FallingObject(this,this.player, 1300, 300,'salmonFish');
+    this.fallObjEx2 = new FallingObject(this,this.player, 1300, 300,'maceta');
     console.log(this.fallObjEx2);
-    this.fallObjEx3 = new FallingObject(this,this.player, 1700, 300,'salmonFish');
+    this.fallObjEx3 = new FallingObject(this,this.player, 1700, 300,'maceta');
     console.log(this.fallObjEx3);
     
     this.platform = new Platform(this, this.player.y, 400); 
