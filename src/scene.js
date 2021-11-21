@@ -2,7 +2,6 @@ import Player from './player.js';
 import Police from './police.js';
 import Platform from './platform.js';
 import PowerUp from './powerUp.js';
-import Ground from './ground.js';
 import Salmon from './salmon.js';
 import Coffe from './coffe.js';
 import RedTimer from './redTimer.js'
@@ -274,9 +273,19 @@ export default class Level extends Phaser.Scene {
     this.gangster = new Gangster(this, this.player, 500, 450);
     this.box = new Box(this, 350, 535);
 
-    for(let i = 0; i < totalWidth; i+=200){
-      this.ground = new Ground(this,this.police,this.player, this.gangster, i, height);
-    }
+
+
+    // SUELO
+    this.groundZone = this.add.zone(0, 600, totalWidth, this.player.height);
+    this.physics.world.enable(this.groundZone);
+    this.groundZone.body.setAllowGravity(false);
+    this.groundZone.body.setImmovable(true);
+
+    this.physics.add.collider(this.groundZone, this.player);
+    this.physics.add.collider(this.groundZone, this.police);
+    this.physics.add.collider(this.groundZone, this.gangster);
+    // AÑADIR TODOS LOS GRUPOS
+    
     
     this.chrono= new Chrono(this);
      this.salmon= new Salmon( this,this.player, 800, 100,'salmonFish',true);
