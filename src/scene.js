@@ -305,21 +305,21 @@ export default class Level extends Phaser.Scene {
     
     
      this.chrono= new Chrono(this,true);
-     this.salmon= new Salmon( this,this.player, 800, 100,'salmonFish',true);
+     this.salmon= new Salmon( this,this.player, 800, 70,'salmonFish',true);
      this.powerUpsArray.push(this.salmon);
 
-     this.alcoholEx= new Alcohol( this,this.player, 800, 100,'vino',true);
+     this.alcoholEx= new Alcohol( this,this.player, 800, 70,'vino',true);
      this.powerUpsArray.push(this.alcoholEx);
 
-    this.esmoquin= new Esmoquin( this,this.player, 300, 100,'esmoquin',true);
+    this.esmoquin= new Esmoquin( this,this.player, 300, 70,'esmoquin',true);
     this.powerUpsArray.push(this.esmoquin);
 
-    this.esmoquin2= new Esmoquin( this,this.player, 1500, 100,'esmoquin',true);
+    this.esmoquin2= new Esmoquin( this,this.player, 1500, 70,'esmoquin',true);
     this.powerUpsArray.push(this.esmoquin2);
     
-    this.redTimer= new RedTimer( this,this.player, 500, 100,'redTimer',true,this.chrono);
+    this.redTimer= new RedTimer( this,this.player, 500, 70,'redTimer',true,this.chrono);
     this.powerUpsArray.push(this.redTimer);
-    this.greenTimer= new GreenTimer( this,this.player, 50, 100,'greenTimer',true,this.chrono);
+    this.greenTimer= new GreenTimer( this,this.player, 50, 70,'greenTimer',true,this.chrono);
     this.powerUpsArray.push(this.greenTimer);
     
     this.coffe1= new Coffe( this,this.player, 600, 100,'coffe',true);

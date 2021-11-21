@@ -11,6 +11,7 @@ export default class PowerUp extends Phaser.GameObjects.Sprite {
     this.scene.physics.add.existing(this);
     this.body.setCollideWorldBounds(); //Colision con los limies del mundo 
     this.y -= this.height;
+    this.body.moves=false;
     this.tweenMovement;
     this.movesbyTween=moving;
     if(moving)
