@@ -6,7 +6,7 @@ export default class Coffe extends PowerUp {
   constructor(scene, player, x, y, nombreImg,moving) {
     super(scene, player, x, y, nombreImg,moving); //Constructor de la clase base
 
-        this.speedAux= 120; //Incremento de velocidad que tiene el jugador 
+        
         this.duration=4000;
   }
 
@@ -36,8 +36,7 @@ export default class Coffe extends PowerUp {
        
        
      
-       this.player.speed=this.player.speed+this.speedAux;
-
+       this.player.controlSpeed("Increase");
        //Timer para reestablecer la velocidad del jugador a los 4 segundos
        let timer = escena.time.addEvent( {
        delay: this.duration, 
@@ -54,7 +53,7 @@ export default class Coffe extends PowerUp {
  adjustSpeed(speed)
  {  
  
-  this.player.speed=this.player.speed-120;  //Hay que solucionar que la variable este cableada
+  this.player.restoreSpeed("Increase");
 
  }
 

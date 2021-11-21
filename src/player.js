@@ -23,7 +23,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.durationEsmoquin=0; //Para la duracion del esmoquin 
 
 
-
+    this.speedVariable=120; 
+    this.alcoholEffect=false;
+    this.coffeEffect=false;
 
     this.arrested=false;
 
@@ -180,4 +182,42 @@ export default class Player extends Phaser.GameObjects.Sprite {
     //Si la vida es menor a 1 tiene que salir un texto de has perdido o algo asi 
     //Y que te lleve al menu de inicio
    }
+
+     /**
+     * restores Player velocity to a modified value afeter duration of power up effect
+     * @param {*} action sets if player needs to gain or reduce its  velocity
+     */
+    controlSpeed(action)
+    {
+
+      if(action==="Reduce") 
+      {
+        this.speed=this.speed-this.speedVariable;
+        this.alcoholEffect=true;
+      }
+      else  if(action==="Increase")
+      {
+        this.speed=this.speed+this.speedVariable;
+        this.coffeEffect=true;
+      }
+    }
+    /**
+     * restores Player velocity to its initial value afeter duration of power up effect
+     * @param {*} action sets if player needs to gain or reduce its modified velocity
+     */
+   restoreSpeed(action)
+    {  
+    
+      if(action==="Reduce") 
+      {
+        this.speed=this.speed+this.speedVariable;
+        this.alcoholEffect=false;
+      }
+      else  if(action==="Increase")
+      {
+        this.speed=this.speed-this.speedVariable;
+        this.coffeEffect=false;
+      }
+   
+    }
 }

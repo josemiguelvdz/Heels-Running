@@ -6,7 +6,6 @@ export default class Alcohol extends PowerUp {
   constructor(scene, player, x, y, nombreImg,moving) {
     super(scene, player, x, y, nombreImg,moving); //Constructor de la clase base
 
-        this.speedAux= 120; //Incremento de velocidad que tiene el jugador 
         this.duration=4000; //Dureacion del efecto del power up
   }
 
@@ -37,7 +36,7 @@ export default class Alcohol extends PowerUp {
        
        
      
-       this.player.speed=this.player.speed-this.speedAux;
+      this.player.controlSpeed("Reduce");
 
        //Timer para reestablecer la velocidad del jugador a los 4 segundos
        let timer = escena.time.addEvent( {
@@ -51,11 +50,10 @@ export default class Alcohol extends PowerUp {
     * Called after the 4 delay of the created event,its function is to increase player velocity up to its initial state
     * 
     */
- adjustSpeed()
- {  
+   adjustSpeed()
+   {
+     this.player.restoreSpeed("Reduce");
+   }
  
-  this.player.speed=this.player.speed +120;  //Hay que solucionar que la variable este cableada
-
- }
 
 }
