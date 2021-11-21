@@ -77,6 +77,10 @@ export default class Level extends Phaser.Scene {
       // Barra de vida   
       this.healthBar = new HealthBar(this, 100, 100, this.player);
 
+
+      // CAMBIAR BOUDING BOX DE TAMAÑO
+      //this.time.addEvent({delay: 1000, callback: this.delayDone, callbackScope: this, loop: false})
+
   }
 
   update(){
@@ -329,6 +333,12 @@ export default class Level extends Phaser.Scene {
 
   DestroyZone(args){
     args.destroy();
+  }
+
+
+  // Cambiar tamaño sprites
+  delayDone(){
+    this.redTimer.body.setSize(this.redTimer.width/2, this.redTimer.height, true);
   }
 }
 
