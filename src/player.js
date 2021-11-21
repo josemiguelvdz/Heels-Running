@@ -2,7 +2,7 @@ import Chrono from "./chrono.js";
 
 export default class Player extends Phaser.GameObjects.Sprite {
 
-  constructor(scene, x, y,nLifes) {
+  constructor(scene, x, y, nLifes) {
     super(scene, x, y, 'idle');
     
     this.score = 0;
@@ -99,7 +99,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     }
 
 
-  
+    console.log(this.numLifes);
 
   }
 

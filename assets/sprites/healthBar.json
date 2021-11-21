@@ -1,96 +1,75 @@
 {
 	"textures": [
 		{
-			"image": "idlespritesheet.png",
+			"image": "healthBar.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 256,
+				"w": 128,
 				"h": 64
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "Idle_01.png",
+					"filename": "hp1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 64,
-						"h": 64
+						"w": 40,
+						"h": 37
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 64,
-						"h": 64
+						"w": 40,
+						"h": 37
 					},
 					"frame": {
 						"x": 0,
 						"y": 0,
-						"w": 64,
-						"h": 64
+						"w": 40,
+						"h": 37
 					}
 				},
 				{
-					"filename": "Idle_02.png",
+					"filename": "hp2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 64,
-						"h": 64
+						"w": 52,
+						"h": 18
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 64,
-						"h": 64
+						"w": 52,
+						"h": 18
 					},
 					"frame": {
-						"x": 64,
+						"x": 43,
 						"y": 0,
-						"w": 64,
-						"h": 64
+						"w": 52,
+						"h": 18
 					}
 				},
 				{
-					"filename": "Idle_03.png",
+					"filename": "hp3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 64,
-						"h": 64
+						"w": 66,
+						"h": 18
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 64,
-						"h": 64
+						"w": 66,
+						"h": 18
 					},
 					"frame": {
-						"x": 128,
-						"y": 0,
-						"w": 64,
-						"h": 64
-					}
-				},
-				{
-					"filename": "Idle_04.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 64,
-						"h": 64
-					},
-					"spriteSourceSize": {
 						"x": 0,
-						"y": 0,
-						"w": 64,
-						"h": 64
-					},
-					"frame": {
-						"x": 192,
-						"y": 0,
-						"w": 64,
-						"h": 64
+						"y": 43,
+						"w": 66,
+						"h": 18
 					}
 				}
 			]

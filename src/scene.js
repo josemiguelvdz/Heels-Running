@@ -12,6 +12,7 @@ import Chrono from './chrono.js';
 import Esmoquin from './esmoquin.js';
 import Gangster from './gangster.js';
 import FallingObject from './fallingObject.js';
+import HealthBar from './healthBar.js';
 
 
 
@@ -73,14 +74,18 @@ export default class Level extends Phaser.Scene {
       this.kick = this.input.keyboard.addKey('K');
       this.kick.on('down', () => {});
 
+
+      // Barra de vida   
+      this.healthBar = new HealthBar(this, 100, 100, this.player);
+
   }
 
   update(){
     const cam = this.cameras.main;
-    const speed = 3;
+    const speed = 1;
 
      
-    // cam.scrollX += speed;
+    cam.scrollX += speed;
 
     if (Phaser.Input.Keyboard.JustDown(this.scape)) { 
       this.stop(this.activetePause);
@@ -219,6 +224,8 @@ export default class Level extends Phaser.Scene {
      //GRUPO DE LOS OBJETOS CAYENTES CON EL SUELO Y EL PLAYER
      this.fallObjs= this.physics.add.group();
     this.fallObjs.add(this.fallObjEx);
+    this.fallObjs.add(this.fallObjEx2);
+    this.fallObjs.add(this.fallObjEx3);
     this.physics.add.overlap(this.player,this.fallObjs,(o1,o2)=> {
       console.log("Huele a que entra");
       o2.handleCollisionFallObj(true);
@@ -288,6 +295,10 @@ export default class Level extends Phaser.Scene {
 
     this.fallObjEx = new FallingObject(this,this.player, 800, 300,'salmonFish');
     console.log(this.fallObjEx);
+    this.fallObjEx2 = new FallingObject(this,this.player, 1300, 300,'salmonFish');
+    console.log(this.fallObjEx2);
+    this.fallObjEx3 = new FallingObject(this,this.player, 1700, 300,'salmonFish');
+    console.log(this.fallObjEx3);
     
     this.platform = new Platform(this, this.player.y, 400); 
 

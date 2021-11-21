@@ -31,6 +31,11 @@ export default class Boot extends Phaser.Scene {
       this.load.spritesheet('smokeAnimation','humoSpriteSheet.png',{frameWidth:64,frameHeight:64});
       this.load.spritesheet('helicopterAnimation','helicopterSpritesheet.png',{frameWidth:64,frameHeight:64});
 
+      // barra de vida
+      this.load.atlas("healthBar","healthBar.png","healthBar.json");
+
+      this.load.image("hudTest", "hud.png");
+
 
       this.load.image('salmonFish', 'salmonFish.png');
       this.load.image('coffe', 'coffe.png');
@@ -49,6 +54,8 @@ export default class Boot extends Phaser.Scene {
       this.load.image('settingsButton', 'settingsButton.png');
       this.load.image('backButton', 'backButton.png');
       this.load.image('controls', 'controls.png');
+
+
       
     }
     /**

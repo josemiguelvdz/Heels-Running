@@ -1,6 +1,6 @@
-import powerUp from './powerUp.js';
+import PowerUp from './powerUp.js';
 
-export default class Coffe extends powerUp {
+export default class Coffe extends PowerUp {
 
 
   constructor(scene, player, x, y, nombreImg,moving) {
