@@ -13,7 +13,6 @@ export default class PowerUpBar extends Phaser.GameObjects.GameObject {
     this.alcoholIcon = this.scene.add.sprite(x, y, "vino", "vino.png").setScrollFactor(0);
     this.coffeIcon = this.scene.add.sprite(x, y, "coffe", "coffe.png").setScrollFactor(0);
 
-    this.esmoquinIcon.setVisible(false);
     this.greenCircle.setVisible(false);
     this.redCircle.setVisible(false);
 
