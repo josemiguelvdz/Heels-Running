@@ -1,6 +1,6 @@
 export default class PowerUpBar extends Phaser.GameObjects.GameObject {
 
-  constructor(scene, x, y, esmoquins, coffes, alcohols) {
+  constructor(scene, x, y, player) {
     super(scene, x, y);
     this.scene.add.existing(this);
 
@@ -8,33 +8,60 @@ export default class PowerUpBar extends Phaser.GameObjects.GameObject {
     this.greenCircle = this.scene.add.sprite(x, y, "powerUpBar", "greenCircle.png").setScrollFactor(0);
     this.redCircle = this.scene.add.sprite(x, y, "powerUpBar", "redCircle.png").setScrollFactor(0);
 
+
+    this.esmoquinIcon = this.scene.add.sprite(x, y, "esmoquin", "esmoquin.png").setScrollFactor(0);
+    this.alcoholIcon = this.scene.add.sprite(x, y, "vino", "vino.png").setScrollFactor(0);
+    this.coffeIcon = this.scene.add.sprite(x, y, "coffe", "coffe.png").setScrollFactor(0);
+
+    this.esmoquinIcon.setVisible(false);
     this.greenCircle.setVisible(false);
     this.redCircle.setVisible(false);
 
-    this.esmoquins = esmoquins;
-    this.coffes = coffes;
-    this.alcohols = alcohols;
+
+    this.player = player;
 
   }
 
-  // preUpdate() {
-    
-    
-  // }
+  preUpdate() {
+    if(this.player.esmoquinShield || this.player.coffeEffect){
+      this.greenCircle.setVisible(true);
+      if(this.player.esmoquinShield){
+        this.esmoquinIcon.setVisible(true);
+      }
+      else{
+        this.coffeIcon.setVisible(true);
+      }
+    }
+    else{
+      this.greenCircle.setVisible(false);
+      this.esmoquinIcon.setVisible(false);
+      this.coffeIcon.setVisible(false);
+    }
 
-  checkPowerUp(currentPowerUp){
-    if(this.esmoquins.contains(currentPowerUp)){
-      this.greenCircle.setVisible(true);
-    }
-    else if (this.coffes.contains(currentPowerUp)){
-      this.greenCircle.setVisible(true);
-    }
-    else if(this.alcohols.contains(currentPowerUp)){
+    if(this.player.alcoholEffect){
       this.redCircle.setVisible(true);
+      this.alcoholIcon.setVisible(true);
     }
-
-    console.log("test");
+    else{
+      this.redCircle.setVisible(false);
+      this.alcoholIcon.setVisible(false);
+    }
+    
   }
+
+  // checkPowerUp(currentPowerUp){
+  //   if(this.esmoquins.contains(currentPowerUp)){
+      
+  //   }
+  //   else if (this.coffes.contains(currentPowerUp)){
+  //     this.greenCircle.setVisible(true);
+  //   }
+  //   else if(this.alcohols.contains(currentPowerUp)){
+  //     this.redCircle.setVisible(true);
+  //   }
+
+  //   console.log("test");
+  // }
 
 
 

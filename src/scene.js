@@ -78,7 +78,7 @@ export default class Level extends Phaser.Scene {
 
       // Barra de vida   
       this.healthBar = new HealthBar(this, 100, 100, this.player);
-      this.powerUpBar = new PowerUpBar(this, 180, 100, this.esmoquins, this.coffes, this.alcohols);
+      this.powerUpBar = new PowerUpBar(this, 180, 100, this.player);
 
 
       // CAMBIAR BOUDING BOX DE TAMAÑO
@@ -197,7 +197,7 @@ export default class Level extends Phaser.Scene {
      this.salmons = this.physics.add.group();
      this.salmons.add(this.salmon);
      this.physics.add.overlap(this.player,this.salmons,(o1,o2)=> {
-      onCollision(o1,o2, this.powerUpBar);
+      onCollision(o1,o2);
    })
 
 
@@ -205,7 +205,7 @@ export default class Level extends Phaser.Scene {
     this.esmoquins.add(this.esmoquin);
     this.esmoquins.add(this.esmoquin2);
     this.physics.add.overlap(this.player,this.esmoquins,(o1,o2)=> {
-      onCollision(o1,o2, this.powerUpBar);
+      onCollision(o1,o2);
    })
 
 
@@ -219,19 +219,19 @@ export default class Level extends Phaser.Scene {
     this.timers.add(this.redTimer);
     this.timers.add(this.greenTimer)
     this.physics.add.overlap(this.player,this.timers,(o1,o2)=> {
-     onCollision(o1,o2, this.powerUpBar);
+     onCollision(o1,o2);
   });
      //GRUPO DE LOS CAFÉS
      
      this.coffes = this.physics.add.group();
      this.coffes.add(this.coffe1);
      this.physics.add.overlap(this.player,this.coffes,(o1,o2)=> {
-      onCollision(o1,o2, this.powerUpBar);
+      onCollision(o1,o2);
    });
    this.alcohols = this.physics.add.group();
    this.alcohols.add(this.alcoholEx);
    this.physics.add.overlap(this.player,this.alcohols,(o1,o2)=> {
-    onCollision(o1,o2, this.powerUpBar);
+    onCollision(o1,o2);
  });
      //GRUPO DE LOS OBJETOS CAYENTES CON EL SUELO Y EL PLAYER
      this.fallObjs= this.physics.add.group();
@@ -272,7 +272,7 @@ export default class Level extends Phaser.Scene {
     this.boxes = this.physics.add.staticGroup();
     this.boxes.add(this.box);
     this.physics.add.collider(this.player, this.box,(o1,o2)=> {
-      onCollision(o1,o2, this.powerUpBar);
+      onCollision(o1,o2);
     });
 
   }
@@ -367,8 +367,7 @@ export default class Level extends Phaser.Scene {
  * @param {*} obj1 - Player or Kick zone
  * @param {*} obj2 - Object that player collides with
  */
-function onCollision(obj1,obj2, powerUpBar) {
-  powerUpBar.checkPowerUp(obj2);
+function onCollision(obj1,obj2) {
   obj2.handleCollision(); 
 }
 /**
