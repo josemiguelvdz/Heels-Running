@@ -304,7 +304,7 @@ export default class Level extends Phaser.Scene {
     // AÑADIR TODOS LOS GRUPOS
     
     
-     this.chrono= new Chrono(this);
+     this.chrono= new Chrono(this,true);
      this.salmon= new Salmon( this,this.player, 800, 100,'salmonFish',true);
      this.powerUpsArray.push(this.salmon);
 

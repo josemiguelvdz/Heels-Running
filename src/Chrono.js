@@ -1,15 +1,18 @@
 export default class Chrono extends Phaser.GameObjects.GameObject {
-  constructor(scene) {
+  constructor(scene,writeText) {
       super(scene, 0, 0)
       this.scene.add.existing(this);
       this.internalTimer = 0;
       this.minutos=0;
       this.segundos=0;
+      this.write= writeText;
+      if(this.write){
       this.timeElapsed=this.minutos + ' : '+ this.segundos;
       this.segundosReales=0;
       this.text = this.scene.add.text(905,15,this.timeElapsed);
       this.text.setScrollFactor(0);
       this.writeTime();
+      }
       this.pause=false;
       this.fin=false;
   }
@@ -21,7 +24,8 @@ export default class Chrono extends Phaser.GameObjects.GameObject {
   }
   preUpdate(time, delta) {
       if(!this.pause && !this.fin){ // Si no está pausado suma el tiempo
-        this.text.setText( this.timeElapsed);
+
+         if(this.write)this.text.setText( this.timeElapsed);
         this.segundos+=Math.round(delta);
         if((this.segundos)/600 >100) // Si ha llegado a 60 segundos, los reinicia y suma los minutos
         {

@@ -19,7 +19,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
    //Atributos relacionados con el esmoquin
     this.offsetTime=0;
     this.checkTiempo=false;  //Bool para verificar si se puede o no contar 
-    this.contador= new Chrono(this.scene); //Contador para poder activar y desactivar powrr ups con el tiempo 
+    this.contador= new Chrono(this.scene,false); //Contador para poder activar y desactivar powrr ups con el tiempo 
     this.durationEsmoquin=0; //Para la duracion del esmoquin 
 
 
