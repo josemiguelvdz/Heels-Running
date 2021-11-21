@@ -239,6 +239,10 @@ export default class Level extends Phaser.Scene {
       console.log("Huele a que entra");
       o2.handleCollisionFallObj(true);
    });
+   this.physics.add.overlap(this.groundZone,this.fallObjs,(o1,o2)=> {
+    console.log("Huele a que entra");
+    o2.handleCollisionFallObj(false);
+ });
 
 
 
