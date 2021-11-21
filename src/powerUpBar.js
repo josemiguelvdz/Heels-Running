@@ -48,22 +48,5 @@ export default class PowerUpBar extends Phaser.GameObjects.GameObject {
     }
     
   }
-
-  // checkPowerUp(currentPowerUp){
-  //   if(this.esmoquins.contains(currentPowerUp)){
-      
-  //   }
-  //   else if (this.coffes.contains(currentPowerUp)){
-  //     this.greenCircle.setVisible(true);
-  //   }
-  //   else if(this.alcohols.contains(currentPowerUp)){
-  //     this.redCircle.setVisible(true);
-  //   }
-
-  //   console.log("test");
-  // }
-
-
-
    
 }
