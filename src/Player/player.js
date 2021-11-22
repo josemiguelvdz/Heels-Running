@@ -208,6 +208,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
       else  if(action==="Increase")
       {
         this.speed=this.speed+this.speedVariable;
+        console.log("Solo pasa una vez");
         this.coffeEffect=true;
       }
     }

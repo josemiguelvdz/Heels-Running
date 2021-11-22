@@ -2,58 +2,71 @@ import PowerUp from '../PowerUps/powerUp.js';
 
 export default class Alcohol extends PowerUp {
 
-
   constructor(scene, player, x, y, nombreImg,moving) {
-    super(scene, player, x, y, nombreImg,moving); //Constructor de la clase base
-
-        this.duration=4000; //Dureacion del efecto del power up
-  }
-
-  preUpdate() {
-    super.preUpdate();
-
-
-  }
-
+      super(scene, player, x, y, nombreImg,moving); //Constructor de la clase base
   
-  /**
-   * Handles the collision with player
-   */
-  handleCollision() {
-
-    this.collideAlcohol(this.scene);
-
+          
+          this.duration=4000;
+          this.seconds=-1;
+          this.hasEntered=false;
+         
+        
+        }
+  
+    preUpdate(time,delta) {
+      super.preUpdate(time,delta);
+  //Miramos a ver si se puede empezar a contar por que ha chocado con el jugador
+  //Si ha chocado con el jugador miramos si no estamos en pausa 
+  //Si no estamos en pausa ya vemos si ha pasado el tiempo , para hacer o no el efecto si todavia no ha pasado el tiempo 
+     if(this.seconds >= 0) 
+     {   
+    console.log(this.seconds);
+    if(!this.stopMovement) 
+    {
+    this.seconds+=Math.round(delta);
+    if(this.seconds>this.duration)
+    {
+     
+      this.seconds=0;
+      this.adjustSpeed();
+      this.destroyObject();
+     
+    }
+     }
+      }
+    }
+  
+   
+  handleCollision()
+  {
+  
+    this.collideAlcohol();
+    this.seconds=0;
+    this.setVisible(false);
+  }
+    /**
+     * Creates an Event before the collision with player that acts after a 4 second delay
+     * @param  escena - used for creating an Event
+     * 
+     */
+     collideAlcohol()
+     {    
+         if(!this.hasEntered)
+         {
+          this.player.controlSpeed("Reduce"); 
+          this.hasEntered=true;
+         } 
+        
+     }   
+     /**
+      * Called after the duration of the power up effect ,its function is to reduce player velocity up to its initial state
+      * 
+      */
+   adjustSpeed()
+   {  
+    this.player.restoreSpeed("Reduce");
+  
+   }
+  
   }
 
-  /**
-   * Creates an Event before the collision with player that acts after a 4 second delay
-   * Also decreases player velocity
-   * @param  escena - used for creating an Event
-   * 
-   */
-  collideAlcohol(escena)
-  {
-       
-       
-     
-      this.player.controlSpeed("Reduce");
-
-       //Timer para reestablecer la velocidad del jugador a los 4 segundos
-       let timer = escena.time.addEvent( {
-       delay: this.duration, 
-       callback: this.adjustSpeed, //No es la escena , se especifica segun donde este el metodo 
-       callbackScope: escena 
-                            }); 
-      this.destroyObject();
-   }   
-   /**
-    * Called after the 4 delay of the created event,its function is to increase player velocity up to its initial state
-    * 
-    */
-   adjustSpeed()
-   {
-     this.player.restoreSpeed("Reduce");
-   }
- 
-
-}
