@@ -1,19 +1,16 @@
-import Player from './player.js';
-import Police from './police.js';
-import Platform from './platform.js';
-import PowerUp from './powerUp.js';
-import Salmon from './salmon.js';
-import Coffe from './coffe.js';
-import RedTimer from './redTimer.js'
-import GreenTimer from './greenTimer.js';
-import Box from './box.js';
-import Chrono from './chrono.js';
-import Alcohol from './alcohol.js';
-import Esmoquin from './esmoquin.js';
-import Gangster from './gangster.js';
-import FallingObject from './fallingObject.js';
-import HealthBar from './healthBar.js';
-import PowerUpBar from './powerUpBar.js';
+import Player from './Player/player.js';
+import Police from './Police/police.js';
+import Platform from './StaticObjects/platform.js';
+import Salmon from './Interactuables/Life/Salmon.js';
+import Coffe from './Interactuables/PowerUps/Coffe.js';
+import RedTimer from './Interactuables/Debuffs/RedTimer.js';
+import GreenTimer from './Interactuables/PowerUps/GreenTimer.js';
+import Box from './StaticObjects/Box.js';
+import Chrono from './Timer/Chrono.js';
+import Esmoquin from './Interactuables/PowerUps/esmoquin.js';
+import Gangster from './Mafioso/gangster.js';
+import FallingObject from './FallingObjects/fallingObject.js';
+import HealthBar from './Interfaz/healthBar.js';
 
 
 
@@ -78,7 +75,6 @@ export default class Level extends Phaser.Scene {
 
       // Barra de vida   
       this.healthBar = new HealthBar(this, 100, 100, this.player);
-      this.powerUpBar = new PowerUpBar(this, 180, 100, this.player);
 
 
       // CAMBIAR BOUDING BOX DE TAMAÑO
@@ -127,18 +123,11 @@ export default class Level extends Phaser.Scene {
        this.pauseBackGround.alpha = 0.5;
        
        this.activetePause = true;
-       this.fallObjEx.handleMovement();
-       this.fallObjEx2.handleMovement();
-       this.fallObjEx3.handleMovement();
-       
 
-
-       
        this.resumeButton = this.add.image(this.scale.width*0.5, this.scale.height*0.3, 'resumeButton').setInteractive().setScrollFactor(0);
 
        this.resumeButton.on('pointerdown', () => {
          this.activetePause = false;
-     
          this.pauseBackGround.destroy();
          this.exitButton.destroy();
          this.resumeButton.destroy();
@@ -160,9 +149,7 @@ export default class Level extends Phaser.Scene {
 
        this.exitButton = this.add.image(this.scale.width*0.5, this.scale.height*0.7, 'exitButton').setInteractive().setScrollFactor(0);
 
-       this.exitButton.on('pointerdown', () => {this.scene.start('menu'), 
-       this.activetePause = false;
-      });
+       this.exitButton.on('pointerdown', () => {this.scene.start('menu'), this.activetePause = false});
   
      }
   }
@@ -211,8 +198,7 @@ export default class Level extends Phaser.Scene {
 
 
     this.esmoquins = this.physics.add.group();
-    this.esmoquins.add(this.esmoquin);
-    this.esmoquins.add(this.esmoquin2);
+     this.esmoquins.add(this.esmoquin);
     this.physics.add.overlap(this.player,this.esmoquins,(o1,o2)=> {
       onCollision(o1,o2);
    })
@@ -237,24 +223,15 @@ export default class Level extends Phaser.Scene {
      this.physics.add.overlap(this.player,this.coffes,(o1,o2)=> {
       onCollision(o1,o2);
    });
-   this.alcohols = this.physics.add.group();
-   this.alcohols.add(this.alcoholEx);
-   this.physics.add.overlap(this.player,this.alcohols,(o1,o2)=> {
-    onCollision(o1,o2);
- });
      //GRUPO DE LOS OBJETOS CAYENTES CON EL SUELO Y EL PLAYER
      this.fallObjs= this.physics.add.group();
     this.fallObjs.add(this.fallObjEx);
     this.fallObjs.add(this.fallObjEx2);
     this.fallObjs.add(this.fallObjEx3);
     this.physics.add.overlap(this.player,this.fallObjs,(o1,o2)=> {
-      
+      console.log("Huele a que entra");
       o2.handleCollisionFallObj(true);
    });
-   this.physics.add.overlap(this.groundZone,this.fallObjs,(o1,o2)=> {
-    
-    o2.handleCollisionFallObj(false);
- });
 
 
 
@@ -277,6 +254,7 @@ export default class Level extends Phaser.Scene {
     //GRUPO DEL POLICIA Y EL PLAYER
     this.physics.add.collider(this.player,this.police,onCollisionPolice);
 
+    this.physics.add.collider(this.groundZone,this.player,onPlayerGround);
 
     this.boxes = this.physics.add.staticGroup();
     this.boxes.add(this.box);
@@ -312,35 +290,28 @@ export default class Level extends Phaser.Scene {
     this.physics.add.collider(this.groundZone, this.gangster);
     // AÑADIR TODOS LOS GRUPOS
     
-
-    this.timeBar = this.add.sprite(920, 50, 'timeBar', 'timeBar.png').setScrollFactor(0);
-    this.chrono= new Chrono(this,true);
     
-    this.salmon= new Salmon( this,this.player, 800, 70,'salmonFish',true);
-    this.powerUpsArray.push(this.salmon);
+    this.chrono= new Chrono(this);
+     this.salmon= new Salmon( this,this.player, 800, 100,'salmonFish',true);
+     this.powerUpsArray.push(this.salmon);
 
-    this.alcoholEx= new Alcohol( this,this.player, 800, 70,'vino',true);
-    this.powerUpsArray.push(this.alcoholEx);
-
-    this.esmoquin= new Esmoquin( this,this.player, 300, 70,'esmoquin',true);
+    this.esmoquin= new Esmoquin( this,this.player, 300, 100,'esmoquin',true);
     this.powerUpsArray.push(this.esmoquin);
-
-    this.esmoquin2= new Esmoquin( this,this.player, 1500, 70,'esmoquin',true);
-    this.powerUpsArray.push(this.esmoquin2);
     
-    this.redTimer= new RedTimer( this,this.player, 500, 70,'redTimer',true,this.chrono);
+    this.redTimer= new RedTimer( this,this.player, 500, 100,'redTimer',true,this.chrono);
     this.powerUpsArray.push(this.redTimer);
-    this.greenTimer= new GreenTimer( this,this.player, 50, 70,'greenTimer',true,this.chrono);
+    this.greenTimer= new GreenTimer( this,this.player, 50, 100,'greenTimer',true,this.chrono);
     this.powerUpsArray.push(this.greenTimer);
     
     this.coffe1= new Coffe( this,this.player, 600, 100,'coffe',true);
     this.powerUpsArray.push(this.coffe1);
-    
 
-    this.fallObjEx = new FallingObject(this,this.player, 800, 300,'maceta');
-    this.fallObjEx2 = new FallingObject(this,this.player, 1300, 300,'maceta');
-    this.fallObjEx3 = new FallingObject(this,this.player, 1700, 300,'maceta');
-   
+    this.fallObjEx = new FallingObject(this,this.player, 800, 300,'salmonFish');
+    console.log(this.fallObjEx);
+    this.fallObjEx2 = new FallingObject(this,this.player, 1300, 300,'salmonFish');
+    console.log(this.fallObjEx2);
+    this.fallObjEx3 = new FallingObject(this,this.player, 1700, 300,'salmonFish');
+    console.log(this.fallObjEx3);
     
     this.platform = new Platform(this, this.player.y, 400); 
 
@@ -436,6 +407,10 @@ function helicopter(obj1){
     obj1.y=20;
     obj1.helicopter=true;
     obj1.body.setAllowGravity(false);
+}
+
+function onPlayerGround(obj2){
+  
 }
 
 

@@ -1,7 +1,7 @@
-import powerUp from './powerUp.js';
 
+import PowerUp from '../PowerUps/powerUp.js';
 
-export default class RedTimer extends powerUp {
+export default class RedTimer extends PowerUp {
 
 
   constructor(scene, player, x, y, nombreImg,moving,clockClass) {

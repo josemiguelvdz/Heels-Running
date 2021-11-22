@@ -1,6 +1,6 @@
-import powerUp from './powerUp.js';
+import PowerUp from '../PowerUps/powerUp.js';
 
-export default class Salmon extends powerUp {
+export default class Salmon extends PowerUp {
 
 
   constructor(scene, player, x, y, nombreImg,moving) {

@@ -21,45 +21,55 @@ export default class Boot extends Phaser.Scene {
       this.load.image('houses2', 'houses2.png');
       this.load.image('pauseBackGround', 'fondoNegro.png');
 
+      //Police Sprites
       this.load.setPath('./assets/Sprites/Police');
       this.load.spritesheet('policeIdle','idlepolicespritesheet.png',{frameWidth:64,frameHeight:64})
       this.load.spritesheet('smokeAnimation','humoSpriteSheet.png',{frameWidth:64,frameHeight:64});
       this.load.spritesheet('helicopterAnimation','helicopterSpritesheet.png',{frameWidth:64,frameHeight:64});
 
+      //Player Sprites
       this.load.setPath('./assets/Sprites/Player');
       this.load.spritesheet('idle','idlespritesheet.png',{frameWidth:64, frameHeight:64})
       this.load.spritesheet('run','runspritesheet.png',{frameWidth:64, frameHeight:64})
      
+      //StaticObjects Sprites
       this.load.setPath('./assets/Sprites/StaticObjects');
       this.load.image('platform', 'platform.png');
       this.load.image('box', 'box.png');
       this.load.spritesheet('boxDestruction', 'boxAnimation.png', {frameWidth:64, frameHeight:64});
 
+      //Interfaz Sprites
       this.load.setPath('./assets/Sprites/Interfaz');
       this.load.atlas("healthBar","healthBar.png","healthBar.json"); // barra de vida
       this.load.atlas("powerUpBar", "powerUpBar.png", "powerUpBar.json"); // circulo de power ups
       this.load.image("hudTest", "hud.png");
       this.load.image('timeBar', 'timeBar.png');
 
+      //PowerUp Sprites
       this.load.setPath('./assets/Sprites/Interactuables/PowerUps');
       this.load.image('coffe', 'coffe.png');
       this.load.image('esmoquin', 'esmoquin.png');
       this.load.image('greenTimer', 'greentimer.png');
 
+      //Debuffs Sprites
       this.load.setPath('./assets/Sprites/Interactuables/Debuffs');
       this.load.image('redTimer', 'redtimer.png');
       this.load.image('vino', 'vino.png');
 
+      //Vida Sprites
       this.load.setPath('./assets/Sprites/Interactuables/Life');
       this.load.image('salmonFish', 'salmonFish.png');
 
+      //Mafioso Sprites
       this.load.setPath('./assets/Sprites/Mafioso');
       this.load.image('bullet', 'bala.png');
       this.load.image('gangster', 'mafioso.png');
 
+      //FallObjects Sprites
       this.load.setPath('./assets/Sprites/FallObjects');
       this.load.image('maceta', 'maceta.png');
 
+      //Menu Sprites
       this.load.setPath('./assets/Sprites/Menu');
       this.load.image('playButton' , 'PlayButton.png');
       this.load.image('exitButton', 'ExitButton.png');

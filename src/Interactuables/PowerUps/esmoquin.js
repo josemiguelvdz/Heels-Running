@@ -1,5 +1,5 @@
 
-import PowerUp from "./powerUp.js";
+import PowerUp from './powerUp.js';
 
 export default class Esmoquin extends PowerUp {
 
