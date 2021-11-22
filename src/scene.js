@@ -124,6 +124,8 @@ export default class Level extends Phaser.Scene {
 
        this.pauseBackGround = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'pauseBackGround').setScale(1.2, 1).setScrollFactor(0);
        this.pauseBackGround.alpha = 0.5;
+
+       this.menuLayout =  this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'menuLayout').setScale(0.7, 0.5).setScrollFactor(0);
        
        this.activetePause = true;
        this.fallObjEx.handleMovement();
@@ -138,6 +140,7 @@ export default class Level extends Phaser.Scene {
          this.exitButton.destroy();
          this.resumeButton.destroy();
          this.settingsButton.destroy();
+         this.menuLayout.destroy();
          this.physics.resume();
 
          this.chrono.changeTime();
@@ -151,7 +154,9 @@ export default class Level extends Phaser.Scene {
         });
 
         this.settingsButton = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'settingsButton').setInteractive().setScrollFactor(0);
-        this.settingsButton.on('pointerdown', () => {this.settings(), this.resumeButton.destroy(), this.settingsButton.destroy(), this.exitButton.destroy()});
+
+        this.settingsButton.on('pointerdown', () => {this.settings(), this.resumeButton.destroy(), this.settingsButton.destroy(), 
+                                                            this.exitButton.destroy(),  this.menuLayout.destroy()});
 
        this.exitButton = this.add.image(this.scale.width*0.5, this.scale.height*0.7, 'exitButton').setInteractive().setScrollFactor(0);
 
