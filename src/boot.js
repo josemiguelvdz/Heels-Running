@@ -58,6 +58,7 @@ export default class Boot extends Phaser.Scene {
       this.load.image('settingsButton', 'settingsButton.png');
       this.load.image('backButton', 'backButton.png');
       this.load.image('controls', 'controls.png');
+      this.load.image('timeBar', 'timeBar.png');
 
 
       
