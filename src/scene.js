@@ -134,9 +134,10 @@ export default class Level extends Phaser.Scene {
        this.menuLayout =  this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'menuLayout').setScale(0.7, 0.5).setScrollFactor(0);
        
        this.activetePause = true;
-       this.fallObjEx.handleMovement();
-       this.fallObjEx2.handleMovement();
-       this.fallObjEx3.handleMovement();
+       if(this.fallObjEx!=null)this.fallObjEx.handleMovement();
+       if(this.fallObjEx2!=null)this.fallObjEx2.handleMovement();
+       if(this.fallObjEx3!=null)this.fallObjEx3.handleMovement();
+
 
        this.resumeButton = this.add.image(this.scale.width*0.5, this.scale.height*0.3, 'resumeButton').setInteractive().setScrollFactor(0);
 
@@ -148,6 +149,10 @@ export default class Level extends Phaser.Scene {
          this.settingsButton.destroy();
          this.menuLayout.destroy();
          this.physics.resume();
+
+         if(this.fallObjEx!=null)this.fallObjEx.handleMovement();
+         if(this.fallObjEx2!=null)this.fallObjEx2.handleMovement();
+         if(this.fallObjEx3!=null)this.fallObjEx3.handleMovement();
 
          this.chrono.changeTime();
          this.player.contador.changeTime();
@@ -244,9 +249,14 @@ export default class Level extends Phaser.Scene {
     this.fallObjs.add(this.fallObjEx2);
     this.fallObjs.add(this.fallObjEx3);
     this.physics.add.overlap(this.player,this.fallObjs,(o1,o2)=> {
-      console.log("Huele a que entra");
+     
       o2.handleCollisionFallObj(true);
    });
+   this.physics.add.collider(this.groundZone,this.fallObjs,(o1,o2)=> {
+    
+    console.log("Huele a que entra");
+    o2.handleCollisionFallObj(false);
+ });
 
    this.alcohols = this.physics.add.group();
    this.alcohols.add(this.alcoholEx);
@@ -254,10 +264,7 @@ export default class Level extends Phaser.Scene {
     onCollision(o1,o2);
 
 
-    this.physics.add.overlap(this.groundZone,this.fallObjs,(o1,o2)=> {
     
-      o2.handleCollisionFallObj(false);
-   });
  });
 
 
@@ -281,7 +288,9 @@ export default class Level extends Phaser.Scene {
     //GRUPO DEL POLICIA Y EL PLAYER
     this.physics.add.collider(this.player,this.police,onCollisionPolice);
 
+    //EL SUELO CON EL PLAYER
     this.physics.add.collider(this.groundZone,this.player,onPGround);
+  
 
     this.boxes = this.physics.add.staticGroup();
     this.boxes.add(this.box);
