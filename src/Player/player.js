@@ -72,6 +72,10 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.stop();
       this.play('idle_anim');
     }
+    else if(this.arrested){
+      this.stop();
+      this.play('idle_anim');
+    }
     
   }
   preUpdate(t,dt) {
@@ -122,8 +126,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.jumpSpeed=0;
     this.segundosIniciales=0;  
     this.checkTiempo =false; 
-    this.stop();
-    this.play('idle_anim');
   }
   
   /**

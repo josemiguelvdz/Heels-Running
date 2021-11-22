@@ -56,7 +56,8 @@ export default class Level extends Phaser.Scene {
       this.cameras.main.setBounds(0, 0, width*5, height);
       this.cameras.main.startFollow(this.player);
 
-      
+      this.helicopterX=0;
+      this.isHelicopter=false;
 
       this.scape = this.input.keyboard.addKey('ESC');
       this.scape.on('down', () => {
@@ -91,6 +92,11 @@ export default class Level extends Phaser.Scene {
 
      
     cam.scrollX += speed;
+
+    if(this.police.isHelicopter()){
+      this.isHelicopter=true;
+      if(this.police.body.x>=this.player.body.x) onCollisionPolice(this.player,this.police);
+    }
 
     if (Phaser.Input.Keyboard.JustDown(this.scape)) { 
       this.stop(this.activetePause);
@@ -275,7 +281,7 @@ export default class Level extends Phaser.Scene {
     //GRUPO DEL POLICIA Y EL PLAYER
     this.physics.add.collider(this.player,this.police,onCollisionPolice);
 
-    this.physics.add.collider(this.groundZone,this.player,onPlayerGround);
+    this.physics.add.collider(this.groundZone,this.player,onPGround);
 
     this.boxes = this.physics.add.staticGroup();
     this.boxes.add(this.box);
@@ -433,13 +439,13 @@ function scaleBuilding(platform, width, height,  buildingScaleFactor) {
  * @param {*} obj1 - Police
  */
 function helicopter(obj1){
-    obj1.y=18;
+    obj1.y=70;
     obj1.helicopter=true;
     obj1.body.setAllowGravity(false);
 }
 
-function onPlayerGround(obj2){
-  
+function onPGround(obj2){
+  if(this.isHelicopter) this.helicopterX=obj2.body.x;
 }
 
 
