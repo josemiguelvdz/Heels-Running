@@ -310,8 +310,8 @@ export default class Level extends Phaser.Scene {
     this.timeBar = this.add.sprite(920, 50, 'timeBar', 'timeBar.png').setScrollFactor(0);
 
     this.chrono= new Chrono(this,true);
-     this.salmon= new Salmon( this,this.player, 800, 100,'salmonFish',true);
-     this.powerUpsArray.push(this.salmon);
+    this.salmon= new Salmon(this, this.player, 1200, 100,'salmonFish',true);
+    this.powerUpsArray.push(this.salmon);
 
     this.esmoquin= new Esmoquin( this,this.player, 300, 100,'esmoquin',true);
     this.powerUpsArray.push(this.esmoquin);
