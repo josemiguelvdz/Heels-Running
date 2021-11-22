@@ -21,47 +21,52 @@ export default class Boot extends Phaser.Scene {
       this.load.image('houses2', 'houses2.png');
       this.load.image('pauseBackGround', 'fondoNegro.png');
 
-
-
-      this.load.setPath('./assets/sprites');
-      this.load.spritesheet('idle','idlespritesheet.png',{frameWidth:64, frameHeight:64})
-      this.load.spritesheet('run','runspritesheet.png',{frameWidth:64, frameHeight:64})
+      this.load.setPath('./assets/Sprites/Police');
       this.load.spritesheet('policeIdle','idlepolicespritesheet.png',{frameWidth:64,frameHeight:64})
-      this.load.spritesheet('boxDestruction', 'boxAnimation.png', {frameWidth:64, frameHeight:64});
       this.load.spritesheet('smokeAnimation','humoSpriteSheet.png',{frameWidth:64,frameHeight:64});
       this.load.spritesheet('helicopterAnimation','helicopterSpritesheet.png',{frameWidth:64,frameHeight:64});
 
-      // barra de vida
-      this.load.atlas("healthBar","healthBar.png","healthBar.json");
-      // circulo de power ups
-      this.load.atlas("powerUpBar", "powerUpBar.png", "powerUpBar.json");
-      
-      this.load.image("hudTest", "hud.png");
-
-
-      this.load.image('salmonFish', 'salmonFish.png');
-      this.load.image('coffe', 'coffe.png');
-      this.load.image('redTimer', 'redtimer.png');
-      this.load.image('greenTimer', 'greentimer.png');
-      this.load.image('esmoquin', 'esmoquin.png');
+      this.load.setPath('./assets/Sprites/Player');
+      this.load.spritesheet('idle','idlespritesheet.png',{frameWidth:64, frameHeight:64})
+      this.load.spritesheet('run','runspritesheet.png',{frameWidth:64, frameHeight:64})
+     
+      this.load.setPath('./assets/Sprites/StaticObjects');
       this.load.image('platform', 'platform.png');
       this.load.image('box', 'box.png');
-      this.load.image('bullet', 'bala.png');
-      this.load.image('gangster', 'mafioso.png');
-      this.load.image('maceta', 'maceta.png');
+      this.load.spritesheet('boxDestruction', 'boxAnimation.png', {frameWidth:64, frameHeight:64});
+
+      this.load.setPath('./assets/Sprites/Interfaz');
+      this.load.atlas("healthBar","healthBar.png","healthBar.json"); // barra de vida
+      this.load.atlas("powerUpBar", "powerUpBar.png", "powerUpBar.json"); // circulo de power ups
+      this.load.image("hudTest", "hud.png");
+      this.load.image('timeBar', 'timeBar.png');
+
+      this.load.setPath('./assets/Sprites/Interactuables/PowerUps');
+      this.load.image('coffe', 'coffe.png');
+      this.load.image('esmoquin', 'esmoquin.png');
+      this.load.image('greenTimer', 'greentimer.png');
+
+      this.load.setPath('./assets/Sprites/Interactuables/Debuffs');
+      this.load.image('redTimer', 'redtimer.png');
       this.load.image('vino', 'vino.png');
 
+      this.load.setPath('./assets/Sprites/Interactuables/Life');
+      this.load.image('salmonFish', 'salmonFish.png');
 
+      this.load.setPath('./assets/Sprites/Mafioso');
+      this.load.image('bullet', 'bala.png');
+      this.load.image('gangster', 'mafioso.png');
+
+      this.load.setPath('./assets/Sprites/FallObjects');
+      this.load.image('maceta', 'maceta.png');
+
+      this.load.setPath('./assets/Sprites/Menu');
       this.load.image('playButton' , 'PlayButton.png');
       this.load.image('exitButton', 'ExitButton.png');
       this.load.image('resumeButton', 'resumeButton.png');
       this.load.image('settingsButton', 'settingsButton.png');
       this.load.image('backButton', 'backButton.png');
       this.load.image('controls', 'controls.png');
-      this.load.image('timeBar', 'timeBar.png');
-
-
-      
     }
     /**
      * Creación de la escena. En este caso, solo cambiamos a la escena que representa el
