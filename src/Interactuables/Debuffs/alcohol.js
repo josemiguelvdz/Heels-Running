@@ -1,4 +1,4 @@
-import PowerUp from './Interactuables/PowerUps.js';
+import PowerUp from '../PowerUps/powerUp.js';
 
 export default class Alcohol extends PowerUp {
 

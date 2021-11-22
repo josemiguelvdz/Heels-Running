@@ -9,8 +9,10 @@ import Box from './StaticObjects/Box.js';
 import Chrono from './Timer/Chrono.js';
 import Esmoquin from './Interactuables/PowerUps/esmoquin.js';
 import Gangster from './Mafioso/gangster.js';
+import Alcohol from './Interactuables/Debuffs/alcohol.js';
 import FallingObject from './FallingObjects/fallingObject.js';
 import HealthBar from './Interfaz/healthBar.js';
+import PowerUpBar from './Interfaz/powerUpBar.js';
 
 
 
@@ -75,6 +77,7 @@ export default class Level extends Phaser.Scene {
 
       // Barra de vida   
       this.healthBar = new HealthBar(this, 100, 100, this.player);
+      this.powerUpBar = new PowerUpBar(this, 180, 100, this.player);
 
 
       // CAMBIAR BOUDING BOX DE TAMAÑO
@@ -123,6 +126,9 @@ export default class Level extends Phaser.Scene {
        this.pauseBackGround.alpha = 0.5;
        
        this.activetePause = true;
+       this.fallObjEx.handleMovement();
+       this.fallObjEx2.handleMovement();
+       this.fallObjEx3.handleMovement();
 
        this.resumeButton = this.add.image(this.scale.width*0.5, this.scale.height*0.3, 'resumeButton').setInteractive().setScrollFactor(0);
 
@@ -199,12 +205,10 @@ export default class Level extends Phaser.Scene {
 
     this.esmoquins = this.physics.add.group();
      this.esmoquins.add(this.esmoquin);
+     this.esmoquins.add(this.esmoquin2);
     this.physics.add.overlap(this.player,this.esmoquins,(o1,o2)=> {
       onCollision(o1,o2);
    })
-
-
-
 
      //Para crear la colision entre grupos usamos grupos estaticos por que si no no funciona
 
@@ -232,6 +236,18 @@ export default class Level extends Phaser.Scene {
       console.log("Huele a que entra");
       o2.handleCollisionFallObj(true);
    });
+
+   this.alcohols = this.physics.add.group();
+   this.alcohols.add(this.alcoholEx);
+   this.physics.add.overlap(this.player,this.alcohols,(o1,o2)=> {
+    onCollision(o1,o2);
+
+
+    this.physics.add.overlap(this.groundZone,this.fallObjs,(o1,o2)=> {
+    
+      o2.handleCollisionFallObj(false);
+   });
+ });
 
 
 
@@ -291,26 +307,33 @@ export default class Level extends Phaser.Scene {
     // AÑADIR TODOS LOS GRUPOS
     
     
-    this.chrono= new Chrono(this);
+    this.timeBar = this.add.sprite(920, 50, 'timeBar', 'timeBar.png').setScrollFactor(0);
+
+    this.chrono= new Chrono(this,true);
      this.salmon= new Salmon( this,this.player, 800, 100,'salmonFish',true);
      this.powerUpsArray.push(this.salmon);
 
     this.esmoquin= new Esmoquin( this,this.player, 300, 100,'esmoquin',true);
     this.powerUpsArray.push(this.esmoquin);
+    this.esmoquin2= new Esmoquin( this,this.player, 1500, 70,'esmoquin',true);
+    this.powerUpsArray.push(this.esmoquin2);
     
     this.redTimer= new RedTimer( this,this.player, 500, 100,'redTimer',true,this.chrono);
     this.powerUpsArray.push(this.redTimer);
     this.greenTimer= new GreenTimer( this,this.player, 50, 100,'greenTimer',true,this.chrono);
     this.powerUpsArray.push(this.greenTimer);
     
+    this.alcoholEx= new Alcohol( this,this.player, 800, 70,'vino',true);
+    this.powerUpsArray.push(this.alcoholEx);
+
     this.coffe1= new Coffe( this,this.player, 600, 100,'coffe',true);
     this.powerUpsArray.push(this.coffe1);
 
-    this.fallObjEx = new FallingObject(this,this.player, 800, 300,'salmonFish');
+    this.fallObjEx = new FallingObject(this,this.player, 800, 300,'maceta');
     console.log(this.fallObjEx);
-    this.fallObjEx2 = new FallingObject(this,this.player, 1300, 300,'salmonFish');
+    this.fallObjEx2 = new FallingObject(this,this.player, 1300, 300,'maceta');
     console.log(this.fallObjEx2);
-    this.fallObjEx3 = new FallingObject(this,this.player, 1700, 300,'salmonFish');
+    this.fallObjEx3 = new FallingObject(this,this.player, 1700, 300,'maceta');
     console.log(this.fallObjEx3);
     
     this.platform = new Platform(this, this.player.y, 400); 
@@ -329,6 +352,7 @@ export default class Level extends Phaser.Scene {
 
     this.building5 = new Platform(this, width*2+this.building4.width*4, height);
     scaleBuilding(this.building5, this.building5.width, this.building5.height, 8);
+    
   }
 
   DestroyZone(args){
@@ -404,7 +428,7 @@ function scaleBuilding(platform, width, height,  buildingScaleFactor) {
  * @param {*} obj1 - Police
  */
 function helicopter(obj1){
-    obj1.y=20;
+    obj1.y=18;
     obj1.helicopter=true;
     obj1.body.setAllowGravity(false);
 }

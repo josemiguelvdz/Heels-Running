@@ -43,21 +43,33 @@ export default class Player extends Phaser.GameObjects.Sprite {
       frameRate: 8, // Velocidad de la animación
       repeat: -1    // Animación en bucle
     });
+    this.scene.anims.create({
+      key: 'smokingRun_anim',
+      frames: this.anims.generateFrameNumbers('smokingRun', { start: 0, end: 7 }),
+      frameRate: 8, // Velocidad de la animación
+      repeat: -1    // Animación en bucle
+    });
 
 
 
   }
    animatePlayer()
   {
-     if (Phaser.Input.Keyboard.JustDown(this.cursors.right) && !this.arrested) {
+     if (Phaser.Input.Keyboard.JustDown(this.cursors.right) && !this.arrested && !this.esmoquinShield) {
       this.setFlip(false,false);
       this.stop();
       this.play('run_anim');
     }
-    else if (Phaser.Input.Keyboard.JustDown(this.cursors.left) && !this.arrested) {
+    else if (Phaser.Input.Keyboard.JustDown(this.cursors.left) && !this.arrested && !this.esmoquinShield) {
       this.setFlip(true,false);
       this.stop();   
       this.play('run_anim');
+    }
+    else if(this.esmoquinShield){
+      this.stop();
+      this.play('smokingRun_anim');
+      if(Phaser.Input.Keyboard.JustDown(this.cursors.left)) this.setFlip(true,false);
+      else if (Phaser.Input.Keyboard.JustDown(this.cursors.right)) this.setFlip(false,false);
     }
     else if (Phaser.Input.Keyboard.JustUp(this.cursors.left)||Phaser.Input.Keyboard.JustUp(this.cursors.right) && !this.arrested)
     {
