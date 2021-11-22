@@ -127,11 +127,18 @@ export default class Level extends Phaser.Scene {
        this.pauseBackGround.alpha = 0.5;
        
        this.activetePause = true;
+       this.fallObjEx.handleMovement();
+       this.fallObjEx2.handleMovement();
+       this.fallObjEx3.handleMovement();
+       
 
+
+       
        this.resumeButton = this.add.image(this.scale.width*0.5, this.scale.height*0.3, 'resumeButton').setInteractive().setScrollFactor(0);
 
        this.resumeButton.on('pointerdown', () => {
          this.activetePause = false;
+     
          this.pauseBackGround.destroy();
          this.exitButton.destroy();
          this.resumeButton.destroy();
@@ -153,7 +160,9 @@ export default class Level extends Phaser.Scene {
 
        this.exitButton = this.add.image(this.scale.width*0.5, this.scale.height*0.7, 'exitButton').setInteractive().setScrollFactor(0);
 
-       this.exitButton.on('pointerdown', () => {this.scene.start('menu'), this.activetePause = false});
+       this.exitButton.on('pointerdown', () => {this.scene.start('menu'), 
+       this.activetePause = false;
+      });
   
      }
   }
@@ -239,11 +248,11 @@ export default class Level extends Phaser.Scene {
     this.fallObjs.add(this.fallObjEx2);
     this.fallObjs.add(this.fallObjEx3);
     this.physics.add.overlap(this.player,this.fallObjs,(o1,o2)=> {
-      console.log("Huele a que entra");
+      
       o2.handleCollisionFallObj(true);
    });
    this.physics.add.overlap(this.groundZone,this.fallObjs,(o1,o2)=> {
-    console.log("Huele a que entra");
+    
     o2.handleCollisionFallObj(false);
  });
 
@@ -326,13 +335,12 @@ export default class Level extends Phaser.Scene {
     
     this.coffe1= new Coffe( this,this.player, 600, 100,'coffe',true);
     this.powerUpsArray.push(this.coffe1);
+    
 
     this.fallObjEx = new FallingObject(this,this.player, 800, 300,'maceta');
-    console.log(this.fallObjEx);
     this.fallObjEx2 = new FallingObject(this,this.player, 1300, 300,'maceta');
-    console.log(this.fallObjEx2);
     this.fallObjEx3 = new FallingObject(this,this.player, 1700, 300,'maceta');
-    console.log(this.fallObjEx3);
+   
     
     this.platform = new Platform(this, this.player.y, 400); 
 

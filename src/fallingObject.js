@@ -11,6 +11,8 @@ export default class FallingObject extends Phaser.GameObjects.Sprite {
      this.scene.physics.add.existing(this);
     this.body.setCollideWorldBounds(); //Colision con los limies del mundo 
     this.body.moves=false;
+    this.isMoving=false;
+    this.gameIsPaused=false;
     this.y -= this.height;
     this.nLifesLose=1;
 
@@ -18,8 +20,21 @@ export default class FallingObject extends Phaser.GameObjects.Sprite {
 
   preUpdate() {
     super.preUpdate();
-     if(this.jugador.x +250>= this.x) this.body.moves=true;
-
+     if(this.jugador.x +250>= this.x) 
+     {
+       this.body.moves=true;
+       this.isMoving=true;
+     }
+    
+     if(this.isMoving)
+     {
+    
+       if(!this.gameIsPaused){
+        if (this.angle===360)this.angle=0;
+        this.angle++; 
+       }
+     }
+    
   }
 
   handleCollisionFallObj(player)
@@ -48,6 +63,10 @@ export default class FallingObject extends Phaser.GameObjects.Sprite {
 
   }
 
-
+handleMovement()
+{
+if(this.gameIsPaused)this.gameIsPaused=false;
+else this.gameIsPaused=true;
+}
 
 }
