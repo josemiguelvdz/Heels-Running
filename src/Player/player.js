@@ -43,59 +43,49 @@ export default class Player extends Phaser.GameObjects.Sprite {
       frameRate: 8, // Velocidad de la animación
       repeat: -1    // Animación en bucle
     });
+    this.scene.anims.create({
+      key: 'jump_anim',
+      frames: this.anims.generateFrameNumbers('jump', { start: 0, end: 4 }),
+      frameRate: 10, // Velocidad de la animación
+      repeat: 0
+    });
 
     this.play('run_anim');
 
 
 
   }
-   animatePlayer()
-  {
-     if (Phaser.Input.Keyboard.JustDown(this.cursors.right) && !this.arrested) {
-      this.setFlip(false,false);
-      this.stop();
-      if(!this.esmoquinShield)this.play('run_anim');
-      else this.play('smokingRun_anim');
-    }
-    else if (Phaser.Input.Keyboard.JustDown(this.cursors.left) && !this.arrested) {
-      this.setFlip(true,false);
-      this.stop();   
-      if(!this.esmoquinShield)this.play('run_anim');
-      else this.play('smokingRun_anim');
-    }
-    else if (Phaser.Input.Keyboard.JustUp(this.cursors.left)||Phaser.Input.Keyboard.JustUp(this.cursors.right) && !this.arrested)
-    {
-      this.stop();
-      //this.play('idle_anim');
-    }
-    else if(this.arrested){
-      this.stop();
-      //this.play('idle_anim');
-    }
-    
-  }
   preUpdate(t,dt) {
     super.preUpdate(t,dt);
 
     //Si no esta en pausa
     if(!this.scene.isPaused()){
-      this.animatePlayer();
       //console.log(this.numLifes);
       //this.body.setVelocityX(this.speed); //Movimiento continuo del jugador hacia la derecha
 
       if (this.cursors.left.isDown && !this.arrested) {
         this.body.setVelocityX(-this.speed);
+        if(this.body.onFloor()){
+          this.play('run_anim', true);
+        }
         
       }
       else if (this.cursors.right.isDown && !this.arrested)  {
         this.body.setVelocityX(this.speed);
+        if(this.body.onFloor()){
+          this.play('run_anim', true);
+        }
       }
       else {
         this.body.setVelocityX(0);
+        if(this.body.onFloor()){
+          this.play('run_anim', true);
+        }
       }
 
       if (this.cursors.up.isDown && this.body.onFloor() && !this.arrested) { // este es el salto
         this.body.setVelocityY(this.jumpSpeed*this.jumpImpulse);
+        this.play('jump_anim', true);
       }
     }
 
