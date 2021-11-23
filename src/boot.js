@@ -81,7 +81,8 @@ export default class Boot extends Phaser.Scene {
       this.load.image('controls', 'controls.png');
       this.load.image('menuLayout', 'menuLayout.png');
       this.load.image('gameover', 'gameover.png');
-      this.load.image('gameoverbackground', 'gameoverbackground.png')
+      this.load.image('gameoverbackground', 'gameoverbackground.png');
+      this.load.image('youWin','youWin.png');
     }
     /**
      * Creación de la escena. En este caso, solo cambiamos a la escena que representa el

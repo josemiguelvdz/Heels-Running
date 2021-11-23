@@ -198,9 +198,12 @@ export default class Level extends Phaser.Scene {
   }
 
   lose(){
-    this.scene.start('gameover')
+    this.scene.start('gameover');
   }
-  
+
+  Win(){
+    this.scene.start('win');
+  }
 
 /**
  * Creates collision groups and adds colliders between them
@@ -274,12 +277,11 @@ export default class Level extends Phaser.Scene {
    this.alcohols.add(this.alcoholEx);
    this.physics.add.overlap(this.player,this.alcohols,(o1,o2)=> {
     onCollision(o1,o2);
-
-
-    
  });
-
-
+    // VICTORY
+    this.physics.add.collider(this.winZone,this.player,(o1,o2)=>{
+      o2.Victory();
+    });
 
     //GRUPO DE LAS PLATAFORMAS Y EL POLICIA
 
@@ -325,7 +327,11 @@ export default class Level extends Phaser.Scene {
     this.gangster = new Gangster(this, this.player, 500, 450);
     this.box = new Box(this, 350, 535);
 
-
+    // VICTORY
+    this.winZone=this.add.zone(2000,600,40,totalWidth);
+    this.physics.world.enable(this.winZone);
+    this.winZone.body.setAllowGravity(false);
+    this.winZone.body.setImmovable(true);
 
     // SUELO
     this.groundZone = this.add.zone(0, 600, totalWidth, this.player.height/2);
@@ -390,7 +396,6 @@ export default class Level extends Phaser.Scene {
   DestroyZone(args){
     args.destroy();
   }
-
 
   // Cambiar tamaño sprites
   delayDone(){
@@ -468,5 +473,4 @@ function helicopter(obj1){
 function onPGround(obj2){
   if(this.isHelicopter) this.helicopterX=obj2.body.x;
 }
-
 
