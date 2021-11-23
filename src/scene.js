@@ -186,8 +186,8 @@ export default class Level extends Phaser.Scene {
     if(this.fallObjEx2!=null)this.fallObjEx2.handleMovement();
     if(this.fallObjEx3!=null)this.fallObjEx3.handleMovement();
 
-    //this.chrono.changeTime();
-    this.player.contador.changeTime();
+    this.chrono.changeTime();
+    //this.player.contador.changeTime();
     //Activar variable para que no se cuente en el contador de los power ups 
     for(let i=0;i<this.powerUpsArray.length;i++)
     {
