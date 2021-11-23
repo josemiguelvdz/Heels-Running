@@ -60,6 +60,7 @@ export default class Police extends Phaser.GameObjects.Sprite {
     catchP(){
         this.constantSpeed=0;
         this.catchRoger=true;
+        this.scene.lose();
     }
 
     isHelicopter(){

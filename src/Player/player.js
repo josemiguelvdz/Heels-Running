@@ -194,9 +194,13 @@ export default class Player extends Phaser.GameObjects.Sprite {
    loseLife(nLlose)
    {
      if(!this.esmoquinShield)this.numLifes-=nLlose;
-    //Actualizar interfaz
-    //Si la vida es menor a 1 tiene que salir un texto de has perdido o algo asi 
-    //Y que te lleve al menu de inicio
+      //Actualizar interfaz
+      //Si la vida es menor a 1 tiene que salir un texto de has perdido o algo asi 
+      if(this.numLifes < 1){
+        this.scene.lose();
+      }
+
+      //Y que te lleve al menu de inicio
    }
 
      /**

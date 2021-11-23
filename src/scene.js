@@ -198,6 +198,10 @@ export default class Level extends Phaser.Scene {
     }
     this.player.activatePowerUpTimes();
   }
+
+  lose(){
+    this.scene.start('gameover')
+  }
   
 
 /**

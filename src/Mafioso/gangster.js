@@ -9,7 +9,8 @@ export default class Gangster extends Phaser.GameObjects.Sprite {
         this.scene.physics.add.existing(this);
 
         this.jugador = player;
-        this.segundos = 0;
+        this.cooldown = 0;
+        this.visionRange = 100;
     }
 
     preUpdate(time, delta){
@@ -17,11 +18,11 @@ export default class Gangster extends Phaser.GameObjects.Sprite {
         this.animateGangster();
 
         if(!this.scene.isPaused()){
-            this.segundos+=Math.round(delta);
-
-            if((this.segundos) > 2000)
+            this.cooldown+=Math.round(delta);
+            console.log(this.x-this.jugador.x);
+            if((this.cooldown) > 2000 && this.visionRange >= this.x-this.jugador.x)
             {
-                this.segundos = 0;
+                this.cooldown = 0;
                 this.shoot();
             }
         }

@@ -15,10 +15,11 @@ export default class Bullet extends Phaser.GameObjects.Sprite {
         this.jugador = player;
 
         this.speedBullet = 300;
+        this.timeDestruction = 0;
     }
 
-    preUpdate(){
-        super.preUpdate();
+    preUpdate(time, delta){
+        super.preUpdate(time, delta);
         
         if(!this.scene.isPaused()){
             /*this.x += 10*Math.cos(this.angle);
@@ -31,6 +32,11 @@ export default class Bullet extends Phaser.GameObjects.Sprite {
             this.handleCollision();
             this.destroy();
         });
+
+        this.timeDestruction+=Math.round(delta);
+
+        if((this.timeDestruction) > 5000){this.destroy()}
+
     }
 
     handleCollision(){
