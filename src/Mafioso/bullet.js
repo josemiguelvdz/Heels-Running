@@ -20,23 +20,22 @@ export default class Bullet extends Phaser.GameObjects.Sprite {
 
     preUpdate(time, delta){
         super.preUpdate(time, delta);
+
+        this.scene.physics.add.collider(this.jugador, this,(o1,o2)=> {
+            this.handleCollision();
+            this.destroy();
+        });
         
         if(!this.scene.isPaused()){
             /*this.x += 10*Math.cos(this.angle);
             this.y += 10*Math.sin(this.angle);*/
             this.body.setVelocityX(this.speedBullet*Math.cos(this.angle));
             this.body.setVelocityY(this.speedBullet*Math.sin(this.angle));
+
+            this.timeDestruction+=Math.round(delta);
+
+            if((this.timeDestruction) > 5000){this.destroy()}
         }
-
-        this.scene.physics.add.collider(this.jugador, this,(o1,o2)=> {
-            this.handleCollision();
-            this.destroy();
-        });
-
-        this.timeDestruction+=Math.round(delta);
-
-        if((this.timeDestruction) > 5000){this.destroy()}
-
     }
 
     handleCollision(){

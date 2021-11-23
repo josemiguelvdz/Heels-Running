@@ -10,7 +10,7 @@ export default class Gangster extends Phaser.GameObjects.Sprite {
 
         this.jugador = player;
         this.cooldown = 0;
-        this.visionRange = 100;
+        this.visionRange = 450;
     }
 
     preUpdate(time, delta){
@@ -19,8 +19,8 @@ export default class Gangster extends Phaser.GameObjects.Sprite {
 
         if(!this.scene.isPaused()){
             this.cooldown+=Math.round(delta);
-            console.log(this.x-this.jugador.x);
-            if((this.cooldown) > 2000 && this.visionRange >= this.x-this.jugador.x)
+
+            if((this.cooldown) > 2000 && this.visionRange >= Math.abs(this.x-this.jugador.x))
             {
                 this.cooldown = 0;
                 this.shoot();
