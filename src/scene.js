@@ -82,7 +82,7 @@ export default class Level extends Phaser.Scene {
 
 
       // CAMBIAR BOUDING BOX DE TAMAÑO
-      //this.time.addEvent({delay: 1000, callback: this.delayDone, callbackScope: this, loop: false})
+      this.time.addEvent({delay: 500, callback: this.delayDone, callbackScope: this, loop: false})
 
   }
 
@@ -330,7 +330,7 @@ export default class Level extends Phaser.Scene {
 
 
     // SUELO
-    this.groundZone = this.add.zone(0, 600, totalWidth, this.player.height);
+    this.groundZone = this.add.zone(0, 600, totalWidth, this.player.height/2);
     this.physics.world.enable(this.groundZone);
     this.groundZone.body.setAllowGravity(false);
     this.groundZone.body.setImmovable(true);
@@ -396,7 +396,7 @@ export default class Level extends Phaser.Scene {
 
   // Cambiar tamaño sprites
   delayDone(){
-    this.redTimer.body.setSize(this.redTimer.width/2, this.redTimer.height, true);
+    this.player.body.setSize(this.player.width/2, this.player.height/1.5, true);
   }
 }
 

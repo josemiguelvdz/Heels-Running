@@ -3,7 +3,7 @@ import Chrono from "../Timer/Chrono.js";
 export default class Player extends Phaser.GameObjects.Sprite {
 
   constructor(scene, x, y, nLifes) {
-    super(scene, x, y, 'idle');
+    super(scene, x, y, 'run');
     
     this.score = 0;
     this.scene.add.existing(this);
@@ -32,12 +32,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.cursors = this.scene.input.keyboard.createCursorKeys();
 
     this.scene.anims.create({
-      key: 'idle_anim',
-      frames: this.anims.generateFrameNumbers('idle', { start: 0, end: 3 }),
-      frameRate: 8, // Velocidad de la animación
-      repeat: -1    // Animación en bucle
-    });
-    this.scene.anims.create({
       key: 'run_anim',
       frames: this.anims.generateFrameNumbers('run', { start: 0, end: 7 }),
       frameRate: 10, // Velocidad de la animación
@@ -49,6 +43,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
       frameRate: 8, // Velocidad de la animación
       repeat: -1    // Animación en bucle
     });
+
+    this.play('run_anim');
 
 
 
@@ -70,11 +66,11 @@ export default class Player extends Phaser.GameObjects.Sprite {
     else if (Phaser.Input.Keyboard.JustUp(this.cursors.left)||Phaser.Input.Keyboard.JustUp(this.cursors.right) && !this.arrested)
     {
       this.stop();
-      this.play('idle_anim');
+      //this.play('idle_anim');
     }
     else if(this.arrested){
       this.stop();
-      this.play('idle_anim');
+      //this.play('idle_anim');
     }
     
   }
