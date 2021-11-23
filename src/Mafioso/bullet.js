@@ -15,7 +15,8 @@ export default class Bullet extends Phaser.GameObjects.Sprite {
         this.jugador = player;
 
         this.speedBullet = 300;
-        this.timeDestruction = 0;
+        this.countingtimeDestruction = 0;
+        this.tiempoDestruccion=2000;
     }
 
     preUpdate(time, delta){
@@ -32,9 +33,9 @@ export default class Bullet extends Phaser.GameObjects.Sprite {
             this.body.setVelocityX(this.speedBullet*Math.cos(this.angle));
             this.body.setVelocityY(this.speedBullet*Math.sin(this.angle));
 
-            this.timeDestruction+=Math.round(delta);
+            this.countingtimeDestruction+=Math.round(delta);
 
-            if((this.timeDestruction) > 5000){this.destroy()}
+            if((this.countingtimeDestruction) > this.tiempoDestruccion){this.destroy()}
         }
     }
 
