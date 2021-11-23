@@ -128,60 +128,60 @@ export default class Level extends Phaser.Scene {
 
     if(!this.activetePause){
 
-       this.pauseBackGround = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'pauseBackGround').setScale(1.2, 1).setScrollFactor(0);
-       this.pauseBackGround.alpha = 0.5;
+      this.pauseBackGround = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'pauseBackGround').setScale(1.2, 1).setScrollFactor(0);
+      this.pauseBackGround.alpha = 0.5;
 
-       this.menuLayout =  this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'menuLayout').setScale(0.7, 0.5).setScrollFactor(0);
-       
-       this.activetePause = true;
-       //CREARIAMOS UN METODO CONTROL IF PAUSE 
-       if(this.fallObjEx!=null)this.fallObjEx.handleMovement();
-       if(this.fallObjEx2!=null)this.fallObjEx2.handleMovement();
-       if(this.fallObjEx3!=null)this.fallObjEx3.handleMovement();
-       //Activar el contador y efecto de los power ups
-       for(let i=0;i<this.powerUpsArray.length;i++)
-       {
-           this.powerUpsArray[i].handleMovement();
-       }
+      this.menuLayout =  this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'menuLayout').setScale(0.7, 0.5).setScrollFactor(0);
+      
+      this.activetePause = true;
+      //CREARIAMOS UN METODO CONTROL IF PAUSE 
+      if(this.fallObjEx!=null)this.fallObjEx.handleMovement();
+      if(this.fallObjEx2!=null)this.fallObjEx2.handleMovement();
+      if(this.fallObjEx3!=null)this.fallObjEx3.handleMovement();
+      //Activar el contador y efecto de los power ups
+      for(let i=0;i<this.powerUpsArray.length;i++)
+      {
+          this.powerUpsArray[i].handleMovement();
+      }
 
 
 
-       this.resumeButton = this.add.image(this.scale.width*0.5, this.scale.height*0.3, 'resumeButton').setInteractive().setScrollFactor(0);
+      this.resumeButton = this.add.image(this.scale.width*0.5, this.scale.height*0.3, 'resumeButton').setInteractive().setScrollFactor(0);
 
-       this.resumeButton.on('pointerdown', () => {
-         this.activetePause = false;
-         this.pauseBackGround.destroy();
-         this.exitButton.destroy();
-         this.resumeButton.destroy();
-         this.settingsButton.destroy();
-         this.menuLayout.destroy();
-         this.physics.resume();
+      this.resumeButton.on('pointerdown', () => {
+        this.activetePause = false;
+        this.pauseBackGround.destroy();
+        this.exitButton.destroy();
+        this.resumeButton.destroy();
+        this.settingsButton.destroy();
+        this.menuLayout.destroy();
+        this.physics.resume();
 
-         if(this.fallObjEx!=null)this.fallObjEx.handleMovement();
-         if(this.fallObjEx2!=null)this.fallObjEx2.handleMovement();
-         if(this.fallObjEx3!=null)this.fallObjEx3.handleMovement();
+        if(this.fallObjEx!=null)this.fallObjEx.handleMovement();
+        if(this.fallObjEx2!=null)this.fallObjEx2.handleMovement();
+        if(this.fallObjEx3!=null)this.fallObjEx3.handleMovement();
 
-         this.chrono.changeTime();
-         this.player.contador.changeTime();
-          //Activar variable para que no se cuente en el contador de los power ups 
-         for(let i=0;i<this.powerUpsArray.length;i++)
-         {
-             if(this.powerUpsArray[i].movesbyTween)this.powerUpsArray[i].tweenMovement.resume();
-             this.powerUpsArray[i].handleMovement();
-         }
-         this.player.activatePowerUpTimes();
+        this.chrono.changeTime();
+        this.player.contador.changeTime();
+        //Activar variable para que no se cuente en el contador de los power ups 
+        for(let i=0;i<this.powerUpsArray.length;i++)
+        {
+            if(this.powerUpsArray[i].movesbyTween)this.powerUpsArray[i].tweenMovement.resume();
+            this.powerUpsArray[i].handleMovement();
+        }
+        this.player.activatePowerUpTimes();
 
-        });
+      });
 
-        this.settingsButton = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'settingsButton').setInteractive().setScrollFactor(0);
+      this.settingsButton = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'settingsButton').setInteractive().setScrollFactor(0);
 
-        this.settingsButton.on('pointerdown', () => {this.settings(), this.resumeButton.destroy(), this.settingsButton.destroy(), 
-                                                            this.exitButton.destroy(),  this.menuLayout.destroy()});
+      this.settingsButton.on('pointerdown', () => {this.settings(), this.resumeButton.destroy(), this.settingsButton.destroy(), 
+                            this.exitButton.destroy(),  this.menuLayout.destroy()});
 
-       this.exitButton = this.add.image(this.scale.width*0.5, this.scale.height*0.7, 'exitButton').setInteractive().setScrollFactor(0);
+      this.exitButton = this.add.image(this.scale.width*0.5, this.scale.height*0.7, 'exitButton').setInteractive().setScrollFactor(0);
 
-       this.exitButton.on('pointerdown', () => {this.scene.start('menu'), this.activetePause = false});
-  
+      this.exitButton.on('pointerdown', () => {this.scene.start('menu'), this.activetePause = false});
+
      }
   }
 

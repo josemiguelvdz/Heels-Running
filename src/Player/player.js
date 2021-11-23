@@ -80,24 +80,30 @@ export default class Player extends Phaser.GameObjects.Sprite {
   }
   preUpdate(t,dt) {
     super.preUpdate(t,dt);
-    this.animatePlayer();
-    //console.log(this.numLifes);
-    //this.body.setVelocityX(this.speed); //Movimiento continuo del jugador hacia la derecha
 
-    if (this.cursors.left.isDown && !this.arrested) {
-      this.body.setVelocityX(-this.speed);
-      
-    }
-    else if (this.cursors.right.isDown && !this.arrested)  {
-      this.body.setVelocityX(this.speed);
-    }
-    else {
-      this.body.setVelocityX(0);
+    //Si no esta en pausa
+    if(!this.scene.isPaused()){
+      this.animatePlayer();
+      //console.log(this.numLifes);
+      //this.body.setVelocityX(this.speed); //Movimiento continuo del jugador hacia la derecha
+
+      if (this.cursors.left.isDown && !this.arrested) {
+        this.body.setVelocityX(-this.speed);
+        
+      }
+      else if (this.cursors.right.isDown && !this.arrested)  {
+        this.body.setVelocityX(this.speed);
+      }
+      else {
+        this.body.setVelocityX(0);
+      }
+
+      if (this.cursors.up.isDown && this.body.onFloor() && !this.arrested) { // este es el salto
+        this.body.setVelocityY(this.jumpSpeed*this.jumpImpulse);
+      }
     }
 
-    if (this.cursors.up.isDown && this.body.onFloor() && !this.arrested) { // este es el salto
-      this.body.setVelocityY(this.jumpSpeed*this.jumpImpulse);
-    }
+    else this.stop();
 
     //Parte del power up esmoquin
    
