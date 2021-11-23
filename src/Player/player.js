@@ -40,7 +40,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.scene.anims.create({
       key: 'run_anim',
       frames: this.anims.generateFrameNumbers('run', { start: 0, end: 7 }),
-      frameRate: 8, // Velocidad de la animación
+      frameRate: 10, // Velocidad de la animación
       repeat: -1    // Animación en bucle
     });
     this.scene.anims.create({
