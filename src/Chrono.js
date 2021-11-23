@@ -23,7 +23,7 @@ export default class Chrono extends Phaser.GameObjects.GameObject {
       this.destroy(true) //Se destruye al final del frame
   }
   preUpdate(time, delta) {
-      if(!this.pause && !this.fin){ // Si no está pausado suma el tiempo
+      if(!this.scene.isPaused() && !this.fin){ // Si no está pausado suma el tiempo
          if(this.write)this.text.setText( this.timeElapsed);
         this.segundos+=Math.round(delta);
         if((this.segundos)/600 >100) // Si ha llegado a 60 segundos, los reinicia y suma los minutos
@@ -91,9 +91,9 @@ export default class Chrono extends Phaser.GameObjects.GameObject {
  * Stop adding time to the game
  * 
  */
-  changeTime(){
+  /*changeTime(){
     this.pause=!this.pause;
-  }
+  }*/
 
   finish(){
     this.fin=true;

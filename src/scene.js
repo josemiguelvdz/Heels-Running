@@ -99,7 +99,9 @@ export default class Level extends Phaser.Scene {
     }
 
     if (Phaser.Input.Keyboard.JustDown(this.scape)) { 
-      this.stop(this.activetePause);
+      if(!this.activetePause) this.stop(this.activetePause);
+
+      else this.unPause();
     } 
 
     // Comprueba si el jugador ha pulsado la tecla para dar una patada
@@ -144,34 +146,9 @@ export default class Level extends Phaser.Scene {
           this.powerUpsArray[i].handleMovement();
       }
 
-
-
       this.resumeButton = this.add.image(this.scale.width*0.5, this.scale.height*0.3, 'resumeButton').setInteractive().setScrollFactor(0);
 
-      this.resumeButton.on('pointerdown', () => {
-        this.activetePause = false;
-        this.pauseBackGround.destroy();
-        this.exitButton.destroy();
-        this.resumeButton.destroy();
-        this.settingsButton.destroy();
-        this.menuLayout.destroy();
-        this.physics.resume();
-
-        if(this.fallObjEx!=null)this.fallObjEx.handleMovement();
-        if(this.fallObjEx2!=null)this.fallObjEx2.handleMovement();
-        if(this.fallObjEx3!=null)this.fallObjEx3.handleMovement();
-
-        this.chrono.changeTime();
-        this.player.contador.changeTime();
-        //Activar variable para que no se cuente en el contador de los power ups 
-        for(let i=0;i<this.powerUpsArray.length;i++)
-        {
-            if(this.powerUpsArray[i].movesbyTween)this.powerUpsArray[i].tweenMovement.resume();
-            this.powerUpsArray[i].handleMovement();
-        }
-        this.player.activatePowerUpTimes();
-
-      });
+      this.resumeButton.on('pointerdown', () => {this.unPause()});
 
       this.settingsButton = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'settingsButton').setInteractive().setScrollFactor(0);
 
@@ -196,6 +173,30 @@ export default class Level extends Phaser.Scene {
 
   isPaused(){
     return this.activetePause;
+  }
+
+  unPause(){
+    this.activetePause = false;
+    this.pauseBackGround.destroy();
+    this.exitButton.destroy();
+    this.resumeButton.destroy();
+    this.settingsButton.destroy();
+    this.menuLayout.destroy();
+    this.physics.resume();
+
+    if(this.fallObjEx!=null)this.fallObjEx.handleMovement();
+    if(this.fallObjEx2!=null)this.fallObjEx2.handleMovement();
+    if(this.fallObjEx3!=null)this.fallObjEx3.handleMovement();
+
+    //this.chrono.changeTime();
+    this.player.contador.changeTime();
+    //Activar variable para que no se cuente en el contador de los power ups 
+    for(let i=0;i<this.powerUpsArray.length;i++)
+    {
+        if(this.powerUpsArray[i].movesbyTween)this.powerUpsArray[i].tweenMovement.resume();
+        this.powerUpsArray[i].handleMovement();
+    }
+    this.player.activatePowerUpTimes();
   }
   
 
