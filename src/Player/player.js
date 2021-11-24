@@ -59,6 +59,21 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.kick=this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K);
     
     this.play('run_anim');
+
+
+
+    const configSound = {
+      mute: false,
+      volume: 0.3,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: false,
+      delay: 0,
+    };
+    this.damagePlayersound= this.scene.sound.add("damageSound",configSound);
+    this.deathSound= this.scene.sound.add("deathsound",configSound);
+    LoseEvent(this.scene,this.deathSound);
   }
   preUpdate(t,dt) {
     super.preUpdate(t,dt);
@@ -190,12 +205,19 @@ export default class Player extends Phaser.GameObjects.Sprite {
     */
    loseLife(nLlose)
    {
-     if(!this.esmoquinShield)this.numLifes-=nLlose;
+    
+     if(!this.esmoquinShield)
+     {
+       this.numLifes-=nLlose;
+       
+     }
       //Actualizar interfaz
       //Si la vida es menor a 1 tiene que salir un texto de has perdido o algo asi 
       if(this.numLifes < 1){
-        this.scene.lose();
+        this.deathSound.play();
+       
       }
+      else this.damagePlayersound.play()
 
       //Y que te lleve al menu de inicio
    }
@@ -242,5 +264,12 @@ export default class Player extends Phaser.GameObjects.Sprite {
     Victory(){
       this.scene.Win();
     }
+    
 }
+function LoseEvent(escena,deathsound)
+    {
+      deathsound.once("stop", (escena) => {
+        escena.lose();
+      });
+    }
 

@@ -11,6 +11,16 @@ export default class Gangster extends Phaser.GameObjects.Sprite {
         this.jugador = player;
         this.cooldown = 0;
         this.visionRange = 450;
+        const configSound = {
+            mute: false,
+            volume: 0.25,
+            rate: 2,
+            detune: 0,
+            seek: 0,
+            loop: false,
+            delay: 0,
+          };
+          this.gunshotsound= this.scene.sound.add("gunSound",configSound);
     }
 
     preUpdate(time, delta){
@@ -30,6 +40,7 @@ export default class Gangster extends Phaser.GameObjects.Sprite {
 
     shoot(){
 
+        this.gunshotsound.play();
         new Bullet(this.scene, this.jugador, this.x, this.y);
 
     }
