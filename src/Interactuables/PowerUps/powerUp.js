@@ -11,6 +11,16 @@ export default class PowerUp extends Phaser.GameObjects.Sprite {
     this.scene.physics.add.existing(this);
     this.body.setCollideWorldBounds(); //Colision con los limies del mundo 
     this.y -= this.height;
+    const configSound = {
+      mute: false,
+      volume: 0.3,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: false,
+      delay: 0,
+    };
+    this.powerupsound= this.scene.sound.add("powerupSound",configSound);
     this.body.moves=false;
     this.stopMovement=false;
     this.tweenMovement;
@@ -41,6 +51,7 @@ export default class PowerUp extends Phaser.GameObjects.Sprite {
    */
   destroyObject()
   {
+
     this.destroy();
   }
  /**

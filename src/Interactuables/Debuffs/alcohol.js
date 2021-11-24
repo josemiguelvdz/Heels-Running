@@ -55,6 +55,7 @@ export default class Alcohol extends PowerUp {
          {
           this.player.controlSpeed("Reduce"); 
           this.hasEntered=true;
+          this.powerupsound.play();
          } 
         
      }   

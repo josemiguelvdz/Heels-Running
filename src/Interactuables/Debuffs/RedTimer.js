@@ -35,6 +35,7 @@ export default class RedTimer extends PowerUp {
   collideRedTimer()
   {
         this.timer.addTime(30,1);
+        this.powerupsound.play();
         this.destroyObject();
   }
   

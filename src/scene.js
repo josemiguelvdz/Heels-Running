@@ -62,7 +62,7 @@ export default class Level extends Phaser.Scene {
 
       this.scape = this.input.keyboard.addKey('ESC');
       this.scape.on('down', () => {
-      this.chrono.changeTime();
+     if(! this.inSettings )this.chrono.changeTime();
       for(let i=0;i<this.powerUpsArray.length;i++)
       {
         if(this.powerUpsArray[i].movesbyTween)this.powerUpsArray[i].tweenMovement.pause();
@@ -269,7 +269,7 @@ export default class Level extends Phaser.Scene {
    });
    this.physics.add.collider(this.groundZone,this.fallObjs,(o1,o2)=> {
     
-    console.log("Huele a que entra");
+   
     o2.handleCollisionFallObj(false);
  });
 
@@ -343,6 +343,7 @@ export default class Level extends Phaser.Scene {
     this.physics.add.collider(this.groundZone, this.police);
     this.physics.add.collider(this.groundZone, this.gangster);
     // AÑADIR TODOS LOS GRUPOS
+    
     
     
     this.timeBar = this.add.sprite(920, 50, 'timeBar', 'timeBar.png').setScrollFactor(0);

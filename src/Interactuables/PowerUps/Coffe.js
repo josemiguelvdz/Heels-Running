@@ -51,10 +51,12 @@ handleCollision()
    */
     collideCoffe()
    {    
+     //Para que solo entre 1 vez
        if(!this.hasEntered)
        {
         this.player.controlSpeed("Increase"); 
         this.hasEntered=true;
+        this.powerupsound.play();
        } 
       
    }   

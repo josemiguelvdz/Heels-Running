@@ -34,6 +34,7 @@ export default class Esmoquin extends PowerUp {
    //En la llamada al player se actualizaria visualmente el efecto del power up
    //Asi como en la interfaz con sus propios metodos 
   this.player.configEsmoquinShield(this.durationEffect);
+  this.powerupsound.play();
   this.destroyObject();
 }
 

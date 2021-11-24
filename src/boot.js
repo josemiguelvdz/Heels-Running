@@ -84,6 +84,16 @@ export default class Boot extends Phaser.Scene {
       this.load.image('gameover', 'gameover.png');
       this.load.image('gameoverbackground', 'gameoverbackground.png');
       this.load.image('youWin','youWin.png');
+
+
+
+    //Sounds
+    this.load.setPath('./assets/Sounds/SoundEffects');
+    this.load.audio("powerupSound", "PowerUpSound.mp3");
+    //Sound Effect-> Falling objects powerUps;
+
+
+
     }
     /**
      * Creación de la escena. En este caso, solo cambiamos a la escena que representa el
