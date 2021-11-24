@@ -49,11 +49,16 @@ export default class Player extends Phaser.GameObjects.Sprite {
       frameRate: 10, // Velocidad de la animación
       repeat: 0
     });
+    this.scene.anims.create({
+      key: 'jump_kick_anim',
+      frames: this.anims.generateFrameNumbers('jump_kick', { start: 0, end: 7 }),
+      frameRate: 10, // Velocidad de la animación
+      repeat: 0
+    });
 
+    this.kick=this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K);
+    
     this.play('run_anim');
-
-
-
   }
   preUpdate(t,dt) {
     super.preUpdate(t,dt);
@@ -62,6 +67,10 @@ export default class Player extends Phaser.GameObjects.Sprite {
     if(!this.scene.isPaused()){
       //console.log(this.numLifes);
       //this.body.setVelocityX(this.speed); //Movimiento continuo del jugador hacia la derecha
+
+      if(this.kick.isDown){
+        this.play('jump_kick_anim', true);
+      }
 
       if (this.cursors.left.isDown && !this.arrested) {
         this.body.setVelocityX(-this.speed);
@@ -87,6 +96,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
         this.body.setVelocityY(this.jumpSpeed*this.jumpImpulse);
         this.play('jump_anim', true);
       }
+
+      
     }
 
     else this.stop();

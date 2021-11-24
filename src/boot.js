@@ -32,6 +32,7 @@ export default class Boot extends Phaser.Scene {
       this.load.spritesheet('idle','idlespritesheet.png',{frameWidth:64, frameHeight:64})
       this.load.spritesheet('run','testRun.png',{frameWidth:128, frameHeight:128});
       this.load.spritesheet('jump', 'testJump.png',{frameWidth:128, frameHeight:128});
+      this.load.spritesheet('jump_kick', 'testKick.png', {frameWidth:128, frameHeight: 128});
       this.load.spritesheet('smokingRun','smokingrunspritesheet.png',{frameWidth:64,frameHeight:64})
      
       //StaticObjects Sprites
