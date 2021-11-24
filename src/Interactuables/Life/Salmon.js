@@ -31,7 +31,8 @@ export default class Salmon extends PowerUp {
  * 
  */
   collideSalmon() {
-    this.player.addLife(1)
+    this.player.addLife(1);
+    this.powerupsound.play();
     this.destroyObject();
   }
 
