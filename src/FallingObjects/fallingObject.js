@@ -16,6 +16,18 @@ export default class FallingObject extends Phaser.GameObjects.Sprite {
     this.y -= this.height;
     this.nLifesLose=1;
 
+
+    const configSound = {
+      mute: false,
+      volume: 0.3,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: false,
+      delay: 0,
+    };
+    this.fallingSound= this.scene.sound.add("fallingobjectSound",configSound);
+
   }
 
   preUpdate() {
@@ -49,16 +61,19 @@ export default class FallingObject extends Phaser.GameObjects.Sprite {
   handleCollisionPlayer() {
 
     this.jugador.loseLife( this.nLifesLose);
+    this.fallingSound.play();
     this.destroy();
     //SONIDO DE IMPACTO
 
   }
    /**
-   * Handles the collision with player and makes a breaking sound
+   * Handles the collision with floor and makes a breaking sound
    */
   handleCollisionFloor() {
 
+    this.fallingSound.play();
     this.destroy();
+    
     //SONIDO DE RUPTURA
 
   }

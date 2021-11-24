@@ -89,8 +89,9 @@ export default class Boot extends Phaser.Scene {
 
     //Sounds
     this.load.setPath('./assets/Sounds/SoundEffects');
-    this.load.audio("powerupSound", "PowerUpSound.mp3");
-    //Sound Effect-> Falling objects powerUps;
+    this.load.audio('powerupSound', 'PowerUpSound.mp3');
+    this.load.audio('fallingobjectSound', 'JarronRoto.mp3');
+   
 
 
 
