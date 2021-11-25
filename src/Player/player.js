@@ -217,7 +217,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
       //Si la vida es menor a 1 tiene que salir un texto de has perdido o algo asi 
       if(this.numLifes < 1){
         this.deathSound.play();
-        
+        this.LosingGame();
        
       }
      
