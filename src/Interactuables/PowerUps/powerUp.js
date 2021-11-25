@@ -25,18 +25,7 @@ export default class PowerUp extends Phaser.GameObjects.Sprite {
     this.stopMovement=false;
     this.tweenMovement;
     this.movesbyTween=moving;
-    if(moving)
-    {
-      this.tweenMovement= this.scene.tweens.add({
-      targets: this,
-      y: 400, //Cantidad de desplazamiento
-      duration: 1500,
-      ease: 'Linear',
-      yoyo: true,
-      repeat: -1,
-      delay: 200 //Tiempo que tarda en empezar
-     });
-    }
+    
     //Referencias al jugador la escena y el sprite que tengan 
     this.player=player;
     this.scene=scene;
@@ -65,5 +54,19 @@ handleMovement()
 if(this.stopMovement) this.stopMovement=false;
 else  this.stopMovement=true;
 }
-
+createTweenMovement()
+{
+  if(this.movesbyTween)
+  {
+    this.tweenMovement= this.scene.tweens.add({
+    targets: this,
+    y: 400, //Cantidad de desplazamiento
+    duration: 1500,
+    ease: 'Linear',
+    yoyo: true,
+    repeat: -1,
+    delay: 200 //Tiempo que tarda en empezar
+   });
+  }
+}
 }
