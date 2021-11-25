@@ -13,7 +13,7 @@ Twitter: https://twitter.com/Hitch_Corp
 
 Pivotal: https://www.pivotaltracker.com/n/projects/2532298
 
-UML: https://app.creately.com/diagram/p9mz5a7aeDl/edit
+UML: https://app.creately.com/diagram/p9mz5a7aeDl/view
 
 ### GDD:
 
@@ -30,10 +30,6 @@ Capturas del Juego:
 
 
 
-
-
-
-
 ![unknown](https://user-images.githubusercontent.com/75903737/135341022-3484ffb8-e9ce-4f82-8740-6db7b09cdaf4.png)
 
 
@@ -45,7 +41,7 @@ Capturas del Juego:
 
 - Heels Running se trata de un runner con scroll lateral en cuál nuestro personaje se mueve automáticamente hacia la derecha y cuyo objetivo principal es huir de nuestros perseguidores hasta lograr escapar, para ello tendremos que esquivar obstáculos, tratando tanto de no morir cuando nos disparen los mafiosos, como de que no nos arreste la policía. 
 
-A lo largo de la run se encontrará con distintos objetos que nos ayudarán durante la huida (powerUps) , aunque también se encontrará con otros objetos que nos retrasarán (debuffs). Nuestro protagonista será capaz de romper algunos obstáculos frágiles, los cuales podrían contener poweUps.
+A lo largo de la run nos encontraremos con distintos objetos que nos ayudarán durante la huida (powerUps), aunque también nos encontraremos con otros objetos que nos retrasarán (debuffs). Nuestro protagonista será capaz de romper algunos obstáculos frágiles, los cuales podrían contener poweUps.
 
 Logotipo y portada del juego: ---
 
@@ -55,6 +51,7 @@ Logotipo y portada del juego: ---
 - 0.2 Estética, dinámica, y ajustes en las mecánicas. (24/09/2021)
 - 0.3 Controles básicos, power Ups, debuffs. (29/09/2021)
 - 0.4 Ajuste completo del GDD, dejando claros todos los aspectos del mismo. (5/10/2021)
+- 0.5 Ajuste completo del GDD, para actualizarlo según el progreso actual del juego. (25/11/2021)
 - ----------------------------------------------------------------------------------------------------------------------
 
 #### Tabla de contenidos
@@ -65,7 +62,7 @@ Logotipo y portada del juego: ---
 
 #### 1.1. Relato breve y parcial de una partida típica
 
-El juego transcurre en una ciudad, donde somos perseguidos por la policía y atacados por la mafia, nosotros tendremos que tratar de esquivar los obstáculos saltando o deslizandonos, o incluso destruyendolos si fuera posible (cajas). De esta manera para acabar la partidad tendremos que llegar a la estación del tren.
+El juego transcurre en una ciudad, donde somos perseguidos por la policía y atacados por la mafia, nosotros tendremos que tratar de esquivar los obstáculos saltando o dándoles una patada. Para acabar la partida y lograr ganar tendremos que llegar a la estación del tren.
 
 #### 2. Jugabilidad
 
@@ -73,20 +70,17 @@ El juego transcurre en una ciudad, donde somos perseguidos por la policía y ata
 
 #### 2.1.1. Mecánicas del personaje
 
-- Movimiento horizontal: El personaje se mueve a una velocidad constante la cuál puede verse afectada al chocar con obstáculos.
+- Movimiento horizontal: El personaje se mueve a una velocidad constante la cuál puede verse afectada al chocar con obstáculos. Además, habrá power ups y debuffs que puedan afectar a este parámetro (de manera positiva o negativa).
 
-- Saltar: Movimiento que consiste en un impulso vertical, además, podremos controlar la trayectoria en el aire. Cuanto más se mantenga el botón de salto más alto se llegará, hasta un máximo de altura. Solo podemos volver a saltar cuando volvamos a tocar el suelo u otra plataforma en la que podamos caminar, es decir, no se puede saltar en el aire.
+- Saltar: Movimiento que consiste en un impulso vertical. Solo podemos volver a saltar cuando volvamos a tocar el suelo u otra plataforma en la que podamos caminar, es decir, no se puede saltar en el aire. Durante el salto será posible pegar una patada para destruir objetos.
 
-- Sistema de Vida: El jugador dispondrá de 3 corazones de vida.
+- Sistema de Vida: El jugador dispondrá de tres puntos de vida representados en la interfaz del juego.
 
-- Recibir daño: Recibiremos daño, cuando no seamos capaces de esquivar los disparos de los mafiosos los cuales no quitarán 1 corazón o los objetos que caigan desde las ventanas en el escenario de la ciudad que nos quitarán medio corazón, cuando nos quedemos sin corazones, moriremos.
+- Recibir daño: Recibiremos daño, cuando no seamos capaces de esquivar los disparos de los mafiosos los cuales no quitarán un punto de vida o los objetos que caigan desde las ventanas en el escenario de la ciudad que nos quitarán otro punto de vida. Cuando nos quedemos sin puntos de vida, moriremos y perderemos la partida.
 
-- Deslizar:  El jugador podrá deslizarse de manera que sea capaz de atravesar obstáculos que no puden saltarse o para tratar de esquivar los objetos que caen de las ventanas.
-Dado que deslizarse va a ser como un pequeño dash, este tendrá un cooldown para no abusar de él. 
+- Dar una patada:  El jugador podrá dar una patada de manera que sea capaz de destruir los objetos cayentes y las cajas. Podrá realizar una patada tanto en el aire como en el suelo. Si destruye una caja, existe una posibilidad de que suelte un power up. Tendrá un cooldown para no abusar de ella. 
 
-- Destruir obstáculos: De la mecánica anterior deriva la mecánica de destruir objetos, ya que deslizandonos contra un objetos podremos destruirlo si este es ‘’destruible’’, siendo posible que este nos dropeé un Power Up.
-
-- Coger PowerUps/Debuffs: Al cogerlos, se activará automáticamente durante un periodo de tiempo.
+- Coger PowerUps/Debuffs: Al cogerlos, se activará automáticamente durante un periodo de tiempo. Si el power up/debuff tiene una duración, se verá representada en la interfaz mientras el efecto este activo. Nunca habrá un punto de la partida donde hayan dos power ups/debuff muy juntos (para prevenir solapamiento de power ups/debuff)
 
 #### 2.1.2. Mecánicas de escenario
 
