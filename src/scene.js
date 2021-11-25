@@ -204,8 +204,7 @@ export default class Level extends Phaser.Scene {
 
   Win(){
     this.runTime= this.chrono.getTimeElapsed();
-    this.number=0;
-    this.scene.start('win', { runT: this.runTime , escenaAnterior: this.number});
+    this.scene.start('win', { runT: this.runTime});
   }
 
 /**
