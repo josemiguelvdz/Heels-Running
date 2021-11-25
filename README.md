@@ -114,7 +114,7 @@ Menú con un fondo, botón para jugar, si se pulsa comienza la experiencia de ju
 
 *Falta imágen del menú principal de juego*
 
-Luego dentro del juego tendremos otro menú de pausa donde podremos reaunudar el juego o ir al menú de configuraciones, donde podremos cambiar el volumen, ver los controles o salir del juego para ir al menú inicial.
+Luego dentro del juego tendremos otro menú de pausa donde podremos reaunudar el juego, salir al menú principal, o ir al menú de configuraciones donde podremos cambiar el volumen y ver los controles.
 
 ![image](https://user-images.githubusercontent.com/82502179/143425102-ace70e46-6f85-433f-aa6c-db0293047e3f.png)
 
