@@ -138,7 +138,8 @@ También mostraremos el Power Up o Debuff activo en ese momento (si es que lo ha
 
 - Movimiento : W - Saltar /  D - Dar Patada
 - Configuracion : Escape  - Ajustes / Mouse - Volumen , Reiniciar , Renaudar y Ver Controles
-![Controles](https://user-images.githubusercontent.com/82502179/136591999-e16dc5bb-e5f0-48f6-8ce7-6f1b51889c09.png)
+
+![controles](https://user-images.githubusercontent.com/82502179/143426642-db6962f8-80e1-41d1-81ad-ec553a171910.png)
 
 #### 4. Contenido
 - Todos los sprites de los objetos, cajas, muros, etc, así como los sprites del jugador, de la policía y de los mafiosos.
