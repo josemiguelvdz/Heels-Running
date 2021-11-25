@@ -78,9 +78,10 @@ export default class FallingObject extends Phaser.GameObjects.Sprite {
 
   }
 
-  handleMovement(){
-    if(this.gameIsPaused)this.gameIsPaused=false;
-    else this.gameIsPaused=true;
+handleMovement()
+{
+if(this.gameIsPaused)this.gameIsPaused=false;
+else this.gameIsPaused=true;
 }
 
 }
