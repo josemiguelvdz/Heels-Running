@@ -131,7 +131,8 @@ Luego dentro del juego tendremos otro menú de pausa donde podremos reaunudar el
 Mostraremos la barra de vida que tiene el jugador, así como el tiempo que ha transcurrido en la partida.
 También mostraremos el Power Up o Debuff activo en ese momento (si es que lo hay)
 
-![image](https://user-images.githubusercontent.com/82502179/135832649-0e07c1ab-b084-479b-bb13-7e8df9a95743.png)
+![image](https://user-images.githubusercontent.com/82502179/143425556-272a6cda-bcee-49d3-818b-c726d8382fb2.png)
+
 
 #### 3.3. Controles
 
