@@ -110,46 +110,50 @@ en completar la run.
 
 #### Menús
 
-Menú con el logo del juego, botón para jugar , si se pulsa comienza la experiencia de juego. Otro botón para la configuración del juego, si lo pulsas abres una ventana para configurar los diferentes aspectos del videojuego (volumen, ver los controles o poner la pantalla completa), botón para cerrar el juego, botón en una esquina con el logo de nuestra empresa, si lo pulsas, despliega una ventana con los nombres de los creadores del juego.
+Menú con un fondo, botón para jugar, si se pulsa comienza la experiencia de juego. Otro botón para la configuración del juego, si lo pulsas abres una ventana para configurar los diferentes aspectos del videojuego (volumen y ver los controles), botón en una esquina con el logo de nuestra empresa, si lo pulsas, despliega una ventana con los nombres de los creadores del juego.
 
 *Falta imágen del menú principal de juego*
 
-Luego dentro del juego tendremos otro menú de pausa donde podremos reaunudar el juego o ir al menú de configuraciones, donde podremos cambiar el volumen, ver los controles o reiniciar partida.
+Luego dentro del juego tendremos otro menú de pausa donde podremos reaunudar el juego o ir al menú de configuraciones, donde podremos cambiar el volumen, ver los controles o salir del juego para ir al menú inicial.
 
 ![image](https://user-images.githubusercontent.com/82502179/135832810-a93768e0-9c32-49c0-971a-081ed674a36b.png)
 
- ![image](https://user-images.githubusercontent.com/82502179/135833132-6b0f2b2b-30ce-466b-b3be-7978900435a3.png)
+![image](https://user-images.githubusercontent.com/82502179/135833132-6b0f2b2b-30ce-466b-b3be-7978900435a3.png)
  
 ![image](https://user-images.githubusercontent.com/82502179/135832931-d133a8f5-a120-492b-882c-e4a947dabc56.png)
  
 
 #### 3.1. Configuración
 - Configuración de volumen: Podremos cambiar tanto la música como el sonido de nuestro videojuego.
-- Configuración de video: Podremos poner el juego en pantalla completa o quitarlo de pantalla completa.
 
 #### 3.2. Interfaz
 
 Mostraremos la barra de vida que tiene el jugador, así como el tiempo que ha transcurrido en la partida.
-También mostraremos el Power Up o Debuff que hayamos cogido (en caso de cogerlo) y el tiempo restante que le queda a su efecto.
+También mostraremos el Power Up o Debuff activo en ese momento (si es que lo hay)
 
 ![image](https://user-images.githubusercontent.com/82502179/135832649-0e07c1ab-b084-479b-bb13-7e8df9a95743.png)
 
 #### 3.3. Controles
 
-- Movimiento : S - Deslizarse / D - Dar Patadas / SpaceBar - Saltar
+- Movimiento : W - Saltar /  D - Dar Patada
 - Configuracion : Escape  - Ajustes / Mouse - Volumen , Reiniciar , Renaudar y Ver Controles
 ![Controles](https://user-images.githubusercontent.com/82502179/136591999-e16dc5bb-e5f0-48f6-8ce7-6f1b51889c09.png)
 
 #### 4. Contenido
 - Todos los sprites de los objetos, cajas, muros, etc, así como los sprites del jugador, de la policía y de los mafiosos.
-- Tendremos sonidos para los disparos, para el salto del jugador, para el choque de los objetos cayentes al suelo, para la destrucción de cajas, etc.
-- También tendremos sonidos para el entorno.
+- Tendremos sonidos para los disparos, para el salto del jugador, para el choque de los objetos cayentes al suelo, para la destrucción de cajas, para los powerups, cuando el jugador reciba daño...
+- También tendremos sonidos para el entorno del juego, como pitidos de coche.
 
 #### 4.1 Nivel
 
 #### Ciudad
 
-Nivel ambientado en una ciudad, con calles y edificios, personas... Seremos perseguidos por la policía ,y a su vez tendremos que esquivar a la mafia a lo largo de la partida. Tras atravesar la ciudad, llegaremos a una estación del tren para escapar.
+Nivel ambientado en una ciudad, con calles y edificios, personas... Seremos perseguidos por la policía ,y a su vez tendremos que esquivar a la mafia a lo largo de la partida.
+Tenemos dos zonas destacables:
+ - Suelo: El jugador intentará escapar por el suelo, donde aparecerán la mayoría de objetos estáticos y objetos cayentes. Llegados a cierto punto, el jugador deberá empezar a saltar sobre las azoteas de los edificios, donde comenzará la segunda zona.
+ - Azotea de los edificos: En esta zona habrá menos objetos estáticos pero contará con la aparición de los mafiosos que dispararán al jugador. Además, el policía que perseguía al jugador ahora es un helicóptero de policía (pero tendrá las mismas funciones que el policía).
+
+Tras atravesar la ciudad, llegaremos a una estación del tren para escapar.
 
 #### 4.2 Personajes y enemigos
 
@@ -157,10 +161,10 @@ PROTAGONISTA:
 - Nuestro protagonista es Roger, un publicista al cuál la mafia esta tratando de matar por ser confundido con un agente del F.B.I y el cual será perseguido por la policía tras un juicio.
 
 POLICIA:
-- La policía es el enemigo que nos perseguirá. Siempre estará detrás del jugador siguiéndole el rastro. Si el jugador está a una altura diferente a la policia, entonces se motrará detrás de este un icono de un helicóptero que simulará que nos pasan a perseguir por el aire. Por último, si entra en contacto con el jugador, éste perderá la partida.
+- La policía es el enemigo que nos perseguirá. Siempre estará detrás del jugador siguiéndole el rastro. Si el jugador está a una altura diferente a la policia, entonces pasará a ser perseguido por un helicóptero por el aire. Por último, si entra en contacto con el jugador, éste será arrestado y perderá la partida.
 
 MAFIA:
-- Se trata de enemigos estáticos cuya función es matar al jugador. Aparecerán de vez en cuando en ventanas. Se avisará al jugador mostrando el icono de un mafioso en el límite de la pantalla derecha, indicándole que cuando llegue aparece un mafioso.
+- Se trata de enemigos estáticos cuya función es matar al jugador disparándole. Aparecerán de vez en cuando en ventanas. Se avisará al jugador mostrando el icono de un mafioso en el límite de la pantalla derecha, indicándole que cuando llegue aparecerá un mafioso en esa posición.
 
 #### 4.3. Objetos
 
@@ -168,28 +172,27 @@ MAFIA:
 
 -Café: Este PowerUp hace referencia a algo que consume mucho el protagonista de nuestro videojuego en la película de Alfred, por lo que nos incrementará la velocidad para poder escapar más facilmente de la policía y evitar ser arrestados.
 
--Smoking: Este smoking también hace referencia a como iba vestido nuestro protagonista, por lo que este Power Up nos ofrecerá un escudo de modo que no obtengamos ningún tipo de daño o penalización.
+-Smoking: Este smoking también hace referencia a como iba vestido nuestro protagonista, por lo que este Power Up nos ofrecerá un escudo de modo que no obtengamos ningún tipo de daño o penalización mientras su efecto esté activo.
 
 -Reloj Verde: Dado que nuestro juego se trata de completar el nivel en el menor tiempo posible, este Power Up nos restará tiempo a la run, lo que nos ayudará a concluir nuestras partidas con un tiempo mejor.
 
--Salmon: En referencia a uno de los alimentos de la película, cuando el jugador obtenga este objeto , recuperara vida (medio corazón) , facilitándole su supervivencia de los mafiosos y de los objetos arrojados por la ventana. 
+-Salmon: En referencia a uno de los alimentos de la película, cuando el jugador obtenga este objeto , recuperara vida (un punto) , facilitándole su supervivencia de los mafiosos y de los objetos arrojados por la ventana. 
 
 #### Debuffs
 
 -Alcohol: Dado que en la película los mafiosos nos obligan a beber alcohol, hemos utilizado este debuff de manera que si lo consumimos adquiriremos una disminución de velocidad por un cierto periodo de tiempo, lo que facilitará el arresto a la policía.
 
--Reloj Rojo: Al contrario que el reloj verde explicado con anterioridad, este debuff nos sumará tiempo adicionql al tiempo de la partida, lo que hará que concluyamos la partida con un mayor tiempo.
+-Reloj Rojo: Al contrario que el reloj verde explicado con anterioridad, este debuff nos sumará tiempo adicional al tiempo de la partida, lo que hará que concluyamos la partida con un mayor tiempo.
 
 
 ##### MÚSICA
-- 
+- El juego contará con una melodia de fondo, además de efectos de sonido por todas las acciones significantes del juego, ya sea saltar, recibir daño, coger un power up...
 
 ##### ARQUITECTURA DEL JUEGO
-- Diagrama de Clases: https://online.visual-paradigm.com/share.jsp?id=313637373030342d31#diagram:workspace=dtbpyfud&proj=0&id=1
+- Diagrama de Clases: https://app.creately.com/diagram/p9mz5a7aeDl/view
 
 ##### SISTEMA DE GESTIÓN 
-
-- Pivotal
+- Pivotal: https://www.pivotaltracker.com/n/projects/2532298
 
 ##### SISTEMA DE COMUNICACIÓN
 
@@ -201,4 +204,3 @@ Los miembros del equipo de desarrollo nos comunicaremos mediante nuestro propio 
 - Extreme Pamplona
 - Subway Surfer
 - Dan the Man
-
