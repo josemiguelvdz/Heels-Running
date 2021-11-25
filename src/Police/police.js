@@ -63,6 +63,10 @@ export default class Police extends Phaser.GameObjects.Sprite {
         this.scene.lose();
     }
 
+        /**
+   * Return if police is transformed into a helicopter
+   * 
+   */
     isHelicopter(){
         return this.helicopter;
     }
