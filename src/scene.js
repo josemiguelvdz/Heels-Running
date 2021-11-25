@@ -303,9 +303,6 @@ export default class Level extends Phaser.Scene {
 
     //GRUPO DEL POLICIA Y EL PLAYER
     this.physics.add.collider(this.player,this.police,onCollisionPolice);
-
-    //EL SUELO CON EL PLAYER
-    this.physics.add.collider(this.groundZone,this.player,onPGround);
   
 
     this.boxes = this.physics.add.staticGroup();
@@ -330,10 +327,18 @@ export default class Level extends Phaser.Scene {
     this.box = new Box(this, 350, 535);
 
     // VICTORY
-    this.winZone=this.add.zone(3000,600,40,totalWidth);
+    this.winZone=this.add.zone(4000,600,40,totalWidth);
     this.physics.world.enable(this.winZone);
     this.winZone.body.setAllowGravity(false);
     this.winZone.body.setImmovable(true);
+
+    // HELICOPTER ZONE
+    this.helicopterZone=this.add.zone(3350,600,40,totalWidth);
+    this.physics.world.enable(this.helicopterZone);
+    this.helicopterZone.body.setAllowGravity(false);
+    this.helicopterZone.body.setImmovable(true);
+    this.physics.add.collider(this.helicopterZone,this.police,policeAgain);
+
 
     // SUELO
     this.groundZone = this.add.zone(0, 600, totalWidth, this.player.height/2);
@@ -344,6 +349,8 @@ export default class Level extends Phaser.Scene {
     this.physics.add.collider(this.groundZone, this.player);
     this.physics.add.collider(this.groundZone, this.police);
     this.physics.add.collider(this.groundZone, this.gangster);
+
+
     // AÑADIR TODOS LOS GRUPOS
     
     
@@ -474,7 +481,11 @@ function helicopter(obj1){
     obj1.body.setImmovable(true);
 }
 
-function onPGround(obj2){
-  if(this.isHelicopter) this.helicopterX=obj2.body.x;
+function policeAgain(obj1,obj2){
+  obj1.destroy();
+  obj2.y=450;
+  obj2.helicopter=false;
+  obj2.body.setAllowGravity(true);
+  obj2.body.setImmovable(false);
 }
 

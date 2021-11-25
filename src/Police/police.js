@@ -42,7 +42,11 @@ export default class Police extends Phaser.GameObjects.Sprite {
             this.stop();
             this.play("smoke_animation",1);   
         }
-        if(this.helicopter){
+        else if(!this.helicopter){
+            this.stop();
+            this.play('idle_police');
+        }
+        else if(this.helicopter){
             this.stop();
             this.play('helicopter_animation')
         }
