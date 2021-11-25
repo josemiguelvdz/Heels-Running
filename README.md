@@ -26,7 +26,7 @@ Capturas del Juego:
 
 ![image](https://user-images.githubusercontent.com/82502179/143427181-0c6534b3-b792-4c63-adf7-a4a65ddef3c8.png)
 
-![capt2ç](https://user-images.githubusercontent.com/62289530/139420677-0b4438d0-f7db-4bbb-b172-fd116c213633.png)
+![image](https://user-images.githubusercontent.com/82502179/143427331-6652e08e-9f87-4a04-a9dd-7ed7c775c38c.png)
 
 ![unknown](https://user-images.githubusercontent.com/75903737/135341022-3484ffb8-e9ce-4f82-8740-6db7b09cdaf4.png)
 
