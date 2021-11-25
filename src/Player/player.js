@@ -121,8 +121,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
    
     if(this.checkTiempo) //Si se se puede verificar el tiempo 
     {
-     
-    
      if(this.durationEsmoquin== this.contador.segundosReales-this.offsetTime) //Verificamos que haya pasado el tiempo 
      {
        this.config2EsmoquinShield();
