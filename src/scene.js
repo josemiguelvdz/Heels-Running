@@ -330,7 +330,7 @@ export default class Level extends Phaser.Scene {
     this.box = new Box(this, 350, 535);
 
     // VICTORY
-    this.winZone=this.add.zone(2000,600,40,totalWidth);
+    this.winZone=this.add.zone(3000,600,40,totalWidth);
     this.physics.world.enable(this.winZone);
     this.winZone.body.setAllowGravity(false);
     this.winZone.body.setImmovable(true);
@@ -471,6 +471,7 @@ function helicopter(obj1){
     obj1.y=70;
     obj1.helicopter=true;
     obj1.body.setAllowGravity(false);
+    obj1.body.setImmovable(true);
 }
 
 function onPGround(obj2){
