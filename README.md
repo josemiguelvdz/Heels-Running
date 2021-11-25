@@ -84,23 +84,25 @@ El juego transcurre en una ciudad, donde somos perseguidos por la policía y ata
 
 #### 2.1.2. Mecánicas de escenario
 
-- Cajas: Son obstáculos que encontramos en el escenario de la ciudad, estos nos molestarán en el camino, dificultando nuestra huida, sin embargo, seremos capaces de destruirlas de tres maneras:
-     -Atravesandolas/Deslizandonos: No habrá probabilidades de obtener un poweUp.
-     -Patada: tendrán cierta probabilidad de dejar caer tanto un Power Up.
+- Cajas: Son obstáculos que encontramos en el escenario de la ciudad, estos nos molestarán en el camino, dificultando nuestra huida, sin embargo, se podrán destruir de dos maneras:
+     -Chocandonos: No habrá probabilidades de obtener un poweUp y perdenermos velocidad.
+     -Patada: tendrán cierta probabilidad de dejar caer un Power Up.
      
 - Objetos estáticos: En este apartado encontraremos todos aquellos objetos que sean estáticos y cuya única funcionalidad sea interrumpir el paso del jugador, dificultando así la huida y haciendo que el jugador pierda velocidad al chocar con ellos. Estos objetos son : Muros, Vallas, Carteles de tiendas, Bocas de riego de la calle, Coches, Bicicletas, (aquí tenemos que poner todos los que se nos ocurran para que haya variedad, ya que sería solo un sprite estático y si hay pocos objetos se hace muy repetitivo).
 
-- Objetos cayentes: Objetos que caerán desde arriba y nos harán daño. Estos objetos son macetas o materiales de construcción. Para que el jugador pueda esquivarlos deberá deslizarse en el momento justo.
+- Objetos cayentes: Objetos que caerán desde arriba y nos harán daño. Estos objetos son macetas o materiales de construcción. El jugador podrá pasar de largo o destruirlos con
+la patada.
 #### 2.2. Dinámica
 
-- Para ganar tendremos que conseguir huir de la policía con éxito, llegando hasta la zona del tren donde conseguiremos escapar. Si nos matan los disparos de los mafiosos o somos arrestados por la policía, habremos perdido y se dará la opción al jugador de reiniciar el nivel.
+- Para ganar tendremos que conseguir huir de la policía con éxito, llegando hasta la zona del tren donde conseguiremos escapar. Si nos matan los disparos de los mafiosos o somos arrestados por la policía, habremos perdido y se dará la opción al jugador de volver al menú principal o de volver a jugar. Si ganamos, nos pondrá el tiempo que hemos tardado
+en completar la run.
 
-- La estrategia que esperamos que desarrolle el jugador es que vaya  esquivando obstáculos y disparos utilizando las distintas mecánicas que posee, asi como cogiendo los Power Ups, evitando los Debuffs, de manera que intente supera su recórd de tiempo partida a partida.
+- La estrategia que esperamos que desarrolle el jugador es que vaya  esquivando obstáculos y disparos haciendo uso de la patada cuando sea necesaria, asi como cogiendo los Power Ups, evitando los Debuffs, de manera que intente supera su recórd de tiempo partida a partida.
 
 #### 2.3.Estética
 
 - Queremos transmitir sensaciones como el agobio, al ser constantemente perseguidos por la policía y disparados por la mafia, y el frenetismo al no poder parar en ningún momento de la partida. Además también queremos transmitir la autosuperación, haciendo que los jugadores se sientan atraídos por el juego por el simple hecho de querer supersarse a si mismos.
-- Heels Running se ambienta en una ciudad de los años sesenta, con una paleta de colores en blanco y negro, para transmitir al jugador la sensación de que se encuentra en la época correcta.
+- Heels Running se ambienta en una ciudad de los años sesenta, con una paleta de colores apagados, para transmitir al jugador la sensación de que se encuentra en la época correcta.
 - La idea del juego está desarrollada gracias a una gran película de Alfred Hitchcock, llamada North by Northwest, cuya historia queda reflejada con algunos ajustes en nuestro juego, de manera que este acabe siendo lo más divertido posible.
 - El escenario será visible hasta donde veamos en nuestra cámara, y solo tendremos que preocuparnos por nuestro entorno inmediato, es decir, de no morir y no ser arrestados.
 
