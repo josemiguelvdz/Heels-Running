@@ -24,11 +24,9 @@ UML: https://app.creately.com/diagram/p9mz5a7aeDl/view
 
 Capturas del Juego:
 
-![capt1](https://user-images.githubusercontent.com/62289530/139420667-6766daa2-f28e-474e-bfc2-5dc6d267c0a8.png)
+![image](https://user-images.githubusercontent.com/82502179/143427181-0c6534b3-b792-4c63-adf7-a4a65ddef3c8.png)
 
 ![capt2ç](https://user-images.githubusercontent.com/62289530/139420677-0b4438d0-f7db-4bbb-b172-fd116c213633.png)
-
-
 
 ![unknown](https://user-images.githubusercontent.com/75903737/135341022-3484ffb8-e9ce-4f82-8740-6db7b09cdaf4.png)
 
@@ -118,7 +116,7 @@ Luego dentro del juego tendremos otro menú de pausa donde podremos reaunudar el
 
 ![image](https://user-images.githubusercontent.com/82502179/143425102-ace70e46-6f85-433f-aa6c-db0293047e3f.png)
 
-![image](https://user-images.githubusercontent.com/82502179/135833132-6b0f2b2b-30ce-466b-b3be-7978900435a3.png)
+![image](https://user-images.githubusercontent.com/82502179/143426953-ecca5b90-006a-4894-8086-c95238bf8f57.png)
  
 ![image](https://user-images.githubusercontent.com/82502179/135832931-d133a8f5-a120-492b-882c-e4a947dabc56.png)
  
