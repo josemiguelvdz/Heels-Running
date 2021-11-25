@@ -270,6 +270,7 @@ function LoseEvent(escena,deathsound)
     {
       deathsound.once("stop", (escena) => {
         escena.lose();
+        
       });
     }
 

@@ -99,4 +99,10 @@ export default class Chrono extends Phaser.GameObjects.GameObject {
   finish(){
     this.fin=true;
   }
+
+  getTimeElapsed()
+  {
+
+    return this.timeElapsed;
+  }
 }

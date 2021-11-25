@@ -5,8 +5,14 @@ export default class Win extends Phaser.Scene {
      */
     constructor() {
       super({ key: 'win' });
+      this.runTime=0;
     }
-  
+    init(data)  //Data se pasa como un objeto construido cuando pasas de escena con los parametros que tu eligas
+    {
+        this.runTime=data.runT;
+        console.log(this.runTime);
+      
+    }
     create() {
 
         this.winBackGround = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'gameoverbackground').setScale(2, 2).setScrollFactor(0);

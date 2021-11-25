@@ -7,6 +7,7 @@ export default class GameOver extends Phaser.Scene {
       super({ key: 'gameover' });
     }
   
+    
     create() {
 
         this.gameOverBackGround = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'gameoverbackground').setScale(2, 2).setScrollFactor(0);
@@ -20,3 +21,4 @@ export default class GameOver extends Phaser.Scene {
         this.exitButton.on('pointerdown', () => {this.scene.start('menu')})
     }
 }
+

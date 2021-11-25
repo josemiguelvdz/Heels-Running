@@ -198,11 +198,14 @@ export default class Level extends Phaser.Scene {
   }
 
   lose(){
+    
     this.scene.start('gameover');
   }
 
   Win(){
-    this.scene.start('win');
+    this.runTime= this.chrono.getTimeElapsed();
+    this.number=0;
+    this.scene.start('win', { runT: this.runTime , escenaAnterior: this.number});
   }
 
 /**
