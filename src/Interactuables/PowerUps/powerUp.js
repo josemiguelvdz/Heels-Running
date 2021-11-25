@@ -33,7 +33,7 @@ export default class PowerUp extends Phaser.GameObjects.Sprite {
     this.nameImg= nombreImg;
 
     
-   
+   this.createTweenMovement();
     
   }/**
    * Used to destroy a power up after making its effect
