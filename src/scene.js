@@ -355,9 +355,7 @@ export default class Level extends Phaser.Scene {
     
     
     
-    this.timeBar = this.add.sprite(920, 50, 'timeBar', 'timeBar.png').setScrollFactor(0);
 
-    this.chrono= new Chrono(this,true);
     this.salmon= new Salmon(this, this.player, 2800, 50,'salmonFish',true);
     this.powerUpsArray.push(this.salmon);
 
@@ -400,6 +398,10 @@ export default class Level extends Phaser.Scene {
 
     this.building5 = new Platform(this, width*2+this.building4.width*4, height);
     scaleBuilding(this.building5, this.building5.width, this.building5.height, 8);
+
+    this.timeBar = this.add.sprite(920, 50, 'timeBar', 'timeBar.png').setScrollFactor(0);
+
+    this.chrono= new Chrono(this,true);
     
   }
 
