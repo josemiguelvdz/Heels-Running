@@ -10,6 +10,8 @@ export default class Police extends Phaser.GameObjects.Sprite {
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
         this.helicopter=false;
+        this.duration=10000;
+        this.seconds=0;
 
         this.scene.anims.create({
             key: 'idle_police',
@@ -54,7 +56,20 @@ export default class Police extends Phaser.GameObjects.Sprite {
     preUpdate(t,dt) {
         super.preUpdate(t,dt);
         this.animatePolice();
-        //this.body.setVelocityX(this.constantSpeed); //Movimiento continuo del jugador hacia la derecha
+
+
+        if(this.seconds >= 0) 
+        {   
+            this.seconds+=Math.round(dt);
+            if(this.seconds>this.duration)
+            {
+    
+                this.body.setVelocityX(this.constantSpeed); //Movimiento continuo del jugador hacia la derecha
+    
+            }
+        }
+
+        
 
     }
     /**
