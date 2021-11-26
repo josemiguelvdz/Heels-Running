@@ -54,7 +54,7 @@ export default class Police extends Phaser.GameObjects.Sprite {
     preUpdate(t,dt) {
         super.preUpdate(t,dt);
         this.animatePolice();
-        this.body.setVelocityX(this.constantSpeed); //Movimiento continuo del jugador hacia la derecha
+        //this.body.setVelocityX(this.constantSpeed); //Movimiento continuo del jugador hacia la derecha
 
     }
     /**
