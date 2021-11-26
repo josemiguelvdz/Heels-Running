@@ -364,10 +364,6 @@ export default class Level extends Phaser.Scene {
     this.esmoquin2= new Esmoquin( this,this.player, 3500, 70,'esmoquin',true);
     this.powerUpsArray.push(this.esmoquin2);
     
-    this.redTimer= new RedTimer( this,this.player, 2200, 100,'redTimer',true,this.chrono);
-    this.powerUpsArray.push(this.redTimer);
-    this.greenTimer= new GreenTimer( this,this.player, 2400, 100,'greenTimer',true,this.chrono);
-    this.powerUpsArray.push(this.greenTimer);
     
     this.alcoholEx= new Alcohol( this,this.player, 800, 70,'vino',true);
     this.powerUpsArray.push(this.alcoholEx);
@@ -400,8 +396,13 @@ export default class Level extends Phaser.Scene {
     scaleBuilding(this.building5, this.building5.width, this.building5.height, 8);
 
     this.timeBar = this.add.sprite(920, 50, 'timeBar', 'timeBar.png').setScrollFactor(0);
-
     this.chrono= new Chrono(this,true);
+    
+
+    this.redTimer= new RedTimer( this,this.player, 2200, 100,'redTimer',true,this.chrono);
+    this.powerUpsArray.push(this.redTimer);
+    this.greenTimer= new GreenTimer( this,this.player, 2400, 100,'greenTimer',true,this.chrono);
+    this.powerUpsArray.push(this.greenTimer);
     
   }
 
