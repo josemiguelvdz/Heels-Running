@@ -5,11 +5,12 @@ export default class Police extends Phaser.GameObjects.Sprite {
     constructor(scene,x,y){
         super(scene, x, y, 'policeIdle');
 
-        this.constantSpeed = 100;
+        this.constantSpeed = 200;
         this.catchRoger=false;
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
         this.helicopter=false;
+
 
         this.scene.anims.create({
             key: 'idle_police',
@@ -29,6 +30,8 @@ export default class Police extends Phaser.GameObjects.Sprite {
             frameRate: 8, // Velocidad de la animación
             
           });
+
+          this.startRunning=this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.T);
     }
 
 
@@ -54,7 +57,11 @@ export default class Police extends Phaser.GameObjects.Sprite {
     preUpdate(t,dt) {
         super.preUpdate(t,dt);
         this.animatePolice();
-        this.body.setVelocityX(this.constantSpeed); //Movimiento continuo del jugador hacia la derecha
+
+        if(this.startRunning.isDown){
+            this.body.setVelocityX(this.constantSpeed); //Movimiento continuo del jugador hacia la derecha
+        }
+        
 
     }
     /**

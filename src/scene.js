@@ -108,17 +108,17 @@ export default class Level extends Phaser.Scene {
 
     // Comprueba si el jugador ha pulsado la tecla para dar una patada
     if(Phaser.Input.Keyboard.JustDown(this.kick)){
-      this.zone = this.add.zone(this.player.x+this.player.width*1.3, this.player.y, this.player.width, this.player.height);
-      this.physics.world.enable(this.zone);
-      this.zone.body.setAllowGravity(false);
-      this.zone.body.setImmovable(false);
+      this.kickZone = this.add.zone(this.player.x+this.player.width*1.3, this.player.y, this.player.width, this.player.height);
+      this.physics.world.enable(this.kickZone);
+      this.kickZone.body.setAllowGravity(false);
+      this.kickZone.body.setImmovable(true);
 
-      this.physics.add.collider(this.zone, this.redTimer, onCollision);
+      this.physics.add.collider(this.kickZone, this.fallObjs, onCollision);
 
       this.delete_zone = this.time.addEvent({ 
         delay: 300, 
         callback: this.DestroyZone, 
-        args: [this.zone], 
+        args: [this.kickZone], 
         loop: false });
             
     }
@@ -322,18 +322,18 @@ export default class Level extends Phaser.Scene {
   createObjects(width, height, totalWidth)
   {
     this.player = new Player(this, 200, 300, 3);
-    this.police= new Police(this,0,300,3);
-    this.gangster = new Gangster(this, this.player, 500, 450);
+    this.police= new Police(this,70,400,3);
+    this.gangster = new Gangster(this, this.player, 3700, 450);
     this.box = new Box(this, 350, 535);
 
     // VICTORY
-    this.winZone=this.add.zone(4000,600,40,totalWidth);
+    this.winZone=this.add.zone(4500,600,40,totalWidth);
     this.physics.world.enable(this.winZone);
     this.winZone.body.setAllowGravity(false);
     this.winZone.body.setImmovable(true);
 
     // HELICOPTER ZONE
-    this.helicopterZone=this.add.zone(3350,600,40,totalWidth);
+    this.helicopterZone=this.add.zone(3300,600,40,totalWidth);
     this.physics.world.enable(this.helicopterZone);
     this.helicopterZone.body.setAllowGravity(false);
     this.helicopterZone.body.setImmovable(true);
@@ -355,33 +355,31 @@ export default class Level extends Phaser.Scene {
     
     
     
-    this.timeBar = this.add.sprite(920, 50, 'timeBar', 'timeBar.png').setScrollFactor(0);
 
-    this.chrono= new Chrono(this,true);
-    this.salmon= new Salmon(this, this.player, 1200, 100,'salmonFish',true);
+    this.salmon= new Salmon(this, this.player, 2800, 50,'salmonFish',true);
     this.powerUpsArray.push(this.salmon);
 
-    this.esmoquin= new Esmoquin( this,this.player, 300, 100,'esmoquin',true);
+    this.esmoquin= new Esmoquin( this,this.player, 1300, 100,'esmoquin',true);
     this.powerUpsArray.push(this.esmoquin);
-    this.esmoquin2= new Esmoquin( this,this.player, 1500, 70,'esmoquin',true);
+    this.esmoquin2= new Esmoquin( this,this.player, 3500, 70,'esmoquin',true);
     this.powerUpsArray.push(this.esmoquin2);
     
-    this.redTimer= new RedTimer( this,this.player, 500, 100,'redTimer',true,this.chrono);
+    this.redTimer= new RedTimer( this,this.player, 2200, 100,'redTimer',true,this.chrono);
     this.powerUpsArray.push(this.redTimer);
-    this.greenTimer= new GreenTimer( this,this.player, 50, 100,'greenTimer',true,this.chrono);
+    this.greenTimer= new GreenTimer( this,this.player, 2400, 100,'greenTimer',true,this.chrono);
     this.powerUpsArray.push(this.greenTimer);
     
     this.alcoholEx= new Alcohol( this,this.player, 800, 70,'vino',true);
     this.powerUpsArray.push(this.alcoholEx);
 
-    this.coffe1= new Coffe( this,this.player, 600, 100,'coffe',true);
+    this.coffe1= new Coffe( this,this.player, 1000, 100,'coffe',true);
     this.powerUpsArray.push(this.coffe1);
 
-    this.fallObjEx = new FallingObject(this,this.player, 800, 300,'maceta');
+    this.fallObjEx = new FallingObject(this,this.player, 1500, 100,'maceta');
     console.log(this.fallObjEx);
-    this.fallObjEx2 = new FallingObject(this,this.player, 1300, 300,'maceta');
+    this.fallObjEx2 = new FallingObject(this,this.player, 1800, 100,'maceta');
     console.log(this.fallObjEx2);
-    this.fallObjEx3 = new FallingObject(this,this.player, 1700, 300,'maceta');
+    this.fallObjEx3 = new FallingObject(this,this.player, 2750, 100,'maceta');
     console.log(this.fallObjEx3);
     
     this.platform = new Platform(this, this.player.y, 400); 
@@ -400,6 +398,10 @@ export default class Level extends Phaser.Scene {
 
     this.building5 = new Platform(this, width*2+this.building4.width*4, height);
     scaleBuilding(this.building5, this.building5.width, this.building5.height, 8);
+
+    this.timeBar = this.add.sprite(920, 50, 'timeBar', 'timeBar.png').setScrollFactor(0);
+
+    this.chrono= new Chrono(this,true);
     
   }
 
