@@ -108,17 +108,17 @@ export default class Level extends Phaser.Scene {
 
     // Comprueba si el jugador ha pulsado la tecla para dar una patada
     if(Phaser.Input.Keyboard.JustDown(this.kick)){
-      this.zone = this.add.zone(this.player.x+this.player.width*1.3, this.player.y, this.player.width, this.player.height);
-      this.physics.world.enable(this.zone);
-      this.zone.body.setAllowGravity(false);
-      this.zone.body.setImmovable(false);
+      this.kickZone = this.add.zone(this.player.x+this.player.width*1.3, this.player.y, this.player.width, this.player.height);
+      this.physics.world.enable(this.kickZone);
+      this.kickZone.body.setAllowGravity(false);
+      this.kickZone.body.setImmovable(true);
 
-      this.physics.add.collider(this.zone, this.redTimer, onCollision);
+      this.physics.add.collider(this.kickZone, this.fallObjs, onCollision);
 
       this.delete_zone = this.time.addEvent({ 
         delay: 300, 
         callback: this.DestroyZone, 
-        args: [this.zone], 
+        args: [this.kickZone], 
         loop: false });
             
     }
