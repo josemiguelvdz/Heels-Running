@@ -5,7 +5,7 @@ export default class Police extends Phaser.GameObjects.Sprite {
     constructor(scene,x,y){
         super(scene, x, y, 'policeIdle');
 
-        this.constantSpeed = 100;
+        this.constantSpeed = 200;
         this.catchRoger=false;
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);

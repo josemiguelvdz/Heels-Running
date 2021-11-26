@@ -322,7 +322,7 @@ export default class Level extends Phaser.Scene {
   createObjects(width, height, totalWidth)
   {
     this.player = new Player(this, 200, 300, 3);
-    this.police= new Police(this,0,300,3);
+    this.police= new Police(this,0,400,3);
     this.gangster = new Gangster(this, this.player, 500, 450);
     this.box = new Box(this, 350, 535);
 
