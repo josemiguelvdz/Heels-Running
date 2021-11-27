@@ -9,9 +9,11 @@ export default class Menu extends Phaser.Scene {
   
     create() {
 
-      //this.playButton = new button(this, 500, 100).setInteractive();
+      
+      this.playbackground= this.add.image(500, 300, 'playBackGround')
       this.playButton = this.add.image(500, 100, 'playButton').setInteractive();
       this.playButton.on('pointerdown', () => {this.scene.start('level')});
+      
 
       
     
