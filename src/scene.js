@@ -421,8 +421,42 @@ export default class Level extends Phaser.Scene {
   delayDone(){
     this.player.body.setSize(this.player.width/2, this.player.height/1.5, true);
   }
+
+createParticles(x,y,objectType)
+{
+
+
+  if(objectType=="fallingObject")
+  {
+    let deathParticles = this.add.particles('breakingParticle');
+    this.deathEmitter = deathParticles.createEmitter({
+      x: -500,
+      y: 300,
+      speed: { min: -800, max: 800 },
+      angle: { min: 0, max: 360 },
+      scale: { start: 0.9, end: 0 },
+      blendMode: 'SCREEN',
+      //active: false,
+      lifespan: 600,
+      gravityY: 800
+    });
+
+    this.deathEmitter.explode(50, x,y);
+
+
+  }
+
+
+
+
 }
 
+
+}
+function destroyEmitter()
+{
+  this.emitter.destroy();
+}
 
 
 

@@ -87,7 +87,8 @@ export default class Boot extends Phaser.Scene {
       this.load.image('gameoverbackground', 'gameoverbackground.png');
       this.load.image('youWin','youWin.png');
 
-
+      this.load.setPath('./assets/Sprites/Particles');
+      this.load.image('breakingParticle' , 'BreakingParticle.png');
 
     //Sounds
     this.load.setPath('./assets/Sounds/SoundEffects');
