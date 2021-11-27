@@ -67,6 +67,7 @@ export default class Boot extends Phaser.Scene {
       this.load.setPath('./assets/Sprites/Mafioso');
       this.load.image('bullet', 'bala.png');
       this.load.image('gangster', 'mafioso.png');
+      this.load.image('advice', 'GangsterAdvice.png');
 
       //FallObjects Sprites
       this.load.setPath('./assets/Sprites/FallObjects');

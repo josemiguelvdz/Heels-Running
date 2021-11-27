@@ -207,6 +207,14 @@ export default class Level extends Phaser.Scene {
     this.scene.start('win', { runT: this.runTime});
   }
 
+  IconAdvice(){
+    this.icon =  this.add.image(this.scale.width*0.9, this.gangster.y, 'advice').setScrollFactor(0);
+  }
+
+  DestroyIconAdvice(){
+    this.icon.destroy();
+  }
+
 /**
  * Creates collision groups and adds colliders between them
  * 
