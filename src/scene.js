@@ -140,7 +140,7 @@ export default class Level extends Phaser.Scene {
     if(this.fallObjEx2!=null)this.fallObjEx2.handleMovement();
     if(this.fallObjEx3!=null)this.fallObjEx3.handleMovement();
     //Activar el contador y efecto de los power ups
-    this.player.handleMovement();
+    if(!this.inSettings )this.player.handleMovement();
     this.resumeButton = this.add.image(this.scale.width*0.5, this.scale.height*0.3, 'resumeButton').setInteractive().setScrollFactor(0);
 
     this.resumeButton.on('pointerdown', () => {this.unPause()});
@@ -188,7 +188,7 @@ export default class Level extends Phaser.Scene {
         if(this.powerUpsArray[i].movesbyTween)this.powerUpsArray[i].tweenMovement.resume();
        
     }
-    this.player.handleMovement();
+    if(!this.inSettings ) this.player.handleMovement();
     
 
   }
