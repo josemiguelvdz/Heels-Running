@@ -112,7 +112,10 @@ export default class Level extends Phaser.Scene {
       this.kickZone.body.setAllowGravity(false);
       this.kickZone.body.setImmovable(true);
 
-      this.physics.add.collider(this.kickZone, this.fallObjs, onCollision);
+      this.physics.add.collider(this.kickZone, this.fallObjs,(o1,o2)=> {
+     
+        o2.handleCollisionFallObj(false,true);
+     }); 
 
       this.delete_zone = this.time.addEvent({ 
         delay: 300, 
@@ -271,12 +274,12 @@ export default class Level extends Phaser.Scene {
     this.fallObjs.add(this.fallObjEx3);
     this.physics.add.overlap(this.player,this.fallObjs,(o1,o2)=> {
      
-      o2.handleCollisionFallObj(true);
+      o2.handleCollisionFallObj(true,false);
    });
    this.physics.add.collider(this.groundZone,this.fallObjs,(o1,o2)=> {
     
    
-    o2.handleCollisionFallObj(false);
+    o2.handleCollisionFallObj(false,false);
  });
 
    this.alcohols = this.physics.add.group();
@@ -419,6 +422,8 @@ export default class Level extends Phaser.Scene {
     this.player.body.setSize(this.player.width/2, this.player.height/1.5, true);
   }
 }
+
+
 
 
 /**

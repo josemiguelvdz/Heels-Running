@@ -49,13 +49,10 @@ export default class FallingObject extends Phaser.GameObjects.Sprite {
     
   }
 
-  handleCollision(){
-    this.handleCollisionFloor();
-  }
-
-  handleCollisionFallObj(player)
+  handleCollisionFallObj(player,kick)
   {
    if(player)this.handleCollisionPlayer();
+   else if(kick)this.handleCollisionFloor();
    else this.handleCollisionFloor();
   }
 
