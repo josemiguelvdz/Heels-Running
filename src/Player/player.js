@@ -16,12 +16,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.numLifes=nLifes;
     this.esmoquinShield=false;
 
-   //Atributos relacionados con el esmoquin
-    this.offsetTime=0;
-    this.checkTiempo=false;  //Bool para verificar si se puede o no contar 
-    this.contador= new Chrono(this.scene,false); //Contador para poder activar y desactivar powrr ups con el tiempo 
-    this.durationEsmoquin=0; //Para la duracion del esmoquin 
-
+   
 
     this.speedVariable=120; 
     this.alcoholEffect=false;
@@ -74,10 +69,100 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.damagePlayersound= this.scene.sound.add("damageSound",configSound);
     this.deathSound= this.scene.sound.add("deathsound",configSound);
    
+    //Variables del tiempo de efecto del alcohol
+    this.durationAlcohol=4000;
+    this.secondsAlcohol=-1;
+     //Variables del tiempo de efecto del cafe
+     this.durationCoffe=4000;
+     this.secondsCoffe=-1;
+
+     //Variables del tiempo de efecto del cafe
+     this.durationEsmoquin=5000;
+     this.secondsEsmoquin=-1;
+ 
+
+
+    //Variable general que se activa y desactiva cuando entras/sales al menu de pausa
+    //Sirve para controlar la duracion del efecto los power ups
+    this.stopMovement=false;
+
+
   }
   preUpdate(t,dt) {
     super.preUpdate(t,dt);
+    this.setMovement();
+  //Esmoquin
+  this.handleEsmoquinEffect(dt);
+  this.handleAlcoholEffect(dt);
+  this. handleCoffeEffect(dt);
 
+    
+
+
+  }
+
+
+   handleAlcoholEffect(delta)
+   {
+    if(this.secondsAlcohol >= 0) 
+    {   
+   
+   if(!this.stopMovement) 
+   {
+    this.secondsAlcohol+=Math.round(delta);
+   if(this.secondsAlcohol>this.durationAlcohol)
+   {
+    
+    this.secondsAlcohol=-1;  //Reiniciamos el contador de tiempo para el efecto en el alchol 
+     this.restoreSpeed("Reduce");
+
+
+    
+   }
+    }
+     }
+   }
+   handleCoffeEffect(delta)
+   {
+    if(this.secondsCoffe >= 0) 
+    {   
+   
+   if(!this.stopMovement) 
+   {
+    this.secondsCoffe+=Math.round(delta);
+   if(this.secondsCoffe>this.durationCoffe)
+   {
+    
+    this.secondsCoffe=-1;  //Reiniciamos el contador de tiempo para el efecto en el alchol 
+     this.restoreSpeed("Increase");
+
+
+    
+   }
+    }
+     }
+   }
+   handleEsmoquinEffect(delta)
+  {
+    if(this.secondsEsmoquin >= 0) 
+    {   
+   
+   if(!this.stopMovement) 
+   {
+    this.secondsEsmoquin+=Math.round(delta);
+   if(this.secondsEsmoquin>this.durationEsmoquin)
+   {
+    
+    this.secondsEsmoquin=-1; 
+    this.config2EsmoquinShield();
+  
+   }
+    }
+     }
+  }
+  setMovement()
+  {
+    
     //Si no esta en pausa
     if(!this.scene.isPaused()){
       //console.log(this.numLifes);
@@ -114,23 +199,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
       
     }
-
     else this.stop();
-
-    //Parte del power up esmoquin
-   
-    if(this.checkTiempo) //Si se se puede verificar el tiempo 
-    {
-     if(this.durationEsmoquin== this.contador.segundosReales-this.offsetTime) //Verificamos que haya pasado el tiempo 
-     {
-       this.config2EsmoquinShield();
-       //Faltaria invocar esteticamente a lo que refleja que el jugador tiene el esmoquin(interfaz, sprite..etc);
-     }
-    }
-
   }
-
-
 /**
  * Method that is called when police collide player
  * Set player speed to 0 and plays idle animation
@@ -155,38 +225,20 @@ export default class Player extends Phaser.GameObjects.Sprite {
    * Activates and Deactivates shield for not recieving damage of enemies
    *  @param {*} durationesm -duration in seconds of the efect of the power up 
    */
-  configEsmoquinShield(durationesm)
+  configEsmoquinShield()
   {
  
     this.esmoquinShield=true; //Ahora no recibe daño
-    this.offsetTime=this.contador.segundosReales;  //Vemos desde donde empieza a contar los 5 segundos 
-    this.checkTiempo =true; //Se puede verificar si han pasado los 5 segundos 
-    this.durationEsmoquin=durationesm; //Ajustamos cuanto tiene que durar a lo que nos diga el power up
+    this.secondsEsmoquin=0;  //Asi si que empieza a contar
+   
   }
   config2EsmoquinShield()
   {
     
     this.esmoquinShield=false; //Ahora puede recibir daño 
-    this.segundosIniciales=0;  //Como no cuenta lo ponemos a 0
-    this.checkTiempo =false; //No verifica el tiempo
-  }
-  /**
-   * Used for deactivate a power up if you are in pause menu 
-   */
-  deactivePowerUpTimes()
-   {
-     
-    
-    this.checkTiempo =false;
-  }
-   /**
-   * Used for activate power up if you are not  in pause menu 
-   */
- activatePowerUpTimes()
-  {
    
-   this.checkTiempo =true;
- }
+  }
+  
  /**
   * Adds lifes to player and updates the UI
   * @param {*} nLAdd number of lifes to add
@@ -234,12 +286,13 @@ export default class Player extends Phaser.GameObjects.Sprite {
       {
         this.speed=this.speed-this.speedVariable;
         this.alcoholEffect=true;
-      }
+        this.secondsAlcohol=0;
+       }
       else  if(action==="Increase")
       {
         this.speed=this.speed+this.speedVariable;
-        console.log("Solo pasa una vez");
         this.coffeEffect=true;
+        this.secondsCoffe=0;
       }
     }
     /**
@@ -270,6 +323,11 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
     this.scene.lose();
   }
+  handleMovement()
+{
+if(this.stopMovement) this.stopMovement=false;
+else  this.stopMovement=true;
+}
 }
 
 

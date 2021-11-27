@@ -49,11 +49,6 @@ export default class PowerUp extends Phaser.GameObjects.Sprite {
   * 
   * 
   */
-handleMovement()
-{
-if(this.stopMovement) this.stopMovement=false;
-else  this.stopMovement=true;
-}
 createTweenMovement()
 {
   if(this.movesbyTween)
