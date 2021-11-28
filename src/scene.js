@@ -441,9 +441,9 @@ createParticles(x,y,objectType)
       gravityY: 800
     });
 
+    
+
     this.deathEmitter.explode(100, x,y);
-
-
   }
   else if(objectType=="bullet")
   {
@@ -459,13 +459,26 @@ createParticles(x,y,objectType)
       lifespan: 600,
       gravityY: 800
     });
-
     this.deathEmitter.explode(100, x,y);
-
-
   }
-
-  
+  else if(objectType=="playerJump")
+  {
+    let deathParticles = this.add.particles('dustParticle');
+    this.deathEmitter = deathParticles.createEmitter({
+      x: -500,
+      y: 300,
+      speed: { min: -800, max: 500 },
+      angle: { min: 0, max: 360 },
+      scale: { start: 0.6, end: 0 },
+      blendMode: 'SCREEN',
+      //active: false,
+      lifespan: 400,
+      gravityY: 800
+    });
+    this.deathEmitter.explode(100, x,y);
+  }
+   
+   
 
 
 

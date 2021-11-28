@@ -193,6 +193,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
       }
 
       if (this.cursors.up.isDown && this.body.onFloor() && !this.arrested) { // este es el salto
+        this.scene.createParticles(this.x,this.y,"playerJump")
         this.body.setVelocityY(this.jumpSpeed*this.jumpImpulse);
         this.play('jump_anim', true);
       }

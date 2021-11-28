@@ -92,10 +92,12 @@ export default class Boot extends Phaser.Scene {
       this.load.setPath('./assets/Sprites/Particles');
       this.load.image('breakingParticle' , 'BreakingParticle.png');
       this.load.image('bloodParticle' , 'BloodParticle.png');
+      this.load.image('dustParticle' , 'DustParticle.png');
 
     //Sounds
     this.load.setPath('./assets/Sounds/SoundEffects');
     this.load.audio('powerupSound', 'PowerUpSound.mp3');
+    this.load.audio('debuffSound', 'DebuffSound.mp3');
     this.load.audio('fallingobjectSound', 'JarronRotoSound.mp3');
     this.load.audio('damageSound', 'DamageSound.mp3');
     this.load.audio('gunSound', 'GunShotSound.mp3');
