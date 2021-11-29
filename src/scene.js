@@ -296,7 +296,6 @@ export default class Level extends Phaser.Scene {
 
     this.platforms = this.physics.add.staticGroup();
     this.platforms.add(this.platform);
-    this.physics.add.collider(this.police,this.platforms,helicopter);    // COLISION ENTRE PLAYER Y PLATAFORMAS
 
 
     // GRUPO DE LOS EDIFICIOS Y EL POLICIA
@@ -328,7 +327,7 @@ export default class Level extends Phaser.Scene {
  */
   createObjects(width, height, totalWidth)
   {
-    this.player = new Player(this, 200, 300, 3);
+    this.player = new Player(this, 250, 300, 3);
     this.police= new Police(this,70,400,3);
     this.gangster = new Gangster(this, this.player, 3700, 450);
     this.box = new Box(this, 350, 535);
@@ -339,12 +338,19 @@ export default class Level extends Phaser.Scene {
     this.winZone.body.setAllowGravity(false);
     this.winZone.body.setImmovable(true);
 
-    // HELICOPTER ZONE
+    // POLICE ZONE
     this.helicopterZone=this.add.zone(3300,600,40,totalWidth);
     this.physics.world.enable(this.helicopterZone);
     this.helicopterZone.body.setAllowGravity(false);
     this.helicopterZone.body.setImmovable(true);
     this.physics.add.collider(this.helicopterZone,this.police,policeAgain);
+
+    // HELICOPTER ZONE
+    this.policeZone=this.add.zone(1850,600,40,totalWidth);
+    this.physics.world.enable(this.policeZone);
+    this.policeZone.body.setAllowGravity(false);
+    this.policeZone.body.setImmovable(true);
+    this.physics.add.collider(this.policeZone,this.police,helicopter);
 
 
     // SUELO
@@ -554,11 +560,12 @@ function scaleBuilding(platform, width, height,  buildingScaleFactor) {
  * External function that is called to transform the polico into a helicopter.
  * @param {*} obj1 - Police
  */
-function helicopter(obj1){
-    obj1.y=70;
-    obj1.helicopter=true;
-    obj1.body.setAllowGravity(false);
-    obj1.body.setImmovable(true);
+function helicopter(obj1,obj2){
+    obj1.destroy();
+    obj2.y=60;
+    obj2.helicopter=true;
+    obj2.body.setAllowGravity(false);
+    obj2.body.setImmovable(true);
 }
 
 function policeAgain(obj1,obj2){
