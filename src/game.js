@@ -7,7 +7,7 @@ import Win from "./Menu/win.js";
 let config = {
     type: Phaser.CANVAS,
     canvas: document.getElementById('myCanvas'),
-    width: 1000,
+    width: 1200,
     height: 600,
     scale: {
         //mode: Phaser.Scale.FIT,  
