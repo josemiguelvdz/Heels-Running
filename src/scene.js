@@ -84,6 +84,10 @@ export default class Level extends Phaser.Scene {
 
     this.pointer = this.input.activePointer;
     this.pointerDown = false;
+    this.volumeValue = 0.5;
+
+    this.maxVolumeValue = 1.0;
+    this.minVolumeValue = 0.0;
 
   }
 
@@ -176,9 +180,16 @@ export default class Level extends Phaser.Scene {
 
     this.slide.on('pointermove', ()=>{
 
-      if(this.pointerDown){
-        this.slide.x = this.pointer.x
+      if(this.pointerDown && this.slide.x >= this.volumeBar.x - (this.volumeBar.width) && this.slide.x <= this.volumeBar.x + (this.volumeBar.width)){
+        if(this.pointer.x > this.volumeBar.x && this.volumeValue < this.maxVolumeValue) this.volumeValue += 0.001;
+        if(this.pointer.x < this.volumeBar.x && this.volumeValue > this.minVolumeValue) this.volumeValue -= 0.001;
+        console.log("Volumen ptaaaaaaa: " + this.slide.x);
+        this.slide.x = this.pointer.x;
       }
+
+      else if(this.slide.x <= this.volumeBar.x - (this.volumeBar.width)) this.slide.x = this.volumeBar.x - (this.volumeBar.width);
+      else if(this.slide.x >= this.volumeBar.x + (this.volumeBar.width)) this.slide.x = this.volumeBar.x + (this.volumeBar.width);
+
     });
 
     this.backButton.on('pointerdown', () => {
