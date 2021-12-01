@@ -44,45 +44,46 @@ export default class Level extends Phaser.Scene {
     createAligned(this, totalWidth, 'road', 1);
     createAligned(this, totalWidth, 'crosswalk', 1);
     
-     //creamos los distintos elementos del juego
-     //Los asociamos al grupo para las colisiones 
-     this.activetePause = false;
-     this.inSettings = false
+    //creamos los distintos elementos del juego
+    //Los asociamos al grupo para las colisiones 
+    this.activetePause = false;
+    this.inSettings = false
 
-     this.powerUpsArray=[];
-     this.createObjects(width, height, totalWidth);
-     this.createGroups();
+    this.powerUpsArray=[];
+    this.createObjects(width, height, totalWidth);
+    this.createGroups();
     
     
-      this.cameras.main.setBounds(0, 0, width*5, height);
-      this.cameras.main.startFollow(this.player);
+    this.cameras.main.setBounds(0, 0, width*5, height);
+    this.cameras.main.startFollow(this.player);
 
-      this.helicopterX=0;
-      this.isHelicopter=false;
+    this.helicopterX=0;
+    this.isHelicopter=false;
 
-      this.scape = this.input.keyboard.addKey('ESC');
-      this.scape.on('down', () => {
-     if(! this.inSettings )this.chrono.changeTime();
+    this.scape = this.input.keyboard.addKey('ESC');
+    this.scape.on('down', () => {
+      if(! this.inSettings )this.chrono.changeTime();
       for(let i=0;i<this.powerUpsArray.length;i++)
       {
         if(this.powerUpsArray[i].movesbyTween)this.powerUpsArray[i].tweenMovement.pause();
       }
-    
-      
-     });
+    });
       
 
-      this.kick = this.input.keyboard.addKey('K');
-      this.kick.on('down', () => {});
+    this.kick = this.input.keyboard.addKey('K');
+    this.kick.on('down', () => {});
 
 
-      // Barra de vida   
-      this.healthBar = new HealthBar(this, 100, 100, this.player);
-      this.powerUpBar = new PowerUpBar(this, 180, 100, this.player);
+    // Barra de vida   
+    this.healthBar = new HealthBar(this, 100, 100, this.player);
+    this.powerUpBar = new PowerUpBar(this, 180, 100, this.player);
 
 
-      // CAMBIAR BOUDING BOX DE TAMAÑO
-      this.time.addEvent({delay: 500, callback: this.delayDone, callbackScope: this, loop: false})
+    // CAMBIAR BOUDING BOX DE TAMAÑO
+    this.time.addEvent({delay: 500, callback: this.delayDone, callbackScope: this, loop: false})
+
+    this.pointer = this.input.activePointer;
+    this.pointerDown = false;
 
   }
 
@@ -161,10 +162,28 @@ export default class Level extends Phaser.Scene {
   settings(){
     
     this.controls = this.add.image(this.scale.width*0.5, this.scale.height*0.4, 'controls').setScale(0.6, 0.7).setScrollFactor(0);
-    this.backButton = this.add.image(100, 70, 'backButton').setInteractive().setScrollFactor(0);
+    this.backButton = this.add.image(this.scale.width*0.1, this.scale.height*0.1, 'backButton').setInteractive().setScrollFactor(0);
+    
+    this.volumeIcon = this.add.image(this.scale.width*0.1, this.scale.height*0.85, 'volumeIcon');
+    this.volumeBar = this.add.image(this.scale.width*0.5, this.scale.height*0.85, 'volumeBar').setScale(2.5, 1);
+
+    this.slide = this.add.image(this.scale.width*0.5, this.scale.height*0.8, 'idle').setInteractive();
+
+    this.slide.on('pointerdown', () => {this.pointerDown = true});
+
+    this.slide.on('pointerup', () =>{this.pointerDown = false});
+    this.slide.on('pointerout', () =>{this.pointerDown = false});
+
+    this.slide.on('pointermove', ()=>{
+
+      if(this.pointerDown){
+        this.slide.x = this.pointer.x
+      }
+    });
 
     this.backButton.on('pointerdown', () => {
-      this.controls.destroy(), this.backButton.destroy(), this.pauseBackGround.destroy(), this.activetePause = false, this.stop(this.activetePause), this.inSettings = false});
+      this.controls.destroy(), this.backButton.destroy(), this.pauseBackGround.destroy(), this.volumeIcon.destroy(), this.volumeBar.destroy(), this.slide.destroy(), 
+      this.activetePause = false, this.stop(this.activetePause), this.inSettings = false});
   }
 
   isPaused(){
