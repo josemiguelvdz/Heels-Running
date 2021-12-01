@@ -13,7 +13,6 @@ export default class Chrono extends Phaser.GameObjects.GameObject {
       this.text.setScrollFactor(0);
       this.writeTime();
       }
-      this.pause=false;
       this.fin=false;
   }
  /**
@@ -23,7 +22,7 @@ export default class Chrono extends Phaser.GameObjects.GameObject {
       this.destroy(true) //Se destruye al final del frame
   }
   preUpdate(time, delta) {
-      if(!this.pause && !this.fin){ // Si no está pausado suma el tiempo
+      if(!this.scene.activetePause && !this.fin){ // Si no está pausado suma el tiempo
 
          if(this.write)this.text.setText( this.timeElapsed);
         this.segundos+=Math.round(delta);
@@ -86,14 +85,6 @@ export default class Chrono extends Phaser.GameObjects.GameObject {
   {
     if(this.minutos>= minsExtra)  this.minutos-=minsExtra;
     
-  }
-
-  /**
- * Stop adding time to the game
- * 
- */
-  changeTime(){
-    this.pause=!this.pause;
   }
 
   finish(){
