@@ -14,8 +14,7 @@ import FallingObject from './FallingObjects/fallingObject.js';
 import HealthBar from './Interfaz/healthBar.js';
 import PowerUpBar from './Interfaz/powerUpBar.js';
 import FireHydrant from './StaticObjects/fireHydrant.js';
-
-
+import Car from './StaticObjects/car.js';
 
 export default class Level extends Phaser.Scene {
   /**
@@ -427,7 +426,8 @@ export default class Level extends Phaser.Scene {
     console.log(this.fallObjEx3);
     
     this.platform = new Platform(this, this.player.y, 400); 
-    this.fireHydrant = new FireHydrant(this, 1000, 500);
+    this.fireHydrant = new FireHydrant(this, 700, 535);
+    this.car = new Car(this, 1100, 500);
 
     this.building = new Platform(this, width*2, height);
     scaleBuilding(this.building, this.building.width, this.building.height, 5);

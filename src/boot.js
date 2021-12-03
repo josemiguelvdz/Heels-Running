@@ -42,6 +42,7 @@ export default class Boot extends Phaser.Scene {
       this.load.image('box', 'box.png');
       this.load.spritesheet('boxDestruction', 'boxAnimation.png', {frameWidth:64, frameHeight:64});
       this.load.image('fireHydrant', 'fireHydrant.png');
+      this.load.image('car', 'car.png');
 
       //Interfaz Sprites
       this.load.setPath('./assets/Sprites/Interfaz');
