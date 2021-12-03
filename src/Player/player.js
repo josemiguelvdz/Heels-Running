@@ -106,63 +106,53 @@ export default class Player extends Phaser.GameObjects.Sprite {
    {
     if(this.secondsAlcohol >= 0) 
     {   
-   
-   if(!this.stopMovement) 
-   {
-    this.secondsAlcohol+=Math.round(delta);
-   if(this.secondsAlcohol>this.durationAlcohol)
-   {
-    
-    this.secondsAlcohol=-1;  //Reiniciamos el contador de tiempo para el efecto en el alchol 
-     this.restoreSpeed("Reduce");
-
-
-    
-   }
+      if(!this.stopMovement) 
+      {
+        this.secondsAlcohol+=Math.round(delta);
+        if(this.secondsAlcohol>this.durationAlcohol)
+        {  
+        this.secondsAlcohol=-1;  //Reiniciamos el contador de tiempo para el efecto en el alchol 
+        this.restoreSpeed("Reduce");
+        }
+      }
     }
-     }
-   }
-   handleCoffeEffect(delta)
-   {
+  }
+
+  handleCoffeEffect(delta)
+  {
     if(this.secondsCoffe >= 0) 
     {   
-   
-   if(!this.stopMovement) 
-   {
-    this.secondsCoffe+=Math.round(delta);
-   if(this.secondsCoffe>this.durationCoffe)
-   {
-    
-    this.secondsCoffe=-1;  //Reiniciamos el contador de tiempo para el efecto en el alchol 
-     this.restoreSpeed("Increase");
-
-
-    
-   }
+      if(!this.stopMovement) 
+      {
+        this.secondsCoffe+=Math.round(delta);
+        if(this.secondsCoffe>this.durationCoffe)
+        { 
+          this.secondsCoffe=-1;  //Reiniciamos el contador de tiempo para el efecto en el alchol 
+          this.restoreSpeed("Increase"); 
+        }
+      }
     }
-     }
-   }
-   handleEsmoquinEffect(delta)
+  }
+
+
+  handleEsmoquinEffect(delta)
   {
     if(this.secondsEsmoquin >= 0) 
     {   
-   
-   if(!this.stopMovement) 
-   {
-    this.secondsEsmoquin+=Math.round(delta);
-   if(this.secondsEsmoquin>this.durationEsmoquin)
-   {
-    
-    this.secondsEsmoquin=-1; 
-    this.config2EsmoquinShield();
-  
-   }
+      if(!this.stopMovement) 
+      {
+        this.secondsEsmoquin+=Math.round(delta);
+        if(this.secondsEsmoquin>this.durationEsmoquin)
+        {
+          this.secondsEsmoquin=-1; 
+          this.config2EsmoquinShield();
+        }
+      }
     }
-     }
   }
+
   setMovement()
   {
-    
     //Si no esta en pausa
     if(!this.scene.isPaused()){
       //console.log(this.numLifes);
@@ -202,6 +192,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
     }
     else this.stop();
   }
+
+
 /**
  * Method that is called when police collide player
  * Set player speed to 0 and plays idle animation
@@ -228,16 +220,12 @@ export default class Player extends Phaser.GameObjects.Sprite {
    */
   configEsmoquinShield()
   {
- 
     this.esmoquinShield=true; //Ahora no recibe daño
     this.secondsEsmoquin=0;  //Asi si que empieza a contar
-   
   }
   config2EsmoquinShield()
   {
-    
     this.esmoquinShield=false; //Ahora puede recibir daño 
-   
   }
   
  /**
@@ -249,86 +237,81 @@ export default class Player extends Phaser.GameObjects.Sprite {
      if(this.numLifes<3)this.numLifes+=nLAdd;
      //Actualizar interfaz
    }
+
+
    /**
     * Reduces lifes of player if not protected by esmoquin , updates the UI, and restarts de game if lifes are 0
     * 
     * @param {*} nLlose number of lifes to lose
     */
-   loseLife(nLlose)
-   {
-    
+  loseLife(nLlose)
+  {
     this.playSound=false;
-     if(!this.esmoquinShield)
-     {
-       this.numLifes-=nLlose;
-       this.playSound=true;
-       this.scene.createParticles(this.x,this.y,"blood");
-     }
-     if(this.playSound) this.damagePlayersound.play();
+    if(!this.esmoquinShield)
+    {
+      this.numLifes-=nLlose;
+      this.playSound=true;
+      this.scene.createParticles(this.x,this.y,"blood");
+    }
+    if(this.playSound) this.damagePlayersound.play();
       //Si la vida es menor a 1 tiene que salir un texto de has perdido o algo asi 
-      if(this.numLifes < 1){
+      if(this.numLifes < 1)
+      {
         this.deathSound.play();
         this.LosingGame();
        
       }
-     
-      
-      //Y que te lleve al menu de inicio
-   }
+    //Y que te lleve al menu de inicio
+  }
 
-     /**
-     * restores Player velocity to a modified value afeter duration of power up effect
-     * @param {*} action sets if player needs to gain or reduce its  velocity
-     */
-    controlSpeed(action)
+  /**
+  * restores Player velocity to a modified value afeter duration of power up effect
+  * @param {*} action sets if player needs to gain or reduce its  velocity
+  */
+  controlSpeed(action){
+    if(action==="Reduce") 
     {
-
-      if(action==="Reduce") 
-      {
-        this.speed=this.speed-this.speedVariable;
-        this.alcoholEffect=true;
-        this.secondsAlcohol=0;
-       }
-      else  if(action==="Increase")
-      {
-        this.speed=this.speed+this.speedVariable;
-        this.coffeEffect=true;
-        this.secondsCoffe=0;
-      }
+      this.speed=this.speed-this.speedVariable;
+      this.alcoholEffect=true;
+      this.secondsAlcohol=0;
     }
-    /**
-     * restores Player velocity to its initial value afeter duration of power up effect
-     * @param {*} action sets if player needs to gain or reduce its modified velocity
-     */
-   restoreSpeed(action)
-    {  
-    
-      if(action==="Reduce") 
-      {
-        this.speed=this.speed+this.speedVariable;
-        this.alcoholEffect=false;
-      }
-      else  if(action==="Increase")
-      {
-        this.speed=this.speed-this.speedVariable;
-        this.coffeEffect=false;
-      }
-   
+    else  if(action==="Increase")
+    {
+      this.speed=this.speed+this.speedVariable;
+      this.coffeEffect=true;
+      this.secondsCoffe=0;
     }
-
-    victory(){
-      this.scene.win();
+  }
+  
+  /**
+  * restores Player velocity to its initial value afeter duration of power up effect
+  * @param {*} action sets if player needs to gain or reduce its modified velocity
+  */
+  restoreSpeed(action)
+  {      
+    if(action==="Reduce") 
+    {
+      this.speed=this.speed+this.speedVariable;
+      this.alcoholEffect=false;
     }
-  losingGame()
-  {
+    else  if(action==="Increase")
+    {
+      this.speed=this.speed-this.speedVariable;
+      this.coffeEffect=false;
+    }
+  }
+  
+  victory(){
+    this.scene.win();
+  }
 
+  losingGame(){
     this.scene.lose();
   }
+
   handleMovement()
-{
-if(this.stopMovement) this.stopMovement=false;
-else  this.stopMovement=true;
+  {
+    if(this.stopMovement) this.stopMovement=false;
+    else  this.stopMovement=true;
+  }
 }
-}
-
-

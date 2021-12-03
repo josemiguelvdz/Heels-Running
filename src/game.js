@@ -1,5 +1,5 @@
 import Boot from "./boot.js";
-import Level from "./scene.js";
+import Level from "./level.js";
 import Menu from "./Menu/menu.js";
 import GameOver from "./Menu/gameover.js";
 import Win from "./Menu/win.js";
