@@ -41,6 +41,7 @@ export default class Boot extends Phaser.Scene {
       this.load.image('platform', 'platform.png');
       this.load.image('box', 'box.png');
       this.load.spritesheet('boxDestruction', 'boxAnimation.png', {frameWidth:64, frameHeight:64});
+      this.load.image('fireHydrant', 'fireHydrant.png');
 
       //Interfaz Sprites
       this.load.setPath('./assets/Sprites/Interfaz');
@@ -97,14 +98,14 @@ export default class Boot extends Phaser.Scene {
       this.load.image('bloodParticle' , 'BloodParticle.png');
       this.load.image('dustParticle' , 'DustParticle.png');
 
-    //Sounds
-    this.load.setPath('./assets/Sounds/SoundEffects');
-    this.load.audio('powerupSound', 'PowerUpSound.mp3');
-    this.load.audio('debuffSound', 'DebuffSound.mp3');
-    this.load.audio('fallingobjectSound', 'JarronRotoSound.mp3');
-    this.load.audio('damageSound', 'DamageSound.mp3');
-    this.load.audio('gunSound', 'GunShotSound.mp3');
-    this.load.audio('deathsound', 'DeathSound.mp3');
+      //Sounds
+      this.load.setPath('./assets/Sounds/SoundEffects');
+      this.load.audio('powerupSound', 'PowerUpSound.mp3');
+      this.load.audio('debuffSound', 'DebuffSound.mp3');
+      this.load.audio('fallingobjectSound', 'JarronRotoSound.mp3');
+      this.load.audio('damageSound', 'DamageSound.mp3');
+      this.load.audio('gunSound', 'GunShotSound.mp3');
+      this.load.audio('deathsound', 'DeathSound.mp3');
    
    
 
