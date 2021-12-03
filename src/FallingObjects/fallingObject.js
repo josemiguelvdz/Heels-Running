@@ -88,8 +88,17 @@ export default class FallingObject extends Phaser.GameObjects.Sprite {
 
 handleMovement()
 {
-if(this.gameIsPaused)this.gameIsPaused=false;
-else this.gameIsPaused=true;
+if(this.gameIsPaused)
+{
+  this.gameIsPaused=false;
+  this.fallingSound.pause();
 }
+else 
+{
 
+  this.gameIsPaused=true;
+ this.fallingSound.resume();
+
+  }
+ }
 }

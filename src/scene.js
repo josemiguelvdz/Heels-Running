@@ -533,6 +533,25 @@ createParticles(x,y,objectType)
     });
     this.deathEmitter.explode(100, x,y);
   }
+  else if(objectType=="fireMouth")
+  {
+
+    let deathParticles = this.add.particles('waterParticle');
+    this.deathEmitter = deathParticles.createEmitter({
+      x: -500,
+      y: 300,
+      speed: { min: -800, max: 500 },
+      angle: { min: 0, max: 360 },
+      scale: { start: 0.250, end: 0.10 },
+      blendMode: 'ADD',
+      //active: true,
+      lifespan: 400,
+      gravityY: 800,
+      loop: true
+    });
+    this.deathEmitter.explode(40, x,y);
+
+  }
    
    
 
