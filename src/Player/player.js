@@ -207,7 +207,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
  * Set player speed to 0 and plays idle animation
  * Also pauses time of the smoking power up if active
  */
-  Arrestado(){
+  arrestado(){
     this.arrested=true;
     this.speed=0;
     this.jumpSpeed=0;
@@ -316,10 +316,10 @@ export default class Player extends Phaser.GameObjects.Sprite {
    
     }
 
-    Victory(){
-      this.scene.Win();
+    victory(){
+      this.scene.win();
     }
-    LosingGame()
+  losingGame()
   {
 
     this.scene.lose();

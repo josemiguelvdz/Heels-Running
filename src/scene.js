@@ -134,7 +134,7 @@ export default class Level extends Phaser.Scene {
 
       this.delete_zone = this.time.addEvent({ 
         delay: 300, 
-        callback: this.DestroyZone, 
+        callback: this.destroyZone, 
         args: [this.kickZone], 
         loop: false });
             
@@ -248,17 +248,17 @@ export default class Level extends Phaser.Scene {
     this.scene.start('gameover');
   }
 
-  Win(){
+  win(){
     this.mainSong.stop();
     this.runTime= this.chrono.getTimeElapsed();
     this.scene.start('win', { runT: this.runTime});
   }
 
-  IconAdvice(){
+  iconAdvice(){
     this.icon =  this.add.image(this.scale.width*0.9, this.gangster.y, 'advice').setScrollFactor(0);
   }
 
-  DestroyIconAdvice(){
+  destroyIconAdvice(){
     this.icon.destroy();
   }
 
@@ -337,7 +337,7 @@ export default class Level extends Phaser.Scene {
  });
     // VICTORY
     this.physics.add.collider(this.winZone,this.player,(o1,o2)=>{
-      o2.Victory();
+      o2.victory();
     });
 
     //GRUPO DE LAS PLATAFORMAS Y EL POLICIA
@@ -469,7 +469,7 @@ export default class Level extends Phaser.Scene {
     
   }
 
-  DestroyZone(args){
+  destroyZone(args){
     args.destroy();
   }
 
@@ -558,16 +558,8 @@ createParticles(x,y,objectType)
 
 
 
+ } 
 }
-
-
-}
-function destroyEmitter()
-{
-  this.emitter.destroy();
-}
-
-
 
 /**
  * External function that is called when object collide
@@ -584,7 +576,7 @@ function onCollision(obj1,obj2) {
  * @param {*} obj2 - Police
  */
 function  onCollisionPolice (obj1,obj2) {
-  obj1.Arrestado();
+  obj1.arrestado();
   obj1.getActualScene().chrono.finish();
   obj2.catchP(obj1);
 }
