@@ -20,23 +20,13 @@ export default class Alcohol extends PowerUp {
   handleCollision()
   {
   
-    this.collideAlcohol();
+    this.player.controlSpeed("Reduce"); 
+    this.debuffsound.play(); 
     this.destroy();
     
    
   }
-    /**
-     * Reduces player velocity and plays a sound when picked up
-     * 
-     */
-     collideAlcohol()
-     {    
-        
-          this.player.controlSpeed("Reduce"); 
-          this.debuffsound.play();
-         
-        
-     }   
+    
     
   
   }

@@ -18,20 +18,10 @@ export default class Coffe extends PowerUp {
   handleCollision()
    {
 
-  this.collideCoffe();
- this.destroy();
+  
+    this.player.controlSpeed("Increase"); 
+    this.powerupsound.play();
+    this.destroy();
    }
-  /**
-   * Creates an Event before the collision with player that acts after a 4 second delay
-   * @param  escena - used for creating an Event
-   * 
-   */
-    collideCoffe()
-   {    
-
-        this.player.controlSpeed("Increase"); 
-        this.powerupsound.play();
-       
-      
-   }   
+ 
 }

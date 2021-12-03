@@ -21,20 +21,13 @@ export default class Esmoquin extends PowerUp {
    */
   handleCollision() {
 
-    this.collideEsmoquin();
-
-  }
-/**
- * Makes power up dissapear and activates a boolean in player for not recieving damage
- * 
- * 
- */
- collideEsmoquin() {
-   //En la llamada al player se actualizaria visualmente el efecto del power up
+    //En la llamada al player se actualizaria visualmente el efecto del power up
    //Asi como en la interfaz con sus propios metodos 
   this.player.configEsmoquinShield();
   this.powerupsound.play();
   this.destroyObject();
 }
 
-}
+  }
+   
+

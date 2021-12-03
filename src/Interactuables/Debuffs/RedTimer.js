@@ -24,20 +24,9 @@ export default class RedTimer extends PowerUp {
    */
   handleCollision() {
 
-   this.collideRedTimer();
+    this.timer.addTime(30,1);
+    this.debuffsound.play();
+    this.destroyObject();
 
   }
-
-  /**
-   * Makes the power up dissapear and adds more time of the run using timer Object Reference
-   * 
-   */
-  collideRedTimer()
-  {
-        this.timer.addTime(30,1);
-        this.debuffsound.play();
-        this.destroyObject();
-  }
-  
-
 }

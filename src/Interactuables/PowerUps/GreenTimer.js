@@ -19,7 +19,9 @@ export default class GreenTimer extends PowerUp {
    */
   handleCollision() {
 
-   this.collideGreenTimer();
+    this.timer.reduceTime(0,1);
+        this.powerupsound.play();
+        this.destroyObject();
     
   }
 
@@ -27,13 +29,6 @@ export default class GreenTimer extends PowerUp {
    *  Reduces  time of the run using timer Object Reference and makes the power up dissapear 
    * 
    */
-  collideGreenTimer()
-  {
-        this.timer.reduceTime(0,1);
-        this.powerupsound.play();
-        this.destroyObject();
-       
-  }
-  
+
 
 }
