@@ -262,7 +262,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
      {
        this.numLifes-=nLlose;
        this.playSound=true;
-       
+       this.scene.createParticles(this.x,this.y,"blood");
      }
      if(this.playSound) this.damagePlayersound.play();
       //Si la vida es menor a 1 tiene que salir un texto de has perdido o algo asi 
@@ -272,7 +272,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
        
       }
      
-
+      
       //Y que te lleve al menu de inicio
    }
 

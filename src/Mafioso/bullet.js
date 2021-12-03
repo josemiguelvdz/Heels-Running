@@ -40,7 +40,7 @@ export default class Bullet extends Phaser.GameObjects.Sprite {
     }
 
     handleCollision(){
-        this.scene.createParticles(this.x,this.y,"bullet");
+       
         this.jugador.loseLife(this.damage);
     }
 }

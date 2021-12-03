@@ -49,6 +49,17 @@ export default class Level extends Phaser.Scene {
     this.inSettings = false
 
     this.powerUpsArray=[];
+    const configSound = {
+      mute: false,
+      volume: 0.3,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: true,
+      delay: 0,
+    };
+    this.mainSong= this.sound.add("gameSong",configSound);
+    this.mainSong.play();
     this.createObjects(width, height, totalWidth);
     this.createGroups();
     
@@ -135,7 +146,7 @@ export default class Level extends Phaser.Scene {
   stop(activetePause){
 
     this.physics.pause();
-
+   this.mainSong.pause();
     this.pauseBackGround = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'pauseBackGround').setScale(1.2, 1).setScrollFactor(0);
     this.pauseBackGround.alpha = 0.5;
 
@@ -215,6 +226,8 @@ export default class Level extends Phaser.Scene {
     this.settingsButton.destroy();
     this.menuLayout.destroy();
     this.physics.resume();
+    
+    this.mainSong.resume();
 
     if(this.fallObjEx!=null)this.fallObjEx.handleMovement();
     if(this.fallObjEx2!=null)this.fallObjEx2.handleMovement();
@@ -231,11 +244,12 @@ export default class Level extends Phaser.Scene {
   }
 
   lose(){
-    
+    this.mainSong.stop();
     this.scene.start('gameover');
   }
 
   Win(){
+    this.mainSong.stop();
     this.runTime= this.chrono.getTimeElapsed();
     this.scene.start('win', { runT: this.runTime});
   }
@@ -487,7 +501,7 @@ createParticles(x,y,objectType)
 
     this.deathEmitter.explode(100, x,y);
   }
-  else if(objectType=="bullet")
+  else if(objectType=="blood")
   {
     let deathParticles = this.add.particles('bloodParticle');
     this.deathEmitter = deathParticles.createEmitter({
