@@ -68,7 +68,7 @@ export default class FallingObject extends Phaser.GameObjects.Sprite {
 
     this.jugador.loseLife( this.nLifesLose);
     this.fallingSound.play();
-    this.scene.createParticles(this.x,this.y,"fallingObject");
+    this.createParticlesFallingbj();
     this.destroy();
     //SONIDO DE IMPACTO
 
@@ -79,7 +79,7 @@ export default class FallingObject extends Phaser.GameObjects.Sprite {
   handleCollisionFloor() {
 
     this.fallingSound.play();
-    this.scene.createParticles(this.x,this.y,"fallingObject");
+    this.createParticlesFallingbj();
     this.destroy();
     
     //SONIDO DE RUPTURA
@@ -99,6 +99,30 @@ else
   this.gameIsPaused=true;
  this.fallingSound.resume();
 
-  }
+  
  }
+}
+createParticlesFallingbj()
+{
+  
+  if(objectType=="fallingObject")
+  {
+    let deathParticles = this.scene.add.particles('breakingParticle');
+    this.deathEmitter = deathParticles.createEmitter({
+      x: -500,
+      y: 300,
+      speed: { min: -800, max: 800 },
+      angle: { min: 0, max: 360 },
+      scale: { start: 0.9, end: 0 },
+      blendMode: 'SCREEN',
+      //active: false,
+      lifespan: 600,
+      gravityY: 800
+    });
+
+    
+
+    this.deathEmitter.explode(100, this.x,this.y);
+  }
+}
 }

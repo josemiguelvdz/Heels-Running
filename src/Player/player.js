@@ -183,7 +183,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
       }
 
       if (this.cursors.up.isDown && this.body.onFloor() && !this.arrested) { // este es el salto
-        this.scene.createParticles(this.x,this.y,"playerJump")
+       this.createJumpParticles();
         this.body.setVelocityY(this.jumpSpeed*this.jumpImpulse);
         this.play('jump_anim', true);
       }
@@ -247,13 +247,14 @@ export default class Player extends Phaser.GameObjects.Sprite {
   loseLife(nLlose)
   {
     this.playSound=false;
-    if(!this.esmoquinShield)
-    {
-      this.numLifes-=nLlose;
-      this.playSound=true;
-      this.scene.createParticles(this.x,this.y,"blood");
-    }
-    if(this.playSound) this.damagePlayersound.play();
+     if(!this.esmoquinShield)
+     {
+       this.numLifes-=nLlose;
+       this.playSound=true;
+      this.createBloodParticles();
+       
+     }
+     if(this.playSound) this.damagePlayersound.play();
       //Si la vida es menor a 1 tiene que salir un texto de has perdido o algo asi 
       if(this.numLifes < 1)
       {
@@ -315,3 +316,42 @@ export default class Player extends Phaser.GameObjects.Sprite {
     else  this.stopMovement=true;
   }
 }
+
+createBloodParticles()
+{
+
+    let deathParticles = this.add.particles('bloodParticle');
+    this.deathEmitter = deathParticles.createEmitter({
+      x: -500,
+      y: 300,
+      speed: { min: -800, max: 800 },
+      angle: { min: 0, max: 360 },
+      scale: { start: 0.9, end: 0 },
+      blendMode: 'SCREEN',
+      //active: false,
+      lifespan: 600,
+      gravityY: 800
+    });
+    this.deathEmitter.explode(100, this.x,this.y);
+  
+}
+createJumpParticles()
+{
+    let deathParticles = this.scene.add.particles('dustParticle');
+    this.deathEmitter = deathParticles.createEmitter({
+      x: -500,
+      y: 300,
+      speed: { min: -800, max: 500 },
+      angle: { min: 0, max: -180 },
+      scale: { start: 0.3, end: 0},
+      blendMode: 'SCREEN',
+      //active: false,
+      lifespan: 400,
+      gravityY: 800
+    });
+    this.deathEmitter.explode(100, this.x,this.y+20);
+  
+}
+}
+
+
