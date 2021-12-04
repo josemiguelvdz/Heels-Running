@@ -81,4 +81,17 @@ export default class Police extends Phaser.GameObjects.Sprite {
     isHelicopter(){
         return this.helicopter;
     }
+
+    policeAgain(){
+        this.y=450;
+        this.helicopter=false;
+        this.body.setAllowGravity(true);
+    }
+
+    intoHelicopter(){
+        this.y=60;
+        this.helicopter=true;
+        this.body.setAllowGravity(false);
+    
+    }
 }

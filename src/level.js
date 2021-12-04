@@ -67,9 +67,6 @@ export default class Level extends Phaser.Scene {
     this.cameras.main.setBounds(0, 0, width*5, height);
     this.cameras.main.startFollow(this.player);
 
-    this.helicopterX=0;
-    this.isHelicopter=false;
-
     this.scape = this.input.keyboard.addKey('ESC');
     this.scape.on('down', () => {
       for(let i=0;i<this.powerUpsArray.length;i++)
@@ -109,8 +106,12 @@ export default class Level extends Phaser.Scene {
     cam.scrollX += speed;
 
     if(this.police.isHelicopter()){
-      this.isHelicopter=true;
-      if(this.police.body.x>=this.player.body.x) onCollisionPolice(this.player,this.police);
+
+      if(this.police.body.x>=this.player.body.x){
+        this.player.arrestado();
+        this.player.getActualScene().chrono.finish();
+        this.police.catchP(this.player);
+      }
     }
 
     if (Phaser.Input.Keyboard.JustDown(this.scape)) { 
@@ -289,55 +290,51 @@ export default class Level extends Phaser.Scene {
      this.physics.add.overlap(this.player,this.salmons,(o1,o2)=> {
       onCollision(o1,o2);
    })
-
-
     this.esmoquins = this.physics.add.group();
-     this.esmoquins.add(this.esmoquin);
-     this.esmoquins.add(this.esmoquin2);
+    this.esmoquins.add(this.esmoquin);
+    this.esmoquins.add(this.esmoquin2);
     this.physics.add.overlap(this.player,this.esmoquins,(o1,o2)=> {
       onCollision(o1,o2);
-   })
+    })
 
      //Para crear la colision entre grupos usamos grupos estaticos por que si no no funciona
 
     //GRUPO DE LOS TIMERS
-  
     this.timers = this.physics.add.group();
     this.timers.add(this.redTimer);
     this.timers.add(this.greenTimer)
     this.physics.add.overlap(this.player,this.timers,(o1,o2)=> {
-     onCollision(o1,o2);
-  });
-     //GRUPO DE LOS CAFÉS
-     
-     this.coffes = this.physics.add.group();
-     this.coffes.add(this.coffe1);
-     this.physics.add.overlap(this.player,this.coffes,(o1,o2)=> {
       onCollision(o1,o2);
-   });
-     //GRUPO DE LOS OBJETOS CAYENTES CON EL SUELO Y EL PLAYER
-     this.fallObjs= this.physics.add.group();
+    });
+
+    //GRUPO DE LOS CAFÉS
+     
+    this.coffes = this.physics.add.group();
+    this.coffes.add(this.coffe1);
+    this.physics.add.overlap(this.player,this.coffes,(o1,o2)=> {
+      onCollision(o1,o2);
+    });
+    //GRUPO DE LOS OBJETOS CAYENTES CON EL SUELO Y EL PLAYER
+    this.fallObjs= this.physics.add.group();
     this.fallObjs.add(this.fallObjEx);
     this.fallObjs.add(this.fallObjEx2);
     this.fallObjs.add(this.fallObjEx3);
     this.physics.add.overlap(this.player,this.fallObjs,(o1,o2)=> {
      
       o2.handleCollisionFallObj(true,false);
-   });
-   this.physics.add.collider(this.groundZone,this.fallObjs,(o1,o2)=> {
-    
-   
-    o2.handleCollisionFallObj(false,false);
- });
+    });
+    this.physics.add.collider(this.groundZone,this.fallObjs,(o1,o2)=> {
+      o2.handleCollisionFallObj(false,false);
+    });
 
-   this.alcohols = this.physics.add.group();
-   this.alcohols.add(this.alcoholEx);
-   this.physics.add.overlap(this.player,this.alcohols,(o1,o2)=> {
-    onCollision(o1,o2);
- });
+    this.alcohols = this.physics.add.group();
+    this.alcohols.add(this.alcoholEx);
+    this.physics.add.overlap(this.player,this.alcohols,(o1,o2)=> {
+      onCollision(o1,o2);
+    });
     // VICTORY
     this.physics.add.collider(this.winZone,this.player,(o1,o2)=>{
-      o2.victory();
+      this.win();
     });
 
     //GRUPO DE LAS PLATAFORMAS Y EL POLICIA
@@ -346,17 +343,12 @@ export default class Level extends Phaser.Scene {
     this.platforms.add(this.platform);
 
 
-    // GRUPO DE LOS EDIFICIOS Y EL POLICIA
-    this.buildings = this.physics.add.staticGroup();
-    this.buildings.add(this.building);
-    this.buildings.add(this.building2);
-    this.buildings.add(this.building3);
-    this.buildings.add(this.building4);
-    this.buildings.add(this.building5);
-    this.physics.add.collider(this.police,this.buildings,helicopter);
-
     //GRUPO DEL POLICIA Y EL PLAYER
-    this.physics.add.collider(this.player,this.police,onCollisionPolice);
+    this.physics.add.collider(this.player,this.police,(o1,o2)=>{
+      o1.arrestado();
+      o1.getActualScene().chrono.finish();
+      o2.catchP(o1);
+    });
   
 
     this.boxes = this.physics.add.staticGroup();
@@ -391,14 +383,20 @@ export default class Level extends Phaser.Scene {
     this.physics.world.enable(this.helicopterZone);
     this.helicopterZone.body.setAllowGravity(false);
     this.helicopterZone.body.setImmovable(true);
-    this.physics.add.collider(this.helicopterZone,this.police,policeAgain);
+    this.physics.add.collider(this.helicopterZone,this.police,(o1,o2)=>{
+      o1.destroy();
+      o2.policeAgain();
+    });
 
     // HELICOPTER ZONE
     this.policeZone=this.add.zone(1850,600,40,totalWidth);
     this.physics.world.enable(this.policeZone);
     this.policeZone.body.setAllowGravity(false);
     this.policeZone.body.setImmovable(true);
-    this.physics.add.collider(this.policeZone,this.police,helicopter);
+    this.physics.add.collider(this.policeZone,this.police,(o1,o2)=>{
+      o1.destroy();
+      o2.intoHelicopter();
+    });
 
 
     // SUELO
@@ -489,18 +487,6 @@ function onCollision(obj1,obj2) {
   obj2.handleCollision(); 
 }
 /**
- * External function that is called when pollice and player collide
- * Stop the time of the run
- * @param {*} obj1 - Player
- * @param {*} obj2 - Police
- */
-function  onCollisionPolice (obj1,obj2) {
-  obj1.arrestado();
-  obj1.getActualScene().chrono.finish();
-  obj2.catchP(obj1);
-}
-
-/**
  * External function that is called to generate the parallax objects
  * @param {*} scene - Scene
  * @param {*} totalWidth - Total Width of the Game
@@ -535,23 +521,5 @@ function scaleBuilding(platform, width, height,  buildingScaleFactor) {
   platform.setSize(width, height*(buildingScaleFactor*2-1));
   platform.setScale(1, buildingScaleFactor);
   platform.body.setSize(platform.width, platform.height, true);
-}
-/**
- * External function that is called to transform the polico into a helicopter.
- * @param {*} obj1 - Police
- */
-function helicopter(obj1,obj2){
-    obj1.destroy();
-    obj2.y=60;
-    obj2.helicopter=true;
-    obj2.body.setAllowGravity(false);
-
-}
-
-function policeAgain(obj1,obj2){
-  obj1.destroy();
-  obj2.y=450;
-  obj2.helicopter=false;
-  obj2.body.setAllowGravity(true);
 }
 

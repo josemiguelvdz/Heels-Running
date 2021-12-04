@@ -301,10 +301,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.coffeEffect=false;
     }
   }
-  
-  victory(){
-    this.scene.win();
-  }
+
 
   losingGame(){
     this.scene.lose();
