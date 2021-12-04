@@ -68,7 +68,7 @@ export default class Gangster extends Phaser.GameObjects.Sprite {
         }
     }
 
-    Advice(){
+    advice(){
         this.scene.iconAdvice();
         this.oneAdvice = true;
         this.icon = true;

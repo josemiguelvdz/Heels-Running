@@ -134,7 +134,7 @@ export default class Level extends Phaser.Scene {
 
       this.delete_zone = this.time.addEvent({ 
         delay: 300, 
-        callback: this.DestroyZone, 
+        callback: this.destroyZone, 
         args: [this.kickZone], 
         loop: false });
             
@@ -248,17 +248,17 @@ export default class Level extends Phaser.Scene {
     this.scene.start('gameover');
   }
 
-  Win(){
+  win(){
     this.mainSong.stop();
     this.runTime= this.chrono.getTimeElapsed();
     this.scene.start('win', { runT: this.runTime});
   }
 
-  IconAdvice(){
+  iconAdvice(){
     this.icon =  this.add.image(this.scale.width*0.9, this.gangster.y, 'advice').setScrollFactor(0);
   }
 
-  DestroyIconAdvice(){
+  destroyIconAdvice(){
     this.icon.destroy();
   }
 
@@ -337,7 +337,7 @@ export default class Level extends Phaser.Scene {
  });
     // VICTORY
     this.physics.add.collider(this.winZone,this.player,(o1,o2)=>{
-      o2.Victory();
+      o2.victory();
     });
 
     //GRUPO DE LAS PLATAFORMAS Y EL POLICIA
@@ -469,7 +469,7 @@ export default class Level extends Phaser.Scene {
     
   }
 
-  DestroyZone(args){
+  destroyZone(args){
     args.destroy();
   }
 
@@ -478,96 +478,7 @@ export default class Level extends Phaser.Scene {
     this.player.body.setSize(this.player.width/2, this.player.height/1.5, true);
   }
 
-createParticles(x,y,objectType)
-{
-
-
-  if(objectType=="fallingObject")
-  {
-    let deathParticles = this.add.particles('breakingParticle');
-    this.deathEmitter = deathParticles.createEmitter({
-      x: -500,
-      y: 300,
-      speed: { min: -800, max: 800 },
-      angle: { min: 0, max: 360 },
-      scale: { start: 0.9, end: 0 },
-      blendMode: 'SCREEN',
-      //active: false,
-      lifespan: 600,
-      gravityY: 800
-    });
-
-    
-
-    this.deathEmitter.explode(100, x,y);
-  }
-  else if(objectType=="blood")
-  {
-    let deathParticles = this.add.particles('bloodParticle');
-    this.deathEmitter = deathParticles.createEmitter({
-      x: -500,
-      y: 300,
-      speed: { min: -800, max: 800 },
-      angle: { min: 0, max: 360 },
-      scale: { start: 0.9, end: 0 },
-      blendMode: 'SCREEN',
-      //active: false,
-      lifespan: 600,
-      gravityY: 800
-    });
-    this.deathEmitter.explode(100, x,y);
-  }
-  else if(objectType=="playerJump")
-  {
-    let deathParticles = this.add.particles('dustParticle');
-    this.deathEmitter = deathParticles.createEmitter({
-      x: -500,
-      y: 300,
-      speed: { min: -800, max: 500 },
-      angle: { min: 0, max: -180 },
-      scale: { start: 0.3, end: 0},
-      blendMode: 'SCREEN',
-      //active: false,
-      lifespan: 400,
-      gravityY: 800
-    });
-    this.deathEmitter.explode(100, x,y);
-  }
-  else if(objectType=="fireMouth")
-  {
-
-    let deathParticles = this.add.particles('waterParticle');
-    this.deathEmitter = deathParticles.createEmitter({
-      x: -500,
-      y: 300,
-      speed: { min: -800, max: 500 },
-      angle: { min: -60, max: -130 },
-      scale: { start: 0.250, end: 0.10 },
-      blendMode: 'ADD',
-      //active: true,
-      lifespan: 250,
-      gravityY: 800,
-      loop: true
-    });
-    this.deathEmitter.explode(40, x,y);
-
-  }
-   
-   
-
-
-
-
 }
-
-
-}
-function destroyEmitter()
-{
-  this.emitter.destroy();
-}
-
-
 
 /**
  * External function that is called when object collide
@@ -584,7 +495,7 @@ function onCollision(obj1,obj2) {
  * @param {*} obj2 - Police
  */
 function  onCollisionPolice (obj1,obj2) {
-  obj1.Arrestado();
+  obj1.arrestado();
   obj1.getActualScene().chrono.finish();
   obj2.catchP(obj1);
 }
@@ -634,6 +545,7 @@ function helicopter(obj1,obj2){
     obj2.y=60;
     obj2.helicopter=true;
     obj2.body.setAllowGravity(false);
+
 }
 
 function policeAgain(obj1,obj2){

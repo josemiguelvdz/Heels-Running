@@ -27,31 +27,23 @@ export default class FallingObject extends Phaser.GameObjects.Sprite {
       delay: 0,
     };
     this.fallingSound= this.scene.sound.add("fallingobjectSound",configSound);
-
-
-   
-
-
-
   }
 
   preUpdate() {
     super.preUpdate();
-     if(this.jugador.x +250>= this.x) 
-     {
-       this.body.moves=true;
-       this.isMoving=true;
-     }
+    if(this.jugador.x +250>= this.x) 
+    {
+      this.body.moves=true;
+      this.isMoving=true;
+    }
     
-     if(this.isMoving)
-     {
-    
-       if(!this.gameIsPaused){
+    if(this.isMoving)
+    {
+      if(!this.gameIsPaused){
         if (this.angle===360)this.angle=0;
         this.angle++; 
-       }
-     }
-    
+      }
+    }    
   }
 
   handleCollisionFallObj(player,kick)
@@ -86,26 +78,23 @@ export default class FallingObject extends Phaser.GameObjects.Sprite {
 
   }
 
-handleMovement()
-{
-if(this.gameIsPaused)
-{
-  this.gameIsPaused=false;
-  this.fallingSound.pause();
-}
-else 
-{
+  handleMovement()
+  {
+    if(this.gameIsPaused)
+    {
+      this.gameIsPaused=false;
+      this.fallingSound.pause();
+    }
+    else 
+    {
 
-  this.gameIsPaused=true;
- this.fallingSound.resume();
+      this.gameIsPaused=true;
+      this.fallingSound.resume();
+    }
+  } 
 
-  
- }
-}
-createParticlesFallingbj()
-{
-  
-  if(objectType=="fallingObject")
+
+  createParticlesFallingbj()
   {
     let deathParticles = this.scene.add.particles('breakingParticle');
     this.deathEmitter = deathParticles.createEmitter({
@@ -119,10 +108,6 @@ createParticlesFallingbj()
       lifespan: 600,
       gravityY: 800
     });
-
-    
-
     this.deathEmitter.explode(100, this.x,this.y);
   }
-}
 }

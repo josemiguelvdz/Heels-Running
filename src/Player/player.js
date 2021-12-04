@@ -315,13 +315,10 @@ export default class Player extends Phaser.GameObjects.Sprite {
     if(this.stopMovement) this.stopMovement=false;
     else  this.stopMovement=true;
   }
-}
-
-createBloodParticles()
-{
-
-    let deathParticles = this.add.particles('bloodParticle');
-    this.deathEmitter = deathParticles.createEmitter({
+  createBloodParticles()
+  {
+    let dustParticles = this.scene.add.particles('bloodParticle');
+    this.deathEmitter = dustParticles.createEmitter({
       x: -500,
       y: 300,
       speed: { min: -800, max: 800 },
@@ -334,9 +331,9 @@ createBloodParticles()
     });
     this.deathEmitter.explode(100, this.x,this.y);
   
-}
-createJumpParticles()
-{
+  }
+  createJumpParticles()
+  {
     let deathParticles = this.scene.add.particles('dustParticle');
     this.deathEmitter = deathParticles.createEmitter({
       x: -500,
@@ -351,7 +348,5 @@ createJumpParticles()
     });
     this.deathEmitter.explode(100, this.x,this.y+20);
   
+  } 
 }
-}
-
-
