@@ -10,8 +10,6 @@ export default class Police extends Phaser.GameObjects.Sprite {
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
         this.helicopter=false;
-
-
         this.scene.anims.create({
             key: 'run_animation',
             frames: this.anims.generateFrameNumbers('policeRun', { start: 0, end: 7 }),
@@ -26,8 +24,8 @@ export default class Police extends Phaser.GameObjects.Sprite {
           });
           this.scene.anims.create({
             key: 'helicopter_animation',
-            frames: this.anims.generateFrameNumbers('helicopterAnimation', { start: 0, end: 1 }),
-            frameRate: 8, // Velocidad de la animación
+            frames: this.anims.generateFrameNumbers('helicopterAnimation', { start: 0, end: 12 }),
+            frameRate: 12, // Velocidad de la animación
             
           });
 

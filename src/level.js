@@ -105,6 +105,7 @@ export default class Level extends Phaser.Scene {
         this.player.arrestado();
         this.player.getActualScene().chrono.finish();
         this.police.catchP(this.player);
+        this.lose();
       }
     }
 
