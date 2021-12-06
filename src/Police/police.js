@@ -3,7 +3,7 @@
 export default class Police extends Phaser.GameObjects.Sprite {
 
     constructor(scene,x,y){
-        super(scene, x, y, 'policeIdle');
+        super(scene, x, y, 'policeRun');
 
         this.constantSpeed = 200;
         this.catchRoger=false;
@@ -13,9 +13,9 @@ export default class Police extends Phaser.GameObjects.Sprite {
 
 
         this.scene.anims.create({
-            key: 'idle_police',
-            frames: this.anims.generateFrameNumbers('policeIdle', { start: 0, end: 3 }),
-            frameRate: 8, // Velocidad de la animación
+            key: 'run_animation',
+            frames: this.anims.generateFrameNumbers('policeRun', { start: 0, end: 7 }),
+            frameRate: 10, // Velocidad de la animación
             repeat: -1    // Animación en bucle
           });
         this.scene.anims.create({
@@ -32,6 +32,8 @@ export default class Police extends Phaser.GameObjects.Sprite {
           });
 
           this.startRunning=this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.T);
+        
+          this.play('run_animation');
     }
 
 
@@ -39,7 +41,7 @@ export default class Police extends Phaser.GameObjects.Sprite {
    * Animated the police depending on the moment
    * 
    */
-    animatePolice(){
+    /*animatePolice(){
         if(this.catchRoger) 
         {
             this.stop();
@@ -47,16 +49,16 @@ export default class Police extends Phaser.GameObjects.Sprite {
         }
         else if(!this.helicopter){
             this.stop();
-            this.play('idle_police');
+            this.play('run_animation');
         }
         else if(this.helicopter){
             this.stop();
             this.play('helicopter_animation')
         }
-    }
+    }*/
     preUpdate(t,dt) {
         super.preUpdate(t,dt);
-        this.animatePolice();
+        //this.animatePolice();
 
         this.body.setVelocityX(this.constantSpeed); //Movimiento continuo del jugador hacia la derecha
 

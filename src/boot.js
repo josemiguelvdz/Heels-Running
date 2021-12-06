@@ -24,7 +24,7 @@ export default class Boot extends Phaser.Scene {
 
       //Police Sprites
       this.load.setPath('./assets/Sprites/Police');
-      this.load.spritesheet('policeIdle','testRun.png',{frameWidth:128,frameHeight:128})
+      this.load.spritesheet('policeRun','testRun.png',{frameWidth:128,frameHeight:128})
       this.load.spritesheet('smokeAnimation','humoSpriteSheet.png',{frameWidth:64,frameHeight:64});
       this.load.spritesheet('helicopterAnimation','helicopterSpritesheet.png',{frameWidth:192,frameHeight:96});
 

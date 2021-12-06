@@ -1,6 +1,5 @@
 import Player from './Player/player.js';
 import Police from './Police/police.js';
-import Platform from './StaticObjects/platform.js';
 import Salmon from './Interactuables/Life/Salmon.js';
 import Coffe from './Interactuables/PowerUps/Coffe.js';
 import RedTimer from './Interactuables/Debuffs/RedTimer.js';
@@ -14,7 +13,8 @@ import FallingObject from './FallingObjects/fallingObject.js';
 import HealthBar from './Interfaz/healthBar.js';
 import PowerUpBar from './Interfaz/powerUpBar.js';
 import FireHydrant from './StaticObjects/fireHydrant.js';
-import Car from './StaticObjects/car.js';
+import StaticObject from './StaticObjects/staticobject.js';
+import PauseMenu from './Menu/pausemenu.js';
 
 export default class Level extends Phaser.Scene {
   /**
@@ -83,6 +83,7 @@ export default class Level extends Phaser.Scene {
     // Barra de vida   
     this.healthBar = new HealthBar(this, 100, 100, this.player);
     this.powerUpBar = new PowerUpBar(this, 180, 100, this.player);
+    this.pauseMenu = new PauseMenu(this);
 
 
     // CAMBIAR BOUDING BOX DE TAMAÑO
@@ -146,9 +147,11 @@ export default class Level extends Phaser.Scene {
 
   stop(activetePause){
 
-    this.physics.pause();
-   this.mainSong.pause();
-    this.pauseBackGround = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'pauseBackGround').setScale(1.2, 1).setScrollFactor(0);
+    //this.physics.pause();
+    this.scene.pause();
+    this.mainSong.pause();
+    this.pauseMenu.pause();
+    /*this.pauseBackGround = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'pauseBackGround').setScale(1.2, 1).setScrollFactor(0);
     this.pauseBackGround.alpha = 0.5;
 
     this.menuLayout =  this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'menuLayout').setScale(0.7, 0.5).setScrollFactor(0);
@@ -172,10 +175,10 @@ export default class Level extends Phaser.Scene {
 
     this.exitButton = this.add.image(this.scale.width*0.5, this.scale.height*0.7, 'exitButton').setInteractive().setScrollFactor(0);
 
-    this.exitButton.on('pointerdown', () => {this.scene.start('menu'), this.activetePause = false});
+    this.exitButton.on('pointerdown', () => {this.scene.start('menu'), this.activetePause = false});*/
   }
 
-  settings(){
+  /*settings(){
     
     this.settingsLayout =  this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'menuLayout').setScale(2, 0.75).setScrollFactor(0);
 
@@ -213,14 +216,16 @@ export default class Level extends Phaser.Scene {
     this.backButton.on('pointerdown', () => {
       this.controlsTitle.destroy(), this.controls.destroy(), this.backButton.destroy(), this.pauseBackGround.destroy(), this.volumeTitle.destroy(), 
       this.volumeBar.destroy(), this.settingsLayout.destroy(),this.slide.destroy(), this.activetePause = false, this.stop(this.activetePause), this.inSettings = false});
-  }
+  }*/
 
   isPaused(){
     return this.activetePause;
   }
 
   unPause(){
-    this.activetePause = false;
+
+    this.pauseMenu.unPause();
+    /*this.activetePause = false;
     this.pauseBackGround.destroy();
     this.exitButton.destroy();
     this.resumeButton.destroy();
@@ -239,7 +244,7 @@ export default class Level extends Phaser.Scene {
         if(this.powerUpsArray[i].movesbyTween)this.powerUpsArray[i].tweenMovement.resume();
        
     }
-    if(!this.inSettings ) this.player.handleMovement();
+    if(!this.inSettings ) this.player.handleMovement();*/
     
 
   }
@@ -368,7 +373,7 @@ export default class Level extends Phaser.Scene {
   createObjects(width, height, totalWidth)
   {
     this.player = new Player(this, 250, 300, 3);
-    this.police= new Police(this,70,400,3);
+    this.police= new Police(this,70,400);
     this.gangster = new Gangster(this, this.player, 3700, 450);
     this.box = new Box(this, 350, 535);
 
@@ -437,23 +442,23 @@ export default class Level extends Phaser.Scene {
     this.fallObjEx3 = new FallingObject(this,this.player, 2750, 100,'maceta');
     console.log(this.fallObjEx3);
     
-    this.platform = new Platform(this, this.player.y, 400); 
+    this.platform = new StaticObject(this, this.player.y, 400, 'platform'); 
     this.fireHydrant = new FireHydrant(this, 700, 535);
-    this.car = new Car(this, 1100, 500);
+    this.car = new StaticObject(this, 1100, 500, 'car');
 
-    this.building = new Platform(this, width*2, height);
+    this.building = new StaticObject(this, width*2, height, 'platform');
     scaleBuilding(this.building, this.building.width, this.building.height, 5);
     
-    this.building2 = new Platform(this, width*2+this.building.width, height);
+    this.building2 = new StaticObject(this, width*2+this.building.width, height, 'platform');
     scaleBuilding(this.building2, this.building2.width, this.building2.height, 8);
 
-    this.building3 = new Platform(this, width*2+this.building2.width*2, height);
+    this.building3 = new StaticObject(this, width*2+this.building2.width*2, height, 'platform');
     scaleBuilding(this.building3, this.building3.width, this.building3.height, 6);
 
-    this.building4 = new Platform(this, width*2+this.building3.width*3, height);
+    this.building4 = new StaticObject(this, width*2+this.building3.width*3, height, 'platform');
     scaleBuilding(this.building4, this.building4.width, this.building4.height, 3);
 
-    this.building5 = new Platform(this, width*2+this.building4.width*4, height);
+    this.building5 = new StaticObject(this, width*2+this.building4.width*4, height, 'platform');
     scaleBuilding(this.building5, this.building5.width, this.building5.height, 8);
 
     this.timeBar = this.add.sprite(920, 50, 'timeBar', 'timeBar.png').setScrollFactor(0);
