@@ -68,10 +68,7 @@ export default class Level extends Phaser.Scene {
 
     this.scape = this.input.keyboard.addKey('ESC');
     this.scape.on('down', () => {
-      for(let i=0;i<this.powerUpsArray.length;i++)
-      {
-        if(this.powerUpsArray[i].movesbyTween)this.powerUpsArray[i].tweenMovement.pause();
-      }
+     
     });
       
 
@@ -117,7 +114,7 @@ export default class Level extends Phaser.Scene {
     if (Phaser.Input.Keyboard.JustDown(this.scape)) { 
       if(!this.activetePause){
         this.scene.pause();
-        this.scene.launch("pauseMenu");;
+        this.scene.launch("pauseMenu",this.mainSong);
       }
     } 
 

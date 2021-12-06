@@ -259,7 +259,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
       if(this.numLifes < 1)
       {
         this.deathSound.play();
-        this.LosingGame();
+        this.losingGame();
        
       }
     //Y que te lleve al menu de inicio

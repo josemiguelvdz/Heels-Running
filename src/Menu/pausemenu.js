@@ -8,7 +8,7 @@ export default class PauseMenu extends Phaser.Scene {
         super({key: 'pauseMenu'});
     
     }
-  
+    
     create() {
 
         this.pauseBackGround = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'pauseBackGround').setScale(1.2, 1).setScrollFactor(0);
@@ -26,7 +26,7 @@ export default class PauseMenu extends Phaser.Scene {
         if(!this.inSettings )this.player.handleMovement();*/
         this.resumeButton = this.add.image(this.scale.width*0.5, this.scale.height*0.3, 'resumeButton').setInteractive().setScrollFactor(0);
     
-        this.resumeButton.on('pointerdown', () => {this.unPause()});
+        this.resumeButton.on('pointerdown', () => {this.unPause(),this.gMusic.setVolume(0.3);});
     
         this.settingsButton = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'settingsButton').setInteractive().setScrollFactor(0);
     
@@ -35,7 +35,7 @@ export default class PauseMenu extends Phaser.Scene {
     
         this.exitButton = this.add.image(this.scale.width*0.5, this.scale.height*0.7, 'exitButton').setInteractive().setScrollFactor(0);
     
-        this.exitButton.on('pointerdown', () => {this.scene.start('menu'), this.activetePause = false});
+        this.exitButton.on('pointerdown', () => { this.activetePause=false,this.gMusic.stop() ,this.scene.start('menu')});
 
         this.pointer = this.input.activePointer;
 
@@ -109,4 +109,13 @@ export default class PauseMenu extends Phaser.Scene {
         
     
     }
+
+init(gameMusic)
+{
+ this.gMusic=gameMusic;
+this.gMusic.setVolume(0.1);
+ 
+}
+
+
 }
