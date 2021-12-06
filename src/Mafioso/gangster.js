@@ -31,19 +31,17 @@ export default class Gangster extends Phaser.GameObjects.Sprite {
         super.preUpdate(time, delta);
         this.animateGangster();
 
-        if(!this.scene.isPaused()){
-            this.cooldown+=Math.round(delta);
+        this.cooldown+=Math.round(delta);
 
-            if((this.cooldown) > 2000 && this.visionRange >= Math.abs(this.x-this.jugador.x))
-            {
-                if(this.icon){
-                    this.scene.destroyIconAdvice();
-                    this.icon = false;
-                }
-                this.cooldown = 0;
-                this.shoot();
+        if((this.cooldown) > 2000 && this.visionRange >= Math.abs(this.x-this.jugador.x))
+        {
+            if(this.icon){
+                this.scene.destroyIconAdvice();
+                this.icon = false;
             }
-        }
+            this.cooldown = 0;
+            this.shoot();
+        }    
 
         if(Math.abs(this.x-this.jugador.x) <= this.advideRange && !this.oneAdvice){
             this.advice();
