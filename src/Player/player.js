@@ -48,9 +48,15 @@ export default class Player extends Phaser.GameObjects.Sprite {
       frameRate: 10, // Velocidad de la animación
       repeat: 0
     });
+    this.scene.anims.create({
+      key: 'ground_kick_anim',
+      frames: this.anims.generateFrameNumbers('ground_kick', { start: 0, end: 7 }),
+      frameRate: 10, // Velocidad de la animación
+      repeat: 0
+    });
 
     this.kick=this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K);
-    
+    this.kickActive = false;
     this.play('run_anim');
 
 
@@ -147,62 +153,57 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
   setMovement()
   {
-    //Si no esta en pausa
-    if(!this.scene.isPaused()){
-      //console.log(this.numLifes);
-      //this.body.setVelocityX(this.speed); //Movimiento continuo del jugador hacia la derecha
-
-      if(this.kick.isDown){
-        this.play('jump_kick_anim', true);
-      }
-
-      if (this.cursors.left.isDown && !this.arrested) {
-        this.body.setVelocityX(-this.speed);
-        if(this.body.onFloor()){
-          this.play('run_anim', true);
-        }
-        
-      }
-      else if (this.cursors.right.isDown && !this.arrested)  {
-        this.body.setVelocityX(this.speed);
-        if(this.body.onFloor()){
-          this.play('run_anim', true);
-        }
-      }
-      else {
-        this.body.setVelocityX(0);
-        if(this.body.onFloor()){
-          this.play('run_anim', true);
-        }
-      }
-
-      if (this.cursors.up.isDown && this.body.onFloor() && !this.arrested) { // este es el salto
-       this.createJumpParticles();
-        this.body.setVelocityY(this.jumpSpeed*this.jumpImpulse);
-        this.play('jump_anim', true);
-      }
-
-    // Comprueba si el jugador ha pulsado la tecla para dar una patada
-    if(Phaser.Input.Keyboard.JustDown(this.kick)){
-      this.kickZone = this.scene.add.zone(this.x+this.width*1.3, this.y, this.width, this.height);
-      this.scene.physics.world.enable(this.kickZone);
-      this.kickZone.body.setAllowGravity(false);
-      this.kickZone.body.setImmovable(true);
-
-      
-      this.scene.physics.add.overlap(this.kickZone, this.scene.fallObjs, (o1,o2)=> {
-      o2.handleCollisionFallObj(false,true);
-     }); 
-
-      this.delete_zone = this.scene.time.addEvent({ 
-        delay: 300, 
-        callback: this.destroyZone, 
-        args: [this.kickZone], 
-        loop: false });
+    if(this.kick.isDown){
+      if(this.body.onFloor()) this.play('ground_kick_anim', true);
+      else this.play('jump_kick_anim', true);
+      this.kickActive = true;
     }
+    else if (this.cursors.left.isDown && !this.arrested) {
+      this.body.setVelocityX(-this.speed);
+      if(this.body.onFloor() && !this.kickActive){
+        this.play('run_anim', true);
+      }
+      
+    }
+    else if (this.cursors.right.isDown && !this.arrested)  {
+      this.body.setVelocityX(this.speed);
+      if(this.body.onFloor()  && !this.kickActive){
+        this.play('run_anim', true);
+      }
+    }
+    else {
+      this.body.setVelocityX(0);
+      if(this.body.onFloor()  && !this.kickActive){
+        this.play('run_anim', true);
+      }
+    }
+
+    if (this.cursors.up.isDown && this.body.onFloor() && !this.arrested) { // este es el salto
+     this.createJumpParticles();
+      this.body.setVelocityY(this.jumpSpeed*this.jumpImpulse);
+      this.play('jump_anim', true);
+    }
+
+  // Comprueba si el jugador ha pulsado la tecla para dar una patada
+  if(Phaser.Input.Keyboard.JustDown(this.kick)){
+    this.kickZone = this.scene.add.zone(this.x+this.width*1.3, this.y, this.width, this.height);
+    this.scene.physics.world.enable(this.kickZone);
+    this.kickZone.body.setAllowGravity(false);
+    this.kickZone.body.setImmovable(true);
+
+    
+    this.scene.physics.add.overlap(this.kickZone, this.scene.fallObjs, (o1,o2)=> {
+    o2.handleCollisionFallObj(false,true);
+   }); 
+
+    this.delete_zone = this.scene.time.addEvent({ 
+      delay: 500, 
+      callback: this.destroyZone, 
+      args: [this.kickZone, this], 
+      loop: false });
   }
-    else this.stop();
-  }
+}
+  
 
 
 /**
@@ -357,7 +358,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.deathEmitter.explode(100, this.x,this.y+20);
   
   } 
-  destroyZone(args){
-    args.destroy();
+  destroyZone(zone, player){
+    zone.destroy();
+    player.kickActive = false;
   }
 }

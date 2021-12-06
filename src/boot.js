@@ -33,7 +33,8 @@ export default class Boot extends Phaser.Scene {
       this.load.spritesheet('idle','idlespritesheet.png',{frameWidth:64, frameHeight:64})
       this.load.spritesheet('run','playerRun.png',{frameWidth:128, frameHeight:128});
       this.load.spritesheet('jump', 'playerJump.png',{frameWidth:128, frameHeight:128});
-      this.load.spritesheet('jump_kick', 'playerKick.png', {frameWidth:128, frameHeight: 128});
+      this.load.spritesheet('jump_kick', 'playerJumpKick.png', {frameWidth:128, frameHeight: 128});
+      this.load.spritesheet('ground_kick', 'playerGroundKick.png', {frameWidth:128, frameHeight: 128});
      
       //StaticObjects Sprites
       this.load.setPath('./assets/Sprites/StaticObjects');
