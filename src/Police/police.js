@@ -28,8 +28,6 @@ export default class Police extends Phaser.GameObjects.Sprite {
             frameRate: 30, // Velocidad de la animación
             
           });
-
-          this.startRunning=this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.T);
     }
 
 
@@ -47,10 +45,6 @@ export default class Police extends Phaser.GameObjects.Sprite {
         this.animatePolice();
 
         this.body.setVelocityX(this.constantSpeed); //Movimiento continuo del jugador hacia la derecha
-
-        //if(this.startRunning.isDown){
-          //  this.body.setVelocityX(this.constantSpeed); //Movimiento continuo del jugador hacia la derecha
-        //}
     }
     /**
    * Stop the police when he arrests the player
