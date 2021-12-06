@@ -36,11 +36,11 @@ export default class Level extends Phaser.Scene {
       .setScale(1.2, 1)
       .setScrollFactor(0);
 
-    createAligned(this, totalWidth, 'backhouse', 0.25);
-    createAligned(this, totalWidth, 'houses2', 0.5);
-    createAligned(this, totalWidth, 'houses1', 0.5);
-    createAligned(this, totalWidth, 'road', 1);
-    createAligned(this, totalWidth, 'crosswalk', 1);
+    this.createAligned(this, totalWidth, 'backhouse', 0.25);
+    this.createAligned(this, totalWidth, 'houses2', 0.5);
+    this.createAligned(this, totalWidth, 'houses1', 0.5);
+    this.createAligned(this, totalWidth, 'road', 1);
+    this.createAligned(this, totalWidth, 'crosswalk', 1);
     
     //creamos los distintos elementos del juego
     //Los asociamos al grupo para las colisiones 
@@ -343,19 +343,19 @@ export default class Level extends Phaser.Scene {
     this.car = new StaticObject(this, 1100, 500, 'car');
 
     this.building = new StaticObject(this, width*2, height, 'platform');
-    scaleBuilding(this.building, this.building.width, this.building.height, 5);
+    this.scaleBuilding(this.building, this.building.width, this.building.height, 5);
     
     this.building2 = new StaticObject(this, width*2+this.building.width, height, 'platform');
-    scaleBuilding(this.building2, this.building2.width, this.building2.height, 8);
+    this.scaleBuilding(this.building2, this.building2.width, this.building2.height, 8);
 
     this.building3 = new StaticObject(this, width*2+this.building2.width*2, height, 'platform');
-    scaleBuilding(this.building3, this.building3.width, this.building3.height, 6);
+    this.scaleBuilding(this.building3, this.building3.width, this.building3.height, 6);
 
     this.building4 = new StaticObject(this, width*2+this.building3.width*3, height, 'platform');
-    scaleBuilding(this.building4, this.building4.width, this.building4.height, 3);
+    this.scaleBuilding(this.building4, this.building4.width, this.building4.height, 3);
 
     this.building5 = new StaticObject(this, width*2+this.building4.width*4, height, 'platform');
-    scaleBuilding(this.building5, this.building5.width, this.building5.height, 8);
+    this.scaleBuilding(this.building5, this.building5.width, this.building5.height, 8);
 
     this.timeBar = this.add.sprite(920, 50, 'timeBar', 'timeBar.png').setScrollFactor(0);
     this.chrono= new Chrono(this,true);
@@ -376,7 +376,42 @@ export default class Level extends Phaser.Scene {
   delayDone(){
     this.player.body.setSize(this.player.width/2, this.player.height/1.5, true);
   }
+  /**
+ * External function that is called to generate the parallax objects
+ * @param {*} scene - Scene
+ * @param {*} totalWidth - Total Width of the Game
+ * @param {*} texture - Image/Sprite to be generated
+ * @param {*} scrollFactor - Scroll factor of the image
+ */
+  createAligned(scene, totalWidth, texture, scrollFactor) {
 
+    const w = scene.textures.get(texture).getSourceImage().width
+    const count = Math.ceil(totalWidth / w) * scrollFactor;
+  
+    let x = 0;
+  
+    for(let i = 0; i < count; ++i){
+      const b = scene.add.image(x, scene.scale.height, texture)
+      .setOrigin(0, 1)
+      .setScrollFactor(scrollFactor);  
+  
+      x += b.width; 
+    }
+    
+  }
+  /**
+ * External function that is called to scalate the height of the buildings.
+ * This is used to generate buildings of different heights.
+ * @param {*} platform - Building
+ * @param {*} width - Width of the building
+ * @param {*} height - Height of the building
+ * @param {*} buildingScaleFactor - Scale factor of the building (only affects height)
+ */
+  scaleBuilding(platform, width, height,  buildingScaleFactor) {
+    platform.setSize(width, height*(buildingScaleFactor*2-1));
+    platform.setScale(1, buildingScaleFactor);
+    platform.body.setSize(platform.width, platform.height, true);
+  }
 }
 
 /**
@@ -387,40 +422,7 @@ export default class Level extends Phaser.Scene {
 function onCollision(obj1,obj2) {
   obj2.handleCollision(); 
 }
-/**
- * External function that is called to generate the parallax objects
- * @param {*} scene - Scene
- * @param {*} totalWidth - Total Width of the Game
- * @param {*} texture - Image/Sprite to be generated
- * @param {*} scrollFactor - Scroll factor of the image
- */
-function createAligned(scene, totalWidth, texture, scrollFactor) {
 
-  const w = scene.textures.get(texture).getSourceImage().width
-  const count = Math.ceil(totalWidth / w) * scrollFactor;
 
-  let x = 0;
-
-  for(let i = 0; i < count; ++i){
-    const b = scene.add.image(x, scene.scale.height, texture)
-    .setOrigin(0, 1)
-    .setScrollFactor(scrollFactor);  
-
-    x += b.width; 
-  }
-  
-}
-/**
- * External function that is called to scalate the height of the buildings.
- * This is used to generate buildings of different heights.
- * @param {*} platform - Building
- * @param {*} width - Width of the building
- * @param {*} height - Height of the building
- * @param {*} buildingScaleFactor - Scale factor of the building (only affects height)
- */
-function scaleBuilding(platform, width, height,  buildingScaleFactor) {
-  platform.setSize(width, height*(buildingScaleFactor*2-1));
-  platform.setScale(1, buildingScaleFactor);
-  platform.body.setSize(platform.width, platform.height, true);
-}
+ 
 
