@@ -9,7 +9,7 @@ export default class Chrono extends Phaser.GameObjects.GameObject {
       if(this.write){
       this.timeElapsed=this.minutos + ' : '+ this.segundos;
       this.segundosReales=0;
-      this.text = this.scene.add.text(910,35,this.timeElapsed);
+      this.text = this.scene.add.text(this.scene.scale.width-105,35,this.timeElapsed);
       this.text.setScrollFactor(0);
       this.writeTime();
       }

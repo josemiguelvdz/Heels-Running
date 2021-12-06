@@ -337,8 +337,8 @@ export default class Level extends Phaser.Scene {
     this.building5 = new StaticObject(this, width*2+this.building4.width*4, height, 'platform');
     this.scaleBuilding(this.building5, this.building5.width, this.building5.height, 8);
 
-    this.timeBar = this.add.sprite(920, 50, 'timeBar', 'timeBar.png').setScrollFactor(0);
-    this.chrono= new Chrono(this,true);
+    this.timeBar = this.add.sprite(this.scale.width-100, 50, 'timeBar', 'timeBar.png').setScrollFactor(0);
+    this.chrono= new Chrono(this, true);
     
 
     this.redTimer= new RedTimer( this,this.player, 2200, 100,'redTimer',true,this.chrono);
