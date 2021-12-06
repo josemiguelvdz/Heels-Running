@@ -32,8 +32,6 @@ export default class Police extends Phaser.GameObjects.Sprite {
           });
 
           this.startRunning=this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.T);
-        
-          this.play('run_animation');
     }
 
 
@@ -41,24 +39,14 @@ export default class Police extends Phaser.GameObjects.Sprite {
    * Animated the police depending on the moment
    * 
    */
-    /*animatePolice(){
-        if(this.catchRoger) 
-        {
-            this.stop();
-            this.play("smoke_animation",1);   
-        }
-        else if(!this.helicopter){
-            this.stop();
-            this.play('run_animation');
-        }
-        else if(this.helicopter){
-            this.stop();
-            this.play('helicopter_animation')
-        }
-    }*/
+    animatePolice(){
+        if(this.catchRoger)  this.play("smoke_animation", true);   
+        else if(!this.helicopter) this.play('run_animation', true);
+        else if(this.helicopter) this.play('helicopter_animation', true)
+    }
     preUpdate(t,dt) {
         super.preUpdate(t,dt);
-        //this.animatePolice();
+        this.animatePolice();
 
         this.body.setVelocityX(this.constantSpeed); //Movimiento continuo del jugador hacia la derecha
 
