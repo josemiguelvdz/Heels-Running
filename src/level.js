@@ -175,6 +175,12 @@ export default class Level extends Phaser.Scene {
      this.platforms = this.physics.add.staticGroup();
      this.platforms.add(this.platform);
      this.physics.add.collider(this.player,this.platforms);    // COLISION ENTRE PLAYER Y PLATAFORMAS
+
+     this.staticObjects=this.physics.add.staticGroup();
+     this.staticObjects.add(this.car);
+     //RELLENAR CON STATIC OBJECTS 
+     this.physics.add.collider(this.player,this.staticObjects);
+
     
      // GRUPO DE LOS EDIFICIOS
      this.buildings = this.physics.add.staticGroup();
