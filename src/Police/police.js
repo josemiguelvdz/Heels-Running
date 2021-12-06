@@ -25,7 +25,7 @@ export default class Police extends Phaser.GameObjects.Sprite {
           this.scene.anims.create({
             key: 'helicopter_animation',
             frames: this.anims.generateFrameNumbers('helicopterAnimation', { start: 0, end: 12 }),
-            frameRate: 12, // Velocidad de la animación
+            frameRate: 30, // Velocidad de la animación
             
           });
 
