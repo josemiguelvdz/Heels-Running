@@ -72,9 +72,6 @@ export default class Level extends Phaser.Scene {
     });
       
 
-    this.kick = this.input.keyboard.addKey('K');
-    this.kick.on('down', () => {});
-
 
     // Barra de vida   
     this.healthBar = new HealthBar(this, 100, 100, this.player);
@@ -117,26 +114,6 @@ export default class Level extends Phaser.Scene {
         this.scene.launch("pauseMenu",this.mainSong);
       }
     } 
-
-    // Comprueba si el jugador ha pulsado la tecla para dar una patada
-    if(Phaser.Input.Keyboard.JustDown(this.kick)){
-      this.kickZone = this.add.zone(this.player.x+this.player.width*1.3, this.player.y, this.player.width, this.player.height);
-      this.physics.world.enable(this.kickZone);
-      this.kickZone.body.setAllowGravity(false);
-      this.kickZone.body.setImmovable(true);
-
-      this.physics.add.collider(this.kickZone, this.fallObjs,(o1,o2)=> {
-     
-        o2.handleCollisionFallObj(false,true);
-     }); 
-
-      this.delete_zone = this.time.addEvent({ 
-        delay: 300, 
-        callback: this.destroyZone, 
-        args: [this.kickZone], 
-        loop: false });
-            
-    }
 
   }
 
@@ -227,7 +204,6 @@ export default class Level extends Phaser.Scene {
     this.fallObjs.add(this.fallObjEx2);
     this.fallObjs.add(this.fallObjEx3);
     this.physics.add.overlap(this.player,this.fallObjs,(o1,o2)=> {
-     
       o2.handleCollisionFallObj(true,false);
     });
     this.physics.add.collider(this.groundZone,this.fallObjs,(o1,o2)=> {
@@ -318,9 +294,6 @@ export default class Level extends Phaser.Scene {
 
 
     // AÑADIR TODOS LOS GRUPOS
-    
-    
-    
 
     this.salmon= new Salmon(this, this.player, 2800, 50,'salmonFish',true);
     this.powerUpsArray.push(this.salmon);
@@ -372,10 +345,6 @@ export default class Level extends Phaser.Scene {
     this.greenTimer= new GreenTimer( this,this.player, 2400, 100,'greenTimer',true,this.chrono);
     this.powerUpsArray.push(this.greenTimer);
     
-  }
-
-  destroyZone(args){
-    args.destroy();
   }
 
   // Cambiar tamaño sprites

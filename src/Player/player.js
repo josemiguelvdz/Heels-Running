@@ -16,8 +16,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.numLifes=nLifes;
     this.esmoquinShield=false;
 
-   
-
     this.speedVariable=120; 
     this.alcoholEffect=false;
     this.coffeEffect=false;
@@ -95,10 +93,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
   this.handleEsmoquinEffect(dt);
   this.handleAlcoholEffect(dt);
   this. handleCoffeEffect(dt);
-
-    
-
-
   }
 
 
@@ -188,8 +182,25 @@ export default class Player extends Phaser.GameObjects.Sprite {
         this.play('jump_anim', true);
       }
 
+    // Comprueba si el jugador ha pulsado la tecla para dar una patada
+    if(Phaser.Input.Keyboard.JustDown(this.kick)){
+      this.kickZone = this.scene.add.zone(this.x+this.width*1.3, this.y, this.width, this.height);
+      this.scene.physics.world.enable(this.kickZone);
+      this.kickZone.body.setAllowGravity(false);
+      this.kickZone.body.setImmovable(true);
+
       
+      this.scene.physics.add.overlap(this.kickZone, this.scene.fallObjs, (o1,o2)=> {
+      o2.handleCollisionFallObj(false,true);
+     }); 
+
+      this.delete_zone = this.scene.time.addEvent({ 
+        delay: 300, 
+        callback: this.destroyZone, 
+        args: [this.kickZone], 
+        loop: false });
     }
+  }
     else this.stop();
   }
 
@@ -346,4 +357,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.deathEmitter.explode(100, this.x,this.y+20);
   
   } 
+  destroyZone(args){
+    args.destroy();
+  }
 }
