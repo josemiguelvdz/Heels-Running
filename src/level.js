@@ -377,6 +377,16 @@ export default class Level extends Phaser.Scene {
     platform.setScale(1, buildingScaleFactor);
     platform.body.setSize(platform.width, platform.height, true);
   }
+
+
+  createBoxPowerUp(number,x,y){
+    if(number===0)this.powerE=new Coffe( this,this.player, x, y,'coffe',false);
+    else if(number==1)this.powerE=new Salmon(this, this.player, x, y,'salmonFish',false);
+    else if(number==2)this.powerE=new Esmoquin(this,this.player, x, y,'esmoquin',false);
+    this.powerE.setScale(.5,.5);
+    this.physics.add.collider(this.player,this.powerE,onCollision);
+  }
+
 }
 
 /**
