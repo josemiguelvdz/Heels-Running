@@ -91,6 +91,7 @@ export default class Boot extends Phaser.Scene {
       this.load.image('youWin','youWin.png');
       this.load.image('volumeBar', 'VolumeBar.png');
       this.load.image('volumeIcon', 'Volume.png');
+      this.load.image('rain', 'rain.png');
 
 
       //Particulas
