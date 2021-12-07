@@ -107,10 +107,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.handleCoffeEffect(dt);
 
     // Cooldown kick
-    if(this.actKickCooldown > 0){
-      this.actKickCooldown -= Math.round(dt);
-    }
-    console.log(this.actKickCooldown);
+    if(this.actKickCooldown > 0) this.actKickCooldown -= Math.round(dt);
   }
 
 
