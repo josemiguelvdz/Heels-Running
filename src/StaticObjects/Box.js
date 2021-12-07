@@ -15,23 +15,20 @@ export default class Box extends Phaser.GameObjects.Sprite {
       });
     }
 
-   animateBox(){
+  animateBox(){
+    this.setFlip(false,false);
+    this.stop();   
+    this.play('boxDestruction_anim');
 
-      this.setFlip(false,false);
-      this.stop();   
-      this.play('boxDestruction_anim');
+    this.on( 'animationcomplete-boxDestruction_anim',  () => {
+      this.destroy();
+    });      
+  }
 
-      this.on( 'animationcomplete-boxDestruction_anim',  () => {
-        this.destroy();
-      });      
-
+  handleCollision(){
+    if(!this.collision){
+      this.animateBox();
+      this.collision = true;
     }
-
-    handleCollision(){
-      if(!this.collision){
-        this.animateBox();
-        this.collision = true;
-      }
-
-    }
+  }
 }

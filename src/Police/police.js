@@ -4,7 +4,6 @@ export default class Police extends Phaser.GameObjects.Sprite {
 
     constructor(scene,x,y){
         super(scene, x, y, 'policeRun');
-
         this.constantSpeed = 200;
         this.catchRoger=false;
         this.scene.add.existing(this);
@@ -32,14 +31,16 @@ export default class Police extends Phaser.GameObjects.Sprite {
 
 
     /**
-   * Animated the police depending on the moment
-   * 
-   */
+    * Animated the police depending on the moment
+    * 
+    */
     animatePolice(){
         if(this.catchRoger)  this.play("smoke_animation", true);   
         else if(!this.helicopter) this.play('run_animation', true);
         else if(this.helicopter) this.play('helicopter_animation', true)
     }
+
+
     preUpdate(t,dt) {
         super.preUpdate(t,dt);
         this.animatePolice();
@@ -47,18 +48,17 @@ export default class Police extends Phaser.GameObjects.Sprite {
         this.body.setVelocityX(this.constantSpeed); //Movimiento continuo del jugador hacia la derecha
     }
     /**
-   * Stop the police when he arrests the player
-   * 
-   */
+    * Stop the police when he arrests the player
+    * 
+    */
     catchP(){
         this.constantSpeed=0;
         this.catchRoger=true;
         this.scene.lose();
     }
 
-        /**
-   * Return if police is transformed into a helicopter
-   * 
+    /**
+    * Return if police is transformed into a helicopter 
    */
     isHelicopter(){
         return this.helicopter;
@@ -74,6 +74,5 @@ export default class Police extends Phaser.GameObjects.Sprite {
         this.y=60;
         this.helicopter=true;
         this.body.setAllowGravity(false);
-    
     }
 }

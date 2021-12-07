@@ -67,11 +67,9 @@ export default class Level extends Phaser.Scene {
     this.cameras.main.startFollow(this.player);
 
     this.scape = this.input.keyboard.addKey('ESC');
-    this.scape.on('down', () => {
-     
+    this.scape.on('down', () => { 
     });
       
-
 
     // Barra de vida   
     this.healthBar = new HealthBar(this, 100, 100, this.player);
@@ -92,15 +90,15 @@ export default class Level extends Phaser.Scene {
 
   }
 
+
+
   update(){
     const cam = this.cameras.main;
     const speed = 1;
-
-     
+ 
     cam.scrollX += speed;
 
     if(this.police.isHelicopter()){
-
       if(this.police.body.x>=this.player.body.x){
         this.player.arrestado();
         this.player.getActualScene().chrono.finish();
@@ -115,7 +113,6 @@ export default class Level extends Phaser.Scene {
         this.scene.launch("pauseMenu",this.mainSong);
       }
     } 
-
   }
 
   isPaused(){
@@ -144,8 +141,6 @@ export default class Level extends Phaser.Scene {
 
 /**
  * Creates collision groups and adds colliders between them
- * 
- * 
  */
   createGroups()
   {
@@ -159,7 +154,6 @@ export default class Level extends Phaser.Scene {
      //RELLENAR CON STATIC OBJECTS 
      this.physics.add.collider(this.player,this.staticObjects);
 
-    
      // GRUPO DE LOS EDIFICIOS
      this.buildings = this.physics.add.staticGroup();
      this.buildings.add(this.building);
@@ -169,12 +163,12 @@ export default class Level extends Phaser.Scene {
      this.buildings.add(this.building5);
      this.physics.add.collider(this.player,this.buildings);
 
-    
+
      this.salmons = this.physics.add.group();
      this.salmons.add(this.salmon);
      this.physics.add.overlap(this.player,this.salmons,(o1,o2)=> {
       onCollision(o1,o2);
-   })
+    })
     this.esmoquins = this.physics.add.group();
     this.esmoquins.add(this.esmoquin);
     this.esmoquins.add(this.esmoquin2);
@@ -182,8 +176,7 @@ export default class Level extends Phaser.Scene {
       onCollision(o1,o2);
     })
 
-     //Para crear la colision entre grupos usamos grupos estaticos por que si no no funciona
-
+    //Para crear la colision entre grupos usamos grupos estaticos por que si no no funciona
     //GRUPO DE LOS TIMERS
     this.timers = this.physics.add.group();
     this.timers.add(this.redTimer);
@@ -193,12 +186,12 @@ export default class Level extends Phaser.Scene {
     });
 
     //GRUPO DE LOS CAFÉS
-     
     this.coffes = this.physics.add.group();
     this.coffes.add(this.coffe1);
     this.physics.add.overlap(this.player,this.coffes,(o1,o2)=> {
       onCollision(o1,o2);
     });
+
     //GRUPO DE LOS OBJETOS CAYENTES CON EL SUELO Y EL PLAYER
     this.fallObjs= this.physics.add.group();
     this.fallObjs.add(this.fallObjEx);
@@ -216,16 +209,15 @@ export default class Level extends Phaser.Scene {
     this.physics.add.overlap(this.player,this.alcohols,(o1,o2)=> {
       onCollision(o1,o2);
     });
+
     // VICTORY
     this.physics.add.collider(this.winZone,this.player,(o1,o2)=>{
       this.win();
     });
 
     //GRUPO DE LAS PLATAFORMAS Y EL POLICIA
-
     this.platforms = this.physics.add.staticGroup();
     this.platforms.add(this.platform);
-
 
     //GRUPO DEL POLICIA Y EL PLAYER
     this.physics.add.collider(this.player,this.police,(o1,o2)=>{
@@ -234,13 +226,11 @@ export default class Level extends Phaser.Scene {
       o2.catchP(o1);
     });
   
-
     this.boxes = this.physics.add.staticGroup();
     this.boxes.add(this.box);
     this.physics.add.collider(this.player, this.box,(o1,o2)=> {
       onCollision(o1,o2);
     });
-
   }
   
 /**
@@ -353,12 +343,12 @@ export default class Level extends Phaser.Scene {
     this.player.body.setSize(this.player.width/2, this.player.height/1.5, true);
   }
   /**
- * External function that is called to generate the parallax objects
- * @param {*} scene - Scene
- * @param {*} totalWidth - Total Width of the Game
- * @param {*} texture - Image/Sprite to be generated
- * @param {*} scrollFactor - Scroll factor of the image
- */
+  * External function that is called to generate the parallax objects
+  * @param {*} scene - Scene
+  * @param {*} totalWidth - Total Width of the Game
+  * @param {*} texture - Image/Sprite to be generated
+  * @param {*} scrollFactor - Scroll factor of the image
+  */
   createAligned(scene, totalWidth, texture, scrollFactor) {
 
     const w = scene.textures.get(texture).getSourceImage().width
@@ -373,16 +363,15 @@ export default class Level extends Phaser.Scene {
   
       x += b.width; 
     }
-    
   }
   /**
- * External function that is called to scalate the height of the buildings.
- * This is used to generate buildings of different heights.
- * @param {*} platform - Building
- * @param {*} width - Width of the building
- * @param {*} height - Height of the building
- * @param {*} buildingScaleFactor - Scale factor of the building (only affects height)
- */
+  * External function that is called to scalate the height of the buildings.
+  * This is used to generate buildings of different heights.
+  * @param {*} platform - Building
+  * @param {*} width - Width of the building
+  * @param {*} height - Height of the building
+  * @param {*} buildingScaleFactor - Scale factor of the building (only affects height)
+  */
   scaleBuilding(platform, width, height,  buildingScaleFactor) {
     platform.setSize(width, height*(buildingScaleFactor*2-1));
     platform.setScale(1, buildingScaleFactor);

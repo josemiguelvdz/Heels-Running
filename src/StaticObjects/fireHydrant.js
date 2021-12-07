@@ -1,22 +1,19 @@
 
 export default class FireHydrant extends Phaser.GameObjects.Sprite {
   
-    constructor(scene, x, y) {
-      super(scene, x, y, 'fireHydrant');
-      this.scene.add.existing(this);
-      this.scene.physics.add.existing(this, true);
-      
-     
-    }
+  constructor(scene, x, y) {
+    super(scene, x, y, 'fireHydrant');
+    this.scene.add.existing(this);
+    this.scene.physics.add.existing(this, true);
+  }
   
-    preUpdate(t,dt) {
-      super.preUpdate(t,dt);
-      if(!this.scene.isPaused())this.createWaterParticles();
-    }
-    createWaterParticles()
-    {
-
-
+  preUpdate(t,dt) {
+    super.preUpdate(t,dt);
+    if(!this.scene.isPaused())this.createWaterParticles();
+  }
+    
+    
+  createWaterParticles(){
     let deathParticles =this.scene.add.particles('waterParticle');
     this.deathEmitter = deathParticles.createEmitter({
       x: -500,
@@ -31,8 +28,6 @@ export default class FireHydrant extends Phaser.GameObjects.Sprite {
       loop: true
     });
     this.deathEmitter.explode(40, this.x,this.y-20);
-
   }
-    
-  }
+}
   

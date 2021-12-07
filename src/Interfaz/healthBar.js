@@ -14,12 +14,10 @@ export default class HealthBar extends Phaser.GameObjects.GameObject {
     this.hpArr = [this.hp1, this.hp2, this.hp3];
 
     this.player = player;
-
   }
 
   preUpdate() {
     this.checkLifes(this.player);
-    
   }
 
   checkLifes(player){
@@ -32,7 +30,5 @@ export default class HealthBar extends Phaser.GameObjects.GameObject {
     else{
       this.hpArr[player.numLifes].setVisible(false);
     }
-   
   }
-   
 }

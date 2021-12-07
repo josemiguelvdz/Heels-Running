@@ -65,8 +65,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.kickActive = false;
     this.play('run_anim');
 
-
-
     const configSound = {
       mute: false,
       volume: 0.3,
@@ -82,26 +80,27 @@ export default class Player extends Phaser.GameObjects.Sprite {
     //Variables del tiempo de efecto del alcohol
     this.durationAlcohol=4000;
     this.secondsAlcohol=-1;
-     //Variables del tiempo de efecto del cafe
-     this.durationCoffe=4000;
-     this.secondsCoffe=-1;
+    //Variables del tiempo de efecto del cafe
+    this.durationCoffe=4000;
+    this.secondsCoffe=-1;
 
-     //Variables del tiempo de efecto del cafe
-     this.durationEsmoquin=5000;
-     this.secondsEsmoquin=-1;
+    //Variables del tiempo de efecto del cafe
+    this.durationEsmoquin=5000;
+    this.secondsEsmoquin=-1;
 
-     // Tiempo de agotamiento del kick
-     this.kickCooldown = 1000;
-     this.actKickCooldown = this.kickCooldown;
+    // Tiempo de agotamiento del kick
+    this.kickCooldown = 1000;
+    this.actKickCooldown = this.kickCooldown;
  
-
-
     //Variable general que se activa y desactiva cuando entras/sales al menu de pausa
     //Sirve para controlar la duracion del efecto los power ups
     this.stopMovement=false;
 
 
   }
+
+
+
   preUpdate(t,dt) {
     super.preUpdate(t,dt);
     this.setMovement();
@@ -111,21 +110,15 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.handleAlcoholEffect(dt);
     // Café
     this.handleCoffeEffect(dt);
-
     // Cooldown kick
     if(this.actKickCooldown > 0) this.actKickCooldown -= Math.round(dt);
   }
 
-
-   handleAlcoholEffect(delta)
-   {
-    if(this.secondsAlcohol >= 0) 
-    {   
-      if(!this.stopMovement) 
-      {
+  handleAlcoholEffect(delta){
+    if(this.secondsAlcohol >= 0) {   
+      if(!this.stopMovement) {
         this.secondsAlcohol+=Math.round(delta);
-        if(this.secondsAlcohol>this.durationAlcohol)
-        {  
+        if(this.secondsAlcohol>this.durationAlcohol){  
         this.secondsAlcohol=-1;  //Reiniciamos el contador de tiempo para el efecto en el alchol 
         this.restoreSpeed("Reduce");
         }
@@ -133,15 +126,11 @@ export default class Player extends Phaser.GameObjects.Sprite {
     }
   }
 
-  handleCoffeEffect(delta)
-  {
-    if(this.secondsCoffe >= 0) 
-    {   
-      if(!this.stopMovement) 
-      {
+  handleCoffeEffect(delta){
+    if(this.secondsCoffe >= 0) {   
+      if(!this.stopMovement) {
         this.secondsCoffe+=Math.round(delta);
-        if(this.secondsCoffe>this.durationCoffe)
-        { 
+        if(this.secondsCoffe>this.durationCoffe){ 
           this.secondsCoffe=-1;  //Reiniciamos el contador de tiempo para el efecto en el alchol 
           this.restoreSpeed("Increase"); 
         }
@@ -150,15 +139,11 @@ export default class Player extends Phaser.GameObjects.Sprite {
   }
 
 
-  handleEsmoquinEffect(delta)
-  {
-    if(this.secondsEsmoquin >= 0) 
-    {   
-      if(!this.stopMovement) 
-      {
+  handleEsmoquinEffect(delta){
+    if(this.secondsEsmoquin >= 0) {   
+      if(!this.stopMovement) {
         this.secondsEsmoquin+=Math.round(delta);
-        if(this.secondsEsmoquin>this.durationEsmoquin)
-        {
+        if(this.secondsEsmoquin>this.durationEsmoquin){
           this.secondsEsmoquin=-1; 
           this.config2EsmoquinShield();
         }
@@ -166,8 +151,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
     }
   }
 
-  setMovement()
-  {
+
+  setMovement(){
     if(this.kick.isDown && this.actKickCooldown <= 0){
       if(this.body.onFloor()) this.play('ground_kick_anim', true);
       else this.play('jump_kick_anim', true);
@@ -178,7 +163,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
       if(this.body.onFloor() && !this.kickActive){
         this.play('run_anim', true);
       }
-      
     }
     else if (this.cursors.right.isDown && !this.arrested)  {
       this.body.setVelocityX(this.speed);
@@ -193,50 +177,50 @@ export default class Player extends Phaser.GameObjects.Sprite {
       }
     }
 
+
     if (this.cursors.up.isDown && this.body.onFloor() && !this.arrested) { // este es el salto
      this.createJumpParticles();
       this.body.setVelocityY(this.jumpSpeed*this.jumpImpulse);
       this.play('jump_anim', true);
     }
 
-  // Comprueba si el jugador ha pulsado la tecla para dar una patada
-  if(Phaser.Input.Keyboard.JustDown(this.kick) && this.actKickCooldown <= 0)
-  {
+    // Comprueba si el jugador ha pulsado la tecla para dar una patada
+    if(Phaser.Input.Keyboard.JustDown(this.kick) && this.actKickCooldown <= 0){
+      // Crea una zona
+      this.kickZone = this.scene.add.zone(this.x+this.width*1.5, this.y, this.width, this.height);
+      this.scene.physics.world.enable(this.kickZone);
+      this.kickZone.body.setAllowGravity(false);
+      this.kickZone.body.setImmovable(true);
 
-    // Crea una zona
-    this.kickZone = this.scene.add.zone(this.x+this.width*1.5, this.y, this.width, this.height);
-    this.scene.physics.world.enable(this.kickZone);
-    this.kickZone.body.setAllowGravity(false);
-    this.kickZone.body.setImmovable(true);
+      // Animación
+      this.kickParticles = this.scene.add.sprite(this.x+this.width*1.5, this.y, this.width, this.height);
+      this.kickParticles.play('kick_particles_anim');
 
-    // Animación
-    this.kickParticles = this.scene.add.sprite(this.x+this.width*1.5, this.y, this.width, this.height);
-    this.kickParticles.play('kick_particles_anim');
+      // Resetear cooldown
+      this.actKickCooldown = this.kickCooldown;
 
-    // Resetear cooldown
-    this.actKickCooldown = this.kickCooldown;
+      // Colisiones con la zona
+      this.scene.physics.add.overlap(this.kickZone, this.scene.fallObjs, (o1,o2)=> {
+      o2.handleCollisionFallObj(false,true);
+      }); 
 
-    // Colisiones con la zona
-    this.scene.physics.add.overlap(this.kickZone, this.scene.fallObjs, (o1,o2)=> {
-    o2.handleCollisionFallObj(false,true);
-   }); 
-
-   // Destruir la zona
-    this.delete_zone = this.scene.time.addEvent({ 
-      delay: 500, 
-      callback: this.destroyZone, 
-      args: [this.kickZone, this.kickParticles, this], 
-      loop: false });
+      // Destruir la zona
+      this.delete_zone = this.scene.time.addEvent({ 
+        delay: 500, 
+        callback: this.destroyZone, 
+        args: [this.kickZone, this.kickParticles, this], 
+        loop: false 
+      });
+    }
   }
-}
   
 
 
-/**
- * Method that is called when police collide player
- * Set player speed to 0 and plays idle animation
- * Also pauses time of the smoking power up if active
- */
+  /**
+   * Method that is called when police collide player
+   * Set player speed to 0 and plays idle animation
+   * Also pauses time of the smoking power up if active
+   */
   arrestado(){
     this.arrested=true;
     this.speed=0;
@@ -246,60 +230,52 @@ export default class Player extends Phaser.GameObjects.Sprite {
   }
   
   /**
- * This method returns the actual scene
- * 
- */
+  * This method returns the actual scene 
+  */
   getActualScene() {return this.scene;}
 
   /**
-   * 
    * Activates and Deactivates shield for not recieving damage of enemies
    *  @param {*} durationesm -duration in seconds of the efect of the power up 
    */
-  configEsmoquinShield()
-  {
+  configEsmoquinShield(){
     this.esmoquinShield=true; //Ahora no recibe daño
     this.secondsEsmoquin=0;  //Asi si que empieza a contar
   }
-  config2EsmoquinShield()
-  {
+
+
+  config2EsmoquinShield(){
     this.esmoquinShield=false; //Ahora puede recibir daño 
   }
   
- /**
+
+  /**
   * Adds lifes to player and updates the UI
   * @param {*} nLAdd number of lifes to add
   */
-   addLife(nLAdd)
-   {
-     if(this.numLifes<3)this.numLifes+=nLAdd;
-     //Actualizar interfaz
-   }
+  addLife(nLAdd){
+    if(this.numLifes<3)this.numLifes+=nLAdd;
+    //Actualizar interfaz
+  }
 
-
-   /**
-    * Reduces lifes of player if not protected by esmoquin , updates the UI, and restarts de game if lifes are 0
-    * 
-    * @param {*} nLlose number of lifes to lose
-    */
-  loseLife(nLlose)
-  {
+  /**
+  * Reduces lifes of player if not protected by esmoquin , updates the UI, and restarts de game if lifes are 0 
+  * @param {*} nLlose number of lifes to lose
+  */
+  loseLife(nLlose){
     this.playSound=false;
-     if(!this.esmoquinShield)
-     {
-       this.numLifes-=nLlose;
-       this.playSound=true;
-      this.createBloodParticles();
-       
-     }
-     if(this.playSound) this.damagePlayersound.play();
-      //Si la vida es menor a 1 tiene que salir un texto de has perdido o algo asi 
-      if(this.numLifes < 1)
-      {
-        this.deathSound.play();
-        this.losingGame();
-       
-      }
+    if(!this.esmoquinShield){
+      this.numLifes-=nLlose;
+      this.playSound=true;
+      this.createBloodParticles(); 
+    }
+    if(this.playSound) this.damagePlayersound.play();
+
+    //Si la vida es menor a 1 tiene que salir un texto de has perdido o algo asi 
+    if(this.numLifes < 1){
+      this.deathSound.play();
+      this.losingGame(); 
+    }
     //Y que te lleve al menu de inicio
   }
 
@@ -308,14 +284,12 @@ export default class Player extends Phaser.GameObjects.Sprite {
   * @param {*} action sets if player needs to gain or reduce its  velocity
   */
   controlSpeed(action){
-    if(action==="Reduce") 
-    {
+    if(action==="Reduce") {
       this.speed=this.speed-this.speedVariable;
       this.alcoholEffect=true;
       this.secondsAlcohol=0;
     }
-    else  if(action==="Increase")
-    {
+    else  if(action==="Increase"){
       this.speed=this.speed+this.speedVariable;
       this.coffeEffect=true;
       this.secondsCoffe=0;
@@ -326,15 +300,12 @@ export default class Player extends Phaser.GameObjects.Sprite {
   * restores Player velocity to its initial value afeter duration of power up effect
   * @param {*} action sets if player needs to gain or reduce its modified velocity
   */
-  restoreSpeed(action)
-  {      
-    if(action==="Reduce") 
-    {
+  restoreSpeed(action){      
+    if(action==="Reduce") {
       this.speed=this.speed+this.speedVariable;
       this.alcoholEffect=false;
     }
-    else  if(action==="Increase")
-    {
+    else  if(action==="Increase"){
       this.speed=this.speed-this.speedVariable;
       this.coffeEffect=false;
     }
@@ -345,13 +316,11 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.scene.lose();
   }
 
-  handleMovement()
-  {
+  handleMovement(){
     if(this.stopMovement) this.stopMovement=false;
     else  this.stopMovement=true;
   }
-  createBloodParticles()
-  {
+  createBloodParticles(){
     let dustParticles = this.scene.add.particles('bloodParticle');
     this.deathEmitter = dustParticles.createEmitter({
       x: -500,
@@ -365,10 +334,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
       gravityY: 800
     });
     this.deathEmitter.explode(100, this.x,this.y);
-  
   }
-  createJumpParticles()
-  {
+  createJumpParticles(){
     let deathParticles = this.scene.add.particles('dustParticle');
     this.deathEmitter = deathParticles.createEmitter({
       x: -500,
@@ -384,6 +351,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.deathEmitter.explode(100, this.x,this.y+20);
   
   } 
+
+  
   destroyZone(zone, kickParticles, player){
     zone.destroy();
     kickParticles.destroy();

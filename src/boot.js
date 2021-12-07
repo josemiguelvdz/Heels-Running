@@ -112,10 +112,6 @@ export default class Boot extends Phaser.Scene {
       this.load.audio('deathsound', 'DeathSound.mp3');
       this.load.audio('gameSong', 'GameSong.mp3');
    
-   
-
-
-
     }
     /**
      * Creación de la escena. En este caso, solo cambiamos a la escena que representa el

@@ -6,6 +6,5 @@ export default class StaticObject extends Phaser.GameObjects.Sprite {
       this.scene.add.existing(this);
       this.scene.physics.add.existing(this, true);
     }
-  
   }
   
