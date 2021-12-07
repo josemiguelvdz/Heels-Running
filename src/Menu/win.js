@@ -12,15 +12,15 @@ export default class Win extends Phaser.Scene {
     }
 
     create() {
-        this.winBackGround = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'gameoverbackground').setScale(2, 2).setScrollFactor(0);
+        this.winBackGround = this.add.image(this.scale.width*0.5, this.scale.height*0.5-105, 'playBackGround').setScale(1.5, 1.5).setScrollFactor(0);
         
-        this.text=this.add.text(this.scale.width*0.5,180,"¡YOUR TIME!");
+        this.text=this.add.text(470,180,"¡YOUR TIME!");
         this.text.setAlign('center');
         // Font style
         this.text.setFont('Arial Black');
         this.text.setFontSize(40);
 
-        this.text1=this.add.text(this.scale.width*0.5, 230, this.runTime);
+        this.text1=this.add.text(550, 240, this.runTime);
         this.text1.setAlign('center');
         // Font style
         this.text1.setFont('Arial Black');

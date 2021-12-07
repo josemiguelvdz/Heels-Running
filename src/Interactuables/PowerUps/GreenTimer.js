@@ -18,7 +18,7 @@ export default class GreenTimer extends PowerUp {
    */
   handleCollision(){
     this.timer.reduceTime(0,1);
-    his.powerupsound.play();
+    this.powerupsound.play();
     this.destroyObject();
   }
 }
