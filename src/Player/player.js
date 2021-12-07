@@ -54,6 +54,12 @@ export default class Player extends Phaser.GameObjects.Sprite {
       frameRate: 10, // Velocidad de la animación
       repeat: 0
     });
+    this.scene.anims.create({
+      key: 'kick_particles_anim',
+      frames: this.anims.generateFrameNumbers('kick_particles', { start: 0, end: 3 }),
+      frameRate: 10, // Velocidad de la animación
+      repeat: 0
+    });
 
     this.kick=this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K);
     this.kickActive = false;
@@ -203,6 +209,10 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.kickZone.body.setAllowGravity(false);
     this.kickZone.body.setImmovable(true);
 
+    // Animación
+    this.kickParticles = this.scene.add.sprite(this.x+this.width*1.5, this.y, this.width, this.height);
+    this.kickParticles.play('kick_particles_anim');
+
     // Resetear cooldown
     this.actKickCooldown = this.kickCooldown;
 
@@ -215,7 +225,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.delete_zone = this.scene.time.addEvent({ 
       delay: 500, 
       callback: this.destroyZone, 
-      args: [this.kickZone, this], 
+      args: [this.kickZone, this.kickParticles, this], 
       loop: false });
   }
 }
@@ -374,8 +384,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.deathEmitter.explode(100, this.x,this.y+20);
   
   } 
-  destroyZone(zone, player){
+  destroyZone(zone, kickParticles, player){
     zone.destroy();
+    kickParticles.destroy();
     player.kickActive = false;
   }
 }
