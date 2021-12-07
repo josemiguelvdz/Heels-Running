@@ -21,6 +21,9 @@ export default class Box extends Phaser.GameObjects.Sprite {
     this.play('boxDestruction_anim');
 
     this.on( 'animationcomplete-boxDestruction_anim',  () => {
+      var value = Phaser.Math.Between(0, 100);
+      var pU=Phaser.Math.Between(0, 2);
+      if(value<30)this.scene.createBoxPowerUp(pU,this.body.x+32.5,this.body.y+90);
       this.destroy();
     });      
   }
@@ -29,10 +32,6 @@ export default class Box extends Phaser.GameObjects.Sprite {
     if(!this.collision){
       this.animateBox();
       this.collision = true;
-      var value = Phaser.Math.Between(0, 100);
-      var pU=Phaser.Math.Between(0, 2);
-      if(value<30)this.scene.createBoxPowerUp(pU,this.body.x+32.5,this.body.y+90);
-
     }
   }
 }
