@@ -14,6 +14,7 @@ import HealthBar from './Interfaz/healthBar.js';
 import PowerUpBar from './Interfaz/powerUpBar.js';
 import FireHydrant from './StaticObjects/fireHydrant.js';
 import StaticObject from './StaticObjects/staticobject.js';
+import Interface from './Interfaz/interface.js';
 
 export default class Level extends Phaser.Scene {
   /**
@@ -44,8 +45,6 @@ export default class Level extends Phaser.Scene {
     
     //creamos los distintos elementos del juego
     //Los asociamos al grupo para las colisiones 
-    this.activetePause = false;
-    this.inSettings = false
 
     this.powerUpsArray=[];
     const configSound = {
@@ -72,21 +71,14 @@ export default class Level extends Phaser.Scene {
       
 
     // Barra de vida   
-    this.healthBar = new HealthBar(this, 100, 100, this.player);
-    this.powerUpBar = new PowerUpBar(this, 180, 100, this.player);
+    /*this.healthBar = new HealthBar(this, 100, 100, this.player);
+    this.powerUpBar = new PowerUpBar(this, 180, 100, this.player);*/
+    this.interface = new Interface(this, this.player);
     //this.pauseMenu = new PauseMenu(this);
 
 
     // CAMBIAR BOUDING BOX DE TAMAÑO
     this.time.addEvent({delay: 500, callback: this.delayDone, callbackScope: this, loop: false})
-
-    this.pointer = this.input.activePointer;
-
-    this.pointerDown = false;
-    this.volumeValue = 0.5;
-
-    this.maxVolumeValue = 1.0;
-    this.minVolumeValue = 0.0;
 
   }
 
@@ -108,17 +100,10 @@ export default class Level extends Phaser.Scene {
     }
 
     if (Phaser.Input.Keyboard.JustDown(this.scape)) { 
-      if(!this.activetePause){
-        this.scene.pause();
-        this.scene.launch("pauseMenu",this.mainSong);
-      }
+      this.scene.pause();
+      this.scene.launch("pauseMenu",this.mainSong);
     } 
   }
-
-  isPaused(){
-    return this.activetePause;
-  }
-
 
   lose(){
     this.mainSong.stop();
@@ -129,14 +114,6 @@ export default class Level extends Phaser.Scene {
     this.mainSong.stop();
     this.runTime= this.chrono.getTimeElapsed();
     this.scene.start('win', { runT: this.runTime});
-  }
-
-  iconAdvice(){
-    this.icon =  this.add.image(this.scale.width*0.9, this.gangster.y, 'advice').setScrollFactor(0);
-  }
-
-  destroyIconAdvice(){
-    this.icon.destroy();
   }
 
 /**

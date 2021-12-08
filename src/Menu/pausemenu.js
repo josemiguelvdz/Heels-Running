@@ -35,6 +35,10 @@ export default class PauseMenu extends Phaser.Scene {
       this.pointer = this.input.activePointer;
 
       this.pointerDown = false;
+      this.volumeValue = 0.5;
+
+      this.maxVolumeValue = 1.0;
+      this.minVolumeValue = 0.0;
     }
 
     settings(){

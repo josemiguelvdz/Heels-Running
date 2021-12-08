@@ -9,7 +9,7 @@ export default class FireHydrant extends Phaser.GameObjects.Sprite {
   
   preUpdate(t,dt) {
     super.preUpdate(t,dt);
-    if(!this.scene.isPaused())this.createWaterParticles();
+    this.createWaterParticles();
   }
     
     

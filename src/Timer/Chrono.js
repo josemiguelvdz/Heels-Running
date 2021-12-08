@@ -28,7 +28,7 @@ export default class Chrono extends Phaser.GameObjects.GameObject {
 
 
   preUpdate(time, delta) {
-    if(!this.scene.activetePause && !this.fin){ // Si no está pausado suma el tiempo
+    if(!this.fin){ // Si no está pausado suma el tiempo
       if(this.write)this.text.setText( this.timeElapsed);
       this.segundos+=Math.round(delta);
       if((this.segundos)/600 >100) // Si ha llegado a 60 segundos, los reinicia y suma los minutos
