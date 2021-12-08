@@ -104,6 +104,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
   preUpdate(t,dt) {
     super.preUpdate(t,dt);
     this.setMovement();
+   
+
     //Esmoquin
     this.handleEsmoquinEffect(dt);
     // Alcohol
@@ -156,7 +158,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
     if(this.kick.isDown && this.actKickCooldown <= 0){
       if(this.body.onFloor()) this.play('ground_kick_anim', true);
       else this.play('jump_kick_anim', true);
-      this.kickActive = true;
     }
     else if (this.cursors.left.isDown && !this.arrested) {
       this.body.setVelocityX(-this.speed);
@@ -184,20 +185,25 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.play('jump_anim', true);
     }
 
+
+
     // Comprueba si el jugador ha pulsado la tecla para dar una patada
     if(Phaser.Input.Keyboard.JustDown(this.kick) && this.actKickCooldown <= 0){
       // Crea una zona
-      this.kickZone = this.scene.add.zone(this.x+this.width*1.5, this.y, this.width, this.height);
+      this.kickZone = this.scene.add.zone(this.x+this.width, this.y, this.width/1.2, this.height);
       this.scene.physics.world.enable(this.kickZone);
       this.kickZone.body.setAllowGravity(false);
       this.kickZone.body.setImmovable(true);
 
       // Animación
-      this.kickParticles = this.scene.add.sprite(this.x+this.width*1.5, this.y, this.width, this.height);
+      this.kickParticles = this.scene.add.sprite(this.x+this.width, this.y, this.width, this.height);
       this.kickParticles.play('kick_particles_anim');
 
       // Resetear cooldown
       this.actKickCooldown = this.kickCooldown;
+
+      // Activar booleano
+      this.kickActive = true;
 
       // Colisiones con la zona
       this.scene.physics.add.overlap(this.kickZone, this.scene.fallObjs, (o1,o2)=> {
@@ -212,6 +218,11 @@ export default class Player extends Phaser.GameObjects.Sprite {
         loop: false 
       });
     }
+
+    if(this.kickActive){
+      this.zoneMovement(this.kickZone, this.kickParticles, this);
+    }
+
   }
   
 
@@ -352,6 +363,12 @@ export default class Player extends Phaser.GameObjects.Sprite {
   
   } 
 
+  zoneMovement(zone, kickParticles, player){
+    zone.body.setVelocityX(player.speed);
+    zone.body.setVelocityY(player.body.velocity.y);
+
+    kickParticles.setPosition(player.x + 100, player.y);
+  }
   
   destroyZone(zone, kickParticles, player){
     zone.destroy();
