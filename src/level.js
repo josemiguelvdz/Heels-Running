@@ -287,7 +287,7 @@ export default class Level extends Phaser.Scene {
     
     this.platform = new StaticObject(this, this.player.y, 400, 'platform'); 
     this.fireHydrant = new FireHydrant(this, 700, 535);
-    this.car = new StaticObject(this, 1100, 500, 'car');
+    this.car = new StaticObject(this, 1100, 520, 'farola');
 
     this.building = new StaticObject(this, width*2, height, 'platform');
     this.scaleBuilding(this.building, this.building.width, this.building.height, 5);
