@@ -80,6 +80,8 @@ export default class Level extends Phaser.Scene {
     // CAMBIAR BOUDING BOX DE TAMAÑO
     this.time.addEvent({delay: 500, callback: this.delayDone, callbackScope: this, loop: false})
 
+    this.volume = 0.5;
+
   }
 
 
@@ -101,7 +103,7 @@ export default class Level extends Phaser.Scene {
 
     if (Phaser.Input.Keyboard.JustDown(this.scape)) { 
       this.scene.pause();
-      this.scene.launch("pauseMenu",this.mainSong);
+      this.scene.launch("pauseMenu",this.mainSong, this.volume);
     } 
   }
 
@@ -114,6 +116,10 @@ export default class Level extends Phaser.Scene {
     this.mainSong.stop();
     this.runTime= this.chrono.getTimeElapsed();
     this.scene.start('win', { runT: this.runTime});
+  }
+
+  ChangeVolume(){
+    return this.volume;
   }
 
 /**
