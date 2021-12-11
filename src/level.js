@@ -81,6 +81,7 @@ export default class Level extends Phaser.Scene {
     this.time.addEvent({delay: 500, callback: this.delayDone, callbackScope: this, loop: false})
 
     this.volume = 0.5;
+    this.slideX = 0;
 
   }
 
@@ -103,8 +104,10 @@ export default class Level extends Phaser.Scene {
 
     if (Phaser.Input.Keyboard.JustDown(this.scape)) { 
       this.scene.pause();
-      this.scene.launch("pauseMenu",this.mainSong, this.volume);
+      this.scene.launch("pauseMenu", this);
     } 
+
+    this.mainSong.setVolume(this.ChangeVolume());
   }
 
   lose(){
@@ -121,6 +124,15 @@ export default class Level extends Phaser.Scene {
   ChangeVolume(){
     return this.volume;
   }
+
+  SaveSlidePos(posX){
+      this.slideX = posX;
+  }
+
+  SlidePos(){
+    return this.slideX;
+  }
+
 
 /**
  * Creates collision groups and adds colliders between them

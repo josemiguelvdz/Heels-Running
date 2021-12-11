@@ -14,14 +14,15 @@ export default class PowerUp extends Phaser.GameObjects.Sprite {
 
     const configSound = {
       mute: false,
-      volume: this.scene.ChangeVolume(),
+      volume: 0.3,
       rate: 1,
       detune: 0,
       seek: 0,
       loop: false,
       delay: 0,
     };
-this.config=configSound;
+    this.config=configSound;
+
     this.powerupsound= this.scene.sound.add("powerupSound",configSound);
     this.debuffsound= this.scene.sound.add("debuffSound",configSound);
     this.body.moves=false;
@@ -68,6 +69,7 @@ this.config=configSound;
   preUpdate(t,dt)
   {
    super.preUpdate(t,dt);
-    console.log(this.config.volume);
+   this.powerupsound.setVolume(this.scene.ChangeVolume());
+   this.debuffsound.setVolume(this.scene.ChangeVolume());
   }
 }

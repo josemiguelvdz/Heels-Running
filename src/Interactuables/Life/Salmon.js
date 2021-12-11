@@ -9,9 +9,9 @@ export default class Salmon extends PowerUp {
     this.lifesHealed = 1;
   }
 
-  preUpdate() {
+  /*preUpdate() {
     super.preUpdate();
-  }
+  }*/
 
 
   /**

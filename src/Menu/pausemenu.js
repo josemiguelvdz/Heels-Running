@@ -21,7 +21,7 @@ export default class PauseMenu extends Phaser.Scene {
       if(!this.inSettings )this.player.handleMovement();*/
       this.resumeButton = this.add.image(this.scale.width*0.5, this.scale.height*0.3, 'resumeButton').setInteractive().setScrollFactor(0);
       
-      this.resumeButton.on('pointerdown', () => {this.unPause(),this.gMusic.setVolume(0.3);});
+      this.resumeButton.on('pointerdown', () => {this.unPause()});
       
       this.settingsButton = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'settingsButton').setInteractive().setScrollFactor(0);
   
@@ -30,7 +30,7 @@ export default class PauseMenu extends Phaser.Scene {
       
       this.exitButton = this.add.image(this.scale.width*0.5, this.scale.height*0.7, 'exitButton').setInteractive().setScrollFactor(0);
       
-      this.exitButton.on('pointerdown', () => { this.activetePause=false,this.gMusic.stop() ,this.scene.start('menu')});
+      this.exitButton.on('pointerdown', () => { this.activetePause=false, this.level.mainSong.stop() ,this.scene.start('menu')});
 
       this.pointer = this.input.activePointer;
 
@@ -51,7 +51,10 @@ export default class PauseMenu extends Phaser.Scene {
       //min = 350         max = 850 
       //formula (x – mínimo (x)) / (máximo (x) – mínimo (x)) -> 600-350 / 850-350
       this.volumeBar = this.add.image(this.scale.width*0.5, this.scale.height*0.35, 'volumeBar').setScale(2.5, 1);
-      this.slide = this.add.image(this.scale.width*0.5, this.scale.height*0.3, 'idle').setInteractive();
+
+      if(this.level.SlidePos() == 0) this.level.SaveSlidePos(this.scale.width*0.5);
+
+      this.slide = this.add.image(this.level.SlidePos(), this.scale.height*0.3, 'idle').setInteractive();
   
       this.slide.on('pointerdown', () => {
         this.pointerDown = true});
@@ -66,6 +69,7 @@ export default class PauseMenu extends Phaser.Scene {
         if(this.pointerDown && this.slide.x >= this.volumeBar.x - (this.volumeBar.width) && this.slide.x <= this.volumeBar.x + (this.volumeBar.width)){
           this.slide.x = this.pointer.x;
           this.x = this.slide.x;
+          this.level.SaveSlidePos(this.slide.x);
         }
         else if(this.slide.x <= this.volumeBar.x - (this.volumeBar.width)) this.slide.x = this.volumeBar.x - (this.volumeBar.width);
         else if(this.slide.x >= this.volumeBar.x + (this.volumeBar.width)) this.slide.x = this.volumeBar.x + (this.volumeBar.width);
@@ -103,16 +107,15 @@ export default class PauseMenu extends Phaser.Scene {
     if(!this.scene.inSettings ) this.scene.player.handleMovement();*/
   }
 
-  init(gameMusic, volume){
-    this.gMusic=gameMusic;
-    this.gMusic.setVolume(0.1);
-
-    volume = this.volumeValue;
+  init(scene){
+    this.level = scene;
+    //this.level.mainSong.setVolume(0.1);
   }
   
   update()
   {
     this.volumeValue = (this.x - this.minBarVolume) / (this.maxBarVolume-this.minBarVolume);
+    this.level.volume = this.volumeValue;
     console.log("volumen pta: " + this.volumeValue);
   }
 }
