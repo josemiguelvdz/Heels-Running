@@ -211,8 +211,14 @@ export default class Level extends Phaser.Scene {
   
     this.boxes = this.physics.add.staticGroup();
     this.boxes.add(this.box);
-    this.physics.add.collider(this.player, this.box,(o1,o2)=> {
+    this.physics.add.collider(this.player, this.boxes,(o1,o2)=> {
       onCollision(o1,o2);
+    });
+     //GRUPOS FIRE HYDRANT
+     this.fireHydrants=this.physics.add.staticGroup();
+     this.fireHydrants.add(this.fireHydrant);
+     this.physics.add.collider(this.player, this.fireHydrants,(o1,o2)=> {
+      o2.setCollision();
     });
   }
   
@@ -265,6 +271,11 @@ export default class Level extends Phaser.Scene {
     this.physics.add.collider(this.groundZone, this.player);
     this.physics.add.collider(this.groundZone, this.police);
     this.physics.add.collider(this.groundZone, this.gangster);
+
+   
+
+
+
 
 
     // AÑADIR TODOS LOS GRUPOS

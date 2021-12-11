@@ -5,11 +5,13 @@ export default class FireHydrant extends Phaser.GameObjects.Sprite {
     super(scene, x, y, 'fireHydrant');
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this, true);
+    
+    this.hasCollided=false;
   }
   
   preUpdate(t,dt) {
     super.preUpdate(t,dt);
-    this.createWaterParticles();
+    if(this.hasCollided)this.createWaterParticles();
   }
     
     
@@ -28,6 +30,10 @@ export default class FireHydrant extends Phaser.GameObjects.Sprite {
       loop: true
     });
     this.deathEmitter.explode(40, this.x,this.y-20);
+  }
+  setCollision()
+  {
+    this.hasCollided=true;
   }
 }
   
