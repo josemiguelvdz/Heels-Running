@@ -32,7 +32,9 @@ export default class Gangster extends Phaser.GameObjects.Sprite {
         if((this.cooldown) > 2000 && this.visionRange >= Math.abs(this.x-this.jugador.x)){
             this.cooldown = 0;
             this.shoot();
-        }    
+        } 
+        
+        this.gunshotsound.setVolume(this.scene.ChangeVolume());
     }
 
     shoot(){

@@ -10,8 +10,6 @@ import Esmoquin from './Interactuables/PowerUps/esmoquin.js';
 import Gangster from './Mafioso/gangster.js';
 import Alcohol from './Interactuables/Debuffs/alcohol.js';
 import FallingObject from './FallingObjects/fallingObject.js';
-import HealthBar from './Interfaz/healthBar.js';
-import PowerUpBar from './Interfaz/powerUpBar.js';
 import FireHydrant from './StaticObjects/fireHydrant.js';
 import StaticObject from './StaticObjects/staticobject.js';
 import Interface from './Interfaz/interface.js';

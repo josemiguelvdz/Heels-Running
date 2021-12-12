@@ -114,6 +114,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.handleCoffeEffect(dt);
     // Cooldown kick
     if(this.actKickCooldown > 0) this.actKickCooldown -= Math.round(dt);
+
+    this.damagePlayersound.setVolume(this.scene.ChangeVolume());
+    this.deathSound.setVolume(this.scene.ChangeVolume());
   }
 
   handleAlcoholEffect(delta){

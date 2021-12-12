@@ -41,7 +41,9 @@ export default class FallingObject extends Phaser.GameObjects.Sprite {
         if (this.angle===360) this.angle=0;
         this.angle++; 
       }
-    }    
+    }  
+    
+    this.fallingSound.setVolume(this.scene.ChangeVolume());
   }
 
   handleCollisionFallObj(player,kick){
