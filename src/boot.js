@@ -40,10 +40,9 @@ export default class Boot extends Phaser.Scene {
       //StaticObjects Sprites
       this.load.setPath('./assets/Sprites/StaticObjects');
       this.load.image('platform', 'platform.png');
-      this.load.image('box', 'box.png');
       this.load.spritesheet('boxDestruction', 'boxAnimation.png', {frameWidth:64, frameHeight:64});
       this.load.image('fireHydrant', 'fireHydrant.png');
-      this.load.image('car', 'car.png');
+      this.load.image('policeCar', 'policeCar.png');
       this.load.image('farola', 'Farola.png');
       this.load.image('candy', 'candyShop.png');
 

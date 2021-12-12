@@ -144,6 +144,7 @@ export default class Level extends Phaser.Scene {
 
      this.staticObjects=this.physics.add.staticGroup();
      this.staticObjects.add(this.candy);
+     this.staticObjects.add(this.policeCar);
      //RELLENAR CON STATIC OBJECTS 
      this.physics.add.collider(this.player,this.staticObjects);
 
@@ -319,8 +320,9 @@ export default class Level extends Phaser.Scene {
     console.log(this.fallObjEx3);
     
     this.platform = new StaticObject(this, this.player.y, 400, 'platform'); 
-    this.fireHydrant = new FireHydrant(this, 700, 535, 'fireHydrant');
     this.candy = new StaticObject(this, 1100, 520, 'candy');
+    this.policeCar = new StaticObject (this, 1700, 520, 'policeCar');
+    this.fireHydrant = new FireHydrant(this, 700, 535, 'fireHydrant');
     this.box = new Box(this, 350, 535, 'boxDestruction');
 
     this.building = new StaticObject(this, width*2, height, 'platform');
