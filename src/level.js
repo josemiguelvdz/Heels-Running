@@ -143,7 +143,7 @@ export default class Level extends Phaser.Scene {
      this.physics.add.collider(this.player,this.platforms);    // COLISION ENTRE PLAYER Y PLATAFORMAS
 
      this.staticObjects=this.physics.add.staticGroup();
-     this.staticObjects.add(this.car);
+     this.staticObjects.add(this.candy);
      //RELLENAR CON STATIC OBJECTS 
      this.physics.add.collider(this.player,this.staticObjects);
 
@@ -230,6 +230,13 @@ export default class Level extends Phaser.Scene {
      this.physics.add.collider(this.player, this.fireHydrants,(o1,o2)=> {
       o2.setCollision();
     });
+
+    //GRUPOS BOX
+    this.box = this.physics.add.staticGroup();
+    this.box.add(this.box);
+    this.physics.add.collider(this.player, this.box,(o1,o2)=> {
+      o2.handleCollision();
+    });
   }
   
 /**
@@ -243,7 +250,6 @@ export default class Level extends Phaser.Scene {
     this.player = new Player(this, 250, 300, 3);
     this.police= new Police(this,70,400);
     this.gangster = new Gangster(this, this.player, 3700, 450);
-    this.box = new Box(this, 350, 535);
 
     // VICTORY
     this.winZone=this.add.zone(4500,600,40,totalWidth);
@@ -313,8 +319,9 @@ export default class Level extends Phaser.Scene {
     console.log(this.fallObjEx3);
     
     this.platform = new StaticObject(this, this.player.y, 400, 'platform'); 
-    this.fireHydrant = new FireHydrant(this, 700, 535);
-    this.car = new StaticObject(this, 1100, 520, 'candy');
+    this.fireHydrant = new FireHydrant(this, 700, 535, 'fireHydrant');
+    this.candy = new StaticObject(this, 1100, 520, 'candy');
+    this.box = new Box(this, 350, 535, 'boxDestruction');
 
     this.building = new StaticObject(this, width*2, height, 'platform');
     this.scaleBuilding(this.building, this.building.width, this.building.height, 5);

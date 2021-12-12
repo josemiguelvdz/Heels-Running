@@ -11,13 +11,6 @@ export default class PauseMenu extends Phaser.Scene {
       this.pauseBackGround.alpha = 0.5;
       this.menuLayout =  this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'menuLayout').setScale(0.7, 0.5).setScrollFactor(0);
           
-      //CREARIAMOS UN METODO CONTROL IF PAUSE 
-      /*if(this.fallObjEx!=null)this.fallObjEx.handleMovement();
-      if(this.fallObjEx2!=null)this.fallObjEx2.handleMovement();
-      if(this.fallObjEx3!=null)this.fallObjEx3.handleMovement();
-      
-      //Activar el contador y efecto de los power ups
-      if(!this.inSettings )this.player.handleMovement();*/
       this.resumeButton = this.add.image(this.scale.width*0.5, this.scale.height*0.3, 'resumeButton').setInteractive().setScrollFactor(0);
       
       this.resumeButton.on('pointerdown', () => {this.unPause()});
@@ -87,20 +80,6 @@ export default class PauseMenu extends Phaser.Scene {
     this.settingsButton.destroy();
     this.menuLayout.destroy();
     this.scene.resume("level");
-
-    //this.physics.resume();
-      
-    /*this.mainSong.resume();
-    
-    if(this.scene.fallObjEx!=null)this.scene.fallObjEx.handleMovement();
-    if(this.scene.fallObjEx2!=null)this.scene.fallObjEx2.handleMovement();
-    if(this.scene.fallObjEx3!=null)this.scene.fallObjEx3.handleMovement();
-    
-    for(let i=0;i<this.powerUpsArray.length;i++)
-    {
-      if(this.powerUpsArray[i].movesbyTween)this.powerUpsArray[i].tweenMovement.resume();
-    }
-    if(!this.scene.inSettings ) this.scene.player.handleMovement();*/
   }
 
   init(scene){
@@ -112,6 +91,5 @@ export default class PauseMenu extends Phaser.Scene {
   {
     this.volumeValue = (this.level.SlidePos() - this.minBarVolume) / (this.maxBarVolume-this.minBarVolume);
     this.level.volume = this.volumeValue;
-    //console.log("volumen pta: " + this.volumeValue);
   }
 }

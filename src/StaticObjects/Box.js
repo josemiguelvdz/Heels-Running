@@ -1,10 +1,8 @@
+import StaticObject from "./staticobject.js";
 
-export default class Box extends Phaser.GameObjects.Sprite {
-    constructor(scene, x, y) {
-      super(scene, x, y, 'boxDestruction');
-
-      this.scene.add.existing(this);
-      this.scene.physics.add.existing(this, true);
+export default class Box extends StaticObject {
+    constructor(scene, x, y, nameImg) {
+      super(scene, x, y, nameImg);
 
       this.collision = false;
 

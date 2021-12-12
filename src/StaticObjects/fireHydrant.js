@@ -1,10 +1,9 @@
+import StaticObject from './staticobject.js';
 
-export default class FireHydrant extends Phaser.GameObjects.Sprite {
+export default class FireHydrant extends StaticObject {
   
-  constructor(scene, x, y) {
-    super(scene, x, y, 'fireHydrant');
-    this.scene.add.existing(this);
-    this.scene.physics.add.existing(this, true);
+  constructor(scene, x, y, nameImg) {
+    super(scene, x, y, nameImg);
     
     this.hasCollided=false;
   }
