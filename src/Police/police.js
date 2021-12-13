@@ -64,19 +64,12 @@ export default class Police extends Phaser.GameObjects.Sprite {
         return this.helicopter;
     }
 
-
-    /** 
-    * Transforma al helicóptero en el policía de nuevo y reactiva su gravedad
-    */
     policeAgain(){
         this.y=450;
         this.helicopter=false;
         this.body.setAllowGravity(true);
     }
 
-    /** 
-    * Transforma al policía en un helicóptero y desactiva su gravedad
-    */
     intoHelicopter(){
         this.y=60;
         this.helicopter=true;

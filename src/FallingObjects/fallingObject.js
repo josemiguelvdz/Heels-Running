@@ -79,9 +79,6 @@ export default class FallingObject extends Phaser.GameObjects.Sprite {
 
   }
 
-  /**
-  * Handles the collision with floor and makes a breaking sound
-  */
   handleMovement(){
     if(this.gameIsPaused){
       this.gameIsPaused=false;
@@ -94,9 +91,6 @@ export default class FallingObject extends Phaser.GameObjects.Sprite {
   } 
 
 
-  /**
-  * Método que se encarga de crear las partículas al destruirse los objetos cayentes
-  */
   createParticlesFallingbj()
   {
     let deathParticles = this.scene.add.particles('breakingParticle');

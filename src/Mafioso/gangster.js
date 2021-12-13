@@ -37,17 +37,11 @@ export default class Gangster extends Phaser.GameObjects.Sprite {
         this.gunshotsound.setVolume(this.scene.ChangeVolume());
     }
 
-    /** 
-    * Método que se encarga de disparar una bala con su sonido
-    */
     shoot(){
         this.gunshotsound.play();
         new Bullet(this.scene, this.jugador, this.x, this.y);
     }
 
-    /** 
-    * Método que se encarga de animar el gangster
-    */
     animateGangster(){
         if (this.jugador.x < this.x) 
             this.setFlip(false,false);

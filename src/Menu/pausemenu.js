@@ -34,9 +34,7 @@ export default class PauseMenu extends Phaser.Scene {
 
       if(this.level.SlidePos() == 0) this.level.SaveSlidePos(this.scale.width*0.5);
     }
-    /** 
-    * Método que se encarga de activar el menú de settings con todo lo que este contiene
-    */
+
     settings(){
     
       this.settingsLayout =  this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'menuLayout').setScale(2, 0.75).setScrollFactor(0);   
@@ -74,9 +72,6 @@ export default class PauseMenu extends Phaser.Scene {
         this.volumeBar.destroy(), this.settingsLayout.destroy(),this.slide.destroy(), this.create(), this.inSettings = false});
     }
 
-  /** 
-  * Método que se encarga de volver al juego cuando el jugador salga del modo de pausa
-  */
   unPause(){
 
     this.pauseBackGround.destroy();
