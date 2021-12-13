@@ -13,6 +13,9 @@ export default class Coffe extends PowerUp {
     //Si no estamos en pausa ya vemos si ha pasado el tiempo , para hacer o no el efecto si todavia no ha pasado el tiempo 
   }
  
+  /**
+  * Handles the collision with player
+  */
   handleCollision(){
     this.player.controlSpeed("Increase"); 
     this.powerupsound.play();

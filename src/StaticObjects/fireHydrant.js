@@ -13,7 +13,9 @@ export default class FireHydrant extends StaticObject {
     if(this.hasCollided)this.createWaterParticles();
   }
     
-    
+  /** 
+  * Used to create water particles
+  */
   createWaterParticles(){
     let deathParticles =this.scene.add.particles('waterParticle');
     this.deathEmitter = deathParticles.createEmitter({

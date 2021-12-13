@@ -47,6 +47,10 @@ export default class Interface extends Phaser.GameObjects.GameObject {
       this.checkGangster();
     }
 
+
+    /** 
+    * Método que de activar el mensaje de advertencia del gangster
+    */
     checkGangster(){
         
         if(Math.abs(this.scene.gangster.x-this.player.x) <= this.advideRange && !this.oneAdvice){
@@ -62,6 +66,10 @@ export default class Interface extends Phaser.GameObjects.GameObject {
         }
     }
   
+  /**
+  * Método que se encarga de comprobar cuantas vidas tiene el jugador y actualizar la barra de vida
+  * @param {*} player - Hacer referencia al player para comprobar cuantas vidas le quedan
+  */
     checkLifes(player){
       if(player.numLifes !== 3){
         this.hpArr[player.numLifes].setVisible(false);
@@ -74,6 +82,10 @@ export default class Interface extends Phaser.GameObjects.GameObject {
       }
     }
 
+
+    /** 
+    * Método que se encarga de activar el correspondiente powerUp que esté activo en la interfaz
+    */
     checkPowerUpBar(){
         if(this.player.esmoquinShield || this.player.coffeEffect){
             this.greenCircle.setVisible(true);

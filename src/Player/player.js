@@ -119,6 +119,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.deathSound.setVolume(this.scene.ChangeVolume());
   }
 
+  /** 
+  * Método que se llama al colisionar con el alcohol
+  */
   handleAlcoholEffect(delta){
     if(this.secondsAlcohol >= 0) {   
       if(!this.stopMovement) {
@@ -131,6 +134,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
     }
   }
 
+  /** 
+  * Método que se llama al colisionar con el cafe
+  */
   handleCoffeEffect(delta){
     if(this.secondsCoffe >= 0) {   
       if(!this.stopMovement) {
@@ -144,6 +150,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
   }
 
 
+  /** 
+  * Método que se llama al colisionar con el esmoquin
+  */
   handleEsmoquinEffect(delta){
     if(this.secondsEsmoquin >= 0) {   
       if(!this.stopMovement) {
@@ -156,7 +165,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
     }
   }
 
-
+  /** 
+  * Se encarga de cmover al jugador, realizar la patada, y animar al jugador
+  */
   setMovement(){
     if(this.kick.isDown && this.actKickCooldown <= 0){
       if(this.body.onFloor()) this.play('ground_kick_anim', true);
@@ -258,6 +269,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
   }
 
 
+  /** 
+  * Desactiva el efecto del esmoquin
+  */
   config2EsmoquinShield(){
     this.esmoquinShield=false; //Ahora puede recibir daño 
   }
@@ -325,7 +339,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
     }
   }
 
-
+  /** 
+  * Llama a un método de Level que se encarga de llevarnos al menú de GameOver
+  */
   losingGame(){
     this.scene.lose();
   }
@@ -334,6 +350,11 @@ export default class Player extends Phaser.GameObjects.Sprite {
     if(this.stopMovement) this.stopMovement=false;
     else  this.stopMovement=true;
   }
+
+
+  /** 
+  * Se encarga de crear las particulas de sangre del jugador
+  */
   createBloodParticles(){
     let dustParticles = this.scene.add.particles('bloodParticle');
     this.deathEmitter = dustParticles.createEmitter({
@@ -349,6 +370,10 @@ export default class Player extends Phaser.GameObjects.Sprite {
     });
     this.deathEmitter.explode(100, this.x,this.y);
   }
+
+  /** 
+  * Se encarga de crear las particulas de salto del jugador
+  */
   createJumpParticles(){
     let deathParticles = this.scene.add.particles('dustParticle');
     this.deathEmitter = deathParticles.createEmitter({
@@ -366,6 +391,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
   
   } 
 
+  /** 
+  * Mueve a la zona de la patada con el jugador y activa las particulas de la patada en la posición correspondiente
+  */
   zoneMovement(zone, kickParticles, player){
     zone.body.setVelocityX(player.speed);
     zone.body.setVelocityY(player.body.velocity.y);
@@ -373,6 +401,10 @@ export default class Player extends Phaser.GameObjects.Sprite {
     kickParticles.setPosition(player.x + 100, player.y);
   }
   
+
+  /** 
+  * Destruye la zona de la patada
+  */
   destroyZone(zone, kickParticles, player){
     zone.destroy();
     kickParticles.destroy();

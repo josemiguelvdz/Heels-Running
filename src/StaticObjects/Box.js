@@ -13,6 +13,10 @@ export default class Box extends StaticObject {
       });
     }
 
+
+  /** 
+  * Método que se encarga de activar la animación de destrucción de la caja
+  */
   animateBox(){
     this.setFlip(false,false);
     this.stop();   
@@ -25,7 +29,9 @@ export default class Box extends StaticObject {
       this.destroy();
     });      
   }
-
+  /** 
+  * Método que es llamado cuando colisiona con algo
+  */
   handleCollision(){
     if(!this.collision){
       this.animateBox();

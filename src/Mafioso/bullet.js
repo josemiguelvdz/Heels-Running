@@ -27,16 +27,23 @@ export default class Bullet extends Phaser.GameObjects.Sprite {
             this.destroy();
         });
         
-        this.body.setVelocityX(this.speedBullet*Math.cos(this.angle));
-        this.body.setVelocityY(this.speedBullet*Math.sin(this.angle));
+        if(!this.scene.isPaused()){
+            /*this.x += 10*Math.cos(this.angle);
+            this.y += 10*Math.sin(this.angle);*/
+            this.body.setVelocityX(this.speedBullet*Math.cos(this.angle));
+            this.body.setVelocityY(this.speedBullet*Math.sin(this.angle));
 
-        this.countingtimeDestruction+=Math.round(delta);
+            this.countingtimeDestruction+=Math.round(delta);
 
-        if((this.countingtimeDestruction) > this.tiempoDestruccion){this.destroy()}
+            if((this.countingtimeDestruction) > this.tiempoDestruccion){this.destroy()}
+        }
     }
 
+
+    /** 
+    * Método que se llama cuando la bala colisiona con el player
+    */
     handleCollision(){
-       
         this.jugador.loseLife(this.damage);
     }
 }

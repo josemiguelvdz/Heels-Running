@@ -41,9 +41,6 @@ export default class Level extends Phaser.Scene {
     this.createAligned(this, totalWidth, 'road', 1);
     this.createAligned(this, totalWidth, 'crosswalk', 1);
     
-    //creamos los distintos elementos del juego
-    //Los asociamos al grupo para las colisiones 
-
     this.powerUpsArray=[];
     const configSound = {
       mute: false,
@@ -56,10 +53,13 @@ export default class Level extends Phaser.Scene {
     };
     this.mainSong= this.sound.add("gameSong",configSound);
     this.mainSong.play();
+
+    //creamos los distintos elementos del juego
+    //Los asociamos al grupo para las colisiones 
     this.createObjects(width, height, totalWidth);
     this.createGroups();
     
-    
+    //Colocamos la cámara
     this.cameras.main.setBounds(0, 0, width*5, height);
     this.cameras.main.startFollow(this.player);
 
@@ -68,11 +68,8 @@ export default class Level extends Phaser.Scene {
     });
       
 
-    // Barra de vida   
-    /*this.healthBar = new HealthBar(this, 100, 100, this.player);
-    this.powerUpBar = new PowerUpBar(this, 180, 100, this.player);*/
+    // Creamos la interfaz
     this.interface = new Interface(this, this.player);
-    //this.pauseMenu = new PauseMenu(this);
 
 
     // CAMBIAR BOUDING BOX DE TAMAÑO
@@ -91,6 +88,7 @@ export default class Level extends Phaser.Scene {
  
     cam.scrollX += speed;
 
+    // Si está activo el helicóptero y alcanza al policía lo arresta
     if(this.police.isHelicopter()){
       if(this.police.body.x>=this.player.body.x){
         this.player.arrestado();
@@ -100,6 +98,7 @@ export default class Level extends Phaser.Scene {
       }
     }
 
+    // Si se pulsa el escape abrimos el menú de pausa
     if (Phaser.Input.Keyboard.JustDown(this.scape)) { 
       this.scene.pause();
       this.scene.launch("pauseMenu", this);
@@ -108,59 +107,77 @@ export default class Level extends Phaser.Scene {
     this.mainSong.setVolume(this.ChangeVolume());
   }
 
+
+  
+  /**
+  * Para la música y pasa a la escena de GameOver
+  */
   lose(){
     this.mainSong.stop();
     this.scene.start('gameover');
   }
 
+  /**
+  * Para la música, el timer y pasa a la escena de Win
+  */
   win(){
     this.mainSong.stop();
     this.runTime= this.chrono.getTimeElapsed();
     this.scene.start('win', { runT: this.runTime});
   }
 
+  /**
+  * Para la música, el timer y pasa a la escena de Win
+  */
   ChangeVolume(){
     return this.volume;
   }
 
+
+  /**
+  * Actualiza la posición de la barra de volumen
+  */
   SaveSlidePos(posX){
       this.slideX = posX;
   }
 
+  /**
+  * Devuelve la posición de la barra de volumen
+  */
   SlidePos(){
     return this.slideX;
   }
 
 
-/**
- * Creates collision groups and adds colliders between them
- */
+  /**
+  * Creates collision groups and adds colliders between them
+  */
   createGroups()
   {
     //GRUPO DE LAS PLATAFORMAS
-     this.platforms = this.physics.add.staticGroup();
-     this.platforms.add(this.platform);
-     this.physics.add.collider(this.player,this.platforms);    // COLISION ENTRE PLAYER Y PLATAFORMAS
+    this.platforms = this.physics.add.staticGroup();
+    this.platforms.add(this.platform);
+    this.physics.add.collider(this.player,this.platforms);    // COLISION ENTRE PLAYER Y PLATAFORMAS
 
-     this.staticObjects=this.physics.add.staticGroup();
-     this.staticObjects.add(this.candy);
-     this.staticObjects.add(this.policeCar);
-     //RELLENAR CON STATIC OBJECTS 
-     this.physics.add.collider(this.player,this.staticObjects);
+    this.staticObjects=this.physics.add.staticGroup();
+    this.staticObjects.add(this.candy);
+    this.staticObjects.add(this.policeCar);
+    //RELLENAR CON STATIC OBJECTS 
+    this.physics.add.collider(this.player,this.staticObjects);
 
-     // GRUPO DE LOS EDIFICIOS
-     this.buildings = this.physics.add.staticGroup();
-     this.buildings.add(this.building);
-     this.buildings.add(this.building2);
-     this.buildings.add(this.building3);
-     this.buildings.add(this.building4);
-     this.buildings.add(this.building5);
-     this.physics.add.collider(this.player,this.buildings);
+    // GRUPO DE LOS EDIFICIOS
+    this.buildings = this.physics.add.staticGroup();
+    this.buildings.add(this.building);
+    this.buildings.add(this.building2);
+    this.buildings.add(this.building3);
+    this.buildings.add(this.building4);
+    this.buildings.add(this.building5);
+    this.physics.add.collider(this.player,this.buildings);
 
 
-     this.salmons = this.physics.add.group();
-     this.salmons.add(this.salmon);
-     this.physics.add.overlap(this.player,this.salmons,(o1,o2)=> {
+    this.salmons = this.physics.add.group();
+    this.salmons.add(this.salmon);
+    this.physics.add.overlap(this.player,this.salmons,(o1,o2)=> {
       onCollision(o1,o2);
     })
     this.esmoquins = this.physics.add.group();
@@ -240,12 +257,12 @@ export default class Level extends Phaser.Scene {
     });
   }
   
-/**
- * Create GameObjects and adjust its size
- * @param {*} width -specifies individual ground width for its creation
- * @param {*} height -specifies ground height for its creation
- * @param {*} totalWidth -specifies total  ground width for its creation
- */
+  /**
+  * Create GameObjects and adjust its size
+  * @param {*} width -specifies individual ground width for its creation
+  * @param {*} height -specifies ground height for its creation
+  * @param {*} totalWidth -specifies total  ground width for its creation
+  */
   createObjects(width, height, totalWidth)
   {
     this.player = new Player(this, 250, 300, 3);
@@ -288,11 +305,6 @@ export default class Level extends Phaser.Scene {
     this.physics.add.collider(this.groundZone, this.player);
     this.physics.add.collider(this.groundZone, this.police);
     this.physics.add.collider(this.groundZone, this.gangster);
-
-   
-
-
-
 
 
     // AÑADIR TODOS LOS GRUPOS
@@ -355,6 +367,10 @@ export default class Level extends Phaser.Scene {
   delayDone(){
     this.player.body.setSize(this.player.width/2, this.player.height/1.5, true);
   }
+
+
+
+
   /**
   * External function that is called to generate the parallax objects
   * @param {*} scene - Scene
@@ -377,6 +393,8 @@ export default class Level extends Phaser.Scene {
       x += b.width; 
     }
   }
+
+  
   /**
   * External function that is called to scalate the height of the buildings.
   * This is used to generate buildings of different heights.

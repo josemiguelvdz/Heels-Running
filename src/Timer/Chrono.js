@@ -85,10 +85,18 @@ export default class Chrono extends Phaser.GameObjects.GameObject {
     if(this.minutos>= minsExtra)  this.minutos-=minsExtra;
   }
 
+
+  /** 
+  * Used to finish the timer
+  */
   finish(){
     this.fin=true;
   }
 
+
+  /** 
+  * Devuelve el tiempo transcurrido
+  */
   getTimeElapsed(){
     return this.timeElapsed;
   }
