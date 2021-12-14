@@ -304,11 +304,12 @@ export default class Level extends Phaser.Scene {
 
     this.policeCar2 = new StaticObject (this, 4900, 520, 'policeCar');
 
+    this.candyBuilding = new StaticObject(this, 5600, 460, 'candyBuilding');
 
 
 
     //-400 x player
-    this.player = new Player(this, 3000, 300, 3);
+    this.player = new Player(this, 4500, 300, 3);
     this.gangster = new Gangster(this, this.player, 3700, 450);
 
     this.fallObjEx = new FallingObject(this,this.player, 3300, 100,'maceta');
