@@ -412,18 +412,33 @@ export default class Level extends Phaser.Scene {
 
    createZones(totalWidth)
    {
+    this.createWinZone(5500,600,40,totalWidth);
+
+    //CREAR TODAS LAS ZONAS NECESARIAS PARA EL NIVEL
+
+    this.createPoliceZone(1850,600,40,totalWidth);
+    this.createHelicopterZone(3300,600,40,totalWidth);
+
+
+  }
+
+
+  createWinZone(x,y,height,totalWidth){
     // VICTORY ZONE
-    this.winZone=this.add.zone(totalWidth,600,40,totalWidth);
+    this.winZone=this.add.zone(x,y,height,totalWidth);
     this.physics.world.enable(this.winZone);
     this.winZone.body.setAllowGravity(false);
     this.winZone.body.setImmovable(true);
-        // VICTORY
-        this.physics.add.collider(this.winZone,this.player,(o1,o2)=>{
-          this.win();
-        });
+    // VICTORY
+    this.physics.add.collider(this.winZone,this.player,(o1,o2)=>{
+      this.win();
+    });
+  }
 
+
+  createHelicopterZone(x,y,height,totalWidth){
     // POLICE ZONE
-    this.helicopterZone=this.add.zone(3300,600,40,totalWidth);
+    this.helicopterZone=this.add.zone(x,y,height,totalWidth);
     this.physics.world.enable(this.helicopterZone);
     this.helicopterZone.body.setAllowGravity(false);
     this.helicopterZone.body.setImmovable(true);
@@ -431,9 +446,11 @@ export default class Level extends Phaser.Scene {
       o1.destroy();
       o2.policeAgain();
     });
+  }
 
+  createPoliceZone(x,y,height,totalWidth){
     // HELICOPTER ZONE
-    this.policeZone=this.add.zone(1850,600,40,totalWidth);
+    this.policeZone=this.add.zone(x,y,height,totalWidth);
     this.physics.world.enable(this.policeZone);
     this.policeZone.body.setAllowGravity(false);
     this.policeZone.body.setImmovable(true);
@@ -441,7 +458,6 @@ export default class Level extends Phaser.Scene {
       o1.destroy();
       o2.intoHelicopter();
     });
-
   }
 
 }
