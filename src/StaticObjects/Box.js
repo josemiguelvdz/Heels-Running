@@ -1,10 +1,8 @@
+import StaticObject from "./staticobject.js";
 
-export default class Box extends Phaser.GameObjects.Sprite {
-    constructor(scene, x, y) {
-      super(scene, x, y, 'boxDestruction');
-
-      this.scene.add.existing(this);
-      this.scene.physics.add.existing(this, true);
+export default class Box extends StaticObject {
+    constructor(scene, x, y, nameImg) {
+      super(scene, x, y, nameImg);
 
       this.collision = false;
 
@@ -15,23 +13,23 @@ export default class Box extends Phaser.GameObjects.Sprite {
       });
     }
 
-   animateBox(){
+  animateBox(){
+    this.setFlip(false,false);
+    this.stop();   
+    this.play('boxDestruction_anim');
 
-      this.setFlip(false,false);
-      this.stop();   
-      this.play('boxDestruction_anim');
+    this.on( 'animationcomplete-boxDestruction_anim',  () => {
+      var value = Phaser.Math.Between(0, 100);
+      var pU=Phaser.Math.Between(0, 2);
+      if(value<30)this.scene.createBoxPowerUp(pU,this.body.x+32.5,this.body.y+90);
+      this.destroy();
+    });      
+  }
 
-      this.on( 'animationcomplete-boxDestruction_anim',  () => {
-        this.destroy();
-      });      
-
+  handleCollision(){
+    if(!this.collision){
+      this.animateBox();
+      this.collision = true;
     }
-
-    handleCollision(){
-      if(!this.collision){
-        this.animateBox();
-        this.collision = true;
-      }
-
-    }
+  }
 }

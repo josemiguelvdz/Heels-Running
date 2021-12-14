@@ -2,20 +2,18 @@
 
 export default class FallingObject extends Phaser.GameObjects.Sprite {
 
-
   constructor(scene, player, x, y, nombreImg) {
     super(scene, x, y, nombreImg); //Constructor de la clase base
 
     this.jugador=player;
-     this.scene.add.existing(this);
-     this.scene.physics.add.existing(this);
+    this.scene.add.existing(this);
+    this.scene.physics.add.existing(this);
     this.body.setCollideWorldBounds(); //Colision con los limies del mundo 
     this.body.moves=false;
     this.isMoving=false;
     this.gameIsPaused=false;
     this.y -= this.height;
     this.nLifesLose=1;
-
 
     const configSound = {
       mute: false,
@@ -27,65 +25,86 @@ export default class FallingObject extends Phaser.GameObjects.Sprite {
       delay: 0,
     };
     this.fallingSound= this.scene.sound.add("fallingobjectSound",configSound);
-
   }
 
   preUpdate() {
     super.preUpdate();
-     if(this.jugador.x +250>= this.x) 
-     {
-       this.body.moves=true;
-       this.isMoving=true;
-     }
-    
-     if(this.isMoving)
-     {
-    
-       if(!this.gameIsPaused){
-        if (this.angle===360)this.angle=0;
+
+    if(this.jugador.x +250>= this.x) 
+    {
+      this.body.moves=true;
+      this.isMoving=true;
+    }
+    if(this.isMoving)
+    {
+      if(!this.gameIsPaused){
+        if (this.angle===360) this.angle=0;
         this.angle++; 
-       }
-     }
+      }
+    }  
     
+    this.fallingSound.setVolume(this.scene.ChangeVolume());
   }
 
-  handleCollision(){
-    this.handleCollisionFloor();
-  }
-
-  handleCollisionFallObj(player)
-  {
+  handleCollisionFallObj(player,kick){
    if(player)this.handleCollisionPlayer();
+   else if(kick)this.handleCollisionFloor();
    else this.handleCollisionFloor();
   }
 
-  /**
-   * Handles the collision with player, and makes a breaking sound
-   */
-  handleCollisionPlayer() {
 
+  /**
+  * Handles the collision with player, and makes a breaking sound
+  */
+  handleCollisionPlayer() {
     this.jugador.loseLife( this.nLifesLose);
     this.fallingSound.play();
+    this.createParticlesFallingbj();
     this.destroy();
+
     //SONIDO DE IMPACTO
 
   }
-   /**
-   * Handles the collision with floor and makes a breaking sound
-   */
-  handleCollisionFloor() {
 
+
+  /**
+  * Handles the collision with floor and makes a breaking sound
+  */
+  handleCollisionFloor() {
     this.fallingSound.play();
+    this.createParticlesFallingbj();
     this.destroy();
     
     //SONIDO DE RUPTURA
 
   }
 
-handleMovement()
-{
-if(this.gameIsPaused)this.gameIsPaused=false;
-else this.gameIsPaused=true;
-}
+  handleMovement(){
+    if(this.gameIsPaused){
+      this.gameIsPaused=false;
+      this.fallingSound.pause();
+    }
+    else {
+      this.gameIsPaused=true;
+      this.fallingSound.resume();
+    }
+  } 
 
+
+  createParticlesFallingbj()
+  {
+    let deathParticles = this.scene.add.particles('breakingParticle');
+    this.deathEmitter = deathParticles.createEmitter({
+      x: -500,
+      y: 300,
+      speed: { min: -800, max: 800 },
+      angle: { min: 0, max: 360 },
+      scale: { start: 0.9, end: 0 },
+      blendMode: 'SCREEN',
+      //active: false,
+      lifespan: 600,
+      gravityY: 800
+    });
+    this.deathEmitter.explode(100, this.x,this.y);
+  }
 }

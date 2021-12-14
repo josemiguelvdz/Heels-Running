@@ -10,7 +10,8 @@ export default class Gangster extends Phaser.GameObjects.Sprite {
 
         this.jugador = player;
         this.cooldown = 0;
-        this.visionRange = 450;
+        this.visionRange = 600;
+
         const configSound = {
             mute: false,
             volume: 0.25,
@@ -27,33 +28,24 @@ export default class Gangster extends Phaser.GameObjects.Sprite {
         super.preUpdate(time, delta);
         this.animateGangster();
 
-        if(!this.scene.isPaused()){
-            this.cooldown+=Math.round(delta);
-
-            if((this.cooldown) > 2000 && this.visionRange >= Math.abs(this.x-this.jugador.x))
-            {
-                this.cooldown = 0;
-                this.shoot();
-            }
-        }
+        this.cooldown+=Math.round(delta);
+        if((this.cooldown) > 2000 && this.visionRange >= Math.abs(this.x-this.jugador.x)){
+            this.cooldown = 0;
+            this.shoot();
+        } 
+        
+        this.gunshotsound.setVolume(this.scene.ChangeVolume());
     }
 
     shoot(){
-
         this.gunshotsound.play();
         new Bullet(this.scene, this.jugador, this.x, this.y);
-
     }
 
     animateGangster(){
-
-        if (this.jugador.x < this.x) {
+        if (this.jugador.x < this.x) 
             this.setFlip(false,false);
-        }
-
-        else{
+        else
             this.setFlip(true, false);
-        }
     }
-
 }

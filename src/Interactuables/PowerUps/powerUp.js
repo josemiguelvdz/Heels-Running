@@ -11,6 +11,7 @@ export default class PowerUp extends Phaser.GameObjects.Sprite {
     this.scene.physics.add.existing(this);
     this.body.setCollideWorldBounds(); //Colision con los limies del mundo 
     this.y -= this.height;
+
     const configSound = {
       mute: false,
       volume: 0.3,
@@ -20,7 +21,10 @@ export default class PowerUp extends Phaser.GameObjects.Sprite {
       loop: false,
       delay: 0,
     };
+    this.config=configSound;
+
     this.powerupsound= this.scene.sound.add("powerupSound",configSound);
+    this.debuffsound= this.scene.sound.add("debuffSound",configSound);
     this.body.moves=false;
     this.stopMovement=false;
     this.tweenMovement;
@@ -31,42 +35,41 @@ export default class PowerUp extends Phaser.GameObjects.Sprite {
     this.scene=scene;
    
     this.nameImg= nombreImg;
-
     
-   this.createTweenMovement();
+    this.createTweenMovement();
     
-  }/**
-   * Used to destroy a power up after making its effect
-   */
-  destroyObject()
-  {
-
+  }
+  
+  /**
+  * Used to destroy a power up after making its effect
+  */
+  destroyObject(){
     this.destroy();
   }
- /**
-  * 
+
+
+  /**
   * handle movement boolean in order to control de effect of power ups 
-  * 
-  * 
   */
-handleMovement()
-{
-if(this.stopMovement) this.stopMovement=false;
-else  this.stopMovement=true;
-}
-createTweenMovement()
-{
-  if(this.movesbyTween)
+  createTweenMovement()
   {
-    this.tweenMovement= this.scene.tweens.add({
-    targets: this,
-    y: 400, //Cantidad de desplazamiento
-    duration: 1500,
-    ease: 'Linear',
-    yoyo: true,
-    repeat: -1,
-    delay: 200 //Tiempo que tarda en empezar
-   });
+    if(this.movesbyTween)
+    {
+      this.tweenMovement= this.scene.tweens.add({
+      targets: this,
+      y: 400, //Cantidad de desplazamiento
+      duration: 1500,
+      ease: 'Linear',
+      yoyo: true,
+      repeat: -1,
+      delay: 200 //Tiempo que tarda en empezar
+      });
+    }
   }
-}
+  preUpdate(t,dt)
+  {
+   super.preUpdate(t,dt);
+   this.powerupsound.setVolume(this.scene.ChangeVolume());
+   this.debuffsound.setVolume(this.scene.ChangeVolume());
+  }
 }

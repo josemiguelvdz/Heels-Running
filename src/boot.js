@@ -19,27 +19,42 @@ export default class Boot extends Phaser.Scene {
       this.load.image('crosswalk', 'crosswalk.png');
       this.load.image('houses1', 'houses1.png');
       this.load.image('houses2', 'houses2.png');
-      this.load.image('pauseBackGround', 'fondoNegro.png');
+      this.load.image('pauseBackGround', 'fondoNegro.png');   
+      this.load.image('playBackGround', 'playBackGround.png');
 
       //Police Sprites
       this.load.setPath('./assets/Sprites/Police');
-      this.load.spritesheet('policeIdle','testRun.png',{frameWidth:128,frameHeight:128})
+      this.load.spritesheet('policeRun','policeRun.png',{frameWidth:128,frameHeight:128})
       this.load.spritesheet('smokeAnimation','humoSpriteSheet.png',{frameWidth:64,frameHeight:64});
-      this.load.spritesheet('helicopterAnimation','helicopterSpritesheet.png',{frameWidth:192,frameHeight:96});
+      this.load.spritesheet('helicopterAnimation','helicopterAnimation.png',{frameWidth:254,frameHeight:128});
+     
 
       //Player Sprites
       this.load.setPath('./assets/Sprites/Player');
       this.load.spritesheet('idle','idlespritesheet.png',{frameWidth:64, frameHeight:64})
-      this.load.spritesheet('run','testRun.png',{frameWidth:128, frameHeight:128});
-      this.load.spritesheet('jump', 'testJump.png',{frameWidth:128, frameHeight:128});
-      this.load.spritesheet('jump_kick', 'testKick.png', {frameWidth:128, frameHeight: 128});
-      this.load.spritesheet('smokingRun','smokingrunspritesheet.png',{frameWidth:64,frameHeight:64})
+      this.load.spritesheet('run','playerRun.png',{frameWidth:128, frameHeight:128});
+      this.load.spritesheet('jump', 'playerJump.png',{frameWidth:128, frameHeight:128});
+      this.load.spritesheet('jump_kick', 'playerJumpKick.png', {frameWidth:128, frameHeight: 128});
+      this.load.spritesheet('ground_kick', 'playerGroundKick.png', {frameWidth:128, frameHeight: 128});
+      this.load.spritesheet('kick_particles', 'kickParticles.png', {frameWidth:128, frameHeight: 128})
+      //WinBackGround
+      this.load.setPath('./assets/Sprites/Menu');
+      this.load.spritesheet('trainBackground','trainBackground.png',{frameWidth:2700,frameHeight:3792});
      
       //StaticObjects Sprites
       this.load.setPath('./assets/Sprites/StaticObjects');
       this.load.image('platform', 'platform.png');
-      this.load.image('box', 'box.png');
       this.load.spritesheet('boxDestruction', 'boxAnimation.png', {frameWidth:64, frameHeight:64});
+      this.load.image('fireHydrant', 'fireHydrant.png');
+      this.load.image('policeCar', 'policeCar.png');
+      this.load.image('farola', 'Farola.png');
+      this.load.image('candy', 'candyShop.png');
+
+      //Buildings Sprites
+      this.load.setPath('./assets/Sprites/Edificios');
+      this.load.image('phoneCenter', 'building8.png');
+      this.load.image('whiteBuilding', 'building6.png');
+      this.load.image('candyBuilding', 'building15.png');
 
       //Interfaz Sprites
       this.load.setPath('./assets/Sprites/Interfaz');
@@ -67,6 +82,7 @@ export default class Boot extends Phaser.Scene {
       this.load.setPath('./assets/Sprites/Mafioso');
       this.load.image('bullet', 'bala.png');
       this.load.image('gangster', 'mafioso.png');
+      this.load.image('advice', 'GangsterAdvice.png');
 
       //FallObjects Sprites
       this.load.setPath('./assets/Sprites/FallObjects');
@@ -79,26 +95,35 @@ export default class Boot extends Phaser.Scene {
       this.load.image('resumeButton', 'resumeButton.png');
       this.load.image('settingsButton', 'settingsButton.png');
       this.load.image('backButton', 'backButton.png');
+      this.load.image('controlsTitle', 'controlTitle.png');
       this.load.image('controls', 'controls.png');
       this.load.image('menuLayout', 'menuLayout.png');
       this.load.image('gameover', 'gameover.png');
       this.load.image('gameoverbackground', 'gameoverbackground.png');
       this.load.image('youWin','youWin.png');
+      this.load.image('volumeBar', 'VolumeBar.png');
+      this.load.image('volumeIcon', 'Volume.png');
+      this.load.image('rain', 'rain.png');
 
 
+      //Particulas
+      this.load.setPath('./assets/Sprites/Particles');
+      this.load.image('breakingParticle' , 'BreakingParticle.png');
+      this.load.image('bloodParticle' , 'BloodParticle.png');
+      this.load.image('dustParticle' , 'DustParticle.png');
+      this.load.image('waterParticle' , 'Water.png');
 
-    //Sounds
-    this.load.setPath('./assets/Sounds/SoundEffects');
-    this.load.audio('powerupSound', 'PowerUpSound.mp3');
-    this.load.audio('fallingobjectSound', 'JarronRotoSound.mp3');
-    this.load.audio('damageSound', 'DamageSound.mp3');
-    this.load.audio('gunSound', 'GunShotSound.mp3');
-    this.load.audio('deathsound', 'DeathSound.mp3');
+      //Sounds
+      this.load.setPath('./assets/Sounds/SoundEffects');
+      this.load.audio('powerupSound', 'PowerUpSound.mp3');
+      this.load.audio('debuffSound', 'DebuffSound.mp3');
+      this.load.audio('fallingobjectSound', 'JarronRotoSound.mp3');
+      this.load.audio('damageSound', 'DamageSound.mp3');
+      this.load.audio('gunSound', 'GunShotSound.mp3');
+      this.load.audio('deathsound', 'DeathSound.mp3');
+      this.load.audio('gameSong', 'GameSong.mp3');
+
    
-   
-
-
-
     }
     /**
      * Creación de la escena. En este caso, solo cambiamos a la escena que representa el
