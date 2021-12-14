@@ -298,7 +298,7 @@ export default class Level extends Phaser.Scene {
     this.createBox(2764, 535);
     this.createBox(2700, 471);
     this.createBox(3800, 535);
-    this.createBox(3864, 535)
+    this.createBox(3864, 535);
     this.createBox(3928, 535);
     this.createBox(3864, 471);
     this.createBox(3800, 471);
