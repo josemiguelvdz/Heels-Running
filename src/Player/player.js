@@ -158,30 +158,35 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
 
   setMovement(){
+    this.body.setVelocityX(this.speed); //Movimiento continuo del jugador hacia la derecha
+
     if(this.kick.isDown && this.actKickCooldown <= 0){
       if(this.body.onFloor()) this.play('ground_kick_anim', true);
       else this.play('jump_kick_anim', true);
     }
-    else if (this.cursors.left.isDown && !this.arrested) {
-      this.body.setVelocityX(-this.speed);
-      if(this.body.onFloor() && !this.kickActive){
-        this.play('run_anim', true);
-      }
-    }
-    else if (this.cursors.right.isDown && !this.arrested)  {
-      this.body.setVelocityX(this.speed);
-      if(this.body.onFloor()  && !this.kickActive){
-        this.play('run_anim', true);
-      }
-    }
-    else {
-      this.body.setVelocityX(0);
-      if(this.body.onFloor()  && !this.kickActive){
-        this.play('run_anim', true);
-      }
-    }
+    // else if (this.cursors.left.isDown && !this.arrested) {
+    //   this.body.setVelocityX(-this.speed);
+    //   if(this.body.onFloor() && !this.kickActive){
+    //     this.play('run_anim', true);
+    //   }
+    // }
+    // else if (this.cursors.right.isDown && !this.arrested)  {
+    //   this.body.setVelocityX(this.speed);
+    //   if(this.body.onFloor()  && !this.kickActive){
+    //     this.play('run_anim', true);
+    //   }
+    // }
+    // else {
+    //   this.body.setVelocityX(0);
+    //   if(this.body.onFloor()  && !this.kickActive){
+    //     this.play('run_anim', true);
+    //   }
+    // }
 
-
+    if(this.body.onFloor() && !this.kickActive){
+      this.play('run_anim', true);
+    }
+    
     if (this.cursors.up.isDown && this.body.onFloor() && !this.arrested) { // este es el salto
      this.createJumpParticles();
       this.body.setVelocityY(this.jumpSpeed*this.jumpImpulse);

@@ -137,25 +137,20 @@ export default class Level extends Phaser.Scene {
  */
   createGroups()
   {
-    //GRUPO DE LAS PLATAFORMAS
-     this.platforms = this.physics.add.staticGroup();
-     this.platforms.add(this.platform);
-     this.physics.add.collider(this.player,this.platforms);    // COLISION ENTRE PLAYER Y PLATAFORMAS
 
      this.staticObjects=this.physics.add.staticGroup();
-     this.staticObjects.add(this.candy);
      this.staticObjects.add(this.policeCar);
      //RELLENAR CON STATIC OBJECTS 
      this.physics.add.collider(this.player,this.staticObjects);
 
      // GRUPO DE LOS EDIFICIOS
-     this.buildings = this.physics.add.staticGroup();
-     this.buildings.add(this.building);
-     this.buildings.add(this.building2);
-     this.buildings.add(this.building3);
-     this.buildings.add(this.building4);
-     this.buildings.add(this.building5);
-     this.physics.add.collider(this.player,this.buildings);
+    //  this.buildings = this.physics.add.staticGroup();
+    //  this.buildings.add(this.building);
+    //  this.buildings.add(this.building2);
+    //  this.buildings.add(this.building3);
+    //  this.buildings.add(this.building4);
+    //  this.buildings.add(this.building5);
+    //  this.physics.add.collider(this.player,this.buildings);
 
 
      this.salmons = this.physics.add.group();
@@ -189,8 +184,6 @@ export default class Level extends Phaser.Scene {
     //GRUPO DE LOS OBJETOS CAYENTES CON EL SUELO Y EL PLAYER
     this.fallObjs= this.physics.add.group();
     this.fallObjs.add(this.fallObjEx);
-    this.fallObjs.add(this.fallObjEx2);
-    this.fallObjs.add(this.fallObjEx3);
     this.physics.add.overlap(this.player,this.fallObjs,(o1,o2)=> {
       o2.handleCollisionFallObj(true,false);
     });
@@ -209,9 +202,6 @@ export default class Level extends Phaser.Scene {
       this.win();
     });
 
-    //GRUPO DE LAS PLATAFORMAS Y EL POLICIA
-    this.platforms = this.physics.add.staticGroup();
-    this.platforms.add(this.platform);
 
     //GRUPO DEL POLICIA Y EL PLAYER
     this.physics.add.collider(this.player,this.police,(o1,o2)=>{
@@ -248,12 +238,13 @@ export default class Level extends Phaser.Scene {
  */
   createObjects(width, height, totalWidth)
   {
-    this.player = new Player(this, 250, 300, 3);
-    this.police= new Police(this,70,400);
-    this.gangster = new Gangster(this, this.player, 3700, 450);
+
+    this.police= new Police(this,-500, 300);
+
+    
 
     // VICTORY
-    this.winZone=this.add.zone(4500,600,40,totalWidth);
+    this.winZone=this.add.zone(totalWidth,600,40,totalWidth);
     this.physics.world.enable(this.winZone);
     this.winZone.body.setAllowGravity(false);
     this.winZone.body.setImmovable(true);
@@ -279,18 +270,48 @@ export default class Level extends Phaser.Scene {
     });
 
 
-    // SUELO
-    this.groundZone = this.add.zone(0, 600, totalWidth, this.player.height/2);
-    this.physics.world.enable(this.groundZone);
-    this.groundZone.body.setAllowGravity(false);
-    this.groundZone.body.setImmovable(true);
-
-    this.physics.add.collider(this.groundZone, this.player);
-    this.physics.add.collider(this.groundZone, this.police);
-    this.physics.add.collider(this.groundZone, this.gangster);
+   
 
    
 
+    // MAPA DEL JUEGO
+    // ESTATICOS - EN ORDEN DE APARICION
+    this.policeCar = new StaticObject (this, 1000, 520, 'policeCar');
+
+    this.fireHydrant = new FireHydrant (this, 1500, 535, 'fireHydrant');
+
+    this.box = new Box(this, 1800, 535, 'boxDestruction');
+    this.box2 = new Box(this, 1864, 535, 'boxDestruction');
+    this.box3 = new Box(this, 1864, 471, 'boxDestruction');
+    this.box4 = new Box(this, 1928, 535, 'boxDestruction');
+
+    this.phoneCenter = new StaticObject(this, 2400, 460, 'phoneCenter');
+
+    this.box5 = new Box(this, 2700, 535, 'boxDestruction');
+    this.box6 = new Box(this, 2764, 535, 'boxDestruction');
+    this.box7 = new Box(this, 2700, 471, 'boxDestruction');
+
+    this.whiteBuilding = new StaticObject(this, 3300, 100, 'whiteBuilding');
+
+
+    this.box8 = new Box(this, 3800, 535, 'boxDestruction');
+    this.box9 = new Box(this, 3864, 535, 'boxDestruction');
+    this.box10 = new Box(this, 3928, 535, 'boxDestruction');
+    this.box11 = new Box(this, 3864, 471, 'boxDestruction');
+    this.box12 = new Box(this, 3800, 471, 'boxDestruction');
+
+    this.fireHydrant2 = new FireHydrant (this, 4300, 535, 'fireHydrant');
+
+    this.policeCar2 = new StaticObject (this, 4900, 520, 'policeCar');
+
+
+
+
+    //-400 x player
+    this.player = new Player(this, 3000, 300, 3);
+    this.gangster = new Gangster(this, this.player, 3700, 450);
+
+    this.fallObjEx = new FallingObject(this,this.player, 3300, 100,'maceta');
 
 
 
@@ -311,34 +332,24 @@ export default class Level extends Phaser.Scene {
 
     this.coffe1= new Coffe( this,this.player, 1000, 100,'coffe',true);
     this.powerUpsArray.push(this.coffe1);
-
-    this.fallObjEx = new FallingObject(this,this.player, 1500, 100,'maceta');
-    console.log(this.fallObjEx);
-    this.fallObjEx2 = new FallingObject(this,this.player, 1800, 100,'maceta');
-    console.log(this.fallObjEx2);
-    this.fallObjEx3 = new FallingObject(this,this.player, 2750, 100,'maceta');
-    console.log(this.fallObjEx3);
+   
     
-    this.platform = new StaticObject(this, this.player.y, 400, 'platform'); 
-    this.candy = new StaticObject(this, 1100, 520, 'candy');
-    this.policeCar = new StaticObject (this, 1700, 520, 'policeCar');
-    this.fireHydrant = new FireHydrant(this, 700, 535, 'fireHydrant');
-    this.box = new Box(this, 350, 535, 'boxDestruction');
-
-    this.building = new StaticObject(this, width*2, height, 'platform');
-    this.scaleBuilding(this.building, this.building.width, this.building.height, 5);
     
-    this.building2 = new StaticObject(this, width*2+this.building.width, height, 'platform');
-    this.scaleBuilding(this.building2, this.building2.width, this.building2.height, 8);
 
-    this.building3 = new StaticObject(this, width*2+this.building2.width*2, height, 'platform');
-    this.scaleBuilding(this.building3, this.building3.width, this.building3.height, 6);
+    // this.building = new StaticObject(this, width*2, height, 'platform');
+    // this.scaleBuilding(this.building, this.building.width, this.building.height, 5);
+    
+    // this.building2 = new StaticObject(this, width*2+this.building.width, height, 'platform');
+    // this.scaleBuilding(this.building2, this.building2.width, this.building2.height, 8);
 
-    this.building4 = new StaticObject(this, width*2+this.building3.width*3, height, 'platform');
-    this.scaleBuilding(this.building4, this.building4.width, this.building4.height, 3);
+    // this.building3 = new StaticObject(this, width*2+this.building2.width*2, height, 'platform');
+    // this.scaleBuilding(this.building3, this.building3.width, this.building3.height, 6);
 
-    this.building5 = new StaticObject(this, width*2+this.building4.width*4, height, 'platform');
-    this.scaleBuilding(this.building5, this.building5.width, this.building5.height, 8);
+    // this.building4 = new StaticObject(this, width*2+this.building3.width*3, height, 'platform');
+    // this.scaleBuilding(this.building4, this.building4.width, this.building4.height, 3);
+
+    // this.building5 = new StaticObject(this, width*2+this.building4.width*4, height, 'platform');
+    // this.scaleBuilding(this.building5, this.building5.width, this.building5.height, 8);
 
     this.timeBar = this.add.sprite(this.scale.width-100, 50, 'timeBar', 'timeBar.png').setScrollFactor(0);
     this.chrono= new Chrono(this, true);
@@ -348,6 +359,17 @@ export default class Level extends Phaser.Scene {
     this.powerUpsArray.push(this.redTimer);
     this.greenTimer= new GreenTimer( this,this.player, 2400, 100,'greenTimer',true,this.chrono);
     this.powerUpsArray.push(this.greenTimer);
+
+
+     // SUELO
+     this.groundZone = this.add.zone(0, 600, totalWidth, 64);
+     this.physics.world.enable(this.groundZone);
+     this.groundZone.body.setAllowGravity(false);
+     this.groundZone.body.setImmovable(true);
+ 
+     this.physics.add.collider(this.groundZone, this.player);
+     this.physics.add.collider(this.groundZone, this.police);
+     this.physics.add.collider(this.groundZone, this.gangster);
     
   }
 

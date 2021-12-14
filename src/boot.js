@@ -50,6 +50,11 @@ export default class Boot extends Phaser.Scene {
       this.load.image('farola', 'Farola.png');
       this.load.image('candy', 'candyShop.png');
 
+      //Buildings Sprites
+      this.load.setPath('./assets/Sprites/Edificios');
+      this.load.image('phoneCenter', 'building8.png');
+      this.load.image('whiteBuilding', 'building6.png');
+
       //Interfaz Sprites
       this.load.setPath('./assets/Sprites/Interfaz');
       this.load.atlas("healthBar","healthBar.png","healthBar.json"); // barra de vida
