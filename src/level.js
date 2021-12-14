@@ -375,9 +375,8 @@ export default class Level extends Phaser.Scene {
     this.physics.add.collider(this.player,this.buildings,(o1,o2)=>{
       });
 
-    this.physics.add.collider(this.player, this.boxes,(o1,o2)=> {
-        o2.handleCollision();
-      });    
+    this.physics.add.collider(this.player, this.boxes);
+        
     this.physics.add.overlap(this.player,this.fallObjs,(o1,o2)=> {
         o2.handleCollisionFallObj(true,false);
       });
