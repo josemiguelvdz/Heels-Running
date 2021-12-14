@@ -58,7 +58,6 @@ export default class Level extends Phaser.Scene {
     this.mainSong.play();
 
     this.createObjects(width, height, totalWidth);
-    this.createGroups();
     
     this.cameras.main.setBounds(0, 0, width*5, height);
     this.cameras.main.startFollow(this.player);
@@ -123,54 +122,6 @@ export default class Level extends Phaser.Scene {
     return this.slideX;
   }
 
-
-/**
- * Creates collision groups and adds colliders between them
- */
-  createGroups()
-  {
-
-     this.salmons = this.physics.add.group();
-     this.salmons.add(this.salmon);
-     this.physics.add.overlap(this.player,this.salmons,(o1,o2)=> {
-      onCollision(o1,o2);
-    })
-    this.esmoquins = this.physics.add.group();
-    this.esmoquins.add(this.esmoquin);
-    this.esmoquins.add(this.esmoquin2);
-    this.physics.add.overlap(this.player,this.esmoquins,(o1,o2)=> {
-      onCollision(o1,o2);
-    })
-
-    //Para crear la colision entre grupos usamos grupos estaticos por que si no no funciona
-    //GRUPO DE LOS TIMERS
-    this.timers = this.physics.add.group();
-    this.timers.add(this.redTimer);
-    this.timers.add(this.greenTimer)
-    this.physics.add.overlap(this.player,this.timers,(o1,o2)=> {
-      onCollision(o1,o2);
-    });
-
-    //GRUPO DE LOS CAFÉS
-    this.coffes = this.physics.add.group();
-    this.coffes.add(this.coffe1);
-    this.physics.add.overlap(this.player,this.coffes,(o1,o2)=> {
-      onCollision(o1,o2);
-    });
-
-    this.alcohols = this.physics.add.group();
-    this.alcohols.add(this.alcoholEx);
-    this.physics.add.overlap(this.player,this.alcohols,(o1,o2)=> {
-      onCollision(o1,o2);
-    });
-
-    // VICTORY
-    this.physics.add.collider(this.winZone,this.player,(o1,o2)=>{
-      this.win();
-    });
-
-  }
-  
 /**
  * Create GameObjects and adjust its size
  * @param {*} width -specifies individual ground width for its creation
@@ -187,6 +138,7 @@ export default class Level extends Phaser.Scene {
     // MAPA DEL JUEGO
 
     this.createAllBoxes();
+    this.createAllPowerUps();
     this.createAllFireHydrants();
     this.createAllCars();
     this.createAllBuildings();
@@ -196,33 +148,8 @@ export default class Level extends Phaser.Scene {
 
     this.createAllGangsters();
 
-   
-    // AÑADIR TODOS LOS GRUPOS
-
-    this.salmon= new Salmon(this, this.player, 2800, 50,'salmonFish',true);
-    this.powerUpsArray.push(this.salmon);
-
-    this.esmoquin= new Esmoquin( this,this.player, 1300, 100,'esmoquin',true);
-    this.powerUpsArray.push(this.esmoquin);
-    this.esmoquin2= new Esmoquin( this,this.player, 3500, 70,'esmoquin',true);
-    this.powerUpsArray.push(this.esmoquin2);
-    
-    
-    this.alcoholEx= new Alcohol( this,this.player, 800, 70,'vino',true);
-    this.powerUpsArray.push(this.alcoholEx);
-
-    this.coffe1= new Coffe( this,this.player, 1000, 100,'coffe',true);
-    this.powerUpsArray.push(this.coffe1);
-   
-
     this.timeBar = this.add.sprite(this.scale.width-100, 50, 'timeBar', 'timeBar.png').setScrollFactor(0);
     this.chrono= new Chrono(this, true);
-    
-
-    this.redTimer= new RedTimer( this,this.player, 2200, 100,'redTimer',true,this.chrono);
-    this.powerUpsArray.push(this.redTimer);
-    this.greenTimer= new GreenTimer( this,this.player, 2400, 100,'greenTimer',true,this.chrono);
-    this.powerUpsArray.push(this.greenTimer);
 
 
     // SUELO
@@ -283,7 +210,7 @@ export default class Level extends Phaser.Scene {
     else if(number==1)this.powerE=new Salmon(this, this.player, x, y,'salmonFish',false);
     else if(number==2)this.powerE=new Esmoquin(this,this.player, x, y,'esmoquin',false);
     this.powerE.setScale(.5,.5);
-    this.physics.add.collider(this.player,this.powerE,onCollision);
+    this.powerUps.add(this.powerE);
   }
 
 
@@ -302,6 +229,16 @@ export default class Level extends Phaser.Scene {
     this.createBox(3928, 535);
     this.createBox(3864, 471);
     this.createBox(3800, 471);
+  }
+  createAllPowerUps(){
+    this.createSalmon(2800, 50);
+    this.createEsmoquin(1300, 100);
+    this.createEsmoquin(3500, 70);
+    this.createAlcohol(800, 70);
+    this.createCoffe( 1000, 100);
+    this.createRedTimer(2200, 100);
+    this.createGreenTimer(2400, 100);
+
   }
   createAllFireHydrants()
   {
@@ -335,12 +272,44 @@ export default class Level extends Phaser.Scene {
     this.fallObjs = this.physics.add.group();
     this.fireHydrants = this.physics.add.staticGroup();
     this.buildings = this.physics.add.staticGroup();
+    this.powerUps=this.physics.add.group();
+    this.timers=this.physics.add.group();
   }
 
   createBox(x,y)
   {
     this.box = new Box(this,x,y,'boxDestruction');
     this.boxes.add(this.box);
+  }
+  createSalmon(x,y){
+    this.salmon= new Salmon(this, this.player, x, y,'salmonFish',true);
+    this.powerUpsArray.push(this.salmon);
+    this.powerUps.add(this.salmon);
+  }
+  createGreenTimer(x,y){
+    this.greenTimer=new GreenTimer(this,this.player, x, y,'greenTimer',true,this.chrono);
+    this.powerUpsArray.push(this.greenTimer);
+    this.timers.add(this.greenTimer);
+  }
+  createEsmoquin(x,y){
+    this.esmoquin= new Esmoquin( this,this.player, x, y,'esmoquin',true);
+    this.powerUpsArray.push(this.esmoquin);
+    this.powerUps.add(this.esmoquin);
+  }
+  createCoffe(x,y){
+    this.coffe= new Coffe( this,this.player, x, y,'coffe',true);
+    this.powerUpsArray.push(this.coffe);
+    this.powerUps.add(this.coffe);
+  }
+  createAlcohol(x,y){
+    this.alcohol= new Alcohol( this,this.player, x, y,'vino',true);
+    this.powerUpsArray.push(this.alcohol);
+    this.powerUps.add(this.alcohol);
+  }
+  createRedTimer(x,y){
+    this.redTimer=new RedTimer(this,this.player, x, y,'redTimer',true,this.chrono);
+    this.powerUpsArray.push(this.redTimer);
+    this.timers.add(this.redTimer);
   }
   createFireHydrant(x,y)
   {
@@ -369,6 +338,13 @@ export default class Level extends Phaser.Scene {
 
   handleColliders()
   {
+    this.physics.add.overlap(this.player,this.powerUps,(o1,o2)=>{
+      o2.handleCollision(o1);
+    });
+    this.physics.add.overlap(this.player,this.timers,(o1,o2)=>{
+      o2.handleCollision(this.chrono);
+    });
+
     this.physics.add.collider(this.player,this.policeCars,(o1,o2)=>{
       });
 
@@ -391,8 +367,10 @@ export default class Level extends Phaser.Scene {
         o1.arrestado();
         o1.getActualScene().chrono.finish();
         o2.catchP(o1);
-          });
-        
+        });
+    this.physics.add.collider(this.winZone,this.player,(o1,o2)=>{
+      this.win();
+      });
    }
 
    createGroundZone(totalWidth)
@@ -429,10 +407,6 @@ export default class Level extends Phaser.Scene {
     this.physics.world.enable(this.winZone);
     this.winZone.body.setAllowGravity(false);
     this.winZone.body.setImmovable(true);
-    // VICTORY
-    this.physics.add.collider(this.winZone,this.player,(o1,o2)=>{
-      this.win();
-    });
   }
 
 
@@ -459,16 +433,6 @@ export default class Level extends Phaser.Scene {
       o2.intoHelicopter();
     });
   }
-
-}
-
-/**
- * External function that is called when object collide
- * @param {*} obj1 - Player or Kick zone
- * @param {*} obj2 - Object that player collides with
- */
-function onCollision(obj1,obj2) {
-  obj2.handleCollision(); 
 }
 
 
