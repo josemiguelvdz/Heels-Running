@@ -387,6 +387,7 @@
     this.powerUpsArray.push(this.esmoquin);
     this.esmoquin2= new Esmoquin( this,this.player, 3500, 70,'esmoquin',true);
     this.powerUpsArray.push(this.esmoquin2);
+  }
     
     lose(){
       this.mainSong.stop();
