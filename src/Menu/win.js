@@ -12,17 +12,7 @@ export default class Win extends Phaser.Scene {
     }
 
     create() {
-        this.spriteTrain=this.add.sprite(1000, 1700, 'trainBackground'); 
-
-        this.anims.create({
-            key: 'trainBackground',
-            frames: this.anims.generateFrameNumbers('trainBackground', { start: 0, end: 56 }),
-            frameRate: 1, // Velocidad de la animación
-            repeat: 0    // Animación en bucle
-          });
-          this.spriteTrain.x=500;
-          this.spriteTrain.y=20;
-        this.spriteTrain.play('trainBackground');
+       
 
 
         this.winBackGround = this.add.image(this.scale.width*0.5, this.scale.height*0.5-105, 'playBackGround').setScale(1.5, 1.5).setScrollFactor(0);
