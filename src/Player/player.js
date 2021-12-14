@@ -1,4 +1,4 @@
-import Chrono from "../Timer/Chrono.js";
+
 
 export default class Player extends Phaser.GameObjects.Sprite {
 

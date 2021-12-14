@@ -27,6 +27,7 @@ export default class Boot extends Phaser.Scene {
       this.load.spritesheet('policeRun','policeRun.png',{frameWidth:128,frameHeight:128})
       this.load.spritesheet('smokeAnimation','humoSpriteSheet.png',{frameWidth:64,frameHeight:64});
       this.load.spritesheet('helicopterAnimation','helicopterAnimation.png',{frameWidth:254,frameHeight:128});
+     
 
       //Player Sprites
       this.load.setPath('./assets/Sprites/Player');
@@ -36,6 +37,9 @@ export default class Boot extends Phaser.Scene {
       this.load.spritesheet('jump_kick', 'playerJumpKick.png', {frameWidth:128, frameHeight: 128});
       this.load.spritesheet('ground_kick', 'playerGroundKick.png', {frameWidth:128, frameHeight: 128});
       this.load.spritesheet('kick_particles', 'kickParticles.png', {frameWidth:128, frameHeight: 128})
+      //WinBackGround
+      this.load.setPath('./assets/Sprites/Menu');
+      this.load.spritesheet('trainBackground','trainBackground.png',{frameWidth:2700,frameHeight:3792});
      
       //StaticObjects Sprites
       this.load.setPath('./assets/Sprites/StaticObjects');
