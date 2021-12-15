@@ -7,6 +7,7 @@ export default class Salmon extends PowerUp {
 
     this.move = moving;
     this.lifesHealed = 1;
+    this.player=player;
   }
 
   /*preUpdate() {
@@ -17,16 +18,16 @@ export default class Salmon extends PowerUp {
   /**
    * Handles the collision with player
    */
-  handleCollision() {
-    this.collideSalmon();
+  handleCollision(player) {
+    this.collideSalmon(player);
   }
 
 
 /**
  * Makes power up dissapear and adds player lifesHealed number of lifes
  */
-  collideSalmon() {
-    this.player.addLife(1);
+  collideSalmon(player) {
+    player.addLife(1);
     this.powerupsound.play();
     this.destroyObject();
   }

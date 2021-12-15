@@ -4,6 +4,7 @@ export default class Coffe extends PowerUp {
 
   constructor(scene, player, x, y, nombreImg,moving) {
     super(scene, player, x, y, nombreImg,moving); //Constructor de la clase base   
+    this.player=player;
   }
 
   preUpdate(time,delta) {
@@ -13,8 +14,8 @@ export default class Coffe extends PowerUp {
     //Si no estamos en pausa ya vemos si ha pasado el tiempo , para hacer o no el efecto si todavia no ha pasado el tiempo 
   }
  
-  handleCollision(){
-    this.player.controlSpeed("Increase"); 
+  handleCollision(player){
+    player.controlSpeed("Increase"); 
     this.powerupsound.play();
     this.destroy();
   }

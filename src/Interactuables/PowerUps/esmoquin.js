@@ -5,6 +5,7 @@ export default class Esmoquin extends PowerUp {
 
   constructor(scene, player, x, y, nombreImg,moving) {
     super(scene, player, x, y, nombreImg,moving); //Constructor de la clase base
+    this.player=player;
   }
 
   preUpdate() {
@@ -15,10 +16,10 @@ export default class Esmoquin extends PowerUp {
   /**
    * Handles the collision with player
    */
-  handleCollision() {
+  handleCollision(player) {
     //En la llamada al player se actualizaria visualmente el efecto del power up
     //Asi como en la interfaz con sus propios metodos 
-    this.player.configEsmoquinShield();
+    player.configEsmoquinShield();
     this.powerupsound.play();
     this.destroyObject();
   }

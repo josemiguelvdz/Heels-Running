@@ -218,6 +218,12 @@ export default class Player extends Phaser.GameObjects.Sprite {
       o2.handleCollisionFallObj(false,true);
       }); 
 
+
+      //Colisión con las cajas
+      this.scene.physics.add.overlap(this.kickZone, this.scene.boxes, (o1,o2)=> {
+        o2.handleCollision();
+        }); 
+
       // Destruir la zona
       this.delete_zone = this.scene.time.addEvent({ 
         delay: 500, 

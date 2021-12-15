@@ -47,14 +47,19 @@ export default class Boot extends Phaser.Scene {
       this.load.spritesheet('boxDestruction', 'boxAnimation.png', {frameWidth:64, frameHeight:64});
       this.load.image('fireHydrant', 'fireHydrant.png');
       this.load.image('policeCar', 'policeCar.png');
-      this.load.image('farola', 'Farola.png');
-      this.load.image('candy', 'candyShop.png');
+      this.load.image('streetlight', 'Farola.png');
+
+      //this.load.image('candy', 'candyShop.png');
 
       //Buildings Sprites
       this.load.setPath('./assets/Sprites/Edificios');
       this.load.image('phoneCenter', 'building8.png');
       this.load.image('whiteBuilding', 'building6.png');
       this.load.image('candyBuilding', 'building15.png');
+      this.load.image('candyBuilding2', 'building1.png');
+      this.load.image('bakery', 'building5.png');
+      this.load.image('burguer', 'building3.png');
+      this.load.image('stairs', 'building16.png');
 
       //Interfaz Sprites
       this.load.setPath('./assets/Sprites/Interfaz');

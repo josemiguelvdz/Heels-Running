@@ -4,6 +4,7 @@ export default class Alcohol extends PowerUp {
 
   constructor(scene, player, x, y, nombreImg,moving) {
     super(scene, player, x, y, nombreImg,moving); //Constructor de la clase base
+    this.player=player;
   }
   
   preUpdate(time,delta) {
@@ -16,8 +17,8 @@ export default class Alcohol extends PowerUp {
   /**
   * Handles collision with player
   */
-  handleCollision(){
-    this.player.controlSpeed("Reduce"); 
+  handleCollision(player){
+    player.controlSpeed("Reduce"); 
     this.debuffsound.play(); 
     this.destroy();
   }
