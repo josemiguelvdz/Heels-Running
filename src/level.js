@@ -26,6 +26,9 @@ export default class Level extends Phaser.Scene {
    * Creación de los elementos de la escena principal de juego
    */
   create() {
+
+    this.offsetX = -1900;
+    
     
     const width = this.scale.width;
     const height = this.scale.height;
@@ -58,11 +61,16 @@ export default class Level extends Phaser.Scene {
     this.mainSong.play();
 
     this.createObjects(width, height, totalWidth);
+
     
-    
-    //  (target, roundPixels, lerpX, lerpY, offsetX, offsetY)
+    //this.cameras.main.setBounds(0, 0, totalWidth, height);
     this.cameras.main.startFollow(this.player, false, 1, 1, -50, 25);
     this.cameras.main.setDeadzone(1, 400);
+
+    this.cameras.main.setFollowOffset(this.offsetX, 0);
+
+    
+    
 
     this.scape = this.input.keyboard.addKey('ESC');
     this.scape.on('down', () => { 
@@ -77,6 +85,12 @@ export default class Level extends Phaser.Scene {
 
 
   update(){
+
+    if(this.offsetX < 0){
+      this.offsetX += 10;
+      this.cameras.main.setFollowOffset(this.offsetX, 25);
+    }
+
 
     if(this.police.isHelicopter()){
       if(this.police.body.x>=this.player.body.x){
@@ -450,7 +464,4 @@ export default class Level extends Phaser.Scene {
     });
   }
 }
-
-
- 
 
