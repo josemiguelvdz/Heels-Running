@@ -126,9 +126,6 @@ export default class Level extends Phaser.Scene {
   {
     this.createObjectGroups();
 
-    this.police = new Police(this,-500, 300);
-    this.createZones(totalWidth);
-
     // MAPA DEL JUEGO
 
     this.createAllBoxes();
@@ -136,6 +133,11 @@ export default class Level extends Phaser.Scene {
     this.createAllFireHydrants();
     this.createAllStaticObjects();
     this.createAllBuildings();
+
+    this.police = new Police(this,-500, 300);
+    this.changeBoundingBox(this.police, 1, 1.5);
+
+    this.createZones(totalWidth);
     
     this.player = new Player(this, -400, 300, 3);
     // CAMBIAR BOUDING BOX DE TAMAÑO
