@@ -69,9 +69,6 @@ export default class Level extends Phaser.Scene {
 
     this.cameras.main.setFollowOffset(this.offsetX, 0);
 
-    
-    
-
     this.scape = this.input.keyboard.addKey('ESC');
     this.scape.on('down', () => { 
     });
