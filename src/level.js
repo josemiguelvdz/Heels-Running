@@ -29,10 +29,10 @@ export default class Level extends Phaser.Scene {
     
     const width = this.scale.width;
     const height = this.scale.height;
-    const totalWidth = width*10;
+    const totalWidth = width*15;
 
     this.add.image(width*0.5, height*0.5, 'sky')
-      .setScale(1.2, 1)
+      .setScale(2, 1)
       .setScrollFactor(0);
 
     this.createAligned(this, totalWidth, 'backhouse', 0.25);
@@ -59,15 +59,13 @@ export default class Level extends Phaser.Scene {
 
     this.createObjects(width, height, totalWidth);
     
-    this.cameras.main.setBounds(0, 0, width*5, height);
+    this.cameras.main.setBounds(0, 0, totalWidth, height);
     this.cameras.main.startFollow(this.player);
 
     this.scape = this.input.keyboard.addKey('ESC');
     this.scape.on('down', () => { 
     });
 
-    // CAMBIAR BOUDING BOX DE TAMAÑO
-    this.time.addEvent({delay: 500, callback: this.delayDone, callbackScope: this, loop: false})
 
     this.volume = 0.5;
     this.slideX = 0;
@@ -77,10 +75,6 @@ export default class Level extends Phaser.Scene {
 
 
   update(){
-    const cam = this.cameras.main;
-    const speed = 1;
- 
-    cam.scrollX += speed;
 
     if(this.police.isHelicopter()){
       if(this.police.body.x>=this.player.body.x){
@@ -140,10 +134,13 @@ export default class Level extends Phaser.Scene {
     this.createAllBoxes();
     this.createAllPowerUps();
     this.createAllFireHydrants();
-    this.createAllCars();
+    this.createAllStaticObjects();
     this.createAllBuildings();
     
     this.player = new Player(this, -400, 300, 3);
+    // CAMBIAR BOUDING BOX DE TAMAÑO
+    this.changeBoundingBox(this.player, 2, 1.5);
+
     this.createAllFallObjects();
 
     this.createAllGangsters();
@@ -165,8 +162,8 @@ export default class Level extends Phaser.Scene {
   }
 
   // Cambiar tamaño sprites
-  delayDone(){
-    this.player.body.setSize(this.player.width/2, this.player.height/1.5, true);
+  changeBoundingBox(object, factorX, factorY){
+    object.body.setSize(object.width/factorX, object.height/factorY, true);
   }
   /**
   * External function that is called to generate the parallax objects
@@ -229,6 +226,8 @@ export default class Level extends Phaser.Scene {
     this.createBox(3928, 535);
     this.createBox(3864, 471);
     this.createBox(3800, 471);
+    this.createBox(6300, 535);
+    this.createBox(8060, 535);
   }
   createAllPowerUps(){
     this.createSalmon(2800, 50);
@@ -244,21 +243,33 @@ export default class Level extends Phaser.Scene {
   {
     this.createFireHydrant(1500, 535);
     this.createFireHydrant(4300, 535);
+    this.createFireHydrant(7800, 535);
   }
-  createAllCars()
+  createAllStaticObjects()
   {
-    this.createCar(1000, 520);
-    this.createCar(4900, 520);
+    this.createStaticObject(1000, 520, 'policeCar');
+    this.createStaticObject(4900, 520, 'policeCar');
+    this.createStaticObject(6500, 455, 'streetlight');
+    this.createStaticObject(8150, 455, 'streetlight');
+    this.createStaticObject(8700, 465, 'streetlight');
   }
   createAllBuildings()
   {
     this.createBuilding(2400, 460, 'phoneCenter', true);
     this.createBuilding(3300, 100, 'whiteBuilding', false);
     this.createBuilding(5600, 460, 'candyBuilding', true);
+    this.createBuilding(5850, 503, 'candyBuilding2', true);
+    this.createBuilding(7000, 100, 'whiteBuilding', false);
+    this.createBuilding(7350, 100, 'whiteBuilding', false);
+    this.createBuilding(9007, 305, 'stairs', true, true, 1, 3);
+    this.createBuilding(8900, 420, 'bakery', true, true, 1.2, 2.3);
+    this.createBuilding(9370, 325, 'burguer', true, true, 1.2, 1.15);
   }
   createAllFallObjects()
   {
     this.createFallObj(3300, 100);
+    this.createFallObj(7000, 100);
+    this.createFallObj(7467, 100);
   }
   createAllGangsters()
   {
@@ -268,7 +279,7 @@ export default class Level extends Phaser.Scene {
   createObjectGroups()
   {
     this.boxes = this.physics.add.staticGroup();
-    this.policeCars = this.physics.add.staticGroup();
+    this.staticObjects = this.physics.add.staticGroup();
     this.fallObjs = this.physics.add.group();
     this.fireHydrants = this.physics.add.staticGroup();
     this.buildings = this.physics.add.staticGroup();
@@ -316,15 +327,16 @@ export default class Level extends Phaser.Scene {
     this.fireHydrant = new FireHydrant(this, x, y, 'fireHydrant');
     this.fireHydrants.add(this.fireHydrant);
   }
-  createCar(x, y)
+  createStaticObject(x, y, spriteName)
   {
-    this.policeCar = new StaticObject (this, x, y, 'policeCar');
-    this.policeCars.add(this.policeCar);
+    this.staticObject = new StaticObject (this, x, y, spriteName);
+    this.staticObjects.add(this.staticObject);
   }
-  createBuilding(x, y, spriteName, colliderActive)
+  createBuilding(x, y, spriteName, flagActiveCollider, flagBoundingBox, boundingX, boundingY)
   {
     this.building = new StaticObject(this, x, y, spriteName);
-    if(colliderActive)  this.buildings.add(this.building);
+    if(flagActiveCollider)  this.buildings.add(this.building);
+    if(flagBoundingBox) this.changeBoundingBox(this.building, boundingX, boundingY);
   }
   createFallObj(x, y)
   {
@@ -345,7 +357,7 @@ export default class Level extends Phaser.Scene {
       o2.handleCollision(this.chrono);
     });
 
-    this.physics.add.collider(this.player,this.policeCars,(o1,o2)=>{
+    this.physics.add.collider(this.player,this.staticObjects,(o1,o2)=>{
       });
 
     this.physics.add.collider(this.player,this.buildings,(o1,o2)=>{
@@ -375,7 +387,7 @@ export default class Level extends Phaser.Scene {
 
    createGroundZone(totalWidth)
    {
-    this.groundZone = this.add.zone(0, 600, totalWidth, 64);
+    this.groundZone = this.add.zone(0, 600, totalWidth*2, 64);
     this.physics.world.enable(this.groundZone);
     this.groundZone.body.setAllowGravity(false);
     this.groundZone.body.setImmovable(true);
@@ -390,12 +402,12 @@ export default class Level extends Phaser.Scene {
 
    createZones(totalWidth)
    {
-    this.createWinZone(5500,600,40,totalWidth);
+    this.createWinZone(13000, 600, 40, totalWidth);
 
     //CREAR TODAS LAS ZONAS NECESARIAS PARA EL NIVEL
 
-    this.createPoliceZone(1850,600,40,totalWidth);
-    this.createHelicopterZone(3300,600,40,totalWidth);
+    this.createPoliceZone(1850, 600, 40, totalWidth);
+    this.createHelicopterZone(3300, 600, 40, totalWidth);
 
 
   }
