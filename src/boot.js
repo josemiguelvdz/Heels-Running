@@ -39,7 +39,7 @@ export default class Boot extends Phaser.Scene {
       this.load.spritesheet('kick_particles', 'kickParticles.png', {frameWidth:128, frameHeight: 128})
       //WinBackGround
       this.load.setPath('./assets/Sprites/Menu');
-      this.load.spritesheet('trainBackground','trainBackground.png',{frameWidth:2700,frameHeight:3792});
+      this.load.spritesheet('trainBackground','trainBackground.png',{frameWidth:540,frameHeight:331});
      
       //StaticObjects Sprites
       this.load.setPath('./assets/Sprites/StaticObjects');
@@ -95,6 +95,7 @@ export default class Boot extends Phaser.Scene {
 
       //Menu Sprites
       this.load.setPath('./assets/Sprites/Menu');
+      this.load.spritesheet('mainMenu', 'MainMenu.png', {frameWidth:1920, frameHeight:1080});
       this.load.image('playButton' , 'PlayButton.png');
       this.load.image('exitButton', 'ExitButton.png');
       this.load.image('resumeButton', 'resumeButton.png');
