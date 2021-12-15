@@ -59,8 +59,10 @@ export default class Level extends Phaser.Scene {
 
     this.createObjects(width, height, totalWidth);
     
-    this.cameras.main.setBounds(0, 0, totalWidth, height);
-    this.cameras.main.startFollow(this.player);
+    
+    //  (target, roundPixels, lerpX, lerpY, offsetX, offsetY)
+    this.cameras.main.startFollow(this.player, false, 1, 1, -50, 25);
+    this.cameras.main.setDeadzone(1, 400);
 
     this.scape = this.input.keyboard.addKey('ESC');
     this.scape.on('down', () => { 
