@@ -16,8 +16,8 @@ export default class Win extends Phaser.Scene {
 
         this.anims.create({
             key: 'trainB',
-            frames: this.anims.generateFrameNumbers('trainBackground', { start: 0, end: 56 }),
-            frameRate: 14.5, // Velocidad de la animación
+            frames: this.anims.generateFrameNumbers('trainBackground', { start: 0, end: 55 }),
+            frameRate: 12, // Velocidad de la animación
             repeat: -1    // Animación en bucle
           });
 

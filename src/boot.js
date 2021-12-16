@@ -96,6 +96,7 @@ export default class Boot extends Phaser.Scene {
       //Menu Sprites
       this.load.setPath('./assets/Sprites/Menu');
       this.load.spritesheet('mainMenu', 'MainMenu.png', {frameWidth:1920, frameHeight:1080});
+      this.load.spritesheet('loseBackGround', 'gameoverbackground.png', {frameWidth:480, frameHeight:254});
       this.load.image('playButton' , 'PlayButton.png');
       this.load.image('exitButton', 'ExitButton.png');
       this.load.image('resumeButton', 'resumeButton.png');
@@ -105,7 +106,7 @@ export default class Boot extends Phaser.Scene {
       this.load.image('controls', 'controls.png');
       this.load.image('menuLayout', 'menuLayout.png');
       this.load.image('gameover', 'gameover.png');
-      this.load.image('gameoverbackground', 'gameoverbackground.png');
+      this.load.image('cartelBusted', 'losedefinitivo.png');
       this.load.image('youWin','youWin.png');
       this.load.image('volumeBar', 'VolumeBar.png');
       this.load.image('volumeIcon', 'Volume.png');

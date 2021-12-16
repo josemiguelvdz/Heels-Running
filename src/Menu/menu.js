@@ -10,7 +10,7 @@ export default class Menu extends Phaser.Scene {
       this.helicopter=this.add.sprite(-40, 125, 'helicopterAnimation');
 
       this.anims.create({
-          key: 'mMEnu',
+          key: 'mMenu',
           frames: this.anims.generateFrameNumbers('mainMenu', { start: 0, end: 18}),
           frameRate: 25, // Velocidad de la animación
           repeat: -1    // Animación en bucle
@@ -23,7 +23,7 @@ export default class Menu extends Phaser.Scene {
         
       });
 
-      this.spriteTrain.play('mMEnu');
+      this.spriteTrain.play('mMenu');
       
       //this.playbackground= this.add.image(this.scale.width*0.5, 300, 'playBackGround');
       this.playButton = this.add.image(0, 210, 'playButton').setInteractive().setScale(0.7, 0.7);
