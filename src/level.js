@@ -417,7 +417,7 @@ export default class Level extends Phaser.Scene {
 
    createZones(totalWidth)
    {
-    this.createWinZone(13000, 600, 40, totalWidth);
+    this.createWinZone(300, 600, 40, totalWidth);
 
     //CREAR TODAS LAS ZONAS NECESARIAS PARA EL NIVEL
 
