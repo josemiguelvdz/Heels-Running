@@ -105,7 +105,6 @@ export default class Boot extends Phaser.Scene {
       this.load.image('controlsTitle', 'controlTitle.png');
       this.load.image('controls', 'controls.png');
       this.load.image('menuLayout', 'menuLayout.png');
-      this.load.image('gameover', 'gameover.png');
       this.load.image('cartelBusted', 'losedefinitivo.png');
       this.load.image('youWin','youWin.png');
       this.load.image('volumeBar', 'VolumeBar.png');
@@ -129,6 +128,7 @@ export default class Boot extends Phaser.Scene {
       this.load.audio('gunSound', 'GunShotSound.mp3');
       this.load.audio('deathsound', 'DeathSound.mp3');
       this.load.audio('gameSong', 'GameSong.mp3');
+      this.load.audio('loseSound', 'LoseSound.mp3');
 
    
     }
