@@ -92,6 +92,7 @@ export default class Boot extends Phaser.Scene {
       //FallObjects Sprites
       this.load.setPath('./assets/Sprites/FallObjects');
       this.load.image('maceta', 'maceta.png');
+      this.load.image('ladrillo', 'ladrillo.png');
 
       //Menu Sprites
       this.load.setPath('./assets/Sprites/Menu');

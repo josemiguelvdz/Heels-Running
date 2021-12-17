@@ -293,9 +293,9 @@ export default class Level extends Phaser.Scene {
   }
   createAllFallObjects()
   {
-    this.createFallObj(3300, 100);
-    this.createFallObj(7000, 100);
-    this.createFallObj(7467, 100);
+    this.createFallObj(3300, 100,"maceta");
+    this.createFallObj(7000, 100,"maceta");
+    this.createFallObj(7467, 100,"ladrillo");
   }
   createAllGangsters()
   {
@@ -364,9 +364,9 @@ export default class Level extends Phaser.Scene {
     if(flagActiveCollider)  this.buildings.add(this.building);
     if(flagBoundingBox) this.changeBoundingBox(this.building, boundingX, boundingY);
   }
-  createFallObj(x, y)
+  createFallObj(x, y,name)
   {
-    this.fallObj = new FallingObject(this, this.player, x, y, 'maceta');
+    this.fallObj = new FallingObject(this, this.player, x, y, name);
     this.fallObjs.add(this.fallObj);
   }
   createGangster(x, y)
