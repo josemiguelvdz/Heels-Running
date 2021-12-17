@@ -1,4 +1,5 @@
 ![heelstitulo](https://user-images.githubusercontent.com/75903737/146580307-4192043c-4c97-4492-90a3-6ae39f453353.png)
+<hr>
 
 ## Redes
 
@@ -29,11 +30,10 @@ Capturas del Juego:
 
 ![image](https://user-images.githubusercontent.com/82502179/146577058-05c34078-c316-45b2-9882-288b82047b45.png)
 
-<div align="center">
- <img src="https://user-images.githubusercontent.com/75903737/146586110-f416e92a-4977-43de-87e9-91d741d16d81.png" width=300>
-</div>
+<hr>
 
-#### Descripción y Resumen
+![descripcion](https://user-images.githubusercontent.com/75903737/146586402-f5b4f467-2ea0-4bef-8855-fb962372a13b.png)
+#### Descripción y resumen
 
 - Géneros: Side Scroller/Scroll Lateral, Plataformas en 2D, Acción.
 - Público objetivo: Todos los públicos.
@@ -52,9 +52,10 @@ Logotipo y portada del juego: ---
 - 0.3 Controles básicos, power Ups, debuffs. (29/09/2021)
 - 0.4 Ajuste completo del GDD, dejando claros todos los aspectos del mismo. (5/10/2021)
 - 0.5 Ajuste completo del GDD, para actualizarlo según el progreso actual del juego. (25/11/2021)
-- ----------------------------------------------------------------------------------------------------------------------
 
-#### Tabla de contenidos
+<hr>
+
+![contenido](https://user-images.githubusercontent.com/75903737/146586722-b9868873-ed96-4a07-9103-c7fd6749d055.png)
 
 #### 1. Aspectos generales
 
@@ -63,10 +64,11 @@ Logotipo y portada del juego: ---
 #### 1.1. Relato breve y parcial de una partida típica
 
 El juego transcurre en una ciudad, donde somos perseguidos por la policía y atacados por la mafia, nosotros tendremos que tratar de esquivar los obstáculos saltando o dándoles una patada. Para acabar la partida y lograr ganar tendremos que llegar a la estación del tren.
+<hr>
 
 #### 2. Jugabilidad
 
-#### 2.1. Mecánicas
+![mecanicas](https://user-images.githubusercontent.com/75903737/146586859-a638aa0e-8df7-48c8-9690-af0831868b22.png)
 
 #### 2.1.1. Mecánicas del personaje
 
@@ -92,23 +94,31 @@ El juego transcurre en una ciudad, donde somos perseguidos por la policía y ata
 
 - Objetos cayentes: Objetos que caerán desde arriba y nos harán daño. Estos objetos son macetas o materiales de construcción. El jugador podrá pasar de largo o destruirlos con
 la patada.
-#### 2.2. Dinámica
+<br>
+
+![dinamica](https://user-images.githubusercontent.com/75903737/146586940-4135cc20-c775-4f43-9ad4-bec8f023ed09.png)
+
 
 - Para ganar tendremos que conseguir huir de la policía con éxito, llegando hasta la zona del tren donde conseguiremos escapar. Si nos matan los disparos de los mafiosos o somos arrestados por la policía, habremos perdido y se dará la opción al jugador de volver al menú principal o de volver a jugar. Si ganamos, nos pondrá el tiempo que hemos tardado
 en completar la run.
 
 - La estrategia que esperamos que desarrolle el jugador es que vaya  esquivando obstáculos y disparos haciendo uso de la patada cuando sea necesaria, asi como cogiendo los Power Ups, evitando los Debuffs, de manera que intente supera su recórd de tiempo partida a partida.
+<br>
 
-#### 2.3.Estética
+![estetica](https://user-images.githubusercontent.com/75903737/146586989-e60ff14d-b873-4b34-8543-c88620430288.png)
 
 - Queremos transmitir sensaciones como el agobio, al ser constantemente perseguidos por la policía y disparados por la mafia, y el frenetismo al no poder parar en ningún momento de la partida. Además también queremos transmitir la autosuperación, haciendo que los jugadores se sientan atraídos por el juego por el simple hecho de querer supersarse a si mismos.
 - Heels Running se ambienta en una ciudad de los años sesenta, con una paleta de colores apagados, para transmitir al jugador la sensación de que se encuentra en la época correcta.
 - La idea del juego está desarrollada gracias a una gran película de Alfred Hitchcock, llamada North by Northwest, cuya historia queda reflejada con algunos ajustes en nuestro juego, de manera que este acabe siendo lo más divertido posible.
 - El escenario será visible hasta donde veamos en nuestra cámara, y solo tendremos que preocuparnos por nuestro entorno inmediato, es decir, de no morir y no ser arrestados.
 
-![pixel-art-paisaje-urbano-town-street-8-bit-paisaje-ciudad-juego-arcade-urbano-nocturno-diurno_102902](https://user-images.githubusercontent.com/75903737/135530540-ad4418be-77c9-469d-9018-b463fac664ea.jpg)
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/75903737/135530540-ad4418be-77c9-469d-9018-b463fac664ea.jpg">
+</div>
 
-#### Menús
+<hr>
+
+### - Menús
 
 Menu de incio: menú con un fondo en movimiento, botón para jugar, si se pulsa comienza la experiencia de juego. Otro botón para la configuración del juego, si lo pulsas abres una ventana para configurar los diferentes aspectos del videojuego (volumen y ver los controles), botón en una esquina con el logo de nuestra empresa, si lo pulsas, despliega una ventana con los nombres de los creadores del juego.
 
@@ -194,6 +204,9 @@ MAFIA:
 
 ##### MÚSICA
 - El juego contará con una melodia de fondo, además de efectos de sonido por todas las acciones significantes del juego, ya sea saltar, recibir daño, coger un power up...
+<hr>
+
+![arquitectura](https://user-images.githubusercontent.com/75903737/146587438-a1014135-4286-48f9-9d83-d9f353146827.png)
 
 ##### ARQUITECTURA DEL JUEGO
 - Diagrama de Clases: https://app.creately.com/diagram/p9mz5a7aeDl/view
@@ -203,9 +216,11 @@ MAFIA:
 
 ##### SISTEMA DE COMUNICACIÓN
 
-Los miembros del equipo de desarrollo nos comunicaremos mediante nuestro propio servidor de Discord, donde tenemos distintos canales para comunicarnos e intercambiar información útil.
+- Los miembros del equipo de desarrollo nos comunicaremos mediante nuestro propio servidor de Discord, donde tenemos distintos canales para comunicarnos e intercambiar información útil.
+<hr>
 
-##### Referencias
+![referencias](https://user-images.githubusercontent.com/75903737/146587513-ddf6149e-85a6-40e1-a94b-a1db4bc61499.png)
+
 - North by Northwest, _Alfred Hitchcock._ 
 - JetPack Joyride
 - Extreme Pamplona
