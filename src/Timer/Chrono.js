@@ -82,7 +82,8 @@ export default class Chrono extends Phaser.GameObjects.GameObject {
   * Used to reduce Time when the player collides with a greenTimer Power Up
   */
   reduceTime( secsExtra ,minsExtra){
-    if(this.minutos>= minsExtra)  this.minutos-=minsExtra;
+    if(this.minutos-minsExtra>= 0)  this.minutos-=minsExtra;
+    if(this.segundos-secsExtra>= 0) this.segundos-=secsExtra;
   }
 
   finish(){

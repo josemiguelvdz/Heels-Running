@@ -8,7 +8,7 @@ export default class Bullet extends Phaser.GameObjects.Sprite {
 
         this.body.setAllowGravity(false);
 
-        this.scale = 0.5;
+        this.scale = 0.17;
         this.damage = 1;
         
         this.angle = (Phaser.Math.Angle.Between(this.x, this.y, player.x, player.y)); 
