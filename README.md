@@ -118,30 +118,31 @@ en completar la run.
 
 <hr>
 
-### - Menús
+## Menús
 
-Menu de incio: menú con un fondo en movimiento, botón para jugar, si se pulsa comienza la experiencia de juego. Otro botón para la configuración del juego, si lo pulsas abres una ventana para configurar los diferentes aspectos del videojuego (volumen y ver los controles), botón en una esquina con el logo de nuestra empresa, si lo pulsas, despliega una ventana con los nombres de los creadores del juego.
+- Menu de incio: menú con un fondo en movimiento, botón para jugar, si se pulsa comienza la experiencia de juego. Otro botón para la configuración del juego, si lo pulsas abres una ventana para configurar los diferentes aspectos del videojuego (volumen y ver los controles), botón en una esquina con el logo de nuestra empresa, si lo pulsas, despliega una ventana con los nombres de los creadores del juego.
 
 *Falta imágen del menú principal de juego*
 
-Menú de pausa: dentro del juego tendremos otro menú de pausa donde podremos reaunudar el juego, salir al menú principal, o ir al menú de configuraciones donde podremos cambiar el volumen y ver los controles.
+- Menú de pausa: dentro del juego tendremos otro menú de pausa donde podremos reaunudar el juego, salir al menú principal, o ir al menú de configuraciones donde podremos cambiar el volumen y ver los controles.
 
-![image](https://user-images.githubusercontent.com/82502179/143425102-ace70e46-6f85-433f-aa6c-db0293047e3f.png)
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/82502179/143425102-ace70e46-6f85-433f-aa6c-db0293047e3f.png">
+</div>
 
 ![image](https://user-images.githubusercontent.com/82502179/146576664-2f2e19f5-d7f4-410f-bdd4-8480c68aa589.png)
  
-![image](https://user-images.githubusercontent.com/82502179/135832931-d133a8f5-a120-492b-882c-e4a947dabc56.png)
 
-
-Menú de Game Over: aparece cuando perdemos y en él podremos volver a jugar o salir al menú de inicio
+- Menú de Game Over: aparece cuando perdemos y en él podremos volver a jugar o salir al menú de inicio
 
 ![image](https://user-images.githubusercontent.com/82502179/146575662-ee4a398a-91b1-4c66-9179-35c82cb6fb23.png)
- 
 
-#### 3.1. Configuración
+<hr>
+
+### 3.1. Configuración
 - Configuración de volumen: Podremos cambiar tanto la música como el sonido de nuestro videojuego.
 
-#### 3.2. Interfaz
+### 3.2. Interfaz
 
 Mostraremos la barra de vida que tiene el jugador, así como el tiempo que ha transcurrido en la partida.
 También mostraremos el Power Up o Debuff activo en ese momento (si es que lo hay)
@@ -149,19 +150,21 @@ También mostraremos el Power Up o Debuff activo en ese momento (si es que lo ha
 ![image](https://user-images.githubusercontent.com/82502179/146577293-698d22e0-53a5-43b9-ab6f-594a53beb9c7.png)
 
 
-#### 3.3. Controles
+### 3.3. Controles
 
 - Movimiento : W - Saltar /  D - Dar Patada
 - Configuracion : Escape - Menu Pausa / Todo con el ratón
 
 ![image](https://user-images.githubusercontent.com/82502179/146577193-94a00855-acbf-4312-8bed-a6e1c4f931ac.png)
 
-#### 4. Contenido
+<hr>
+
+### 4. Contenido
 - Todos los sprites de los objetos, cajas, muros, etc, así como los sprites del jugador, de la policía y de los mafiosos.
 - Tendremos sonidos para los disparos, para el salto del jugador, para el choque de los objetos cayentes al suelo, para la destrucción de cajas, para los powerups, cuando el jugador reciba daño...
 - También tendremos sonidos para el entorno del juego, como pitidos de coche.
 
-#### 4.1 Nivel
+### 4.1 Nivel
 
 #### Ciudad
 
@@ -172,18 +175,18 @@ Tenemos dos zonas destacables:
 
 Tras atravesar la ciudad, llegaremos a una estación del tren para escapar.
 
-#### 4.2 Personajes y enemigos
+### 4.2 Personajes y enemigos
 
-PROTAGONISTA:
+#### PROTAGONISTA:
 - Nuestro protagonista es Roger, un publicista al cuál la mafia esta tratando de matar por ser confundido con un agente del F.B.I y el cual será perseguido por la policía tras un juicio.
 
-POLICIA:
+#### POLICIA:
 - La policía es el enemigo que nos perseguirá. Siempre estará detrás del jugador siguiéndole el rastro. Si el jugador está a una altura diferente a la policia (jugador por encima de edificios), entonces pasará a ser perseguido por un helicóptero por el aire. Por último, si entra en contacto con el jugador, éste será arrestado y perderá la partida.
 
-MAFIA:
+##### MAFIA:
 - Se trata de enemigos estáticos cuya función es matar al jugador disparándole. Aparecerán de vez en cuando en ventanas. Se avisará al jugador mostrando el icono de un mafioso en el límite de la pantalla derecha, indicándole que cuando llegue aparecerá un mafioso en esa posición.
 
-#### 4.3. Objetos
+### 4.3. Objetos
 
 #### Power Ups
 
@@ -195,14 +198,15 @@ MAFIA:
 
 -Salmon: En referencia a uno de los alimentos de la película, cuando el jugador obtenga este objeto , recuperara vida (un punto) , facilitándole su supervivencia de los mafiosos y de los objetos arrojados por la ventana. 
 
-#### Debuffs
+### Debuffs
 
 -Alcohol: Dado que en la película los mafiosos nos obligan a beber alcohol, hemos utilizado este debuff de manera que si lo consumimos adquiriremos una disminución de velocidad por un cierto periodo de tiempo, lo que facilitará el arresto a la policía.
 
 -Reloj Rojo: Al contrario que el reloj verde explicado con anterioridad, este debuff nos sumará tiempo adicional (30s) al tiempo de la partida, lo que hará que concluyamos la partida con un mayor tiempo.
 
+<hr>
 
-##### MÚSICA
+### Música
 - El juego contará con una melodia de fondo, además de efectos de sonido por todas las acciones significantes del juego, ya sea saltar, recibir daño, coger un power up...
 <hr>
 
