@@ -100,6 +100,7 @@ export default class Boot extends Phaser.Scene {
       this.load.spritesheet('loseBackGround', 'gameoverbackground.png', {frameWidth:480, frameHeight:254});
       this.load.image('playButton' , 'PlayButton_V2.png');
       this.load.image('exitButton', 'ExitButton.png');
+      this.load.image('exitButton_V2', 'ExitButton_V2.png');
       this.load.image('resumeButton', 'resumeButton.png');
       this.load.image('settingsButton', 'settingsButton.png');
       this.load.image('backButton', 'backButton.png');
@@ -138,6 +139,6 @@ export default class Boot extends Phaser.Scene {
      * nivel del juego
      */
     create() {
-      this.scene.start('menu');
+      this.scene.start('gameover');
     }
   }
