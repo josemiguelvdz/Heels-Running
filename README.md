@@ -68,7 +68,7 @@ El juego transcurre en una ciudad, donde somos perseguidos por la policía y ata
 
 #### 2.1.1. Mecánicas del personaje
 
-- Movimiento horizontal: El personaje se mueve a una velocidad constante la cuál puede verse afectada al chocar con obstáculos. Además, habrá power ups y debuffs que puedan afectar a este parámetro (de manera positiva o negativa).
+- Movimiento horizontal: El personaje se mueve a una velocidad constante. Además, habrá power ups y debuffs que puedan afectar a este parámetro (de manera positiva o negativa).
 
 - Saltar: Movimiento que consiste en un impulso vertical. Solo podemos volver a saltar cuando volvamos a tocar el suelo u otra plataforma en la que podamos caminar, es decir, no se puede saltar en el aire. Durante el salto será posible pegar una patada para destruir objetos.
 
@@ -83,10 +83,10 @@ El juego transcurre en una ciudad, donde somos perseguidos por la policía y ata
 #### 2.1.2. Mecánicas de escenario
 
 - Cajas: Son obstáculos que encontramos en el escenario de la ciudad, estos nos molestarán en el camino, dificultando nuestra huida, sin embargo, se podrán destruir de dos maneras:
-     -Chocandonos: No habrá probabilidades de obtener un poweUp y perdenermos velocidad.
+     -Chocandonos: No habrá probabilidades de obtener un poweUp.
      -Patada: tendrán cierta probabilidad de dejar caer un Power Up.
      
-- Objetos estáticos: En este apartado encontraremos todos aquellos objetos que sean estáticos y cuya única funcionalidad sea interrumpir el paso del jugador, dificultando así la huida y haciendo que el jugador pierda velocidad al chocar con ellos. Estos objetos son : Muros, Vallas, Carteles de tiendas, Bocas de riego de la calle, Coches, Bicicletas, (aquí tenemos que poner todos los que se nos ocurran para que haya variedad, ya que sería solo un sprite estático y si hay pocos objetos se hace muy repetitivo).
+- Objetos estáticos: En este apartado encontraremos todos aquellos objetos que sean estáticos y cuya única funcionalidad sea interrumpir el paso del jugador, dificultando así la huida. Estos objetos son : Basura, Vallas, Carteles de tiendas, Bocas de riego de la calle, Coches, Farolas.
 
 - Objetos cayentes: Objetos que caerán desde arriba y nos harán daño. Estos objetos son macetas o materiales de construcción. El jugador podrá pasar de largo o destruirlos con
 la patada.
@@ -135,7 +135,7 @@ También mostraremos el Power Up o Debuff activo en ese momento (si es que lo ha
 #### 3.3. Controles
 
 - Movimiento : W - Saltar /  D - Dar Patada
-- Configuracion : Escape  - Ajustes / Mouse - Volumen , Reiniciar , Renaudar y Ver Controles
+- Configuracion : Escape - Menu Pausa / Todo con el ratón
 
 ![controles](https://user-images.githubusercontent.com/82502179/143426642-db6962f8-80e1-41d1-81ad-ec553a171910.png)
 
@@ -161,7 +161,7 @@ PROTAGONISTA:
 - Nuestro protagonista es Roger, un publicista al cuál la mafia esta tratando de matar por ser confundido con un agente del F.B.I y el cual será perseguido por la policía tras un juicio.
 
 POLICIA:
-- La policía es el enemigo que nos perseguirá. Siempre estará detrás del jugador siguiéndole el rastro. Si el jugador está a una altura diferente a la policia, entonces pasará a ser perseguido por un helicóptero por el aire. Por último, si entra en contacto con el jugador, éste será arrestado y perderá la partida.
+- La policía es el enemigo que nos perseguirá. Siempre estará detrás del jugador siguiéndole el rastro. Si el jugador está a una altura diferente a la policia (jugador por encima de edificios), entonces pasará a ser perseguido por un helicóptero por el aire. Por último, si entra en contacto con el jugador, éste será arrestado y perderá la partida.
 
 MAFIA:
 - Se trata de enemigos estáticos cuya función es matar al jugador disparándole. Aparecerán de vez en cuando en ventanas. Se avisará al jugador mostrando el icono de un mafioso en el límite de la pantalla derecha, indicándole que cuando llegue aparecerá un mafioso en esa posición.
@@ -174,7 +174,7 @@ MAFIA:
 
 -Smoking: Este smoking también hace referencia a como iba vestido nuestro protagonista, por lo que este Power Up nos ofrecerá un escudo de modo que no obtengamos ningún tipo de daño o penalización mientras su efecto esté activo.
 
--Reloj Verde: Dado que nuestro juego se trata de completar el nivel en el menor tiempo posible, este Power Up nos restará tiempo a la run, lo que nos ayudará a concluir nuestras partidas con un tiempo mejor.
+-Reloj Verde: Dado que nuestro juego se trata de completar el nivel en el menor tiempo posible, este Power Up nos restará tiempo a la run (15s), lo que nos ayudará a concluir nuestras partidas con un tiempo mejor.
 
 -Salmon: En referencia a uno de los alimentos de la película, cuando el jugador obtenga este objeto , recuperara vida (un punto) , facilitándole su supervivencia de los mafiosos y de los objetos arrojados por la ventana. 
 
@@ -182,7 +182,7 @@ MAFIA:
 
 -Alcohol: Dado que en la película los mafiosos nos obligan a beber alcohol, hemos utilizado este debuff de manera que si lo consumimos adquiriremos una disminución de velocidad por un cierto periodo de tiempo, lo que facilitará el arresto a la policía.
 
--Reloj Rojo: Al contrario que el reloj verde explicado con anterioridad, este debuff nos sumará tiempo adicional al tiempo de la partida, lo que hará que concluyamos la partida con un mayor tiempo.
+-Reloj Rojo: Al contrario que el reloj verde explicado con anterioridad, este debuff nos sumará tiempo adicional (30s) al tiempo de la partida, lo que hará que concluyamos la partida con un mayor tiempo.
 
 
 ##### MÚSICA
