@@ -319,11 +319,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
   losingGame(){
     this.scene.lose();
   }
-
-  handleMovement(){
-    if(this.stopMovement) this.stopMovement=false;
-    else  this.stopMovement=true;
-  }
   createBloodParticles(){
     let dustParticles = this.scene.add.particles('bloodParticle');
     this.deathEmitter = dustParticles.createEmitter({
