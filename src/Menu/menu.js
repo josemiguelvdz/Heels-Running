@@ -29,18 +29,18 @@ export default class Menu extends Phaser.Scene {
       this.playButton = this.add.image(this.scale.width*0.5, 330, 'playButton2').setInteractive().setScale(1, 1);
       this.playButton.on('pointerdown', () => {this.scene.start('level')});
 
-      this.speed = 2.5;
+      this.speed = 1;
     }
 
     update(){
 
-      if(this.helicopter.x >= (300 + this.scale.width*0.5)){
+      if(this.helicopter.x >= (350 + this.scale.width*0.5)){
         this.helicopter.setFlip(true, false);
         this.speed *= -1; 
         this.playButton.x = this.playButton.x - 70;
       }
 
-      else if(this.helicopter.x <= (-300 + this.scale.width*0.5)){
+      else if(this.helicopter.x <= (-350 + this.scale.width*0.5)){
         this.helicopter.setFlip(false, false);
         this.speed *= -1; 
         this.playButton.x = this.playButton.x + 70;
