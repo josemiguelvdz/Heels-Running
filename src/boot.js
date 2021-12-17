@@ -21,6 +21,7 @@ export default class Boot extends Phaser.Scene {
       this.load.image('houses2', 'houses2.png');
       this.load.image('pauseBackGround', 'fondoNegro.png');   
       this.load.image('playBackGround', 'playBackGround.png');
+      this.load.image('playBackGround_V2', 'playBackGround_V2.png');
 
       //Police Sprites
       this.load.setPath('./assets/Sprites/Police');

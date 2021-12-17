@@ -25,7 +25,7 @@ export default class Menu extends Phaser.Scene {
 
       this.spriteTrain.play('mMenu');
       
-      //this.playbackground= this.add.image(this.scale.width*0.5, 300, 'playBackGround');
+      this.playbackground= this.add.image(this.scale.width*0.5, 70, 'playBackGround_V2').setScale(0.8, 0.8);
       this.playButton = this.add.image(this.scale.width*0.5, 330, 'playButton2').setInteractive().setScale(1, 1);
       this.playButton.on('pointerdown', () => {this.scene.start('level')});
 
