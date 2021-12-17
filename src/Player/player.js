@@ -91,10 +91,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
     // Tiempo de agotamiento del kick
     this.kickCooldown = 1000;
     this.actKickCooldown = this.kickCooldown;
- 
-    //Variable general que se activa y desactiva cuando entras/sales al menu de pausa
-    //Sirve para controlar la duracion del efecto los power ups
-    this.stopMovement=false;
 
 
   }
@@ -121,38 +117,38 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
   handleAlcoholEffect(delta){
     if(this.secondsAlcohol >= 0) {   
-      if(!this.stopMovement) {
+     
         this.secondsAlcohol+=Math.round(delta);
         if(this.secondsAlcohol>this.durationAlcohol){  
         this.secondsAlcohol=-1;  //Reiniciamos el contador de tiempo para el efecto en el alchol 
         this.restoreSpeed("Reduce");
         }
-      }
+      
     }
   }
 
   handleCoffeEffect(delta){
     if(this.secondsCoffe >= 0) {   
-      if(!this.stopMovement) {
+     
         this.secondsCoffe+=Math.round(delta);
         if(this.secondsCoffe>this.durationCoffe){ 
           this.secondsCoffe=-1;  //Reiniciamos el contador de tiempo para el efecto en el alchol 
           this.restoreSpeed("Increase"); 
         }
-      }
+      
     }
   }
 
 
   handleEsmoquinEffect(delta){
     if(this.secondsEsmoquin >= 0) {   
-      if(!this.stopMovement) {
+     
         this.secondsEsmoquin+=Math.round(delta);
         if(this.secondsEsmoquin>this.durationEsmoquin){
           this.secondsEsmoquin=-1; 
           this.config2EsmoquinShield();
         }
-      }
+      
     }
   }
 
@@ -164,24 +160,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
       if(this.body.onFloor()) this.play('ground_kick_anim', true);
       else this.play('jump_kick_anim', true);
     }
-    // else if (this.cursors.left.isDown && !this.arrested) {
-    //   this.body.setVelocityX(-this.speed);
-    //   if(this.body.onFloor() && !this.kickActive){
-    //     this.play('run_anim', true);
-    //   }
-    // }
-    // else if (this.cursors.right.isDown && !this.arrested)  {
-    //   this.body.setVelocityX(this.speed);
-    //   if(this.body.onFloor()  && !this.kickActive){
-    //     this.play('run_anim', true);
-    //   }
-    // }
-    // else {
-    //   this.body.setVelocityX(0);
-    //   if(this.body.onFloor()  && !this.kickActive){
-    //     this.play('run_anim', true);
-    //   }
-    // }
+    
 
     if(this.body.onFloor() && !this.kickActive){
       this.play('run_anim', true);
