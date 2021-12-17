@@ -401,7 +401,7 @@ export default class Level extends Phaser.Scene {
         o2.setCollision();
       });
       //GRUPO DEL POLICIA Y EL PLAYER
-    this.physics.add.collider(this.player,this.police,(o1,o2)=>{
+    this.physics.add.overlap(this.player,this.police,(o1,o2)=>{
         o1.arrestado();
         o1.getActualScene().chrono.finish();
         o2.catchP(o1);
