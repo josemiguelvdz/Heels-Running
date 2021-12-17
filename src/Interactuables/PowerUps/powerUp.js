@@ -5,7 +5,6 @@ export default class PowerUp extends Phaser.GameObjects.Sprite {
    constructor(scene,player,x, y,nombreImg,moving) {
    
     super(scene, x, y, nombreImg);
-    console.log(nombreImg);
     
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
@@ -25,8 +24,6 @@ export default class PowerUp extends Phaser.GameObjects.Sprite {
 
     this.powerupsound= this.scene.sound.add("powerupSound",configSound);
     this.body.moves=false;
-    this.stopMovement=false;
-    this.tweenMovement;
     this.movesbyTween=moving;
     
     //Referencias al jugador la escena y el sprite que tengan 
