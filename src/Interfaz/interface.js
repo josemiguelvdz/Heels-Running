@@ -34,7 +34,7 @@ export default class Interface extends Phaser.GameObjects.GameObject {
 
       //Icono del Gangster
       this.visionRange = 600;
-      this.advideRange = 800;
+      this.advideRange = 1000;
       this.oneAdvice = false;
       this.iconExist = false;
   

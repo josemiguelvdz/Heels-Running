@@ -432,7 +432,7 @@ export default class Level extends Phaser.Scene {
 
     //CREAR TODAS LAS ZONAS NECESARIAS PARA EL NIVEL
 
-    this.createPoliceZone(1850, 600, 40, totalWidth);
+    this.createPoliceZone(1850, 600, 40, totalWidth,60);
     this.createHelicopterZone(3300, 600, 40, totalWidth);
 
 
@@ -460,7 +460,7 @@ export default class Level extends Phaser.Scene {
     });
   }
 
-  createPoliceZone(x,y,height,totalWidth){
+  createPoliceZone(x,y,height,totalWidth,h){
     // HELICOPTER ZONE
     this.policeZone=this.add.zone(x,y,height,totalWidth);
     this.physics.world.enable(this.policeZone);
@@ -468,7 +468,7 @@ export default class Level extends Phaser.Scene {
     this.policeZone.body.setImmovable(true);
     this.physics.add.collider(this.policeZone,this.police,(o1,o2)=>{
       o1.destroy();
-      o2.intoHelicopter();
+      o2.intoHelicopter(h);
     });
   }
 }
