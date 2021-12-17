@@ -24,7 +24,6 @@ export default class PowerUp extends Phaser.GameObjects.Sprite {
     this.config=configSound;
 
     this.powerupsound= this.scene.sound.add("powerupSound",configSound);
-    this.debuffsound= this.scene.sound.add("debuffSound",configSound);
     this.body.moves=false;
     this.stopMovement=false;
     this.tweenMovement;
@@ -70,6 +69,5 @@ export default class PowerUp extends Phaser.GameObjects.Sprite {
   {
    super.preUpdate(t,dt);
    this.powerupsound.setVolume(this.scene.ChangeVolume());
-   this.debuffsound.setVolume(this.scene.ChangeVolume());
   }
 }
