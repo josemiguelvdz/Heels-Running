@@ -1,18 +1,19 @@
-# Heels Running 
-Boceto del juego:
-
-![49_sin_titulo_20210929211726](https://user-images.githubusercontent.com/75903737/135341234-18b81a0c-78b1-4804-a54c-226416f95339.png)
-
-![50_sin_titulo_20210930095648](https://user-images.githubusercontent.com/75903737/135530685-4473cfb8-8ab0-4678-be5d-2e054892399b.png)
+![heelstitulo](https://user-images.githubusercontent.com/75903737/146580307-4192043c-4c97-4492-90a3-6ae39f453353.png)
 
 ## Redes
 
-Disponible en: https://josemiguelvdz.github.io/PVLI
+<table>
+  <tr>
+   <td valign="top"><a href='https://www.pivotaltracker.com/projects/2532298'><img src="./assets/images/pivotal.png" width="100" height="100"></a></td>
+   <td valign="top"> <a href='https://twitter.com/Hitch_Corp'><img src="./assets/images/twitter.png" width="100" height="100"></a></td>
+  </tr>
+ <tr>
+   <td valign="top"><p align="center">Pivotal</p></td>
+  <td valign="top"><p align="center">Twitter</p></td>
+ </tr>
+</table>
 
-Twitter: https://twitter.com/Hitch_Corp
-
-Pivotal: https://www.pivotaltracker.com/n/projects/2532298
-
+<br>
 UML: https://app.creately.com/diagram/p9mz5a7aeDl/view
 
 ### GDD:
@@ -23,12 +24,14 @@ UML: https://app.creately.com/diagram/p9mz5a7aeDl/view
 - Rodrigo Cabello Hernández, Daniel Ruiz Figueroa, Diego Rol Sánchez, José Miguel Villacañas Díaz-Hellín
 
 Capturas del Juego:
+
 ![image](https://user-images.githubusercontent.com/82502179/146576896-2796abf0-4ccf-4610-9fcf-52e42e3cc708.png)
 
 ![image](https://user-images.githubusercontent.com/82502179/146577058-05c34078-c316-45b2-9882-288b82047b45.png)
 
-![unknown](https://user-images.githubusercontent.com/75903737/135341022-3484ffb8-e9ce-4f82-8740-6db7b09cdaf4.png)
-
+<div align="center">
+ <img src="https://user-images.githubusercontent.com/75903737/146586110-f416e92a-4977-43de-87e9-91d741d16d81.png" width=300>
+</div>
 
 #### Descripción y Resumen
 
