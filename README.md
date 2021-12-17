@@ -23,10 +23,9 @@ UML: https://app.creately.com/diagram/p9mz5a7aeDl/view
 - Rodrigo Cabello Hernández, Daniel Ruiz Figueroa, Diego Rol Sánchez, José Miguel Villacañas Díaz-Hellín
 
 Capturas del Juego:
+![image](https://user-images.githubusercontent.com/82502179/146576896-2796abf0-4ccf-4610-9fcf-52e42e3cc708.png)
 
-![image](https://user-images.githubusercontent.com/82502179/143427181-0c6534b3-b792-4c63-adf7-a4a65ddef3c8.png)
-
-![image](https://user-images.githubusercontent.com/82502179/143427331-6652e08e-9f87-4a04-a9dd-7ed7c775c38c.png)
+![image](https://user-images.githubusercontent.com/82502179/146577058-05c34078-c316-45b2-9882-288b82047b45.png)
 
 ![unknown](https://user-images.githubusercontent.com/75903737/135341022-3484ffb8-e9ce-4f82-8740-6db7b09cdaf4.png)
 
@@ -108,17 +107,22 @@ en completar la run.
 
 #### Menús
 
-Menú con un fondo, botón para jugar, si se pulsa comienza la experiencia de juego. Otro botón para la configuración del juego, si lo pulsas abres una ventana para configurar los diferentes aspectos del videojuego (volumen y ver los controles), botón en una esquina con el logo de nuestra empresa, si lo pulsas, despliega una ventana con los nombres de los creadores del juego.
+Menu de incio: menú con un fondo en movimiento, botón para jugar, si se pulsa comienza la experiencia de juego. Otro botón para la configuración del juego, si lo pulsas abres una ventana para configurar los diferentes aspectos del videojuego (volumen y ver los controles), botón en una esquina con el logo de nuestra empresa, si lo pulsas, despliega una ventana con los nombres de los creadores del juego.
 
 *Falta imágen del menú principal de juego*
 
-Luego dentro del juego tendremos otro menú de pausa donde podremos reaunudar el juego, salir al menú principal, o ir al menú de configuraciones donde podremos cambiar el volumen y ver los controles.
+Menú de pausa: dentro del juego tendremos otro menú de pausa donde podremos reaunudar el juego, salir al menú principal, o ir al menú de configuraciones donde podremos cambiar el volumen y ver los controles.
 
 ![image](https://user-images.githubusercontent.com/82502179/143425102-ace70e46-6f85-433f-aa6c-db0293047e3f.png)
 
-![image](https://user-images.githubusercontent.com/82502179/143426953-ecca5b90-006a-4894-8086-c95238bf8f57.png)
+![image](https://user-images.githubusercontent.com/82502179/146576664-2f2e19f5-d7f4-410f-bdd4-8480c68aa589.png)
  
 ![image](https://user-images.githubusercontent.com/82502179/135832931-d133a8f5-a120-492b-882c-e4a947dabc56.png)
+
+
+Menú de Game Over: aparece cuando perdemos y en él podremos volver a jugar o salir al menú de inicio
+
+![image](https://user-images.githubusercontent.com/82502179/146575662-ee4a398a-91b1-4c66-9179-35c82cb6fb23.png)
  
 
 #### 3.1. Configuración
@@ -129,7 +133,7 @@ Luego dentro del juego tendremos otro menú de pausa donde podremos reaunudar el
 Mostraremos la barra de vida que tiene el jugador, así como el tiempo que ha transcurrido en la partida.
 También mostraremos el Power Up o Debuff activo en ese momento (si es que lo hay)
 
-![image](https://user-images.githubusercontent.com/82502179/143425556-272a6cda-bcee-49d3-818b-c726d8382fb2.png)
+![image](https://user-images.githubusercontent.com/82502179/146577293-698d22e0-53a5-43b9-ab6f-594a53beb9c7.png)
 
 
 #### 3.3. Controles
@@ -137,7 +141,7 @@ También mostraremos el Power Up o Debuff activo en ese momento (si es que lo ha
 - Movimiento : W - Saltar /  D - Dar Patada
 - Configuracion : Escape - Menu Pausa / Todo con el ratón
 
-![controles](https://user-images.githubusercontent.com/82502179/143426642-db6962f8-80e1-41d1-81ad-ec553a171910.png)
+![image](https://user-images.githubusercontent.com/82502179/146577193-94a00855-acbf-4312-8bed-a6e1c4f931ac.png)
 
 #### 4. Contenido
 - Todos los sprites de los objetos, cajas, muros, etc, así como los sprites del jugador, de la policía y de los mafiosos.
