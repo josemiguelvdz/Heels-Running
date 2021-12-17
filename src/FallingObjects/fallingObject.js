@@ -11,7 +11,6 @@ export default class FallingObject extends Phaser.GameObjects.Sprite {
     this.body.setCollideWorldBounds(); //Colision con los limies del mundo 
     this.body.moves=false;
     this.isMoving=false;
-    this.gameIsPaused=false;
     this.y -= this.height;
     this.nLifesLose=1;
 
@@ -37,10 +36,10 @@ export default class FallingObject extends Phaser.GameObjects.Sprite {
     }
     if(this.isMoving)
     {
-      if(!this.gameIsPaused){
+     
         if (this.angle===360) this.angle=0;
         this.angle++; 
-      }
+      
     }  
     
     this.fallingSound.setVolume(this.scene.ChangeVolume());
