@@ -55,8 +55,6 @@ Logotipo y portada del juego: ---
 
 <hr>
 
-![contenido](https://user-images.githubusercontent.com/75903737/146586722-b9868873-ed96-4a07-9103-c7fd6749d055.png)
-
 #### 1. Aspectos generales
 
 *Aqui ponemos una captura del nivel y explicamos lo que estaría pasando en ese momento*
@@ -139,6 +137,8 @@ en completar la run.
 
 <hr>
 
+![hudinterfaz](https://user-images.githubusercontent.com/75903737/146591632-848096a6-f40e-4d56-985f-d098cca3b30a.png)
+
 ### 3.1. Configuración
 - Configuración de volumen: Podremos cambiar tanto la música como el sonido de nuestro videojuego.
 
@@ -159,7 +159,8 @@ También mostraremos el Power Up o Debuff activo en ese momento (si es que lo ha
 
 <hr>
 
-### 4. Contenido
+![contenido](https://user-images.githubusercontent.com/75903737/146586722-b9868873-ed96-4a07-9103-c7fd6749d055.png)
+
 - Todos los sprites de los objetos, cajas, muros, etc, así como los sprites del jugador, de la policía y de los mafiosos.
 - Tendremos sonidos para los disparos, para el salto del jugador, para el choque de los objetos cayentes al suelo, para la destrucción de cajas, para los powerups, cuando el jugador reciba daño...
 - También tendremos sonidos para el entorno del juego, como pitidos de coche.
@@ -180,29 +181,72 @@ Tras atravesar la ciudad, llegaremos a una estación del tren para escapar.
 #### PROTAGONISTA:
 - Nuestro protagonista es Roger, un publicista al cuál la mafia esta tratando de matar por ser confundido con un agente del F.B.I y el cual será perseguido por la policía tras un juicio.
 
+![output-onlinegiftools](https://user-images.githubusercontent.com/75903737/146591943-6bb66998-9134-4950-8857-3fd9b9ba8e8c.gif)
+
+
 #### POLICIA:
 - La policía es el enemigo que nos perseguirá. Siempre estará detrás del jugador siguiéndole el rastro. Si el jugador está a una altura diferente a la policia (jugador por encima de edificios), entonces pasará a ser perseguido por un helicóptero por el aire. Por último, si entra en contacto con el jugador, éste será arrestado y perderá la partida.
 
-##### MAFIA:
+![output-onlinegiftools (1)](https://user-images.githubusercontent.com/75903737/146592064-874e13de-9614-4bb4-b6f9-0e73ca054405.gif)
+
+
+#### MAFIA:
 - Se trata de enemigos estáticos cuya función es matar al jugador disparándole. Aparecerán de vez en cuando en ventanas. Se avisará al jugador mostrando el icono de un mafioso en el límite de la pantalla derecha, indicándole que cuando llegue aparecerá un mafioso en esa posición.
+
+![mafioso](https://user-images.githubusercontent.com/75903737/146592103-32235993-333a-400c-951e-039543aa5acf.png)
+
 
 ### 4.3. Objetos
 
-#### Power Ups
+### Power Ups
 
--Café: Este PowerUp hace referencia a algo que consume mucho el protagonista de nuestro videojuego en la película de Alfred, por lo que nos incrementará la velocidad para poder escapar más facilmente de la policía y evitar ser arrestados.
-
--Smoking: Este smoking también hace referencia a como iba vestido nuestro protagonista, por lo que este Power Up nos ofrecerá un escudo de modo que no obtengamos ningún tipo de daño o penalización mientras su efecto esté activo.
-
--Reloj Verde: Dado que nuestro juego se trata de completar el nivel en el menor tiempo posible, este Power Up nos restará tiempo a la run (15s), lo que nos ayudará a concluir nuestras partidas con un tiempo mejor.
-
--Salmon: En referencia a uno de los alimentos de la película, cuando el jugador obtenga este objeto , recuperara vida (un punto) , facilitándole su supervivencia de los mafiosos y de los objetos arrojados por la ventana. 
+<table>
+  <tr>
+   <td valign="top"><p align="center">Nombre</p></td>
+   <td valign="top"><p align="center">Sprite</p></td>
+   <td valign="top"><p align="center">Efecto</p></td>
+ <tr>
+  <td valign="mid"><p align="center">Café</p></td>
+  <td valign="top"><img src="https://user-images.githubusercontent.com/75903737/146590799-c5200e52-1497-4f01-ad6a-7768ca952916.png" width=250 height=100></td>
+  <td valign="top"><p align="center">Este PowerUp hace referencia a algo que consume mucho el protagonista de nuestro videojuego en la película de Alfred, por lo que nos incrementará la velocidad para poder escapar más facilmente de la policía y evitar ser arrestados.</p></td>
+ </tr>
+   <tr>
+  <td valign="mid"><p align="center">Smoking</p></td>
+  <td valign="top"><img src="https://user-images.githubusercontent.com/75903737/146591005-23fbcaf1-16c9-4b83-9791-99048b451ee4.png" width=250 height=100></td>
+  <td valign="top"><p align="center">Este smoking también hace referencia a como iba vestido nuestro protagonista, por lo que este Power Up nos ofrecerá un escudo de modo que no obtengamos ningún tipo de daño o penalización mientras su efecto esté activo.</p></td>
+ </tr>
+   <tr>
+  <td valign="mid"><p align="center">Reloj Verde</p></td>
+  <td valign="top"><img src="https://user-images.githubusercontent.com/75903737/146591032-b1fb276c-92dd-4edd-b271-9cedd6062a63.png" width=250 height=100></td>
+  <td valign="top"><p align="center">Dado que nuestro juego se trata de completar el nivel en el menor tiempo posible, este Power Up nos restará tiempo a la run (15s), lo que nos ayudará a concluir nuestras partidas con un tiempo mejor.</p></td>
+ </tr>
+  <tr>
+  <td valign="mid"><p align="center">Salmon</p></td>
+  <td valign="top"><img src="https://user-images.githubusercontent.com/75903737/146591070-d19e3148-7a79-46f0-bd97-9fd6dfc1a0ee.png" width=250 height=100></td>
+  <td valign="top"><p align="center">En referencia a uno de los alimentos de la película, cuando el jugador obtenga este objeto , recuperara vida (un punto) , facilitándole su supervivencia de los mafiosos y de los objetos arrojados por la ventana.</p></td>
+ </tr>
+</table>
 
 ### Debuffs
 
--Alcohol: Dado que en la película los mafiosos nos obligan a beber alcohol, hemos utilizado este debuff de manera que si lo consumimos adquiriremos una disminución de velocidad por un cierto periodo de tiempo, lo que facilitará el arresto a la policía.
+<table>
+  <tr>
+   <td valign="top"><p align="center">Nombre</p></td>
+   <td valign="top"><p align="center">Sprite</p></td>
+   <td valign="top"><p align="center">Efecto</p></td>
+  </tr>
+  <tr>
+  <td valign="mid"><p align="center">Alcohol</p></td>
+  <td valign="top"><img src="https://user-images.githubusercontent.com/75903737/146591371-5ab2bc15-f9d8-44a2-8ac3-8ec478e3e9a5.png" width=250 height=100></td>
+  <td valign="top"><p align="center">Dado que en la película los mafiosos nos obligan a beber alcohol, hemos utilizado este debuff de manera que si lo consumimos adquiriremos una disminución de velocidad por un cierto periodo de tiempo, lo que facilitará el arresto a la policía.</p></td>
+ </tr>
+  <tr>
+  <td valign="mid"><p align="center">Reloj Rojo</p></td>
+  <td valign="top"><img src="https://user-images.githubusercontent.com/75903737/146591303-b65cc8da-a460-4c41-8d84-bed7253822cc.png" width=250 height=100></td>
+  <td valign="top"><p align="center">Al contrario que el reloj verde explicado con anterioridad, este debuff nos sumará tiempo adicional (30s) al tiempo de la partida, lo que hará que concluyamos la partida con un mayor tiempo. </p></td>
+ </tr>
+</table
 
--Reloj Rojo: Al contrario que el reloj verde explicado con anterioridad, este debuff nos sumará tiempo adicional (30s) al tiempo de la partida, lo que hará que concluyamos la partida con un mayor tiempo.
 
 <hr>
 
