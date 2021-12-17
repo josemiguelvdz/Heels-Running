@@ -28,9 +28,9 @@ export default class GameOver extends Phaser.Scene {
 
 
 
-        this.playButton = this.add.image(this.scale.width*0.5, 400, 'playButton').setInteractive();
+        this.playButton = this.add.image(this.scale.width*0.5, 400, 'playButton').setInteractive().setScale(0.8, 0.8);
         this.playButton.x=500;
-        this.playButton.y-=215;
+        this.playButton.y= 150;
         this.playButton.on('pointerdown', () => {this.scene.start('level')});
 
         this.exitButton = this.add.image(this.scale.width*0.5, 500, 'exitButton').setInteractive();

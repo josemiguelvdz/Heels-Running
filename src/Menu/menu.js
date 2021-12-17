@@ -7,7 +7,7 @@ export default class Menu extends Phaser.Scene {
   
     create() {
       this.spriteTrain=this.add.sprite(600, 230, 'mainMenu').setScale(0.7, 0.7); 
-      this.helicopter=this.add.sprite(-40, 125, 'helicopterAnimation');
+      this.helicopter=this.add.sprite(this.scale.width*0.47, 225, 'helicopterAnimation');
 
       this.anims.create({
           key: 'mMenu',
@@ -26,18 +26,28 @@ export default class Menu extends Phaser.Scene {
       this.spriteTrain.play('mMenu');
       
       //this.playbackground= this.add.image(this.scale.width*0.5, 300, 'playBackGround');
-      this.playButton = this.add.image(0, 210, 'playButton').setInteractive().setScale(0.7, 0.7);
+      this.playButton = this.add.image(this.scale.width*0.5, 330, 'playButton').setInteractive().setScale(1, 1);
       this.playButton.on('pointerdown', () => {this.scene.start('level')});
+
+      this.speed = 4;
     }
 
     update(){
-      this.playButton.x += 5;
-      this.helicopter.x += 5;
 
-      if(this.scale.width +(this.helicopter.width/2) < this.helicopter.x){
-        this.playButton.x = 0;
-        this.helicopter.x = 0;
+      if(this.helicopter.x >= (200 + this.scale.width*0.5)){
+        this.helicopter.setFlip(true, false);
+        this.speed *= -1; 
+        this.playButton.x = this.playButton.x - 70;
       }
+
+      else if(this.helicopter.x <= (-200 + this.scale.width*0.5)){
+        this.helicopter.setFlip(false, false);
+        this.speed *= -1; 
+        this.playButton.x = this.playButton.x + 70;
+      }
+
+      this.playButton.x += this.speed;
+      this.helicopter.x += this.speed;
 
       this.helicopter.play('helicopter_animation', true);
     }
