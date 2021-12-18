@@ -114,6 +114,7 @@ export default class Level extends Phaser.Scene {
     } 
 
     this.mainSong.setVolume(this.ChangeVolume());
+
   }
 
   lose(){
@@ -446,7 +447,6 @@ export default class Level extends Phaser.Scene {
     this.winZone.body.setAllowGravity(false);
     this.winZone.body.setImmovable(true);
   }
-
 
   createHelicopterZone(x,y,height,totalWidth){
     // POLICE ZONE
