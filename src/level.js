@@ -38,11 +38,11 @@ export default class Level extends Phaser.Scene {
       .setScale(2, 1)
       .setScrollFactor(0);
 
-    this.createAligned(this, totalWidth, 'backhouse', 0.25);
-    this.createAligned(this, totalWidth, 'houses2', 0.5);
-    this.createAligned(this, totalWidth, 'houses1', 0.5);
-    this.createAligned(this, totalWidth, 'road', 1);
-    this.createAligned(this, totalWidth, 'crosswalk', 1);
+    this.createAligned(this, totalWidth*2, 'backhouse', 0.25);
+    this.createAligned(this, totalWidth*2, 'houses2', 0.5);
+    this.createAligned(this, totalWidth*2, 'houses1', 0.5);
+    this.createAligned(this, totalWidth*2, 'road', 1);
+    this.createAligned(this, totalWidth*2, 'crosswalk', 1);
     const configSound = {
       mute: false,
       volume: 0.3,
@@ -164,6 +164,8 @@ export default class Level extends Phaser.Scene {
 
     this.createZones(totalWidth);
     
+
+    //-400, 300
     this.player = new Player(this, -400, 300, 3);
     // CAMBIAR BOUDING BOX DE TAMAÑO
     this.changeBoundingBox(this.player, 2, 1.5);
@@ -291,6 +293,29 @@ export default class Level extends Phaser.Scene {
     this.createBuilding(9007, 305, 'stairs', true, true, 1, 3);
     this.createBuilding(8900, 420, 'bakery', true, true, 1.2, 2.3);
     this.createBuilding(9370, 325, 'burguer', true, true, 1.2, 1.15);
+    
+    this.createBuilding(9820, 210, 'stairBuilding', true, true, 1.2, 1.4);
+    this.createBuilding(10140, 0, 'spainBuilding', true, true, 2, 1.6);
+    this.createBuilding(10700, 100, 'redLargeBuilding', true, true, 1.1, 1.2);
+    this.createBuilding(11300, -50, 'whiteBuilding', true, true, 1.2, 1.7);
+    this.createBuilding(11700, -200, 'stairBuilding', true, true, 1.2, 1.4);
+    this.createBuilding(12100, 400, 'presidentialBuilding', true, true, 1.5, 1.35);
+    this.createBuilding(12450, 600, 'presidentialBuilding', true, true, 1.5, 1.35);
+    this.createBuilding(12740, -200, 'modernBuilding', true, true, 1.2, 1.75);
+    this.createBuilding(12970, -200, 'spainBuilding', true, true, 2, 1.6);
+    this.createBuilding(13500, 0, 'redLargeBuilding', true, true, 1.1, 1.2);
+    this.createBuilding(14110, -100, 'oldBuilding', true, true, 1.6, 1.5);
+    this.createBuilding(14530, -300, 'stairBuilding', true, true, 1.2, 1.4);
+    this.createBuilding(14900, -150, 'whiteBuilding', true, true, 1.2, 1.7);
+    this.createBuilding(15200, -50, 'spainBuilding', true, true, 2, 1.6);
+    this.createBuilding(15510, -15, 'whiteBuilding', true, true, 1.2, 1.7);
+    this.createBuilding(16100, -200, 'redLargeBuilding', true, true, 1.1, 1.2);
+    this.createBuilding(16700, 450, 'presidentialBuilding', true, true, 1.5, 1.35);
+    this.createBuilding(17100, 0, 'stairBuilding', true, true, 1.2, 1.4);
+    this.createBuilding(17450, 70, 'spainBuilding', true, true, 2, 1.6);
+    this.createBuilding(17800, 300, 'whiteBuilding', true, true, 1.2, 1.7);
+    this.createBuilding(18400, 400, 'redLargeBuilding', true, true, 1.1, 1.2);
+
   }
   createAllFallObjects()
   {
@@ -414,7 +439,7 @@ export default class Level extends Phaser.Scene {
 
    createGroundZone(totalWidth)
    {
-    this.groundZone = this.add.zone(0, 600, totalWidth*2, 64);
+    this.groundZone = this.add.zone(0, 600, totalWidth*3, 64);
     this.physics.world.enable(this.groundZone);
     this.groundZone.body.setAllowGravity(false);
     this.groundZone.body.setImmovable(true);

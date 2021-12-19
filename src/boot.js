@@ -62,6 +62,12 @@ export default class Boot extends Phaser.Scene {
       this.load.image('bakery', 'building5.png');
       this.load.image('burguer', 'building3.png');
       this.load.image('stairs', 'building16.png');
+      this.load.image('stairBuilding', 'building4.png');
+      this.load.image('spainBuilding', 'building14.png');
+      this.load.image('redLargeBuilding', 'building10.png');
+      this.load.image('presidentialBuilding', 'building7.png');
+      this.load.image('modernBuilding', 'building11.png');
+      this.load.image('oldBuilding', 'building9.png');
 
       //Interfaz Sprites
       this.load.setPath('./assets/Sprites/Interfaz');
@@ -142,6 +148,6 @@ export default class Boot extends Phaser.Scene {
      * nivel del juego
      */
     create() {
-      this.scene.start('intro');
+      this.scene.start('menu');
     }
   }
