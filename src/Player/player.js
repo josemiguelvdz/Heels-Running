@@ -59,8 +59,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
       repeat: 0
     });
 
-    this.kick=this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-    this.jump=this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+    this.kick=this.scene.input.keyboard.addKey('D');
+    this.jump=this.scene.input.keyboard.addKey('W');
 
     this.kickActive = false;
     this.play('run_anim');
@@ -166,7 +166,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.play('run_anim', true);
     }
     
-    if (Phaser.Input.Keyboard.JustDown(this.jump) && this.body.onFloor() && !this.arrested) { // este es el salto
+    if (this.jump.isDown && this.body.onFloor() && !this.arrested) { // este es el salto
      this.createJumpParticles();
       this.body.setVelocityY(this.jumpSpeed*this.jumpImpulse);
       this.play('jump_anim', true);
