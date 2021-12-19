@@ -147,7 +147,7 @@ export default class Level extends Phaser.Scene {
  * @param {*} height -specifies ground height for its creation
  * @param {*} totalWidth -specifies total  ground width for its creation
  */
-  createObjects(width, height, totalWidth)
+  createObjects(totalWidth)
   {
     this.createObjectGroups();
 

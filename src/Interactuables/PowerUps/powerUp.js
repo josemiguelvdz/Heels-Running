@@ -26,8 +26,7 @@ export default class PowerUp extends Phaser.GameObjects.Sprite {
     this.body.moves=false;
     this.movesbyTween=moving;
     
-    //Referencias al jugador la escena y el sprite que tengan 
-    this.player=player;
+
     this.scene=scene;
    
     this.nameImg= nombreImg;
