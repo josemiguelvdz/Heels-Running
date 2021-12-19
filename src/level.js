@@ -70,7 +70,7 @@ export default class Level extends Phaser.Scene {
     this.mainSong= this.sound.add("gameSong",configSound2);
     this.mainSong.play();
 
-    this.createObjects(width, height, totalWidth);
+    this.createObjects(totalWidth);
 
     
     //this.cameras.main.setBounds(0, 0, totalWidth, height);
