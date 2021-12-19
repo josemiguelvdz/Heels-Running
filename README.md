@@ -60,7 +60,10 @@ Logotipo del juego:
 
 #### 1. Aspectos generales
 
-*Aqui ponemos una captura del nivel y explicamos lo que estaría pasando en ese momento*
+<img src="https://user-images.githubusercontent.com/75903737/146689895-a6c4d8c6-a76e-41f7-9def-715c1f4af3a8.png">
+
+En esta captura podemos ver al jugador siendo perseguido por la polícia en forma de helicóptero, varios objetos estáticos bloqueando el camino así como un objeto cayente que golpeará al jugador a no ser que éste use la patada. También podemos ver al mafioso en la parte derecha de la pantalla a punto de disparar al jugador, así como un Esmoquin para protegerte del daño en los próximos segundos. Por último, la interfaz acorde a ese momento de la partida.
+
 
 #### 1.1. Relato breve y parcial de una partida típica
 
@@ -188,7 +191,8 @@ Tras atravesar la ciudad, llegaremos a una estación del tren para escapar.
 
 
 #### POLICIA:
-- La policía es el enemigo que nos perseguirá. Siempre estará detrás del jugador siguiéndole el rastro. Si el jugador está a una altura diferente a la policia (jugador por encima de edificios), entonces pasará a ser perseguido por un helicóptero por el aire. Por último, si entra en contacto con el jugador, éste será arrestado y perderá la partida.
+- La policía es el enemigo que nos perseguirá. Siempre estará detrás del jugador siguiéndole el rastro. Si el jugador está a una altura diferente a la policia (jugador por encima de edificios), entonces pasará a ser perseguido por un helicóptero por el aire. Si entra en contacto con el jugador, éste será arrestado y perderá la partida.
+Por último, se avisará al jugador mostrando el icono del policía en el límite de la pantalla izquierda si te alejas lo suficiente de él, mostrando en todo momento la posición del policía.
 
 ![output-onlinegiftools (1)](https://user-images.githubusercontent.com/75903737/146592064-874e13de-9614-4bb4-b6f9-0e73ca054405.gif)
 
@@ -214,9 +218,9 @@ Tras atravesar la ciudad, llegaremos a una estación del tren para escapar.
   <td valign="top"><p align="center">Este PowerUp hace referencia a algo que consume mucho el protagonista de nuestro videojuego en la película de Alfred, por lo que nos incrementará la velocidad para poder escapar más facilmente de la policía y evitar ser arrestados.</p></td>
  </tr>
    <tr>
-  <td valign="mid"><p align="center">Smoking</p></td>
+  <td valign="mid"><p align="center">Esmoquin</p></td>
   <td valign="top"><img src="https://user-images.githubusercontent.com/75903737/146591005-23fbcaf1-16c9-4b83-9791-99048b451ee4.png" width=250 height=100></td>
-  <td valign="top"><p align="center">Este smoking también hace referencia a como iba vestido nuestro protagonista, por lo que este Power Up nos ofrecerá un escudo de modo que no obtengamos ningún tipo de daño o penalización mientras su efecto esté activo.</p></td>
+  <td valign="top"><p align="center">Este esmoquin también hace referencia a como iba vestido nuestro protagonista, por lo que este Power Up nos ofrecerá un escudo de modo que no obtengamos ningún tipo de daño o penalización mientras su efecto esté activo.</p></td>
  </tr>
    <tr>
   <td valign="mid"><p align="center">Reloj Verde</p></td>
