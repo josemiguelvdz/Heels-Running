@@ -48,12 +48,14 @@ export default class PowerUp extends Phaser.GameObjects.Sprite {
   */
   createTweenMovement()
   {
+    this.rndDuration= Phaser.Math.Between(1000, 2000);
+    this.rndY=Phaser.Math.Between(250, 550);
     if(this.movesbyTween)
     {
       this.tweenMovement= this.scene.tweens.add({
       targets: this,
-      y: 400, //Cantidad de desplazamiento
-      duration: 1500,
+      y: this.rndY, //Cantidad de desplazamiento
+      duration: this.rndDuration,
       ease: 'Linear',
       yoyo: true,
       repeat: -1,
