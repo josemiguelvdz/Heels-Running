@@ -62,15 +62,15 @@ Logotipo del juego:
 
 <img src="https://user-images.githubusercontent.com/75903737/146689895-a6c4d8c6-a76e-41f7-9def-715c1f4af3a8.png">
 
-En esta captura podemos ver al jugador siendo perseguido por la polícia en forma de helicóptero, varios objetos estáticos bloqueando el camino así como un objeto cayente que golpeará al jugador a no ser que éste use la patada. También podemos ver al mafioso en la parte derecha de la pantalla a punto de disparar al jugador, así como un Esmoquin para protegerte del daño en los próximos segundos. Por último, la interfaz acorde a ese momento de la partida.
+- En esta captura podemos ver al jugador siendo perseguido por la polícia en forma de helicóptero, varios objetos estáticos bloqueando el camino así como un objeto cayente que golpeará al jugador a no ser que éste use la patada. También podemos ver al mafioso en la parte derecha de la pantalla a punto de disparar al jugador, así como un Esmoquin para protegerte del daño en los próximos segundos. Por último, la interfaz acorde a ese momento de la partida.
 
 
 #### 1.1. Relato breve y parcial de una partida típica
 
-El juego transcurre en una ciudad, donde somos perseguidos por la policía y atacados por la mafia, nosotros tendremos que tratar de esquivar los obstáculos saltando o dándoles una patada. Para acabar la partida y lograr ganar tendremos que llegar a la estación del tren.
+- El juego transcurre en una ciudad, donde somos perseguidos por la policía y atacados por la mafia, nosotros tendremos que tratar de esquivar los obstáculos saltando o dándoles una patada. Para acabar la partida y lograr ganar tendremos que llegar a la estación del tren.
 <hr>
 
-#### 2. Jugabilidad
+### 2. Jugabilidad
 
 ![mecanicas](https://user-images.githubusercontent.com/75903737/146586859-a638aa0e-8df7-48c8-9690-af0831868b22.png)
 
