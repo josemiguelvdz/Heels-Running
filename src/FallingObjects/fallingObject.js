@@ -89,7 +89,9 @@ export default class FallingObject extends Phaser.GameObjects.Sprite {
     }
   } 
 
-
+  /**
+   * Create the particles of the F. Obj.
+   */
   createParticlesFallingbj()
   {
     let deathParticles = this.scene.add.particles('breakingParticle');
