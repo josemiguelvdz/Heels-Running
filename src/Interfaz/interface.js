@@ -1,7 +1,7 @@
 
 export default class Interface extends Phaser.GameObjects.GameObject {
 
-    constructor(scene, player) {
+    constructor(scene, player,police) {
       super(scene);
       this.scene.add.existing(this);
   
@@ -38,6 +38,12 @@ export default class Interface extends Phaser.GameObjects.GameObject {
       this.oneAdvice = false;
       this.iconExist = false;
   
+
+      this.policeVisionRange=650;
+      this.policeRange=650;
+      this.policeAdvice=false;
+
+
       this.player = player;
     }
   
@@ -45,6 +51,7 @@ export default class Interface extends Phaser.GameObjects.GameObject {
       this.checkLifes(this.player);
       this.checkPowerUpBar();
       this.checkGangster();
+      this.checkPolice();
     }
 
     checkGangster(){
@@ -60,6 +67,23 @@ export default class Interface extends Phaser.GameObjects.GameObject {
             this.icon.destroy();
             this.iconExist = false;
         }
+
+        
+    }
+
+    checkPolice(){
+      if(Math.abs(this.scene.police.x-this.player.x) >=this.policeRange && !this.policeAdvice){
+        this.iconPolice=this.scene.add.image(50, this.scene.police.y, 'advice').setScrollFactor(0);
+        this.policeAdvice=true;
+      }
+      else if(this.policeVisionRange>= Math.abs(this.scene.police.x-this.player.x) && this.iconPolice){
+        this.iconPolice.destroy();
+        this.policeAdvice=false;
+      }
+      if(this.iconPolice){
+        if(this.scene.police.isHelicopter()) this.iconPolice.y=this.scene.police.y+110;
+        else this.iconPolice.y=this.scene.police.y;
+      }
     }
   
     checkLifes(player){
