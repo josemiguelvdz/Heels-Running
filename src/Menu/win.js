@@ -22,8 +22,6 @@ export default class Win extends Phaser.Scene {
             repeat: -1    // Animación en bucle
           });
 
-        this.spriteTrain.play('trainB');
-        this.lose=this.add.sprite(600, 300, 'loseBackGround').setScale(2.3,2); 
         const configSound = {
           mute: false,
           volume: this.volumeSong,
@@ -35,6 +33,7 @@ export default class Win extends Phaser.Scene {
         };
         this.winSong= this.sound.add("winSound",configSound);
         this.winSong.play();
+        this.spriteTrain.play('trainB');
 
 
         //this.winBackGround = this.add.image(this.scale.width*0.5, this.scale.height*0.5-105, 'playBackGround').setScale(1.5, 1.5).setScrollFactor(0);
@@ -53,7 +52,7 @@ export default class Win extends Phaser.Scene {
         
         this.spriteWin = this.add.image(this.scale.width*0.5, 100, 'youWin').setScale(0.8, 0.8);
 
-        this.playButton = this.add.image(this.scale.width*0.5, 400, 'playButton').setInteractive();
+        this.playButton = this.add.image(this.scale.width*0.5, 400, 'playButton_').setInteractive();
         this.playButton.on('pointerdown', () => {
           this.scene.start('level');
           this.winSong.stop();
