@@ -55,6 +55,7 @@ Logotipo del juego:
 - 0.3 Controles básicos, power Ups, debuffs. (29/09/2021)
 - 0.4 Ajuste completo del GDD, dejando claros todos los aspectos del mismo. (5/10/2021)
 - 0.5 Ajuste completo del GDD, para actualizarlo según el progreso actual del juego. (25/11/2021)
+- 1.0 GDD completado en su totalidad, y juego terminado a falta de detalles (20-12-2021)
 
 <hr>
 
