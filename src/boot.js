@@ -21,6 +21,7 @@ export default class Boot extends Phaser.Scene {
       this.load.image('houses2', 'houses2.png');
       this.load.image('pauseBackGround', 'fondoNegro.png');   
       this.load.image('playBackGround', 'playBackGround.png');
+      this.load.image('playBackGround_V2', 'playBackGround_V2.png');
 
       //Police Sprites
       this.load.setPath('./assets/Sprites/Police');
@@ -39,7 +40,7 @@ export default class Boot extends Phaser.Scene {
       this.load.spritesheet('kick_particles', 'kickParticles.png', {frameWidth:128, frameHeight: 128})
       //WinBackGround
       this.load.setPath('./assets/Sprites/Menu');
-      this.load.spritesheet('trainBackground','trainBackground.png',{frameWidth:2700,frameHeight:3792});
+      this.load.spritesheet('trainBackground','trainBackground.png',{frameWidth:540,frameHeight:331});
      
       //StaticObjects Sprites
       this.load.setPath('./assets/Sprites/StaticObjects');
@@ -48,6 +49,7 @@ export default class Boot extends Phaser.Scene {
       this.load.image('fireHydrant', 'fireHydrant.png');
       this.load.image('policeCar', 'policeCar.png');
       this.load.image('streetlight', 'Farola.png');
+      this.load.image('seat', 'seat.png');
 
       //this.load.image('candy', 'candyShop.png');
 
@@ -60,6 +62,12 @@ export default class Boot extends Phaser.Scene {
       this.load.image('bakery', 'building5.png');
       this.load.image('burguer', 'building3.png');
       this.load.image('stairs', 'building16.png');
+      this.load.image('stairBuilding', 'building4.png');
+      this.load.image('spainBuilding', 'building14.png');
+      this.load.image('redLargeBuilding', 'building10.png');
+      this.load.image('presidentialBuilding', 'building7.png');
+      this.load.image('modernBuilding', 'building11.png');
+      this.load.image('oldBuilding', 'building9.png');
 
       //Interfaz Sprites
       this.load.setPath('./assets/Sprites/Interfaz');
@@ -92,19 +100,23 @@ export default class Boot extends Phaser.Scene {
       //FallObjects Sprites
       this.load.setPath('./assets/Sprites/FallObjects');
       this.load.image('maceta', 'maceta.png');
+      this.load.image('ladrillo', 'ladrillo.png');
 
       //Menu Sprites
       this.load.setPath('./assets/Sprites/Menu');
-      this.load.image('playButton' , 'PlayButton.png');
+      this.load.spritesheet('mainMenu', 'MainMenu.png', {frameWidth:1920, frameHeight:1080});
+      this.load.spritesheet('loseBackGround', 'gameoverbackground.png', {frameWidth:480, frameHeight:254});
+      this.load.image('playButton' , 'PlayButton_V2.png');
+      this.load.image('playButton2' , 'PlayButton_V3.png');
       this.load.image('exitButton', 'ExitButton.png');
+      this.load.image('exitButton_V2', 'ExitButton_V2.png');
       this.load.image('resumeButton', 'resumeButton.png');
       this.load.image('settingsButton', 'settingsButton.png');
       this.load.image('backButton', 'backButton.png');
       this.load.image('controlsTitle', 'controlTitle.png');
       this.load.image('controls', 'controls.png');
       this.load.image('menuLayout', 'menuLayout.png');
-      this.load.image('gameover', 'gameover.png');
-      this.load.image('gameoverbackground', 'gameoverbackground.png');
+      this.load.image('cartelBusted', 'losedefinitivo.png');
       this.load.image('youWin','youWin.png');
       this.load.image('volumeBar', 'VolumeBar.png');
       this.load.image('volumeIcon', 'Volume.png');
@@ -127,6 +139,7 @@ export default class Boot extends Phaser.Scene {
       this.load.audio('gunSound', 'GunShotSound.mp3');
       this.load.audio('deathsound', 'DeathSound.mp3');
       this.load.audio('gameSong', 'GameSong.mp3');
+      this.load.audio('loseSound', 'LoseSound.mp3');
 
    
     }
@@ -135,7 +148,6 @@ export default class Boot extends Phaser.Scene {
      * nivel del juego
      */
     create() {
-      this.scene.start('intro');
-      
+      this.scene.start('menu');
     }
   }

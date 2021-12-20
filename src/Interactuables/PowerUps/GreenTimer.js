@@ -15,7 +15,7 @@ export default class GreenTimer extends PowerUp {
    * Handles the collision with player
    */
   handleCollision(chrono){
-    chrono.reduceTime(0,1);
+    chrono.reduceTime(15000,0);
     this.powerupsound.play();
     this.destroyObject();
   }

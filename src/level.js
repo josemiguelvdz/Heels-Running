@@ -38,17 +38,27 @@ export default class Level extends Phaser.Scene {
       .setScale(2, 1)
       .setScrollFactor(0);
 
-    this.createAligned(this, totalWidth, 'backhouse', 0.25);
-    this.createAligned(this, totalWidth, 'houses2', 0.5);
-    this.createAligned(this, totalWidth, 'houses1', 0.5);
-    this.createAligned(this, totalWidth, 'road', 1);
-    this.createAligned(this, totalWidth, 'crosswalk', 1);
+    this.createAligned(this, totalWidth*2, 'backhouse', 0.25);
+    this.createAligned(this, totalWidth*2, 'houses2', 0.5);
+    this.createAligned(this, totalWidth*2, 'houses1', 0.5);
+    this.createAligned(this, totalWidth*2, 'road', 1);
+    this.createAligned(this, totalWidth*2, 'crosswalk', 1);
+    const configSound = {
+      mute: false,
+      volume: 0.3,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: false,
+      delay: 0,
+    };
+    this.losingsound= this.sound.add("loseSound",configSound);
     
     //creamos los distintos elementos del juego
     //Los asociamos al grupo para las colisiones 
 
     this.powerUpsArray=[];
-    const configSound = {
+    const configSound2 = {
       mute: false,
       volume: 0.3,
       rate: 1,
@@ -57,10 +67,10 @@ export default class Level extends Phaser.Scene {
       loop: true,
       delay: 0,
     };
-    this.mainSong= this.sound.add("gameSong",configSound);
+    this.mainSong= this.sound.add("gameSong",configSound2);
     this.mainSong.play();
 
-    this.createObjects(width, height, totalWidth);
+    this.createObjects(totalWidth);
 
     
     //this.cameras.main.setBounds(0, 0, totalWidth, height);
@@ -81,11 +91,13 @@ export default class Level extends Phaser.Scene {
 
 
 
-  update(){
+  update(t, dt){
+    super.update(t, dt);
 
     if(this.offsetX < 0){
-      this.offsetX += 10;
+      this.offsetX += 0.6 * Math.round(dt);
       this.cameras.main.setFollowOffset(this.offsetX, 25);
+     
     }
 
 
@@ -104,10 +116,12 @@ export default class Level extends Phaser.Scene {
     } 
 
     this.mainSong.setVolume(this.ChangeVolume());
+
   }
 
   lose(){
     this.mainSong.stop();
+    this.losingsound.play();
     this.scene.start('gameover');
   }
 
@@ -135,7 +149,7 @@ export default class Level extends Phaser.Scene {
  * @param {*} height -specifies ground height for its creation
  * @param {*} totalWidth -specifies total  ground width for its creation
  */
-  createObjects(width, height, totalWidth)
+  createObjects(totalWidth)
   {
     this.createObjectGroups();
 
@@ -152,6 +166,8 @@ export default class Level extends Phaser.Scene {
 
     this.createZones(totalWidth);
     
+
+    //-400, 300
     this.player = new Player(this, -400, 300, 3);
     // CAMBIAR BOUDING BOX DE TAMAÑO
     this.changeBoundingBox(this.player, 2, 1.5);
@@ -279,12 +295,35 @@ export default class Level extends Phaser.Scene {
     this.createBuilding(9007, 305, 'stairs', true, true, 1, 3);
     this.createBuilding(8900, 420, 'bakery', true, true, 1.2, 2.3);
     this.createBuilding(9370, 325, 'burguer', true, true, 1.2, 1.15);
+    
+    this.createBuilding(9820, 210, 'stairBuilding', true, true, 1.2, 1.4);
+    this.createBuilding(10140, 0, 'spainBuilding', true, true, 2, 1.6);
+    this.createBuilding(10700, 100, 'redLargeBuilding', true, true, 1.1, 1.2);
+    this.createBuilding(11300, -50, 'whiteBuilding', true, true, 1.2, 1.7);
+    this.createBuilding(11700, -200, 'stairBuilding', true, true, 1.2, 1.4);
+    this.createBuilding(12100, 400, 'presidentialBuilding', true, true, 1.5, 1.35);
+    this.createBuilding(12450, 600, 'presidentialBuilding', true, true, 1.5, 1.35);
+    this.createBuilding(12740, -200, 'modernBuilding', true, true, 1.2, 1.75);
+    this.createBuilding(12970, -200, 'spainBuilding', true, true, 2, 1.6);
+    this.createBuilding(13500, 0, 'redLargeBuilding', true, true, 1.1, 1.2);
+    this.createBuilding(14110, -100, 'oldBuilding', true, true, 1.6, 1.5);
+    this.createBuilding(14530, -300, 'stairBuilding', true, true, 1.2, 1.4);
+    this.createBuilding(14900, -150, 'whiteBuilding', true, true, 1.2, 1.7);
+    this.createBuilding(15200, -50, 'spainBuilding', true, true, 2, 1.6);
+    this.createBuilding(15510, -15, 'whiteBuilding', true, true, 1.2, 1.7);
+    this.createBuilding(16100, -200, 'redLargeBuilding', true, true, 1.1, 1.2);
+    this.createBuilding(16700, 450, 'presidentialBuilding', true, true, 1.5, 1.35);
+    this.createBuilding(17100, 0, 'stairBuilding', true, true, 1.2, 1.4);
+    this.createBuilding(17450, 70, 'spainBuilding', true, true, 2, 1.6);
+    this.createBuilding(17800, 300, 'whiteBuilding', true, true, 1.2, 1.7);
+    this.createBuilding(18400, 400, 'redLargeBuilding', true, true, 1.1, 1.2);
+
   }
   createAllFallObjects()
   {
-    this.createFallObj(3300, 100);
-    this.createFallObj(7000, 100);
-    this.createFallObj(7467, 100);
+    this.createFallObj(3300, 100,"maceta");
+    this.createFallObj(7000, 100,"maceta");
+    this.createFallObj(7467, 100,"ladrillo");
   }
   createAllGangsters()
   {
@@ -353,9 +392,9 @@ export default class Level extends Phaser.Scene {
     if(flagActiveCollider)  this.buildings.add(this.building);
     if(flagBoundingBox) this.changeBoundingBox(this.building, boundingX, boundingY);
   }
-  createFallObj(x, y)
+  createFallObj(x, y,name)
   {
-    this.fallObj = new FallingObject(this, this.player, x, y, 'maceta');
+    this.fallObj = new FallingObject(this, this.player, x, y, name);
     this.fallObjs.add(this.fallObj);
   }
   createGangster(x, y)
@@ -390,7 +429,7 @@ export default class Level extends Phaser.Scene {
         o2.setCollision();
       });
       //GRUPO DEL POLICIA Y EL PLAYER
-    this.physics.add.collider(this.player,this.police,(o1,o2)=>{
+    this.physics.add.overlap(this.player,this.police,(o1,o2)=>{
         o1.arrestado();
         o1.getActualScene().chrono.finish();
         o2.catchP(o1);
@@ -402,7 +441,7 @@ export default class Level extends Phaser.Scene {
 
    createGroundZone(totalWidth)
    {
-    this.groundZone = this.add.zone(0, 600, totalWidth*2, 64);
+    this.groundZone = this.add.zone(0, 600, totalWidth*3, 64);
     this.physics.world.enable(this.groundZone);
     this.groundZone.body.setAllowGravity(false);
     this.groundZone.body.setImmovable(true);
@@ -417,11 +456,11 @@ export default class Level extends Phaser.Scene {
 
    createZones(totalWidth)
    {
-    this.createWinZone(13000, 600, 40, totalWidth);
+    this.createWinZone(20000, 600, 40, totalWidth);
 
     //CREAR TODAS LAS ZONAS NECESARIAS PARA EL NIVEL
 
-    this.createPoliceZone(1850, 600, 40, totalWidth);
+    this.createPoliceZone(1850, 600, 40, totalWidth,60);
     this.createHelicopterZone(3300, 600, 40, totalWidth);
 
 
@@ -436,7 +475,6 @@ export default class Level extends Phaser.Scene {
     this.winZone.body.setImmovable(true);
   }
 
-
   createHelicopterZone(x,y,height,totalWidth){
     // POLICE ZONE
     this.helicopterZone=this.add.zone(x,y,height,totalWidth);
@@ -449,7 +487,7 @@ export default class Level extends Phaser.Scene {
     });
   }
 
-  createPoliceZone(x,y,height,totalWidth){
+  createPoliceZone(x,y,height,totalWidth,h){
     // HELICOPTER ZONE
     this.policeZone=this.add.zone(x,y,height,totalWidth);
     this.physics.world.enable(this.policeZone);
@@ -457,7 +495,7 @@ export default class Level extends Phaser.Scene {
     this.policeZone.body.setImmovable(true);
     this.physics.add.collider(this.policeZone,this.police,(o1,o2)=>{
       o1.destroy();
-      o2.intoHelicopter();
+      o2.intoHelicopter(h);
     });
   }
 }
