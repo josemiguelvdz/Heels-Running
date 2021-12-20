@@ -29,7 +29,7 @@ export default class FallingObject extends Phaser.GameObjects.Sprite {
   preUpdate() {
     super.preUpdate();
 
-    if(this.jugador.x +250>= this.x) 
+    if(this.jugador.x + 380>= this.x) 
     {
       this.body.moves=true;
       this.isMoving=true;
