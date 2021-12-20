@@ -157,7 +157,9 @@ export default class Level extends Phaser.Scene {
     this.createAllFireHydrants();
     this.createAllPowerUps();
 
-    this.police = new Police(this,-500, 300);
+
+    // -500, 300
+    this.police = new Police(this, -500, 300);
     this.changeBoundingBox(this.police, 1, 1.5);
 
     this.createZones(totalWidth);
@@ -482,6 +484,9 @@ export default class Level extends Phaser.Scene {
     this.createWinZone(32000, 600, 40, totalWidth);
 
     //CREAR TODAS LAS ZONAS NECESARIAS PARA EL NIVEL
+
+
+    // 8700 / 19000
 
     this.createPoliceZone(8700, 600, 40, totalWidth, 60);
     this.createHelicopterZone(19000, 600, 40, totalWidth);
