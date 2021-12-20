@@ -4,7 +4,7 @@ export default class Police extends Phaser.GameObjects.Sprite {
 
     constructor(scene,x,y){
         super(scene, x, y, 'policeRun');
-        this.constantSpeed = 500;
+        this.constantSpeed = 180;
         this.catchRoger=false;
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
@@ -71,11 +71,36 @@ export default class Police extends Phaser.GameObjects.Sprite {
         this.y=450;   
         this.helicopter=false;
         this.body.setAllowGravity(true);
+        this.createTweenMovement();
     }
 
     intoHelicopter(){
         this.y=60;
         this.helicopter=true;
         this.body.setAllowGravity(false);
+        this.createTweenMovement();
     }
+
+      /**
+    * handle movement boolean in order to control de effect of power ups 
+    */
+    createTweenMovement()
+    {
+
+        this.rndDuration= Phaser.Math.Between(1000, 2000);
+        this.rndY=Phaser.Math.Between(60, 105);
+        if(this.isHelicopter())
+        {
+            this.tweenMovement= this.scene.tweens.add({
+            targets: this,
+            y: this.rndY, //Cantidad de desplazamiento
+            duration: this.rndDuration,
+            ease: 'Linear',
+            yoyo: true,
+            repeat: -1,
+            delay: 200 //Tiempo que tarda en empezar
+            });
+        }
+        else if(this.tweenMovement) this.tweenMovement.stop();
+    } 
 }
