@@ -91,11 +91,13 @@ export default class Level extends Phaser.Scene {
 
 
 
-  update(){
+  update(t, dt){
+    super.update(t, dt);
 
     if(this.offsetX < 0){
-      this.offsetX += 10;
+      this.offsetX += 0.6 * Math.round(dt);
       this.cameras.main.setFollowOffset(this.offsetX, 25);
+     
     }
 
 
