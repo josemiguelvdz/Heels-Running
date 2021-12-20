@@ -124,14 +124,10 @@ export default class Level extends Phaser.Scene {
   win(){
     this.mainSong.stop();
     this.runTime= this.chrono.getTimeElapsed();
-    this.informationscene
-    {
-      this.volume= this.ChangeVolume(),
-      this.runT= this.runTime
-    }
-    this.scene.start('win', { info: this.informationscene});
-  }
 
+    this.scene.start('win',  {runT: this.runTime , volume: this.ChangeVolume()});
+  
+  }
   ChangeVolume(){
     return this.volume;
   }
@@ -168,7 +164,7 @@ export default class Level extends Phaser.Scene {
     
 
     //-400, 300
-    this.player = new Player(this, 26000, 300, 3);
+    this.player = new Player(this, 25000, 300, 3);
     // CAMBIAR BOUDING BOX DE TAMAÑO
     this.changeBoundingBox(this.player, 2, 1.5);
 
