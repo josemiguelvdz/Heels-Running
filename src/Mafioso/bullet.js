@@ -48,7 +48,7 @@ export default class Bullet extends Phaser.GameObjects.Sprite {
 
     createShotParticles(){
         let dustParticles = this.scene.add.particles('shotParticle');
-        this.deathEmitter = dustParticles.createEmitter({
+        this.shotEmitter = dustParticles.createEmitter({
           x: 300,
           y: 100,
           speed: { min: -800, max: 800 },
@@ -59,6 +59,6 @@ export default class Bullet extends Phaser.GameObjects.Sprite {
           lifespan: 20,
           gravityY: 800
         });
-        this.deathEmitter.explode(50, this.x,this.y);
+        this.shotEmitter.explode(50, this.x,this.y);
       }
 }
