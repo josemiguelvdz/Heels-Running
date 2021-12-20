@@ -156,7 +156,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
   setMovement(){
     this.body.setVelocityX(this.speed); //Movimiento continuo del jugador hacia la derecha
 
-    if(this.kick.isDown && this.actKickCooldown <= 0){
+    if(this.kickActive){
       if(this.body.onFloor()) this.play('ground_kick_anim', true);
       else this.play('jump_kick_anim', true);
     }
