@@ -49,7 +49,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.scene.anims.create({
       key: 'ground_kick_anim',
       frames: this.anims.generateFrameNumbers('ground_kick', { start: 0, end: 7 }),
-      frameRate: 10, // Velocidad de la animación
+      frameRate: 14, // Velocidad de la animación
       repeat: 0
     });
     this.scene.anims.create({
@@ -89,7 +89,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.secondsEsmoquin=-1;
 
     // Tiempo de agotamiento del kick
-    this.kickCooldown = 1000;
+    this.kickCooldown = 1500;
     this.actKickCooldown = this.kickCooldown;
 
 
@@ -165,6 +165,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
     if(this.body.onFloor() && !this.kickActive){
       this.play('run_anim', true);
     }
+    else if(this.body.onFloor() && this.kickActive){
+      this.play('ground_kick_anim', true);
+    }
     
     if (this.jump.isDown && this.body.onFloor() && !this.arrested) { // este es el salto
      this.createJumpParticles();
@@ -177,7 +180,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     // Comprueba si el jugador ha pulsado la tecla para dar una patada
     if(Phaser.Input.Keyboard.JustDown(this.kick) && this.actKickCooldown <= 0){
       // Crea una zona
-      this.kickZone = this.scene.add.zone(this.x+this.width, this.y, this.width/1.2, this.height);
+      this.kickZone = this.scene.add.zone(this.x+90, this.y, this.width/1.2, this.height+20);
       this.scene.physics.world.enable(this.kickZone);
       this.kickZone.body.setAllowGravity(false);
       this.kickZone.body.setImmovable(true);
@@ -352,7 +355,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
   } 
 
   zoneMovement(zone, kickParticles, player){
-    zone.body.setVelocityX(player.speed);
+
+    if(!player.body.blocked.right) zone.body.setVelocityX(player.body.velocity.x);
     zone.body.setVelocityY(player.body.velocity.y);
 
     kickParticles.setPosition(player.x + 100, player.y);
