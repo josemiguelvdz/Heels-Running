@@ -164,7 +164,7 @@ export default class Level extends Phaser.Scene {
     
 
     //-400, 300
-    this.player = new Player(this, 25000, 300, 3);
+    this.player = new Player(this, -400, 300, 3);
     // CAMBIAR BOUDING BOX DE TAMAÑO
     this.changeBoundingBox(this.player, 2, 1.5);
 
@@ -241,13 +241,7 @@ export default class Level extends Phaser.Scene {
 
   createAllBoxes()
   {
-    this.createBox(1800, 535);
-    this.createBox(1864, 535);
     this.createBox(1928, 535);
-    this.createBox(2700, 535);
-    this.createBox(2700, 535);
-    this.createBox(2764, 535);
-    this.createBox(2700, 471);
     this.createBox(3800, 535);
     this.createBox(3864, 535);
     this.createBox(3928, 535);
@@ -282,6 +276,7 @@ export default class Level extends Phaser.Scene {
   }
   createAllStaticObjects()
   {
+    this.createStaticObject(2950, 465, 'streetlight');
     this.createStaticObject(1000, 520, 'policeCar');
     this.createStaticObject(4900, 520, 'policeCar');
     this.createStaticObject(6500, 455, 'streetlight');
@@ -301,8 +296,11 @@ export default class Level extends Phaser.Scene {
   }
   createAllBuildings()
   {
+    this.createBuilding(1600, 160, 'oldBuilding', false);
+    this.createBuilding(500, 200, 'stairBuilding', false);
     this.createBuilding(2400, 460, 'phoneCenter', true);
     this.createBuilding(3300, 100, 'whiteBuilding', false);
+    this.createBuilding(4400, 180, 'spainBuilding', false);
     this.createBuilding(5600, 460, 'candyBuilding', true);
     this.createBuilding(5850, 503, 'candyBuilding2', true);
     this.createBuilding(7000, 100, 'whiteBuilding', false);
@@ -346,9 +344,9 @@ export default class Level extends Phaser.Scene {
   }
   createAllFallObjects()
   {
-    this.createFallObj(3300, 100,"maceta");
-    this.createFallObj(7000, 100,"maceta");
-    this.createFallObj(7467, 100,"ladrillo");
+    this.createFallObj(3400, 100, "maceta");
+    this.createFallObj(7000, 100, "maceta");
+    this.createFallObj(7467, 100, "ladrillo");
   }
   createAllGangsters()
   {
