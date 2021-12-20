@@ -72,14 +72,21 @@ export default class Interface extends Phaser.GameObjects.GameObject {
     }
 
     checkPolice(){
-      if(Math.abs(this.scene.police.x-this.player.x) >=this.policeRange && !this.policeAdvice){
-        this.iconPolice=this.scene.add.image(50, this.scene.police.y, 'advice').setScrollFactor(0);
+      if(Math.abs(this.scene.police.x-this.player.x) >=this.policeRange && !this.scene.police.isHelicopter()){
+        if(this.policeAdvice)this.iconPolice.destroy();
+        this.iconPolice=this.scene.add.image(50, this.scene.police.y, 'policeAdvice').setScrollFactor(0);
+        this.policeAdvice=true;
+      }
+      else if(Math.abs(this.scene.police.x-this.player.x) >=this.policeRange && this.policeAdvice && this.scene.police.isHelicopter()){
+        if(this.policeAdvice)this.iconPolice.destroy();
+        this.iconPolice=this.scene.add.image(50, this.scene.police.y, 'helicopterAdvice').setScrollFactor(0);
         this.policeAdvice=true;
       }
       else if(this.policeVisionRange>= Math.abs(this.scene.police.x-this.player.x) && this.iconPolice){
         this.iconPolice.destroy();
         this.policeAdvice=false;
       }
+
       if(this.iconPolice){
         if(this.scene.police.isHelicopter()) this.iconPolice.y=this.scene.police.y+110;
         else this.iconPolice.y=this.scene.police.y;

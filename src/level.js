@@ -99,15 +99,11 @@ export default class Level extends Phaser.Scene {
       this.cameras.main.setFollowOffset(this.offsetX, 25);
      
     }
-
-
-    if(this.police.isHelicopter()){
-      if(this.police.body.x>=this.player.body.x){
-        this.player.arrestado();
-        this.player.getActualScene().chrono.finish();
-        this.police.catchP(this.player);
-        this.lose();
-      }
+    if(this.police.body.x>=this.player.body.x){
+      this.player.arrestado();
+      this.player.getActualScene().chrono.finish();
+      this.police.catchP(this.player);
+      this.lose();
     }
 
     if (Phaser.Input.Keyboard.JustDown(this.scape)) { 

@@ -28,6 +28,8 @@ export default class Boot extends Phaser.Scene {
       this.load.spritesheet('policeRun','policeRun.png',{frameWidth:128,frameHeight:128})
       this.load.spritesheet('smokeAnimation','humoSpriteSheet.png',{frameWidth:64,frameHeight:64});
       this.load.spritesheet('helicopterAnimation','helicopterAnimation.png',{frameWidth:254,frameHeight:128});
+      this.load.image('policeAdvice','PoliceAdvice.png');
+      this.load.image('helicopterAdvice','HelicopterAdvice.png');
      
 
       //Player Sprites
