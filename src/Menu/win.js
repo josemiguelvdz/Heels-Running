@@ -35,22 +35,15 @@ export default class Win extends Phaser.Scene {
         this.winSong.play();
         this.spriteTrain.play('trainB');
 
+        this.timeBar = this.add.sprite(this.scale.width*0.5, 240, 'timeBar', 'timeBar.png').setScale(1.5, 1.5);
 
-        //this.winBackGround = this.add.image(this.scale.width*0.5, this.scale.height*0.5-105, 'playBackGround').setScale(1.5, 1.5).setScrollFactor(0);
-        
-        this.text=this.add.text(470,180,"¡YOUR TIME!");
-        this.text.setAlign('center');
-        // Font style
-        this.text.setFont('Arial Black');
-        this.text.setFontSize(40);
-
-        this.text1=this.add.text(550, 240, this.runTime);
+        this.text1=this.add.text((this.scale.width*0.5) -10, 225, this.runTime);
         this.text1.setAlign('center');
         // Font style
         this.text1.setFont('Arial Black');
         this.text1.setFontSize(40);
         
-        this.spriteWin = this.add.image(this.scale.width*0.5, 100, 'youWin').setScale(0.8, 0.8);
+        this.spriteWin = this.add.image(this.scale.width*0.5, 100, 'youScape').setScale(1.3, 1.3);
 
         this.playButton = this.add.image(this.scale.width*0.5, 400, 'playButton_').setInteractive();
         this.playButton.on('pointerdown', () => {
