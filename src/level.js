@@ -32,7 +32,7 @@ export default class Level extends Phaser.Scene {
     
     const width = this.scale.width;
     const height = this.scale.height;
-    const totalWidth = width*15;
+    const totalWidth = width*20;
 
     this.add.image(width*0.5, height*0.5, 'sky')
       .setScale(2, 1)
@@ -84,7 +84,7 @@ export default class Level extends Phaser.Scene {
     });
 
 
-    this.volume = 0.5;
+    this.volume = 0.3;
     this.slideX = 0;
 
   }
@@ -99,15 +99,11 @@ export default class Level extends Phaser.Scene {
       this.cameras.main.setFollowOffset(this.offsetX, 25);
      
     }
-
-
-    if(this.police.isHelicopter()){
-      if(this.police.body.x>=this.player.body.x){
-        this.player.arrestado();
-        this.player.getActualScene().chrono.finish();
-        this.police.catchP(this.player);
-        this.lose();
-      }
+    if(this.police.body.x>=this.player.body.x){
+      this.player.arrestado();
+      this.player.getActualScene().chrono.finish();
+      this.police.catchP(this.player);
+      this.lose();
     }
 
     if (Phaser.Input.Keyboard.JustDown(this.scape)) { 
@@ -128,9 +124,10 @@ export default class Level extends Phaser.Scene {
   win(){
     this.mainSong.stop();
     this.runTime= this.chrono.getTimeElapsed();
-    this.scene.start('win', { runT: this.runTime});
-  }
 
+    this.scene.start('win',  {runT: this.runTime , volume: this.ChangeVolume()});
+  
+  }
   ChangeVolume(){
     return this.volume;
   }
@@ -154,14 +151,15 @@ export default class Level extends Phaser.Scene {
     this.createObjectGroups();
 
     // MAPA DEL JUEGO
-
-    this.createAllBoxes();
-    this.createAllPowerUps();
-    this.createAllFireHydrants();
     this.createAllStaticObjects();
     this.createAllBuildings();
+    this.createAllBoxes();
+    this.createAllFireHydrants();
+    this.createAllPowerUps();
 
-    this.police = new Police(this,-500, 300);
+
+    // -500, 300
+    this.police = new Police(this, -500, 300);
     this.changeBoundingBox(this.police, 1, 1.5);
 
     this.createZones(totalWidth);
@@ -245,13 +243,7 @@ export default class Level extends Phaser.Scene {
 
   createAllBoxes()
   {
-    this.createBox(1800, 535);
-    this.createBox(1864, 535);
     this.createBox(1928, 535);
-    this.createBox(2700, 535);
-    this.createBox(2700, 535);
-    this.createBox(2764, 535);
-    this.createBox(2700, 471);
     this.createBox(3800, 535);
     this.createBox(3864, 535);
     this.createBox(3928, 535);
@@ -259,15 +251,19 @@ export default class Level extends Phaser.Scene {
     this.createBox(3800, 471);
     this.createBox(6300, 535);
     this.createBox(8060, 535);
+
+    this.createBox(21350, 535);
+    this.createBox(25150, 535);
+    this.createBox(28170, 535);
   }
   createAllPowerUps(){
-    this.createSalmon(2800, 50);
-    this.createEsmoquin(1300, 100);
-    this.createEsmoquin(3500, 70);
-    this.createAlcohol(800, 70);
-    this.createCoffe( 1000, 100);
-    this.createRedTimer(2200, 100);
-    this.createGreenTimer(2400, 100);
+    // this.createSalmon(2800, 50);
+    // this.createEsmoquin(1300, 100);
+    // this.createEsmoquin(3500, 70);
+    // this.createAlcohol(800, 70);
+    // this.createCoffe( 1000, 100);
+    // this.createRedTimer(2200, 100);
+    // this.createGreenTimer(2400, 100);
 
   }
   createAllFireHydrants()
@@ -275,19 +271,38 @@ export default class Level extends Phaser.Scene {
     this.createFireHydrant(1500, 535);
     this.createFireHydrant(4300, 535);
     this.createFireHydrant(7800, 535);
+
+    this.createFireHydrant(21700, 535);
+    this.createFireHydrant(25900, 535);
+    this.createFireHydrant(30000, 535);
   }
   createAllStaticObjects()
   {
+    this.createStaticObject(2950, 465, 'streetlight');
     this.createStaticObject(1000, 520, 'policeCar');
     this.createStaticObject(4900, 520, 'policeCar');
     this.createStaticObject(6500, 455, 'streetlight');
     this.createStaticObject(8150, 455, 'streetlight');
     this.createStaticObject(8700, 465, 'streetlight');
+
+    this.createStaticObject(19800, 455, 'streetlight');
+    this.createStaticObject(20350, 520, 'policeCar');
+    this.createStaticObject(24200, 520, 'policeCar');
+    this.createStaticObject(24700, 455, 'streetlight');
+    this.createStaticObject(26300, 455, 'streetlight');
+    this.createStaticObject(26900, 520, 'policeCar');
+    this.createStaticObject(29600, 520, 'policeCar');
+    this.createStaticObject(29000, 455, 'streetlight');
+    this.createStaticObject(30600, 455, 'streetlight');
+    this.createStaticObject(31300, 520, 'policeCar');
   }
   createAllBuildings()
   {
+    this.createBuilding(1600, 160, 'oldBuilding', false);
+    this.createBuilding(500, 200, 'stairBuilding', false);
     this.createBuilding(2400, 460, 'phoneCenter', true);
     this.createBuilding(3300, 100, 'whiteBuilding', false);
+    this.createBuilding(4400, 180, 'spainBuilding', false);
     this.createBuilding(5600, 460, 'candyBuilding', true);
     this.createBuilding(5850, 503, 'candyBuilding2', true);
     this.createBuilding(7000, 100, 'whiteBuilding', false);
@@ -318,12 +333,22 @@ export default class Level extends Phaser.Scene {
     this.createBuilding(17800, 300, 'whiteBuilding', true, true, 1.2, 1.7);
     this.createBuilding(18400, 400, 'redLargeBuilding', true, true, 1.1, 1.2);
 
+    this.createBuilding(21000, 100, 'whiteBuilding', false);
+    this.createBuilding(22200, 460, 'candyBuilding', true);
+    this.createBuilding(22450, 503, 'candyBuilding2', true);
+    this.createBuilding(23300, 267, 'redLargeBuilding', false);
+    this.createBuilding(24900, 100, 'whiteBuilding', false);
+    this.createBuilding(25400, 460, 'phoneCenter', true);
+    this.createBuilding(26500, 180, 'spainBuilding', false);
+    this.createBuilding(27550, 420, 'bakery', true, true, 1.2, 2.3);
+    this.createBuilding(28700, 190, 'stairBuilding', false);
+    this.createBuilding(30000, 160, 'oldBuilding', false);
   }
   createAllFallObjects()
   {
-    this.createFallObj(3300, 100,"maceta");
-    this.createFallObj(7000, 100,"maceta");
-    this.createFallObj(7467, 100,"ladrillo");
+    this.createFallObj(3400, 100, "maceta");
+    this.createFallObj(7000, 100, "maceta");
+    this.createFallObj(7467, 100, "ladrillo");
   }
   createAllGangsters()
   {
@@ -456,12 +481,15 @@ export default class Level extends Phaser.Scene {
 
    createZones(totalWidth)
    {
-    this.createWinZone(20000, 600, 40, totalWidth);
+    this.createWinZone(32000, 600, 40, totalWidth);
 
     //CREAR TODAS LAS ZONAS NECESARIAS PARA EL NIVEL
 
-    this.createPoliceZone(1850, 600, 40, totalWidth,60);
-    this.createHelicopterZone(3300, 600, 40, totalWidth);
+
+    // 8700 / 19000
+
+    this.createPoliceZone(8700, 600, 40, totalWidth, 60);
+    this.createHelicopterZone(19000, 600, 40, totalWidth);
 
 
   }
@@ -487,7 +515,7 @@ export default class Level extends Phaser.Scene {
     });
   }
 
-  createPoliceZone(x,y,height,totalWidth,h){
+  createPoliceZone(x,y,height,totalWidth, h){
     // HELICOPTER ZONE
     this.policeZone=this.add.zone(x,y,height,totalWidth);
     this.physics.world.enable(this.policeZone);

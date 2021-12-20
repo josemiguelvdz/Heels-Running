@@ -156,7 +156,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
   setMovement(){
     this.body.setVelocityX(this.speed); //Movimiento continuo del jugador hacia la derecha
 
-    if(this.kick.isDown && this.actKickCooldown <= 0){
+    if(this.kickActive){
       if(this.body.onFloor()) this.play('ground_kick_anim', true);
       else this.play('jump_kick_anim', true);
     }
@@ -205,7 +205,10 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.scene.physics.add.overlap(this.kickZone, this.scene.boxes, (o1,o2)=> {
         o2.handleCollision();
         }); 
-
+      //Colisión con las bocas de incendio
+      this.scene.physics.add.collider(this.kickZone, this.scene.fireHydrants,(o1,o2)=> {
+          o2.setCollision();
+        });
       // Destruir la zona
       this.delete_zone = this.scene.time.addEvent({ 
         delay: 500, 

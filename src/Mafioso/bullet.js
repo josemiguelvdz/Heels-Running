@@ -8,13 +8,13 @@ export default class Bullet extends Phaser.GameObjects.Sprite {
 
         this.body.setAllowGravity(false);
 
-        this.scale = 0.17;
+        this.scale = 0.3;
         this.damage = 1;
         
         this.angle = (Phaser.Math.Angle.Between(this.x, this.y, player.x, player.y)); 
         this.jugador = player;
 
-        this.speedBullet = 300;
+        this.speedBullet = 500;
         this.countingtimeDestruction = 0;
         this.tiempoDestruccion=2000;
     }
@@ -32,11 +32,33 @@ export default class Bullet extends Phaser.GameObjects.Sprite {
 
         this.countingtimeDestruction+=Math.round(delta);
 
-        if((this.countingtimeDestruction) > this.tiempoDestruccion){this.destroy()}
+        if((this.countingtimeDestruction) > this.tiempoDestruccion){
+            this.destroy();  
+        }
+
+        else this.createShotParticles();
+
+        
     }
 
     handleCollision(){
        
         this.jugador.loseLife(this.damage);
     }
+
+    createShotParticles(){
+        let dustParticles = this.scene.add.particles('shotParticle');
+        this.shotEmitter = dustParticles.createEmitter({
+          x: 300,
+          y: 100,
+          speed: { min: -800, max: 800 },
+          angle: { min: 0, max: 360 },
+          scale: { start: 0.6, end: 0 },
+          blendMode: 'SCREEN',
+          //active: false,
+          lifespan: 20,
+          gravityY: 800
+        });
+        this.shotEmitter.explode(50, this.x,this.y);
+      }
 }

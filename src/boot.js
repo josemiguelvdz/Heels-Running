@@ -28,6 +28,8 @@ export default class Boot extends Phaser.Scene {
       this.load.spritesheet('policeRun','policeRun.png',{frameWidth:128,frameHeight:128})
       this.load.spritesheet('smokeAnimation','humoSpriteSheet.png',{frameWidth:64,frameHeight:64});
       this.load.spritesheet('helicopterAnimation','helicopterAnimation.png',{frameWidth:254,frameHeight:128});
+      this.load.image('policeAdvice','PoliceAdvice.png');
+      this.load.image('helicopterAdvice','HelicopterAdvice.png');
      
 
       //Player Sprites
@@ -106,6 +108,7 @@ export default class Boot extends Phaser.Scene {
       this.load.setPath('./assets/Sprites/Menu');
       this.load.spritesheet('mainMenu', 'MainMenu.png', {frameWidth:1920, frameHeight:1080});
       this.load.spritesheet('loseBackGround', 'gameoverbackground.png', {frameWidth:480, frameHeight:254});
+      this.load.image('playButton_' , 'PlayButton.png');
       this.load.image('playButton' , 'PlayButton_V2.png');
       this.load.image('playButton2' , 'PlayButton_V3.png');
       this.load.image('exitButton', 'ExitButton.png');
@@ -117,18 +120,19 @@ export default class Boot extends Phaser.Scene {
       this.load.image('controls', 'controls.png');
       this.load.image('menuLayout', 'menuLayout.png');
       this.load.image('cartelBusted', 'losedefinitivo.png');
-      this.load.image('youWin','youWin.png');
+      this.load.image('youScape','youScape.png');
       this.load.image('volumeBar', 'VolumeBar.png');
       this.load.image('volumeIcon', 'Volume.png');
       this.load.image('rain', 'rain.png');
 
 
-      //Particulas
+      //Particles
       this.load.setPath('./assets/Sprites/Particles');
       this.load.image('breakingParticle' , 'BreakingParticle.png');
       this.load.image('bloodParticle' , 'BloodParticle.png');
       this.load.image('dustParticle' , 'DustParticle.png');
       this.load.image('waterParticle' , 'Water.png');
+      this.load.image('shotParticle' , 'shot.png');
 
       //Sounds
       this.load.setPath('./assets/Sounds/SoundEffects');
@@ -140,6 +144,7 @@ export default class Boot extends Phaser.Scene {
       this.load.audio('deathsound', 'DeathSound.mp3');
       this.load.audio('gameSong', 'GameSong.mp3');
       this.load.audio('loseSound', 'LoseSound.mp3');
+      this.load.audio('winSound', 'Win.mp3');
 
    
     }
@@ -148,6 +153,6 @@ export default class Boot extends Phaser.Scene {
      * nivel del juego
      */
     create() {
-      this.scene.start('menu');
+      this.scene.start('intro');
     }
   }

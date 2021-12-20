@@ -72,18 +72,27 @@ export default class Interface extends Phaser.GameObjects.GameObject {
     }
 
     checkPolice(){
-      if(Math.abs(this.scene.police.x-this.player.x) >=this.policeRange && !this.policeAdvice){
-        this.iconPolice=this.scene.add.image(50, this.scene.police.y, 'advice').setScrollFactor(0);
-        this.policeAdvice=true;
+
+      if(Math.abs(this.scene.police.x-this.player.x) >= this.policeRange) {
+        if(this.iconPolice){
+          this.iconPolice.destroy();
+        }
+        if(this.scene.police.isHelicopter()){
+          this.iconPolice = this.scene.add.image(50, this.scene.police.y, 'helicopterAdvice').setScrollFactor(0);
+        }
+        else  this.iconPolice=this.scene.add.image(50, this.scene.police.y, 'policeAdvice').setScrollFactor(0);
       }
       else if(this.policeVisionRange>= Math.abs(this.scene.police.x-this.player.x) && this.iconPolice){
         this.iconPolice.destroy();
-        this.policeAdvice=false;
       }
+
       if(this.iconPolice){
-        if(this.scene.police.isHelicopter()) this.iconPolice.y=this.scene.police.y+110;
-        else this.iconPolice.y=this.scene.police.y;
+        if(this.scene.police.isHelicopter()) this.iconPolice.y = 170;
+        else this.iconPolice.y = this.scene.police.y;
+
+        console.log("icon police y: " + this.iconPolice.y);
       }
+      
     }
   
     checkLifes(player){
