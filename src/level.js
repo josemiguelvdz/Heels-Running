@@ -255,13 +255,13 @@ export default class Level extends Phaser.Scene {
     this.createBox(28170, 535);
   }
   createAllPowerUps(){
-    this.createSalmon(2800, 50);
-    this.createEsmoquin(1300, 100);
-    this.createEsmoquin(3500, 70);
-    this.createAlcohol(800, 70);
-    this.createCoffe( 1000, 100);
-    this.createRedTimer(2200, 100);
-    this.createGreenTimer(2400, 100);
+    // this.createSalmon(2800, 50);
+    // this.createEsmoquin(1300, 100);
+    // this.createEsmoquin(3500, 70);
+    // this.createAlcohol(800, 70);
+    // this.createCoffe( 1000, 100);
+    // this.createRedTimer(2200, 100);
+    // this.createGreenTimer(2400, 100);
 
   }
   createAllFireHydrants()
@@ -483,8 +483,8 @@ export default class Level extends Phaser.Scene {
 
     //CREAR TODAS LAS ZONAS NECESARIAS PARA EL NIVEL
 
-    this.createPoliceZone(1850, 600, 40, totalWidth,60);
-    this.createHelicopterZone(3300, 600, 40, totalWidth);
+    this.createPoliceZone(8700, 600, 40, totalWidth, 60);
+    this.createHelicopterZone(19000, 600, 40, totalWidth);
 
 
   }
@@ -510,7 +510,7 @@ export default class Level extends Phaser.Scene {
     });
   }
 
-  createPoliceZone(x,y,height,totalWidth,h){
+  createPoliceZone(x,y,height,totalWidth, h){
     // HELICOPTER ZONE
     this.policeZone=this.add.zone(x,y,height,totalWidth);
     this.physics.world.enable(this.policeZone);
