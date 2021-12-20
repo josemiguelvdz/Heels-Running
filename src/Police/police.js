@@ -4,7 +4,7 @@ export default class Police extends Phaser.GameObjects.Sprite {
 
     constructor(scene,x,y){
         super(scene, x, y, 'policeRun');
-        this.constantSpeed = 280;
+        this.constantSpeed = 500;
         this.catchRoger=false;
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
@@ -44,6 +44,9 @@ export default class Police extends Phaser.GameObjects.Sprite {
     preUpdate(t,dt) {
         super.preUpdate(t,dt);
         this.animatePolice();
+        if(this.helicopter){
+            this.body.y=this.scene.police.y-400;
+        }
 
        this.body.setVelocityX(this.constantSpeed); //Movimiento continuo del jugador hacia la derecha
     }

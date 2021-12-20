@@ -32,22 +32,23 @@ export default class Menu extends Phaser.Scene {
       this.speed = 1;
     }
 
-    update(){
+    update(t, dt){
+      super.update(t, dt);
 
       if(this.helicopter.x >= (350 + this.scale.width*0.5)){
         this.helicopter.setFlip(true, false);
         this.speed *= -1; 
-        this.playButton.x = this.playButton.x - 70;
+        this.playButton.x -= 70;
       }
 
       else if(this.helicopter.x <= (-350 + this.scale.width*0.5)){
         this.helicopter.setFlip(false, false);
-        this.speed *= -1; 
-        this.playButton.x = this.playButton.x + 70;
+        this.speed *= -1;
+        this.playButton.x += 70;
       }
 
-      this.playButton.x += this.speed;
-      this.helicopter.x += this.speed;
+      this.playButton.x += this.speed * Math.round(dt) * 0.1;
+      this.helicopter.x += this.speed * Math.round(dt) * 0.1;
 
       this.helicopter.play('helicopter_animation', true);
     }

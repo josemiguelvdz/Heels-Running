@@ -32,7 +32,7 @@ export default class Level extends Phaser.Scene {
     
     const width = this.scale.width;
     const height = this.scale.height;
-    const totalWidth = width*15;
+    const totalWidth = width*20;
 
     this.add.image(width*0.5, height*0.5, 'sky')
       .setScale(2, 1)
@@ -91,21 +91,19 @@ export default class Level extends Phaser.Scene {
 
 
 
-  update(){
+  update(t, dt){
+    super.update(t, dt);
 
     if(this.offsetX < 0){
-      this.offsetX += 10;
+      this.offsetX += 0.6 * Math.round(dt);
       this.cameras.main.setFollowOffset(this.offsetX, 25);
+     
     }
-
-
-    if(this.police.isHelicopter()){
-      if(this.police.body.x>=this.player.body.x){
-        this.player.arrestado();
-        this.player.getActualScene().chrono.finish();
-        this.police.catchP(this.player);
-        this.lose();
-      }
+    if(this.police.body.x>=this.player.body.x){
+      this.player.arrestado();
+      this.player.getActualScene().chrono.finish();
+      this.police.catchP(this.player);
+      this.lose();
     }
 
     if (Phaser.Input.Keyboard.JustDown(this.scape)) { 
@@ -153,11 +151,11 @@ export default class Level extends Phaser.Scene {
 
     // MAPA DEL JUEGO
 
-    this.createAllBoxes();
-    this.createAllPowerUps();
     this.createAllFireHydrants();
     this.createAllStaticObjects();
     this.createAllBuildings();
+    this.createAllBoxes();
+    this.createAllPowerUps();
 
     this.police = new Police(this,-500, 300);
     this.changeBoundingBox(this.police, 1, 1.5);
@@ -166,7 +164,7 @@ export default class Level extends Phaser.Scene {
     
 
     //-400, 300
-    this.player = new Player(this, -400, 300, 3);
+    this.player = new Player(this, 26000, 300, 3);
     // CAMBIAR BOUDING BOX DE TAMAÑO
     this.changeBoundingBox(this.player, 2, 1.5);
 
@@ -257,6 +255,9 @@ export default class Level extends Phaser.Scene {
     this.createBox(3800, 471);
     this.createBox(6300, 535);
     this.createBox(8060, 535);
+
+    this.createBox(21350, 535);
+    this.createBox(25150, 535);
   }
   createAllPowerUps(){
     this.createSalmon(2800, 50);
@@ -273,6 +274,9 @@ export default class Level extends Phaser.Scene {
     this.createFireHydrant(1500, 535);
     this.createFireHydrant(4300, 535);
     this.createFireHydrant(7800, 535);
+
+    this.createFireHydrant(21700, 535);
+    this.createFireHydrant(25900, 535);
   }
   createAllStaticObjects()
   {
@@ -281,6 +285,13 @@ export default class Level extends Phaser.Scene {
     this.createStaticObject(6500, 455, 'streetlight');
     this.createStaticObject(8150, 455, 'streetlight');
     this.createStaticObject(8700, 465, 'streetlight');
+
+    this.createStaticObject(19800, 455, 'streetlight');
+    this.createStaticObject(20350, 520, 'policeCar');
+    this.createStaticObject(24200, 520, 'policeCar');
+    this.createStaticObject(24700, 455, 'streetlight');
+    this.createStaticObject(26300, 455, 'streetlight');
+    this.createStaticObject(26900, 520, 'policeCar');
   }
   createAllBuildings()
   {
@@ -315,6 +326,15 @@ export default class Level extends Phaser.Scene {
     this.createBuilding(17450, 70, 'spainBuilding', true, true, 2, 1.6);
     this.createBuilding(17800, 300, 'whiteBuilding', true, true, 1.2, 1.7);
     this.createBuilding(18400, 400, 'redLargeBuilding', true, true, 1.1, 1.2);
+
+    this.createBuilding(21000, 100, 'whiteBuilding', false);
+    this.createBuilding(22200, 460, 'candyBuilding', true);
+    this.createBuilding(22450, 503, 'candyBuilding2', true);
+    this.createBuilding(23300, 267, 'redLargeBuilding', false);
+    this.createBuilding(24900, 100, 'whiteBuilding', false);
+    this.createBuilding(25400, 460, 'phoneCenter', true);
+    this.createBuilding(26500, 180, 'spainBuilding', false);
+    this.createBuilding(27550, 420, 'bakery', true, true, 1.2, 2.3);
 
   }
   createAllFallObjects()
@@ -454,7 +474,7 @@ export default class Level extends Phaser.Scene {
 
    createZones(totalWidth)
    {
-    this.createWinZone(20000, 600, 40, totalWidth);
+    this.createWinZone(30000, 600, 40, totalWidth);
 
     //CREAR TODAS LAS ZONAS NECESARIAS PARA EL NIVEL
 
