@@ -44,11 +44,8 @@ export default class Police extends Phaser.GameObjects.Sprite {
     preUpdate(t,dt) {
         super.preUpdate(t,dt);
         this.animatePolice();
-        if(this.helicopter){
-            this.body.y=this.scene.police.y-400;
-        }
 
-       this.body.setVelocityX(this.constantSpeed); //Movimiento continuo del jugador hacia la derecha
+        this.body.setVelocityX(this.constantSpeed); //Movimiento continuo del jugador hacia la derecha
     }
     /**
     * Stop the police when he arrests the player
@@ -71,14 +68,14 @@ export default class Police extends Phaser.GameObjects.Sprite {
         this.y=450;   
         this.helicopter=false;
         this.body.setAllowGravity(true);
-        this.createTweenMovement();
+        //this.createTweenMovement();
     }
 
-    intoHelicopter(){
-        this.y=60;
+    intoHelicopter(h){
+        this.y=h;
         this.helicopter=true;
         this.body.setAllowGravity(false);
-        this.createTweenMovement();
+        //this.createTweenMovement();
     }
 
       /**
@@ -88,8 +85,8 @@ export default class Police extends Phaser.GameObjects.Sprite {
     {
 
         this.rndDuration= Phaser.Math.Between(1000, 2000);
-        this.rndY=Phaser.Math.Between(60, 105);
-        if(this.isHelicopter())
+        this.rndY=Phaser.Math.Between(60, 75);
+        if(this.helicopter)
         {
             this.tweenMovement= this.scene.tweens.add({
             targets: this,
