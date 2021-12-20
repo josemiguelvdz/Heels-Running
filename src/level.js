@@ -124,7 +124,12 @@ export default class Level extends Phaser.Scene {
   win(){
     this.mainSong.stop();
     this.runTime= this.chrono.getTimeElapsed();
-    this.scene.start('win', { runT: this.runTime});
+    this.informationscene
+    {
+      volume= this.ChangeVolume(),
+      runT= this.runTime
+    }
+    this.scene.start('win', { info: this.informationscene});
   }
 
   ChangeVolume(){

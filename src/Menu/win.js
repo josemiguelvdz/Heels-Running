@@ -8,7 +8,8 @@ export default class Win extends Phaser.Scene {
     init(data)  //Data se pasa como un objeto construido cuando pasas de escena con los parametros que tu eligas
     {
         this.runTime=data.runT;
-        //console.log(this.runTime);
+        this.volumeSong=data.volume;
+        
     }
 
     create() {
@@ -22,6 +23,18 @@ export default class Win extends Phaser.Scene {
           });
 
         this.spriteTrain.play('trainB');
+        this.lose=this.add.sprite(600, 300, 'loseBackGround').setScale(2.3,2); 
+        const configSound = {
+          mute: false,
+          volume: this.volumeSong,
+          rate: 1,
+          detune: 0,
+          seek: 0,
+          loop: false,
+          delay: 0,
+        };
+        this.winSong= this.sound.add("winSound",configSound);
+        this.winSong.play();
 
 
         //this.winBackGround = this.add.image(this.scale.width*0.5, this.scale.height*0.5-105, 'playBackGround').setScale(1.5, 1.5).setScrollFactor(0);
@@ -41,9 +54,20 @@ export default class Win extends Phaser.Scene {
         this.spriteWin = this.add.image(this.scale.width*0.5, 100, 'youWin').setScale(0.8, 0.8);
 
         this.playButton = this.add.image(this.scale.width*0.5, 400, 'playButton').setInteractive();
-        this.playButton.on('pointerdown', () => {this.scene.start('level')});
+        this.playButton.on('pointerdown', () => {
+          this.scene.start('level');
+          this.winSong.stop();
+        });
 
         this.exitButton = this.add.image(this.scale.width*0.5, 500, 'exitButton').setInteractive();
-        this.exitButton.on('pointerdown', () => {this.scene.start('menu')})
+        this.exitButton.on('pointerdown', () => {
+          this.scene.start('menu');
+          this.winSong.stop();
+        })
+    }
+    preUpdate(t,dt)
+    {
+      super.preUpdate(t,dt);
+      this.winSong.setVolume(this.scene.ChangeVolume());
     }
 }
