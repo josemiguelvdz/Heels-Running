@@ -84,7 +84,7 @@ export default class Level extends Phaser.Scene {
     });
 
 
-    this.volume = 0.5;
+    this.volume = 0.3;
     this.slideX = 0;
 
   }

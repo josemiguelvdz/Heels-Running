@@ -120,7 +120,7 @@ export default class Boot extends Phaser.Scene {
       this.load.image('controls', 'controls.png');
       this.load.image('menuLayout', 'menuLayout.png');
       this.load.image('cartelBusted', 'losedefinitivo.png');
-      this.load.image('youWin','youWin.png');
+      this.load.image('youScape','youScape.png');
       this.load.image('volumeBar', 'VolumeBar.png');
       this.load.image('volumeIcon', 'Volume.png');
       this.load.image('rain', 'rain.png');
@@ -153,6 +153,6 @@ export default class Boot extends Phaser.Scene {
      * nivel del juego
      */
     create() {
-      this.scene.start('menu');
+      this.scene.start('level');
     }
   }
