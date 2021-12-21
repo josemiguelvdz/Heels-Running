@@ -13,7 +13,9 @@ export default class FireHydrant extends StaticObject {
     if(this.hasCollided)this.createWaterParticles();
   }
     
-    
+  /**
+  * create particles for give feedback
+  */
   createWaterParticles(){
     let deathParticles =this.scene.add.particles('waterParticle');
     this.deathEmitter = deathParticles.createEmitter({
@@ -30,6 +32,10 @@ export default class FireHydrant extends StaticObject {
     });
     this.deathEmitter.explode(40, this.x,this.y-20);
   }
+
+  /**
+  * Active the collision for stop player
+  */
   setCollision()
   {
     this.hasCollided=true;

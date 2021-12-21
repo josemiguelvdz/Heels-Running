@@ -1,17 +1,14 @@
 
 export default class Boot extends Phaser.Scene {
-    /**
-     * Constructor de la escena
-     */
     constructor() {
       super({ key: 'boot' });
     }
   
     /**
-     * Carga de los assets del juego
+     * Loading of game assets
      */
     preload() {
-      // Con setPath podemos establecer el prefijo que se añadirá a todos los load que aparecen a continuación
+
       this.load.setPath('./assets/backgrounds');
       this.load.image('sky', 'sky.png');
       this.load.image('backhouse', 'backhouses.png');
@@ -73,8 +70,8 @@ export default class Boot extends Phaser.Scene {
 
       //Interfaz Sprites
       this.load.setPath('./assets/Sprites/Interfaz');
-      this.load.atlas("healthBar","healthBar.png","healthBar.json"); // barra de vida
-      this.load.atlas("powerUpBar", "powerUpBar.png", "powerUpBar.json"); // circulo de power ups
+      this.load.atlas("healthBar","healthBar.png","healthBar.json"); 
+      this.load.atlas("powerUpBar", "powerUpBar.png", "powerUpBar.json");
       this.load.image("hudTest", "hud.png");
       this.load.image('timeBar', 'timeBar.png');
 
@@ -150,8 +147,7 @@ export default class Boot extends Phaser.Scene {
    
     }
     /**
-     * Creación de la escena. En este caso, solo cambiamos a la escena que representa el
-     * nivel del juego
+     * Creation of the scene. In this case, we only switch to the scene representing the
      */
     create() {
       this.scene.start('menu');

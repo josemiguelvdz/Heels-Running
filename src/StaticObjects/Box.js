@@ -9,10 +9,13 @@ export default class Box extends StaticObject {
       this.scene.anims.create({
         key: 'boxDestruction_anim',
         frames: this.anims.generateFrameNumbers('boxDestruction', { start: 0, end: 7 }),
-        frameRate: 15, // Velocidad de la animación
+        frameRate: 15, 
       });
     }
 
+  /**
+  * Used to animate box destruction
+  */
   animateBox(){
     this.setFlip(false,false);
     this.stop();   
@@ -26,6 +29,9 @@ export default class Box extends StaticObject {
     });      
   }
 
+  /**
+  * Handles collision with player to destroy the box
+  */
   handleCollision(){
     if(!this.collision){
       this.animateBox();
