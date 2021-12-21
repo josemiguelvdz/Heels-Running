@@ -61,7 +61,7 @@ export default class Menu extends Phaser.Scene {
     {
 
         this.rndDuration = 310;
-        this.rndY=Phaser.Math.Between(this.playButton.y, this.playButton.y+20);
+        this.rndY=Phaser.Math.Between(this.playButton.y, this.playButton.y+15);
         
         this.tweenMovement = this.tweens.add({
           targets: this.playButton,
