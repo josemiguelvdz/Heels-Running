@@ -81,6 +81,8 @@ export default class Level extends Phaser.Scene {
 
     this.cameras.main.setFollowOffset(this.offsetX, 0);
 
+    this.cameraStop = false;
+
     this.scape = this.input.keyboard.addKey('ESC');
     this.scape.on('down', () => { 
     });
@@ -114,6 +116,15 @@ export default class Level extends Phaser.Scene {
       this.scene.pause();
       this.scene.launch("pauseMenu", this);
     } 
+
+    if(this.player.x > 32800){
+      this.cameras.main.stopFollow();
+    }
+
+    if(!this.cameraStop && this.player.x > 33500){
+      this.cameraStop = true;
+      this.cameras.main.fade(2000, 0, 0, 0, false);
+    }
 
     this.mainSong.setVolume(this.ChangeVolume());
 
@@ -155,8 +166,6 @@ export default class Level extends Phaser.Scene {
 
     this.createObjectGroups();
 
-    
-
 
     // MAPA DEL JUEGO
     this.createAllStaticObjects();
@@ -182,12 +191,9 @@ export default class Level extends Phaser.Scene {
     this.timeBar = this.add.sprite(this.scale.width-100, 50, 'timeBar', 'timeBar.png').setScrollFactor(0);
     this.chrono= new Chrono(this, true);
 
-
-
     this.createDestroyZone();
 
     this.createZones(totalWidth);
-
     // SUELO
     this.createGroundZone(totalWidth);
 
@@ -358,6 +364,8 @@ export default class Level extends Phaser.Scene {
     this.createBuilding(27550, 420, 'bakery', true, true, 1.2, 2.3);
     this.createBuilding(28700, 190, 'stairBuilding', false);
     this.createBuilding(30000, 160, 'oldBuilding', false);
+    this.createBuilding(32800, 300, 'roadSign', false);
+    this.createBuilding(33700, 280, 'redLargeBuilding', false);
   }
   createAllFallObjects()
   {
@@ -530,7 +538,8 @@ export default class Level extends Phaser.Scene {
 
    createZones(totalWidth)
    {
-    this.createWinZone(32000, 600, 40, totalWidth);
+    //32000
+    this.createWinZone(34200, 600, 40, totalWidth);
 
     //CREAR TODAS LAS ZONAS NECESARIAS PARA EL NIVEL
 
