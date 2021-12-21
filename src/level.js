@@ -58,6 +58,8 @@ export default class Level extends Phaser.Scene {
     //Los asociamos al grupo para las colisiones 
 
     this.powerUpsArray=[];
+    
+
     const configSound2 = {
       mute: false,
       volume: 0.3,
@@ -148,7 +150,12 @@ export default class Level extends Phaser.Scene {
  */
   createObjects(totalWidth)
   {
+
     this.createObjectGroups();
+
+    this.createZones(totalWidth);
+    
+
 
     // MAPA DEL JUEGO
     this.createAllStaticObjects();
@@ -161,10 +168,7 @@ export default class Level extends Phaser.Scene {
     // -500, 300
     this.police = new Police(this, -500, 300);
     this.changeBoundingBox(this.police, 1, 1.5);
-
-    this.createZones(totalWidth);
     
-
     //-400, 300
     this.player = new Player(this, -400, 300, 3);
     // CAMBIAR BOUDING BOX DE TAMAÑO
@@ -177,6 +181,9 @@ export default class Level extends Phaser.Scene {
     this.timeBar = this.add.sprite(this.scale.width-100, 50, 'timeBar', 'timeBar.png').setScrollFactor(0);
     this.chrono= new Chrono(this, true);
 
+
+
+    this.createDestroyZone();
 
     // SUELO
     this.createGroundZone(totalWidth);
@@ -236,6 +243,7 @@ export default class Level extends Phaser.Scene {
     else if(number==1)this.powerE=new Salmon(this, this.player, x, y,'salmonFish',false);
     else if(number==2)this.powerE=new Esmoquin(this,this.player, x, y,'esmoquin',false);
     this.powerE.setScale(.5,.5);
+    this.goDestructibles.add(this.powerE);
     this.powerUps.add(this.powerE);
   }
 
@@ -387,11 +395,13 @@ export default class Level extends Phaser.Scene {
     this.powerUps = this.physics.add.group();
     this.timers = this.physics.add.group();
     this.gangsters = this.physics.add.group();
+    this.goDestructibles = this.physics.add.staticGroup();
   }
 
   createBox(x,y)
   {
     this.box = new Box(this,x,y,'boxDestruction');
+    this.goDestructibles.add(this.box);
     this.boxes.add(this.box);
   }
   createSalmon(x,y){
@@ -427,16 +437,19 @@ export default class Level extends Phaser.Scene {
   createFireHydrant(x,y)
   {
     this.fireHydrant = new FireHydrant(this, x, y, 'fireHydrant');
+    this.goDestructibles.add(this.fireHydrant);
     this.fireHydrants.add(this.fireHydrant);
   }
   createStaticObject(x, y, spriteName)
   {
     this.staticObject = new StaticObject (this, x, y, spriteName);
+    this.goDestructibles.add(this.staticObject);
     this.staticObjects.add(this.staticObject);
   }
   createBuilding(x, y, spriteName, flagActiveCollider, flagBoundingBox, boundingX, boundingY)
   {
     this.building = new StaticObject(this, x, y, spriteName);
+    this.goDestructibles.add(this.building);
     if(flagActiveCollider)  this.buildings.add(this.building);
     if(flagBoundingBox) this.changeBoundingBox(this.building, boundingX, boundingY);
   }
@@ -448,6 +461,7 @@ export default class Level extends Phaser.Scene {
   createGangster(x, y)
   {
     this.gangster = new Gangster(this, this.player, x, y);
+    this.goDestructibles.add(this.gangster);
     this.gangsters.add(this.gangster);
   }
 
@@ -482,6 +496,15 @@ export default class Level extends Phaser.Scene {
     this.physics.add.collider(this.winZone,this.player,(o1,o2)=>{
       this.win();
       });
+
+    this.physics.add.overlap(this.destroyZone,this.goDestructibles,(o1,o2)=>{
+      console.log(o2.name + 'sera destruido');
+      o2.destroy();
+    });
+    this.physics.add.overlap(this.destroyZone,this.powerUps,(o1,o2)=>{
+      console.log(o2.name + 'sera destruido');
+      o2.destroy();
+    });
 
       this.physics.add.collider(this.gangsters, this.groundZone);
       this.physics.add.collider(this.gangsters,this.buildings);
@@ -519,6 +542,14 @@ export default class Level extends Phaser.Scene {
     this.physics.world.enable(this.winZone);
     this.winZone.body.setAllowGravity(false);
     this.winZone.body.setImmovable(true);
+  }
+
+  createDestroyZone(){
+    this.destroyZone=this.add.zone(this.player.x+500,300,1600,10);
+    this.physics.world.enable(this.destroyZone);
+    this.destroyZone.setScrollFactor(0);
+    this.destroyZone.body.setAllowGravity(false);
+  
   }
 
   createHelicopterZone(x,y,height,totalWidth){
