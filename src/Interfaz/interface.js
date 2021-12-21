@@ -1,7 +1,7 @@
 
 export default class Interface extends Phaser.GameObjects.GameObject {
 
-    constructor(scene, player,police) {
+    constructor(scene, player) {
       super(scene);
       this.scene.add.existing(this);
   

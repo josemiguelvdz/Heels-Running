@@ -31,7 +31,7 @@ export default class PowerUp extends Phaser.GameObjects.Sprite {
    
     this.nameImg= nombreImg;
     
-    this.createTweenMovement();
+    this.createTweenMovement(y);
     
   }
   
@@ -46,10 +46,10 @@ export default class PowerUp extends Phaser.GameObjects.Sprite {
   /**
   * handle movement boolean in order to control de effect of power ups 
   */
-  createTweenMovement()
+  createTweenMovement(y)
   {
     this.rndDuration= Phaser.Math.Between(1000, 2000);
-    this.rndY=Phaser.Math.Between(250, 550);
+    this.rndY=Phaser.Math.Between(y, y+300);
     if(this.movesbyTween)
     {
       this.tweenMovement= this.scene.tweens.add({

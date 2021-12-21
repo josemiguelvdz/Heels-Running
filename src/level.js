@@ -166,7 +166,7 @@ export default class Level extends Phaser.Scene {
     
 
     //-400, 300
-    this.player = new Player(this, -400, 300, 3);
+    this.player = new Player(this, 18000, 300, 3);
     // CAMBIAR BOUDING BOX DE TAMAÑO
     this.changeBoundingBox(this.player, 2, 1.5);
 
@@ -253,6 +253,12 @@ export default class Level extends Phaser.Scene {
     this.createBox(28170, 535);
   }
   createAllPowerUps(){
+    this.createSalmon(13000, -700);
+    this.createSalmon(8500, 200);
+    this.createSalmon(18700, -100);
+    this.createCoffe(5850, 180);
+
+
     // this.createSalmon(2800, 50);
     // this.createEsmoquin(1300, 100);
     // this.createEsmoquin(3500, 70);
@@ -346,11 +352,29 @@ export default class Level extends Phaser.Scene {
     this.createFallObj(3400, 100, "maceta");
     this.createFallObj(7000, 100, "maceta");
     this.createFallObj(7467, 100, "ladrillo");
+    
+    this.createFallObj(20900, 100, "ladrillo");
+    this.createFallObj(23000, 120, "maceta");
+    this.createFallObj(23500, 120, "maceta");
+    this.createFallObj(25000, 100, "ladrillo");
+    this.createFallObj(28850, 100, "maceta");
+    this.createFallObj(30100, 100, "maceta");
   }
   createAllGangsters()
   {
-    this.createGangster(3700, 450);
-    this.createGangster(5850, 400);
+    this.createGangster(3700, 300);
+    this.createGangster(5850, 300);
+
+    this.createGangster(10850, -1000);
+    this.createGangster(12400, -1000);
+    this.createGangster(14370, -1000);
+    this.createGangster(16000, -1000);
+
+    this.createGangster(21000, 300);
+    this.createGangster(24500, 300);
+    this.createGangster(26200, 300);
+    this.createGangster(28400, 300);
+    this.createGangster(31000, 300);
   }
 
   createObjectGroups()
@@ -371,7 +395,7 @@ export default class Level extends Phaser.Scene {
     this.boxes.add(this.box);
   }
   createSalmon(x,y){
-    this.salmon= new Salmon(this, this.player, x, y,'salmonFish',true);
+    this.salmon = new Salmon(this, this.player, x, y,'salmonFish',true);
     this.powerUpsArray.push(this.salmon);
     this.powerUps.add(this.salmon);
   }
