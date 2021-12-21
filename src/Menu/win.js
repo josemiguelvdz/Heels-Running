@@ -31,6 +31,7 @@ export default class Win extends Phaser.Scene {
           loop: false,
           delay: 0,
         };
+
         this.winSong= this.sound.add("winSound",configSound);
         this.winSong.play();
         this.spriteTrain.play('trainB');
@@ -47,14 +48,14 @@ export default class Win extends Phaser.Scene {
 
         this.playButton = this.add.image(this.scale.width*0.5, 400, 'playButton_').setInteractive();
         this.playButton.on('pointerdown', () => {
-          this.scene.start('level');
           this.winSong.stop();
+          this.scene.start('level');
         });
 
         this.exitButton = this.add.image(this.scale.width*0.5, 500, 'exitButton').setInteractive();
         this.exitButton.on('pointerdown', () => {
-          this.scene.start('menu');
           this.winSong.stop();
+          this.scene.start('menu');
         })
     }
     preUpdate(t,dt)

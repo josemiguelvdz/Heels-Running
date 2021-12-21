@@ -18,11 +18,11 @@ export default class GameOver extends Phaser.Scene {
         rate: 1,
         detune: 0,
         seek: 0,
-        loop: true,
+        loop: false,
         delay: 0,
       };
-      this.winSong= this.sound.add("winSound",configSound);
-      this.winSong.play();
+      this.loseSong= this.sound.add("loseSound",configSound);
+      this.loseSong.play();
 
       this.anims.create({
           key: 'loseB',
@@ -33,7 +33,7 @@ export default class GameOver extends Phaser.Scene {
 
         this.lose.play('loseB');
           
-      this.bustedBackGround=  this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'cartelBusted').setScale(0.7,0.7);
+       this.bustedBackGround=  this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'cartelBusted').setScale(0.7,0.7);
        this.bustedBackGround.y-=15;
        this.bustedBackGround.x-=390;
 
@@ -44,7 +44,7 @@ export default class GameOver extends Phaser.Scene {
         this.playButton.y= 90;
         this.playButton.on('pointerdown', () => {
           
-          this.winSong.stop();
+          this.loseSong.stop();
           this.scene.start('level');
        
         });
@@ -53,7 +53,7 @@ export default class GameOver extends Phaser.Scene {
         this.exitButton.x=800;
         this.exitButton.y=90;
         this.exitButton.on('pointerdown', () => {
-          this.winSong.stop();
+          this.loseSong.stop();
           this.scene.start('menu');
           
         })
