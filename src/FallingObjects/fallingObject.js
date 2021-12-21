@@ -3,12 +3,12 @@
 export default class FallingObject extends Phaser.GameObjects.Sprite {
 
   constructor(scene, player, x, y, nombreImg) {
-    super(scene, x, y, nombreImg); //Constructor de la clase base
+    super(scene, x, y, nombreImg); 
 
-    this.jugador=player;
+    this.player=player;
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
-    this.body.setCollideWorldBounds(); //Colision con los limies del mundo 
+    this.body.setCollideWorldBounds(); //Collision with the limits of the world
     this.body.moves=false;
     this.isMoving=false;
     this.y -= this.height;
@@ -29,22 +29,25 @@ export default class FallingObject extends Phaser.GameObjects.Sprite {
   preUpdate() {
     super.preUpdate();
 
-    if(this.jugador.x + 345>= this.x) 
+    // If player enters the range
+    if(this.player.x + 345>= this.x) 
     {
+      //Fall
       this.body.moves=true;
       this.isMoving=true;
     }
     if(this.isMoving)
     {
-     
-        if (this.angle===360) this.angle=0;
-        this.angle++; 
-      
+      //Rotate
+      if (this.angle===360) this.angle=0;
+      this.angle++; 
     }  
-    
     this.fallingSound.setVolume(this.scene.ChangeVolume());
   }
 
+  /**
+  * Handles the collision with player, kick and floor
+  */
   handleCollisionFallObj(player,kick){
    if(player)this.handleCollisionPlayer();
    else if(kick)this.handleCollisionFloor();
@@ -56,13 +59,10 @@ export default class FallingObject extends Phaser.GameObjects.Sprite {
   * Handles the collision with player, and makes a breaking sound
   */
   handleCollisionPlayer() {
-    this.jugador.loseLife( this.nLifesLose);
+    this.player.loseLife( this.nLifesLose);
     this.fallingSound.play();
     this.createParticlesFallingbj();
     this.destroy();
-
-    //SONIDO DE IMPACTO
-
   }
 
 
@@ -73,11 +73,12 @@ export default class FallingObject extends Phaser.GameObjects.Sprite {
     this.fallingSound.play();
     this.createParticlesFallingbj();
     this.destroy();
-    
-    //SONIDO DE RUPTURA
-
   }
 
+  
+  /**
+  * Stop movement and sound when pausing the game
+  */
   handleMovement(){
     if(this.gameIsPaused){
       this.gameIsPaused=false;
