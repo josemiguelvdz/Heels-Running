@@ -25,11 +25,27 @@ export default class Menu extends Phaser.Scene {
         
       });
 
+      const configSound = {
+        mute: false,
+        volume: 0.3,
+        rate: 1,
+        detune: 0,
+        seek: 0,
+        loop: true,
+        delay: 0,
+      };
+
+      this.startSong= this.sound.add("startSound",configSound);
+      this.startSong.play();
+
       this.spriteTrain.play('mMenu');
       
       this.playbackground= this.add.image(this.scale.width*0.5, 70, 'playBackGround_V2').setScale(1.3, 1.3);
 
-      this.playButton.on('pointerdown', () => {this.scene.start('level')});
+      this.playButton.on('pointerdown', () => {
+        this.startSong.stop();
+        this.scene.start('level'); 
+      });
 
       this.speed = 1;
       this.createTweenMovement();

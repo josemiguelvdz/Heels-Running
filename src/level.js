@@ -43,17 +43,7 @@ export default class Level extends Phaser.Scene {
     this.createAligned(this, totalWidth*2, 'houses1', 0.5);
     this.createAligned(this, totalWidth*2, 'road', 1);
     this.createAligned(this, totalWidth*2, 'crosswalk', 1);
-    const configSound = {
-      mute: false,
-      volume: 0.3,
-      rate: 1,
-      detune: 0,
-      seek: 0,
-      loop: false,
-      delay: 0,
-    };
-    this.losingsound= this.sound.add("loseSound",configSound);
-    
+        
     //creamos los distintos elementos del juego
     //Los asociamos al grupo para las colisiones 
 
@@ -132,7 +122,6 @@ export default class Level extends Phaser.Scene {
 
   lose(){
     this.mainSong.stop();
-    this.losingsound.play();
     this.scene.start('gameover');
   }
 

@@ -21,7 +21,20 @@ export default class GameOver extends Phaser.Scene {
         loop: false,
         delay: 0,
       };
-      this.loseSong= this.sound.add("loseSound",configSound);
+      this.loseEfect= this.sound.add("loseEfect",configSound);
+      this.loseEfect.play();
+
+      const configSound_2 = {
+        mute: false,
+        volume: 0.5,
+        rate: 1,
+        detune: 0,
+        seek: 0,
+        loop: true,
+        delay: 0,
+      };
+
+      this.loseSong= this.sound.add("loseSound",configSound_2);
       this.loseSong.play();
 
       this.anims.create({
@@ -45,6 +58,7 @@ export default class GameOver extends Phaser.Scene {
         this.playButton.on('pointerdown', () => {
           
           this.loseSong.stop();
+          this.loseEfect.stop();
           this.scene.start('level');
        
         });
@@ -53,7 +67,9 @@ export default class GameOver extends Phaser.Scene {
         this.exitButton.x=800;
         this.exitButton.y=90;
         this.exitButton.on('pointerdown', () => {
+          
           this.loseSong.stop();
+          this.loseEfect.stop();
           this.scene.start('menu');
           
         })
