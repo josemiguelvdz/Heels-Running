@@ -21,12 +21,6 @@ export default class Police extends Phaser.GameObjects.Sprite {
             frameRate: 8, // Velocidad de la animación
             
           });
-          this.scene.anims.create({
-            key: 'helicopter_animation',
-            frames: this.anims.generateFrameNumbers('helicopterAnimation', { start: 0, end: 12 }),
-            frameRate: 30, // Velocidad de la animación
-            
-          });
     }
 
 
@@ -72,36 +66,11 @@ export default class Police extends Phaser.GameObjects.Sprite {
         this.y=450;   
         this.helicopter=false;
         this.body.setAllowGravity(true);
-        //this.createTweenMovement();
     }
 
     intoHelicopter(h){
         this.y=h;
         this.helicopter=true;
         this.body.setAllowGravity(false);
-        //this.createTweenMovement();
     }
-
-      /**
-    * handle movement boolean in order to control de effect of power ups 
-    */
-    createTweenMovement()
-    {
-
-        this.rndDuration= Phaser.Math.Between(1000, 2000);
-        this.rndY=Phaser.Math.Between(60, 75);
-        if(this.helicopter)
-        {
-            this.tweenMovement= this.scene.tweens.add({
-            targets: this,
-            y: this.rndY, //Cantidad de desplazamiento
-            duration: this.rndDuration,
-            ease: 'Linear',
-            yoyo: true,
-            repeat: -1,
-            delay: 200 //Tiempo que tarda en empezar
-            });
-        }
-        else if(this.tweenMovement) this.tweenMovement.stop();
-    } 
 }

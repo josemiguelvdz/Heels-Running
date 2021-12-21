@@ -7,6 +7,8 @@ export default class Menu extends Phaser.Scene {
   
     create() {
       this.spriteTrain=this.add.sprite(600, 230, 'mainMenu').setScale(0.7, 0.7); 
+
+      this.playButton = this.add.image(this.scale.width*0.5, 330, 'playButton2').setInteractive().setScale(1, 1);
       this.helicopter=this.add.sprite(this.scale.width*0.47, 225, 'helicopterAnimation');
 
       this.anims.create({
@@ -19,17 +21,18 @@ export default class Menu extends Phaser.Scene {
       this.anims.create({
         key: 'helicopter_animation',
         frames: this.anims.generateFrameNumbers('helicopterAnimation', { start: 0, end: 12 }),
-        frameRate: 30, // Velocidad de la animación
+        frameRate: 20, // Velocidad de la animación
         
       });
 
       this.spriteTrain.play('mMenu');
       
       this.playbackground= this.add.image(this.scale.width*0.5, 70, 'playBackGround_V2').setScale(1.3, 1.3);
-      this.playButton = this.add.image(this.scale.width*0.5, 330, 'playButton2').setInteractive().setScale(1, 1);
+
       this.playButton.on('pointerdown', () => {this.scene.start('level')});
 
       this.speed = 1;
+      this.createTweenMovement();
     }
 
     update(t, dt){
@@ -52,4 +55,22 @@ export default class Menu extends Phaser.Scene {
 
       this.helicopter.play('helicopter_animation', true);
     }
+
+    
+    createTweenMovement()
+    {
+
+        this.rndDuration = 310;
+        this.rndY=Phaser.Math.Between(this.playButton.y, this.playButton.y+20);
+        
+        this.tweenMovement = this.tweens.add({
+          targets: this.playButton,
+          y: this.rndY, //Cantidad de desplazamiento
+          duration: this.rndDuration,
+          ease: 'Linear',
+          yoyo: true,
+          repeat: -1,
+          delay: 0 //Tiempo que tarda en empezar
+          });
+    } 
 }

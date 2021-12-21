@@ -166,7 +166,7 @@ export default class Level extends Phaser.Scene {
     
 
     //-400, 300
-    this.player = new Player(this, 18000, 300, 3);
+    this.player = new Player(this, -400, 300, 3);
     // CAMBIAR BOUDING BOX DE TAMAÑO
     this.changeBoundingBox(this.player, 2, 1.5);
 
