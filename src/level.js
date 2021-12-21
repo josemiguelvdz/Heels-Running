@@ -244,11 +244,7 @@ export default class Level extends Phaser.Scene {
   createAllBoxes()
   {
     this.createBox(1928, 535);
-    this.createBox(3800, 535);
-    this.createBox(3864, 535);
-    this.createBox(3928, 535);
-    this.createBox(3864, 471);
-    this.createBox(3800, 471);
+
     this.createBox(6300, 535);
     this.createBox(8060, 535);
 
@@ -280,6 +276,7 @@ export default class Level extends Phaser.Scene {
   {
     this.createStaticObject(2950, 465, 'streetlight');
     this.createStaticObject(1000, 520, 'policeCar');
+    this.createStaticObject(3900, 525, 'bin');
     this.createStaticObject(4900, 520, 'policeCar');
     this.createStaticObject(6500, 455, 'streetlight');
     this.createStaticObject(8150, 455, 'streetlight');
@@ -353,6 +350,7 @@ export default class Level extends Phaser.Scene {
   createAllGangsters()
   {
     this.createGangster(3700, 450);
+    this.createGangster(5850, 400);
   }
 
   createObjectGroups()
@@ -362,8 +360,9 @@ export default class Level extends Phaser.Scene {
     this.fallObjs = this.physics.add.group();
     this.fireHydrants = this.physics.add.staticGroup();
     this.buildings = this.physics.add.staticGroup();
-    this.powerUps=this.physics.add.group();
-    this.timers=this.physics.add.group();
+    this.powerUps = this.physics.add.group();
+    this.timers = this.physics.add.group();
+    this.gangsters = this.physics.add.group();
   }
 
   createBox(x,y)
@@ -425,6 +424,7 @@ export default class Level extends Phaser.Scene {
   createGangster(x, y)
   {
     this.gangster = new Gangster(this, this.player, x, y);
+    this.gangsters.add(this.gangster);
   }
 
   handleColliders()
@@ -436,12 +436,8 @@ export default class Level extends Phaser.Scene {
       o2.handleCollision(this.chrono);
     });
 
-    this.physics.add.collider(this.player,this.staticObjects,(o1,o2)=>{
-      });
-
-    this.physics.add.collider(this.player,this.buildings,(o1,o2)=>{
-      });
-
+    this.physics.add.collider(this.player,this.staticObjects);
+    this.physics.add.collider(this.player,this.buildings);
     this.physics.add.collider(this.player, this.boxes);
         
     this.physics.add.overlap(this.player,this.fallObjs,(o1,o2)=> {
@@ -462,6 +458,11 @@ export default class Level extends Phaser.Scene {
     this.physics.add.collider(this.winZone,this.player,(o1,o2)=>{
       this.win();
       });
+
+      this.physics.add.collider(this.gangsters, this.groundZone);
+      this.physics.add.collider(this.gangsters,this.buildings);
+      this.physics.add.collider(this.groundZone, this.player);
+      this.physics.add.collider(this.groundZone, this.police); 
    }
 
    createGroundZone(totalWidth)
@@ -470,13 +471,6 @@ export default class Level extends Phaser.Scene {
     this.physics.world.enable(this.groundZone);
     this.groundZone.body.setAllowGravity(false);
     this.groundZone.body.setImmovable(true);
-  
-    this.physics.add.collider(this.groundZone, this.player);
-    this.physics.add.collider(this.groundZone, this.police);
-    this.physics.add.collider(this.groundZone, this.gangster);
-    this.physics.add.collider(this.groundZone,this.fallObjs,(o1,o2)=> {
-      o2.handleCollisionFallObj(false,false);
-    });   
    }
 
    createZones(totalWidth)

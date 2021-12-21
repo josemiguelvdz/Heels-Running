@@ -52,8 +52,8 @@ export default class Boot extends Phaser.Scene {
       this.load.image('policeCar', 'policeCar.png');
       this.load.image('streetlight', 'Farola.png');
       this.load.image('seat', 'seat.png');
+      this.load.image('bin', 'bin.png');
 
-      //this.load.image('candy', 'candyShop.png');
 
       //Buildings Sprites
       this.load.setPath('./assets/Sprites/Edificios');
