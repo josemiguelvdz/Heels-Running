@@ -96,6 +96,8 @@ export default class Level extends Phaser.Scene {
   update(t, dt){
     super.update(t, dt);
 
+    this.destroyZone.body.setVelocityX(this.police.constantSpeed);
+
     if(this.offsetX < 0){
       this.offsetX += 0.6 * Math.round(dt);
       this.cameras.main.setFollowOffset(this.offsetX, 25);
@@ -153,7 +155,6 @@ export default class Level extends Phaser.Scene {
 
     this.createObjectGroups();
 
-    this.createZones(totalWidth);
     
 
 
@@ -185,11 +186,14 @@ export default class Level extends Phaser.Scene {
 
     this.createDestroyZone();
 
+    this.createZones(totalWidth);
+
     // SUELO
     this.createGroundZone(totalWidth);
 
     // INTERFAZ - Barra de vida y tiempo
     this.interface = new Interface(this, this.player);
+
 
 
     // Handle colliders
@@ -498,11 +502,15 @@ export default class Level extends Phaser.Scene {
       });
 
     this.physics.add.overlap(this.destroyZone,this.goDestructibles,(o1,o2)=>{
-      console.log(o2.name + 'sera destruido');
       o2.destroy();
     });
     this.physics.add.overlap(this.destroyZone,this.powerUps,(o1,o2)=>{
-      console.log(o2.name + 'sera destruido');
+      o2.destroy();
+    });
+    this.physics.add.overlap(this.destroyZone,this.timers,(o1,o2)=>{
+      o2.destroy();
+    });
+    this.physics.add.overlap(this.destroyZone,this.gangsters,(o1,o2)=>{
       o2.destroy();
     });
 
@@ -545,9 +553,8 @@ export default class Level extends Phaser.Scene {
   }
 
   createDestroyZone(){
-    this.destroyZone=this.add.zone(this.player.x+500,300,1600,10);
+    this.destroyZone=this.add.zone(this.police.x-1700,300,30,10000);
     this.physics.world.enable(this.destroyZone);
-    this.destroyZone.setScrollFactor(0);
     this.destroyZone.body.setAllowGravity(false);
   
   }
