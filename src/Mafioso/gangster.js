@@ -8,7 +8,7 @@ export default class Gangster extends Phaser.GameObjects.Sprite {
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
 
-        this.jugador = player;
+        this.player = player;
         this.cooldown = 0;
         this.visionRange = 600;
 
@@ -31,7 +31,7 @@ export default class Gangster extends Phaser.GameObjects.Sprite {
         this.animateGangster();
 
         this.cooldown+=Math.round(delta);
-        if((this.cooldown) > 2000 && this.visionRange >= Math.abs(this.x-this.jugador.x)){
+        if((this.cooldown) > 2000 && this.visionRange >= Math.abs(this.x-this.player.x)){
             this.cooldown = 0;
             this.shoot();
         } 
@@ -39,13 +39,19 @@ export default class Gangster extends Phaser.GameObjects.Sprite {
         this.gunshotsound.setVolume(this.scene.ChangeVolume());
     }
 
+    /**
+    * Used to create a Bullet
+    */
     shoot(){
         this.gunshotsound.play();
-        new Bullet(this.scene, this.jugador, this.x+25, this.y-25);
+        new Bullet(this.scene, this.player, this.x+25, this.y-25);
     }
 
+    /**
+    * Used to flip gangster
+    */
     animateGangster(){
-        if (this.jugador.x < this.x) 
+        if (this.player.x < this.x) 
             this.setFlip(true,false);
         else
             this.setFlip(false, false);
