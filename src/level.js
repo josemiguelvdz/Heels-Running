@@ -48,7 +48,7 @@ export default class Level extends Phaser.Scene {
     
     this.playList=["gameSong", "gameSong2", "gameSong3"];
 
-    const configSound2 = {
+    const configSound = {
       mute: false,
       volume: 0.3,
       rate: 1,
@@ -57,7 +57,10 @@ export default class Level extends Phaser.Scene {
       loop: true,
       delay: 0,
     };
-    this.mainSong= this.sound.add(this.playList[Phaser.Math.Between(0, 2)],configSound2);
+
+    this.actSong = Phaser.Math.Between(0, 2);
+
+    this.mainSong= this.sound.add(this.playList[this.actSong],configSound);
     this.mainSong.play();
 
     this.createObjects(totalWidth);
@@ -80,8 +83,6 @@ export default class Level extends Phaser.Scene {
     this.slideX = 0;
 
   }
-
-
 
   update(t, dt){
     super.update(t, dt);
@@ -140,6 +141,7 @@ export default class Level extends Phaser.Scene {
   ChangeVolume(){
     return this.volume;
   }
+  
   /**
   * Used to change the slide volume position
   */  
