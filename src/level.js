@@ -45,6 +45,7 @@ export default class Level extends Phaser.Scene {
 
     this.powerUpsArray=[];
     
+    this.playList=["gameSong", "gameSong2", "gameSong3"];
 
     const configSound2 = {
       mute: false,
@@ -55,7 +56,7 @@ export default class Level extends Phaser.Scene {
       loop: true,
       delay: 0,
     };
-    this.mainSong= this.sound.add("gameSong",configSound2);
+    this.mainSong= this.sound.add(this.playList[Phaser.Math.Between(0, 3)],configSound2);
     this.mainSong.play();
 
     this.createObjects(totalWidth);
