@@ -177,7 +177,7 @@ export default class Level extends Phaser.Scene {
     this.police = new Police(this, -500, 300);
     this.changeBoundingBox(this.police, 1, 1.5);
     //-400, 300
-    this.player = new Player(this, 27000, 300, 3);
+    this.player = new Player(this, -400, 300, 3);
     // CAMBIAR BOUDING BOX DE TAMAÑO
     this.changeBoundingBox(this.player, 2, 1.5);
     this.createAllFallObjects();
@@ -261,7 +261,7 @@ export default class Level extends Phaser.Scene {
   {
     this.createBox(1928, 535);
 
-    this.createBox(6300, 535);
+    this.createBox(6200, 535);
     this.createBox(8060, 535);
 
     this.createBox(21350, 535);
@@ -275,17 +275,20 @@ export default class Level extends Phaser.Scene {
     this.createSalmon(13000, -700);
     this.createSalmon(8500, 200);
     this.createSalmon(18700, -100);
-    this.createCoffe(5850, 180);
-
-
-    // this.createSalmon(2800, 50);
-    // this.createEsmoquin(1300, 100);
-    // this.createEsmoquin(3500, 70);
-    // this.createAlcohol(800, 70);
-    // this.createCoffe( 1000, 100);
-    // this.createRedTimer(2200, 100);
-    // this.createGreenTimer(2400, 100);
-
+    this.createCoffe(3900, 250);
+    this.createAlcohol(8000, 300);
+    this.createEsmoquin(10300, -500);
+    this.createEsmoquin(5700, 200);
+    this.createAlcohol(12300, -500);
+    this.createCoffe(15000, -700);
+    this.createRedTimer(22400, 300);
+    this.createGreenTimer(20000, 200);
+    this.createAlcohol(24500, 200);
+    this.createAlcohol(19400, 300);
+    this.createCoffe(26000, 300);
+    this.createRedTimer(27500, 200);
+    this.createSalmon(29300, 200);
+    this.createAlcohol(31000, 300);
   }
   /**
   * Used to create all fireHydrants
@@ -405,6 +408,7 @@ export default class Level extends Phaser.Scene {
     this.createGangster(12400, -1000);
     this.createGangster(14370, -1000);
     this.createGangster(16000, -1000);
+    this.createGangster(17000, -1000);
 
     this.createGangster(21000, 300);
     this.createGangster(24500, 300);

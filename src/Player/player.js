@@ -77,7 +77,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.damagePlayersound= this.scene.sound.add("damageSound",configSound);
     this.deathSound= this.scene.sound.add("deathsound",configSound);
    
-    this.durationAlcohol=4000;
+    this.durationAlcohol=3000;
     this.secondsAlcohol=-1;
 
     this.durationCoffe=4000;
