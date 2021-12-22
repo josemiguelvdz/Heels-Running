@@ -15,15 +15,13 @@ import StaticObject from './StaticObjects/staticobject.js';
 import Interface from './Interfaz/interface.js';
 
 export default class Level extends Phaser.Scene {
-  /**
-   * Constructor de la escena
-   */
+
   constructor() {
     super({ key: 'level' });
   }
 
   /**
-   * Creación de los elementos de la escena principal de juego
+   * Creation of the elements of the main game scene
    */
   create() {
 
@@ -44,8 +42,6 @@ export default class Level extends Phaser.Scene {
     this.createAligned(this, totalWidth*2, 'road', 1);
     this.createAligned(this, totalWidth*2, 'crosswalk', 1);
         
-    //creamos los distintos elementos del juego
-    //Los asociamos al grupo para las colisiones 
 
     this.powerUpsArray=[];
     
@@ -119,12 +115,16 @@ export default class Level extends Phaser.Scene {
     this.mainSong.setVolume(this.ChangeVolume());
 
   }
-
+  /**
+  * Change the scene to Lose scene and stop the music
+  */  
   lose(){
     this.mainSong.stop();
     this.scene.start('gameover');
   }
-
+  /**
+  * Change the scene to Win scene and stop the music
+  */  
   win(){
     this.mainSong.stop();
     this.runTime= this.chrono.getTimeElapsed();
@@ -132,14 +132,21 @@ export default class Level extends Phaser.Scene {
     this.scene.start('win',  {runT: this.runTime , volume: this.ChangeVolume()});
   
   }
+  /**
+  * Used to change the volume
+  */  
   ChangeVolume(){
     return this.volume;
   }
-
+  /**
+  * Used to change the slide volume position
+  */  
   SaveSlidePos(posX){
       this.slideX = posX;
   }
-
+  /**
+  * Return the slide position
+  */  
   SlidePos(){
     return this.slideX;
   }
@@ -152,9 +159,7 @@ export default class Level extends Phaser.Scene {
  */
   createObjects(totalWidth)
   {
-
     this.createObjectGroups();
-
 
     // MAPA DEL JUEGO
     this.createAllStaticObjects();
@@ -162,46 +167,40 @@ export default class Level extends Phaser.Scene {
     this.createAllBoxes();
     this.createAllFireHydrants();
     this.createAllPowerUps();
-
-
     // -500, 300
     this.police = new Police(this, -500, 300);
     this.changeBoundingBox(this.police, 1, 1.5);
-    
     //-400, 300
     this.player = new Player(this, -400, 300, 3);
     // CAMBIAR BOUDING BOX DE TAMAÑO
     this.changeBoundingBox(this.player, 2, 1.5);
-
     this.createAllFallObjects();
-
     this.createAllGangsters();
 
     this.timeBar = this.add.sprite(this.scale.width-100, 50, 'timeBar', 'timeBar.png').setScrollFactor(0);
     this.chrono= new Chrono(this, true);
 
     this.createDestroyZone();
-
     this.createZones(totalWidth);
-    // SUELO
     this.createGroundZone(totalWidth);
 
-    // INTERFAZ - Barra de vida y tiempo
     this.interface = new Interface(this, this.player);
-
-
 
     // Handle colliders
     this.handleColliders();
-    
   }
 
-  // Cambiar tamaño sprites
+  /**
+  * Used to resize sprites
+  * @param {*} object - Objects to resize
+  * @param {*} factorX - ScaleX factor
+  * @param {*} factorY - ScaleY factor
+  */  
   changeBoundingBox(object, factorX, factorY){
     object.body.setSize(object.width/factorX, object.height/factorY, true);
   }
   /**
-  * External function that is called to generate the parallax objects
+  * Is called to generate the parallax objects
   * @param {*} scene - Scene
   * @param {*} totalWidth - Total Width of the Game
   * @param {*} texture - Image/Sprite to be generated
@@ -223,7 +222,7 @@ export default class Level extends Phaser.Scene {
     }
   }
   /**
-  * External function that is called to scalate the height of the buildings.
+  * Is called to scalate the height of the buildings.
   * This is used to generate buildings of different heights.
   * @param {*} platform - Building
   * @param {*} width - Width of the building
@@ -236,7 +235,9 @@ export default class Level extends Phaser.Scene {
     platform.body.setSize(platform.width, platform.height, true);
   }
 
-
+  /**
+  * Used to create a powerup when the player destroys the box and has been lucky
+  */  
   createBoxPowerUp(number,x,y){
     if(number===0)this.powerE=new Coffe( this,this.player, x, y,'coffe',false);
     else if(number==1)this.powerE=new Salmon(this, this.player, x, y,'salmonFish',false);
@@ -247,7 +248,9 @@ export default class Level extends Phaser.Scene {
   }
 
 
-
+  /**
+  * Used to create all boxes
+  */  
   createAllBoxes()
   {
     this.createBox(1928, 535);
@@ -259,6 +262,9 @@ export default class Level extends Phaser.Scene {
     this.createBox(25150, 535);
     this.createBox(28170, 535);
   }
+  /**
+  * Used to create all powerUps
+  */  
   createAllPowerUps(){
     this.createSalmon(13000, -700);
     this.createSalmon(8500, 200);
@@ -275,6 +281,9 @@ export default class Level extends Phaser.Scene {
     // this.createGreenTimer(2400, 100);
 
   }
+  /**
+  * Used to create all fireHydrants
+  */  
   createAllFireHydrants()
   {
     this.createFireHydrant(1500, 535);
@@ -285,6 +294,9 @@ export default class Level extends Phaser.Scene {
     this.createFireHydrant(25900, 535);
     this.createFireHydrant(30000, 535);
   }
+  /**
+  * Used to create all staticObjects
+  */  
   createAllStaticObjects()
   {
     this.createStaticObject(2950, 465, 'streetlight');
@@ -306,6 +318,9 @@ export default class Level extends Phaser.Scene {
     this.createStaticObject(30600, 455, 'streetlight');
     this.createStaticObject(31300, 520, 'policeCar');
   }
+  /**
+  * Used to create all buildings
+  */  
   createAllBuildings()
   {
     this.createBuilding(1600, 160, 'oldBuilding', false);
@@ -356,6 +371,9 @@ export default class Level extends Phaser.Scene {
     this.createBuilding(32800, 300, 'roadSign', false);
     this.createBuilding(33700, 280, 'redLargeBuilding', false);
   }
+  /**
+  * Used to create all fallingObjects
+  */  
   createAllFallObjects()
   {
     this.createFallObj(3400, 100, "maceta");
@@ -369,6 +387,9 @@ export default class Level extends Phaser.Scene {
     this.createFallObj(28850, 100, "maceta");
     this.createFallObj(30100, 100, "maceta");
   }
+  /**
+  * Used to create all gangsters
+  */  
   createAllGangsters()
   {
     this.createGangster(3700, 300);
@@ -385,7 +406,9 @@ export default class Level extends Phaser.Scene {
     this.createGangster(28400, 300);
     this.createGangster(31000, 300);
   }
-
+  /**
+  * Used to create all objects groups
+  */  
   createObjectGroups()
   {
     this.boxes = this.physics.add.staticGroup();
@@ -399,54 +422,109 @@ export default class Level extends Phaser.Scene {
     this.goDestructibles = this.physics.add.staticGroup();
   }
 
+  /**
+  * Used to create a box
+  * @param {*} x - Initial pos x
+  * @param {*} y - Initial pos y
+  */  
   createBox(x,y)
   {
     this.box = new Box(this,x,y,'boxDestruction');
     this.goDestructibles.add(this.box);
     this.boxes.add(this.box);
   }
+  /**
+  * Used to create a Salmon
+  * @param {*} x - Initial pos x
+  * @param {*} y - Initial pos y
+  */  
   createSalmon(x,y){
     this.salmon = new Salmon(this, this.player, x, y,'salmonFish',true);
     this.powerUpsArray.push(this.salmon);
     this.powerUps.add(this.salmon);
   }
+  /**
+  * Used to create a greenTimer
+  * @param {*} x - Initial pos x
+  * @param {*} y - Initial pos y
+  */  
   createGreenTimer(x,y){
     this.greenTimer=new GreenTimer(this,this.player, x, y,'greenTimer',true,this.chrono);
     this.powerUpsArray.push(this.greenTimer);
     this.timers.add(this.greenTimer);
   }
+  /**
+  * Used to create an esmoquin
+  * @param {*} x - Initial pos x
+  * @param {*} y - Initial pos y
+  */  
   createEsmoquin(x,y){
     this.esmoquin= new Esmoquin( this,this.player, x, y,'esmoquin',true);
     this.powerUpsArray.push(this.esmoquin);
     this.powerUps.add(this.esmoquin);
   }
+  /**
+  * Used to create a coffee
+  * @param {*} x - Initial pos x
+  * @param {*} y - Initial pos y
+  */  
   createCoffe(x,y){
     this.coffe= new Coffe( this,this.player, x, y,'coffe',true);
     this.powerUpsArray.push(this.coffe);
     this.powerUps.add(this.coffe);
   }
+  /**
+  * Used to create an alcohol
+  * @param {*} x - Initial pos x
+  * @param {*} y - Initial pos y
+  */  
   createAlcohol(x,y){
     this.alcohol= new Alcohol( this,this.player, x, y,'vino',true);
     this.powerUpsArray.push(this.alcohol);
     this.powerUps.add(this.alcohol);
   }
+  /**
+  * Used to create a redTimer
+  * @param {*} x - Initial pos x
+  * @param {*} y - Initial pos y
+  */  
   createRedTimer(x,y){
     this.redTimer=new RedTimer(this,this.player, x, y,'redTimer',true,this.chrono);
     this.powerUpsArray.push(this.redTimer);
     this.timers.add(this.redTimer);
   }
+  /**
+  * Used to create a fireHydrant
+  * @param {*} x - Initial pos x
+  * @param {*} y - Initial pos y
+  */  
   createFireHydrant(x,y)
   {
     this.fireHydrant = new FireHydrant(this, x, y, 'fireHydrant');
     this.goDestructibles.add(this.fireHydrant);
     this.fireHydrants.add(this.fireHydrant);
   }
+  /**
+  * Used to create a staticObject
+  * @param {*} x - Initial pos x
+  * @param {*} y - Initial pos y
+  * @param {*} spriteName - Sprite name
+  */  
   createStaticObject(x, y, spriteName)
   {
     this.staticObject = new StaticObject (this, x, y, spriteName);
     this.goDestructibles.add(this.staticObject);
     this.staticObjects.add(this.staticObject);
   }
+  /**
+  * Used to create a building
+  * @param {*} x - Initial pos x
+  * @param {*} y - Initial pos y
+  * @param {*} flagActiveCollider - Collide or not
+  * @param {*} flagBoundingBox - Change bounding box or not
+  * @param {*} boundingX - FactorX to change bounding box 
+  * @param {*} boundingY - FactorY to change bounding box 
+  */  
   createBuilding(x, y, spriteName, flagActiveCollider, flagBoundingBox, boundingX, boundingY)
   {
     this.building = new StaticObject(this, x, y, spriteName);
@@ -454,94 +532,118 @@ export default class Level extends Phaser.Scene {
     if(flagActiveCollider)  this.buildings.add(this.building);
     if(flagBoundingBox) this.changeBoundingBox(this.building, boundingX, boundingY);
   }
+  /**
+  * Used to create a fallingObject
+  * @param {*} x - Initial pos x
+  * @param {*} y - Initial pos y
+  * @param {*} name - Sprite name
+  */  
   createFallObj(x, y,name)
   {
     this.fallObj = new FallingObject(this, this.player, x, y, name);
     this.fallObjs.add(this.fallObj);
   }
+  /**
+  * Used to create a gangster
+  * @param {*} x - Initial pos x
+  * @param {*} y - Initial pos y
+  */  
   createGangster(x, y)
   {
     this.gangster = new Gangster(this, this.player, x, y);
     this.goDestructibles.add(this.gangster);
     this.gangsters.add(this.gangster);
   }
-
+  /**
+  * Used to create all physics collides
+  */  
   handleColliders()
   {
+    //PLAYER->POWERUPS
     this.physics.add.overlap(this.player,this.powerUps,(o1,o2)=>{
       o2.handleCollision(o1);
     });
+    //PLAYER->TIMERS
     this.physics.add.overlap(this.player,this.timers,(o1,o2)=>{
       o2.handleCollision(this.chrono);
     });
-
+    //PLAYER->STATICOBJECTS
     this.physics.add.collider(this.player,this.staticObjects);
+    //PLAYER->BUILDINGS
     this.physics.add.collider(this.player,this.buildings);
+    //PLAYER->BOXES
     this.physics.add.collider(this.player, this.boxes);
-        
+    //PLAYER->FALLOBJS
     this.physics.add.overlap(this.player,this.fallObjs,(o1,o2)=> {
-        o2.handleCollisionFallObj(true,false);
-      });
+      o2.handleCollisionFallObj(true,false);
+    });
+    //GROUNDZONE->FALLOBJTS
     this.physics.add.collider(this.groundZone,this.fallObjs,(o1,o2)=> {
       o2.handleCollisionFallObj(false,false);
     });
+    //PLAYER->FIREHYDRANT
     this.physics.add.collider(this.player, this.fireHydrants,(o1,o2)=> {
-        o2.setCollision();
-      });
-      //GRUPO DEL POLICIA Y EL PLAYER
+      o2.setCollision();
+    });
+    //PLAYER->POLICE
     this.physics.add.overlap(this.player,this.police,(o1,o2)=>{
-        o1.arrestado();
-        o1.getActualScene().chrono.finish();
-        o2.catchP(o1);
-        });
-    this.physics.add.collider(this.winZone,this.player,(o1,o2)=>{
+      o1.arrestado();
+      o1.getActualScene().chrono.finish();
+      o2.catchP(o1);
+    });
+    //PLAYER->WINZONE
+    this.physics.add.collider(this.player,this.winZone,(o1,o2)=>{
       this.win();
-      });
-
+    });
+    //DESTROYZONE->GODESTRUCTIBLES
     this.physics.add.overlap(this.destroyZone,this.goDestructibles,(o1,o2)=>{
       o2.destroy();
     });
+    //DESTROYZONE->POWERUPS
     this.physics.add.overlap(this.destroyZone,this.powerUps,(o1,o2)=>{
       o2.destroy();
     });
+    //DESTROYZONE->TIMERS
     this.physics.add.overlap(this.destroyZone,this.timers,(o1,o2)=>{
       o2.destroy();
     });
+    //DESTROYZONE->GANGSTERS
     this.physics.add.overlap(this.destroyZone,this.gangsters,(o1,o2)=>{
       o2.destroy();
     });
-
-      this.physics.add.collider(this.gangsters, this.groundZone);
-      this.physics.add.collider(this.gangsters,this.buildings);
-      this.physics.add.collider(this.groundZone, this.player);
-      this.physics.add.collider(this.groundZone, this.police); 
+    //GANGSTERS->GROUNDZONE
+    this.physics.add.collider(this.gangsters, this.groundZone);
+    //GANGSTERS->BUILDINGS
+    this.physics.add.collider(this.gangsters,this.buildings);
+    //GROUNDZONE->PLAYER
+    this.physics.add.collider(this.groundZone, this.player);
+    //GROUNDZONE->POLICE
+    this.physics.add.collider(this.groundZone, this.police); 
    }
-
-   createGroundZone(totalWidth)
-   {
+  /**
+  * Used to create the ground zone of the game
+  */  
+  createGroundZone(totalWidth)
+  {
     this.groundZone = this.add.zone(0, 600, totalWidth*3, 64);
     this.physics.world.enable(this.groundZone);
     this.groundZone.body.setAllowGravity(false);
     this.groundZone.body.setImmovable(true);
-   }
-
-   createZones(totalWidth)
-   {
-    //32000
-    this.createWinZone(34200, 600, 40, totalWidth);
-
-    //CREAR TODAS LAS ZONAS NECESARIAS PARA EL NIVEL
-
-
-    // 8700 / 19000
-
-    this.createPoliceZone(8700, 600, 40, totalWidth, 60);
-    this.createHelicopterZone(19000, 600, 40, totalWidth);
-
-
   }
 
+  /**
+  * Used to create all zones
+  */  
+   createZones(totalWidth)
+   {
+    this.createWinZone(34200, 600, 40, totalWidth);
+    this.createPoliceZone(8700, 600, 40, totalWidth, 60);
+    this.createHelicopterZone(19000, 600, 40, totalWidth);
+  }
 
+  /**
+  * Create a zone create an area to end the game when colliding with player
+  */  
   createWinZone(x,y,height,totalWidth){
     // VICTORY ZONE
     this.winZone=this.add.zone(x,y,height,totalWidth);
@@ -549,14 +651,19 @@ export default class Level extends Phaser.Scene {
     this.winZone.body.setAllowGravity(false);
     this.winZone.body.setImmovable(true);
   }
-
+  /**
+  * Create a zone which destroy all unnecessary objects
+  */  
   createDestroyZone(){
+    // DESTROY ZONE
     this.destroyZone=this.add.zone(this.police.x-1700,300,30,10000);
     this.physics.world.enable(this.destroyZone);
     this.destroyZone.body.setAllowGravity(false);
   
   }
-
+  /**
+  * Create a zone which collide with the helicopter to transform him into the police
+  */
   createHelicopterZone(x,y,height,totalWidth){
     // POLICE ZONE
     this.helicopterZone=this.add.zone(x,y,height,totalWidth);
@@ -568,7 +675,9 @@ export default class Level extends Phaser.Scene {
       o2.policeAgain();
     });
   }
-
+  /**
+  * Create a zone which collide with the police to transform him into a helicopter
+  */
   createPoliceZone(x,y,height,totalWidth, h){
     // HELICOPTER ZONE
     this.policeZone=this.add.zone(x,y,height,totalWidth);
