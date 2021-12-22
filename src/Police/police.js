@@ -15,19 +15,12 @@ export default class Police extends Phaser.GameObjects.Sprite {
             frameRate: 10, 
             repeat: -1   
           });
-        this.scene.anims.create({
-            key: 'smoke_animation',
-            frames: this.anims.generateFrameNumbers('smokeAnimation', { start: 0, end: 2 }),
-            frameRate: 8, 
-            
-          });
     }
     /**
     * Animated the police depending on the moment
     */
     animatePolice(){
-        if(this.catchRoger)  this.play("smoke_animation", true);   
-        else if(!this.helicopter) this.play('run_animation', true);
+        if(!this.helicopter) this.play('run_animation', true);
         else if(this.helicopter) this.play('helicopter_animation', true)
     }
 

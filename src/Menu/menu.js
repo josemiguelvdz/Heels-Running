@@ -13,14 +13,14 @@ export default class Menu extends Phaser.Scene {
 
       this.anims.create({
           key: 'mMenu',
-          frames: this.anims.generateFrameNumbers('mainMenu', { start: 0, end: 18}),
+          frames: this.anims.generateFrameNumbers('mainMenu', { start: 0, end: 17}),
           frameRate: 25, 
           repeat: -1  
         });
 
       this.anims.create({
         key: 'helicopter_animation',
-        frames: this.anims.generateFrameNumbers('helicopterAnimation', { start: 0, end: 12 }),
+        frames: this.anims.generateFrameNumbers('helicopterAnimation', { start: 0, end: 11 }),
         frameRate: 20, 
         
       });

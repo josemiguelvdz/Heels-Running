@@ -29,12 +29,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
       repeat: -1    
     });
     this.scene.anims.create({
-      key: 'smokingRun_anim',
-      frames: this.anims.generateFrameNumbers('smokingRun', { start: 0, end: 7 }),
-      frameRate: 8, 
-      repeat: -1    
-    });
-    this.scene.anims.create({
       key: 'jump_anim',
       frames: this.anims.generateFrameNumbers('jump', { start: 0, end: 4 }),
       frameRate: 10, 

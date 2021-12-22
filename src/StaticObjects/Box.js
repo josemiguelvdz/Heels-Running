@@ -8,7 +8,7 @@ export default class Box extends StaticObject {
 
       this.scene.anims.create({
         key: 'boxDestruction_anim',
-        frames: this.anims.generateFrameNumbers('boxDestruction', { start: 0, end: 7 }),
+        frames: this.anims.generateFrameNumbers('boxDestruction', { start: 0, end: 3 }),
         frameRate: 15, 
       });
     }
