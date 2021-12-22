@@ -42,9 +42,14 @@ export default class Menu extends Phaser.Scene {
       
       this.playbackground= this.add.image(this.scale.width*0.5, 70, 'playBackGround_V2').setScale(1.3, 1.3);
 
+      this.down = false;
+
       this.playButton.on('pointerdown', () => {
         this.startSong.stop();
-        this.scene.start('level'); 
+        if(!this.down){
+          this.scene.start('level'); 
+          this.down = true;
+        }
       });
 
       this.speed = 1;

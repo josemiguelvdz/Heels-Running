@@ -42,6 +42,7 @@ export default class Level extends Phaser.Scene {
     this.createAligned(this, totalWidth*2, 'road', 1);
     this.createAligned(this, totalWidth*2, 'crosswalk', 1);
         
+    this.Gang=[];
 
     this.powerUpsArray=[];
     
@@ -56,7 +57,7 @@ export default class Level extends Phaser.Scene {
       loop: true,
       delay: 0,
     };
-    this.mainSong= this.sound.add(this.playList[Phaser.Math.Between(0, 3)],configSound2);
+    this.mainSong= this.sound.add(this.playList[Phaser.Math.Between(0, 2)],configSound2);
     this.mainSong.play();
 
     this.createObjects(totalWidth);
@@ -552,6 +553,7 @@ export default class Level extends Phaser.Scene {
   createGangster(x, y)
   {
     this.gangster = new Gangster(this, this.player, x, y);
+    this.Gang.push(this.gangster);
     this.goDestructibles.add(this.gangster);
     this.gangsters.add(this.gangster);
   }

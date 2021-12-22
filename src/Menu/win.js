@@ -51,18 +51,26 @@ export default class Win extends Phaser.Scene {
         
         this.spriteWin = this.add.image(this.scale.width*0.5, 100, 'youScape').setScale(1.3, 1.3);
 
+        this.down = false;
+
         // Play again
         this.playButton = this.add.image(this.scale.width*0.5, 400, 'playButton_').setInteractive();
         this.playButton.on('pointerdown', () => {
           this.winSong.stop();
-          this.scene.start('level');
+          if(!this.down){
+            this.scene.start('level'); 
+            this.down = true;
+          }
         });
 
         //Exit to Menu
         this.exitButton = this.add.image(this.scale.width*0.5, 500, 'exitButton').setInteractive();
         this.exitButton.on('pointerdown', () => {
           this.winSong.stop();
-          this.scene.start('menu');
+          if(!this.down){
+            this.scene.start('menu'); 
+            this.down = true;
+          }
         })
     }
     preUpdate(t,dt)
