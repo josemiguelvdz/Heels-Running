@@ -14,14 +14,14 @@ export default class Menu extends Phaser.Scene {
       this.anims.create({
           key: 'mMenu',
           frames: this.anims.generateFrameNumbers('mainMenu', { start: 0, end: 18}),
-          frameRate: 25, // Velocidad de la animación
-          repeat: -1    // Animación en bucle
+          frameRate: 25, 
+          repeat: -1  
         });
 
       this.anims.create({
         key: 'helicopter_animation',
         frames: this.anims.generateFrameNumbers('helicopterAnimation', { start: 0, end: 12 }),
-        frameRate: 20, // Velocidad de la animación
+        frameRate: 20, 
         
       });
 
@@ -72,7 +72,9 @@ export default class Menu extends Phaser.Scene {
       this.helicopter.play('helicopter_animation', true);
     }
 
-    
+    /** 
+    * Create the continuous movement of the powerups
+    */
     createTweenMovement()
     {
 
@@ -81,12 +83,12 @@ export default class Menu extends Phaser.Scene {
         
         this.tweenMovement = this.tweens.add({
           targets: this.playButton,
-          y: this.rndY, //Cantidad de desplazamiento
+          y: this.rndY, 
           duration: this.rndDuration,
           ease: 'Linear',
           yoyo: true,
           repeat: -1,
-          delay: 0 //Tiempo que tarda en empezar
+          delay: 0 
           });
     } 
 }
