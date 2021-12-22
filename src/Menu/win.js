@@ -5,21 +5,26 @@ export default class Win extends Phaser.Scene {
       super({ key: 'win' });
       this.runTime=0;
     }
-    init(data)  //Data se pasa como un objeto construido cuando pasas de escena con los parametros que tu eligas
-    {
-        this.runTime=data.runT;
-        this.volumeSong=data.volume;
+    
+  /** 
+  * Initialize variables
+  * @param {*} data - runTime
+  */
+  init(data) 
+  {
+    this.runTime=data.runT;
+    this.volumeSong=data.volume;
         
-    }
+  }
 
     create() {
-        this.spriteTrain=this.add.sprite(600, 300, 'trainBackground').setScale(2.3,2); 
+        this.spriteTrain= this.add.sprite(600, 300, 'trainBackground').setScale(2.3,2); 
 
         this.anims.create({
             key: 'trainB',
             frames: this.anims.generateFrameNumbers('trainBackground', { start: 0, end: 55 }),
-            frameRate: 12, // Velocidad de la animación
-            repeat: -1    // Animación en bucle
+            frameRate: 12, 
+            repeat: -1  
           });
 
         const configSound = {
@@ -31,8 +36,23 @@ export default class Win extends Phaser.Scene {
           loop: false,
           delay: 0,
         };
-        this.winSong= this.sound.add("winSound",configSound);
+
+        this.winSound= this.sound.add("winSound",configSound);
+        this.winSound.play();
+
+        const configSound_2= {
+          mute: false,
+          volume: this.volumeSong,
+          rate: 1,
+          detune: 0,
+          seek: 0,
+          loop: true,
+          delay: 0,
+        };
+
+        this.winSong= this.sound.add("winSong",configSound_2);
         this.winSong.play();
+        
         this.spriteTrain.play('trainB');
 
         this.timeBar = this.add.sprite(this.scale.width*0.5, 240, 'timeBar', 'timeBar.png').setScale(1.5, 1.5);
@@ -45,16 +65,27 @@ export default class Win extends Phaser.Scene {
         
         this.spriteWin = this.add.image(this.scale.width*0.5, 100, 'youScape').setScale(1.3, 1.3);
 
+        this.down = false;
+
+        // Play again
         this.playButton = this.add.image(this.scale.width*0.5, 400, 'playButton_').setInteractive();
         this.playButton.on('pointerdown', () => {
-          this.scene.start('level');
+          this.winSound.stop();
           this.winSong.stop();
+          if(!this.down){
+            this.down = true;
+            this.scene.start('level'); 
+          }
         });
 
+        //Exit to Menu
         this.exitButton = this.add.image(this.scale.width*0.5, 500, 'exitButton').setInteractive();
         this.exitButton.on('pointerdown', () => {
-          this.scene.start('menu');
           this.winSong.stop();
+          if(!this.down){
+            this.down = true;
+            this.scene.start('menu'); 
+          }
         })
     }
     preUpdate(t,dt)

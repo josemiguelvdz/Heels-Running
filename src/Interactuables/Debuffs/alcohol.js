@@ -3,7 +3,7 @@ import PowerUp from '../PowerUps/powerUp.js';
 export default class Alcohol extends PowerUp {
 
   constructor(scene, player, x, y, nombreImg,moving) {
-    super(scene, player, x, y, nombreImg,moving); //Constructor de la clase base
+    super(scene, player, x, y, nombreImg,moving); 
     const configSound = {
       mute: false,
       volume: 0.3,
@@ -24,6 +24,7 @@ export default class Alcohol extends PowerUp {
   
   /**
   * Handles collision with player
+  * @param {*} player - refers to the game player
   */
   handleCollision(player){
     player.controlSpeed("Reduce"); 

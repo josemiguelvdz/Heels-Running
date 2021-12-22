@@ -26,9 +26,9 @@ export default class RedTimer extends PowerUp {
 
   
   /**
-   * Handles the collision with player
-
-   */
+  * Handles the collision with player
+  * @param {*} chrono - refers to the game timer
+  */
   handleCollision(chrono){
     chrono.addTime(30000,0);
     this.debuffsound.play();

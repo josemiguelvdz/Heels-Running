@@ -12,17 +12,17 @@ export default class Bullet extends Phaser.GameObjects.Sprite {
         this.damage = 1;
         
         this.angle = (Phaser.Math.Angle.Between(this.x, this.y, player.x, player.y)); 
-        this.jugador = player;
+        this.player = player;
 
         this.speedBullet = 500;
         this.countingtimeDestruction = 0;
-        this.tiempoDestruccion=2000;
+        this.destructionTime=2000;
     }
 
     preUpdate(time, delta){
         super.preUpdate(time, delta);
 
-        this.scene.physics.add.collider(this.jugador, this,(o1,o2)=> {
+        this.scene.physics.add.collider(this.player, this,(o1,o2)=> {
             this.handleCollision();
             this.destroy();
         });
@@ -31,21 +31,24 @@ export default class Bullet extends Phaser.GameObjects.Sprite {
         this.body.setVelocityY(this.speedBullet*Math.sin(this.angle));
 
         this.countingtimeDestruction+=Math.round(delta);
-
-        if((this.countingtimeDestruction) > this.tiempoDestruccion){
+        if((this.countingtimeDestruction) > this.destructionTime){
             this.destroy();  
         }
-
         else this.createShotParticles();
 
         
     }
 
+    /**
+    * Handles the collision with player
+    */
     handleCollision(){
-       
-        this.jugador.loseLife(this.damage);
+        this.player.loseLife(this.damage);
     }
 
+    /**
+    * create particles to give feedback
+    */
     createShotParticles(){
         let dustParticles = this.scene.add.particles('shotParticle');
         this.shotEmitter = dustParticles.createEmitter({

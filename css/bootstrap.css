@@ -41,6 +41,12 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: 'Pixel';
+  src: url('../assets/font/thaleahfat-webfont.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+   url('../assets/font/ThaleahFat.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}  
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -8997,10 +9003,6 @@ a.text-dark:hover, a.text-dark:focus {
   font-size: 25px;
 }
 
-#game_canvas {
-  margin-top: 30px;
-}
-
 body {
   background: rgb(63,94,251);
   background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(77,33,106,1) 100%);
@@ -9072,3 +9074,104 @@ body {
 		opacity: 0;
 	}
 }
+
+/* Container holding the image and the text */
+.game-container {
+  position: relative;
+  text-align: center;
+}
+
+#game_canvas {
+  margin-top: 30px;
+  position: absolute;
+}
+
+
+/* Container holding the image and the text */
+.description-container {
+  position: relative;
+  text-align: center;
+}
+
+/* Container holding the image and the text */
+.controles-container {
+  position: relative;
+  text-align: center;
+}
+
+/* Container holding the image and the text */
+.creadores-container {
+  position: relative;
+  text-align: center;
+}
+
+
+/* Top left text */
+.titulo_description {
+  font-family: 'Pixel';
+  position: absolute;
+  top: 10%;
+  left: 38%;
+  font-size: 75px;
+  color:var(--info);
+}
+
+/* Top left text */
+.titulo_controles {
+  font-family: 'Pixel';
+  position: absolute;
+  top: 5%;
+  left: 40%;
+  font-size: 75px;
+  color:var(--pink);
+}
+
+/* Top left text */
+.titulo_creadores {
+  font-family: 'Pixel';
+  position: absolute;
+  top: 5%;
+  left: 40%;
+  font-size: 75px;
+  color:var(--warning);
+}
+
+.imagen_controles{
+  position: absolute;
+  top: 15%;
+  left: 20%;
+}
+
+/* Centered text */
+.texto {
+  font-family: 'Pixel';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 50px;
+  font-size: 27px;
+  color: var(--red);
+}
+
+/* Centered text */
+.texto-creadores {
+  font-family: 'Pixel';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 40px;
+  font-size: 40px;
+  color:var(--success);
+}
+
+.click-here{
+  font-family: 'Pixel';
+  text-align: center;
+  margin-top: 40px;
+  font-size: 70px;
+  color: black;
+}
+
+

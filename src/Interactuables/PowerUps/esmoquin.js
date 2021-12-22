@@ -14,11 +14,12 @@ export default class Esmoquin extends PowerUp {
 
 
   /**
-   * Handles the collision with player
-   */
+  * Handles the collision with player
+  * @param {*} player - refers to the game player
+  */
   handleCollision(player) {
-    //En la llamada al player se actualizaria visualmente el efecto del power up
-    //Asi como en la interfaz con sus propios metodos 
+    //In the call to  player the effect of the power up would be visually updated
+    //As well as in the interface with its own methods
     player.configEsmoquinShield();
     this.powerupsound.play();
     this.destroyObject();

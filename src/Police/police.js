@@ -12,31 +12,15 @@ export default class Police extends Phaser.GameObjects.Sprite {
         this.scene.anims.create({
             key: 'run_animation',
             frames: this.anims.generateFrameNumbers('policeRun', { start: 0, end: 7 }),
-            frameRate: 10, // Velocidad de la animación
-            repeat: -1    // Animación en bucle
-          });
-        this.scene.anims.create({
-            key: 'smoke_animation',
-            frames: this.anims.generateFrameNumbers('smokeAnimation', { start: 0, end: 2 }),
-            frameRate: 8, // Velocidad de la animación
-            
-          });
-          this.scene.anims.create({
-            key: 'helicopter_animation',
-            frames: this.anims.generateFrameNumbers('helicopterAnimation', { start: 0, end: 12 }),
-            frameRate: 30, // Velocidad de la animación
-            
+            frameRate: 10, 
+            repeat: -1   
           });
     }
-
-
     /**
     * Animated the police depending on the moment
-    * 
     */
     animatePolice(){
-        if(this.catchRoger)  this.play("smoke_animation", true);   
-        else if(!this.helicopter) this.play('run_animation', true);
+        if(!this.helicopter) this.play('run_animation', true);
         else if(this.helicopter) this.play('helicopter_animation', true)
     }
 
@@ -45,7 +29,7 @@ export default class Police extends Phaser.GameObjects.Sprite {
         super.preUpdate(t,dt);
         this.animatePolice();
 
-        this.body.setVelocityX(this.constantSpeed); //Movimiento continuo del jugador hacia la derecha
+        this.body.setVelocityX(this.constantSpeed);
 
         if(this.helicopter){
             this.y = this.scene.cameras.main.scrollY + 100;
@@ -53,55 +37,32 @@ export default class Police extends Phaser.GameObjects.Sprite {
     }
     /**
     * Stop the police when he arrests the player
-    * 
     */
     catchP(){
         this.constantSpeed=0;
         this.catchRoger=true;
         this.scene.lose();
     }
-
     /**
     * Return if police is transformed into a helicopter 
-   */
+    */
     isHelicopter(){
         return this.helicopter;
     }
-
+    /**
+    * Transform the helicopter into police again
+    */
     policeAgain(){
         this.y=450;   
         this.helicopter=false;
         this.body.setAllowGravity(true);
-        //this.createTweenMovement();
     }
-
+    /**
+    * Transform the police into a helicopter
+    */
     intoHelicopter(h){
         this.y=h;
         this.helicopter=true;
         this.body.setAllowGravity(false);
-        //this.createTweenMovement();
     }
-
-      /**
-    * handle movement boolean in order to control de effect of power ups 
-    */
-    createTweenMovement()
-    {
-
-        this.rndDuration= Phaser.Math.Between(1000, 2000);
-        this.rndY=Phaser.Math.Between(60, 75);
-        if(this.helicopter)
-        {
-            this.tweenMovement= this.scene.tweens.add({
-            targets: this,
-            y: this.rndY, //Cantidad de desplazamiento
-            duration: this.rndDuration,
-            ease: 'Linear',
-            yoyo: true,
-            repeat: -1,
-            delay: 200 //Tiempo que tarda en empezar
-            });
-        }
-        else if(this.tweenMovement) this.tweenMovement.stop();
-    } 
 }
