@@ -56,16 +56,12 @@ export default class GameOver extends Phaser.Scene {
         this.playButton.x=425;
         this.playButton.y= 90;
 
-        this.down = false;
-
         this.playButton.on('pointerdown', () => {
           
           this.loseSong.stop();
           this.loseEfect.stop();
-          if(!this.down){
-            this.scene.start('level'); 
-            this.down = true;
-          }
+          
+          this.scene.start('level'); 
         });
 
         this.exitButton = this.add.image(this.scale.width*0.5, 500, 'exitButton_V2').setInteractive().setScale(0.9, 0.9);
@@ -75,10 +71,8 @@ export default class GameOver extends Phaser.Scene {
           
           this.loseSong.stop();
           this.loseEfect.stop();
-          if(!this.down){
-            this.scene.start('menu'); 
-            this.down = true;
-          }
+          
+          this.scene.start('menu'); 
           
         })
     }

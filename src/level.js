@@ -98,7 +98,6 @@ export default class Level extends Phaser.Scene {
       this.player.arrestado();
       this.player.getActualScene().chrono.finish();
       this.police.catchP(this.player);
-      this.lose();
     }
 
     if (Phaser.Input.Keyboard.JustDown(this.scape)) { 
