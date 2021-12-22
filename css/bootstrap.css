@@ -9123,7 +9123,7 @@ body {
   top: 5%;
   left: 40%;
   font-size: 75px;
-  color:var(--info);
+  color:var(--pink);
 }
 
 /* Top left text */
@@ -9133,7 +9133,7 @@ body {
   top: 5%;
   left: 40%;
   font-size: 75px;
-  color:var(--info);
+  color:var(--warning);
 }
 
 .imagen_controles{
@@ -9163,7 +9163,15 @@ body {
   transform: translate(-50%, -50%);
   margin-top: 40px;
   font-size: 40px;
-  color: var(--red);
+  color:var(--success);
+}
+
+.click-here{
+  font-family: 'Pixel';
+  text-align: center;
+  margin-top: 40px;
+  font-size: 70px;
+  color: black;
 }
 
 

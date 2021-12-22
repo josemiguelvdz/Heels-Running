@@ -156,6 +156,6 @@ export default class Boot extends Phaser.Scene {
      * Creation of the scene. In this case, we only switch to the scene representing the
      */
     create() {
-      this.scene.start('menu');
+      this.scene.start('intro');
     }
   }
