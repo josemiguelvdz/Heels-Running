@@ -48,7 +48,6 @@ export default class Boot extends Phaser.Scene {
       this.load.image('fireHydrant', 'fireHydrant.png');
       this.load.image('policeCar', 'policeCar.png');
       this.load.image('streetlight', 'streetLight.png');
-      this.load.image('seat', 'seat.png');
       this.load.image('bin', 'bin.png');
 
 
@@ -77,7 +76,7 @@ export default class Boot extends Phaser.Scene {
 
       //PowerUp Sprites
       this.load.setPath('./assets/Sprites/Interactuables/PowerUps');
-      this.load.image('coffe', 'coffe.png');
+      this.load.image('coffee', 'coffee.png');
       this.load.image('esmoquin', 'esmoquin.png');
       this.load.image('greenTimer', 'greentimer.png');
 

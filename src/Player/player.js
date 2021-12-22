@@ -18,7 +18,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
     this.speedVariable=120; 
     this.alcoholEffect=false;
-    this.coffeEffect=false;
+    this.coffeeEffect=false;
 
     this.arrested=false;
 
@@ -74,8 +74,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.durationAlcohol=3000;
     this.secondsAlcohol=-1;
 
-    this.durationCoffe=4000;
-    this.secondsCoffe=-1;
+    this.durationCoffee=4000;
+    this.secondsCoffee=-1;
 
     this.durationEsmoquin=5000;
     this.secondsEsmoquin=-1;
@@ -97,7 +97,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
     this.handleAlcoholEffect(dt);
 
-    this.handleCoffeEffect(dt);
+    this.handleCoffeeEffect(dt);
 
     // Cooldown kick
     if(this.actKickCooldown > 0) this.actKickCooldown -= Math.round(dt);
@@ -127,12 +127,12 @@ export default class Player extends Phaser.GameObjects.Sprite {
   * controls the duration of the powerup and perform the effect
   * @param {*} delta - refers to delta Time
   */
-  handleCoffeEffect(delta){
-    if(this.secondsCoffe >= 0) {   
+  handleCoffeeEffect(delta){
+    if(this.secondsCoffee >= 0) {   
      
-        this.secondsCoffe+=Math.round(delta);
-        if(this.secondsCoffe>this.durationCoffe){ 
-          this.secondsCoffe=-1;  //reset the timer for the effect
+        this.secondsCoffee+=Math.round(delta);
+        if(this.secondsCoffee>this.durationCoffee){ 
+          this.secondsCoffee=-1;  //reset the timer for the effect
           this.restoreSpeed("Increase"); 
         }
       
@@ -303,8 +303,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
     }
     else  if(action==="Increase"){
       this.speed=this.speed+this.speedVariable;
-      this.coffeEffect=true;
-      this.secondsCoffe=0;
+      this.coffeeEffect=true;
+      this.secondsCoffee=0;
     }
   }
   
@@ -319,7 +319,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     }
     else  if(action==="Increase"){
       this.speed=this.speed-this.speedVariable;
-      this.coffeEffect=false;
+      this.coffeeEffect=false;
     }
   }
 

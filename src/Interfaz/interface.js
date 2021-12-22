@@ -27,7 +27,7 @@ export default class Interface extends Phaser.GameObjects.GameObject {
   
       this.esmoquinIcon = this.scene.add.sprite(this.x, this.y, "esmoquin", "esmoquin.png").setScrollFactor(0);
       this.alcoholIcon = this.scene.add.sprite(this.x, this.y, "vino", "vino.png").setScrollFactor(0);
-      this.coffeIcon = this.scene.add.sprite(this.x, this.y, "coffe", "coffe.png").setScrollFactor(0);
+      this.coffeeIcon = this.scene.add.sprite(this.x, this.y, "coffee", "coffee.png").setScrollFactor(0);
   
       this.greenCircle.setVisible(false);
       this.redCircle.setVisible(false);
@@ -125,17 +125,17 @@ export default class Interface extends Phaser.GameObjects.GameObject {
     * Used to show active powerup
     */
     checkPowerUpBar(){
-        if(this.player.esmoquinShield || this.player.coffeEffect){
+        if(this.player.esmoquinShield || this.player.coffeeEffect){
             this.greenCircle.setVisible(true);
             if(this.player.esmoquinShield) 
               this.esmoquinIcon.setVisible(true);
             else
-              this.coffeIcon.setVisible(true);
+              this.coffeeIcon.setVisible(true);
           }
           else{
             this.greenCircle.setVisible(false);
             this.esmoquinIcon.setVisible(false);
-            this.coffeIcon.setVisible(false);
+            this.coffeeIcon.setVisible(false);
           }
       
           if(this.player.alcoholEffect){

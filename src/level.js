@@ -1,7 +1,7 @@
 import Player from './Player/player.js';
 import Police from './Police/police.js';
 import Salmon from './Interactuables/Life/Salmon.js';
-import Coffe from './Interactuables/PowerUps/Coffe.js';
+import Coffee from './Interactuables/PowerUps/Coffee.js';
 import RedTimer from './Interactuables/Debuffs/RedTimer.js';
 import GreenTimer from './Interactuables/PowerUps/GreenTimer.js';
 import Box from './StaticObjects/Box.js';
@@ -246,7 +246,7 @@ export default class Level extends Phaser.Scene {
   * Used to create a powerup when the player destroys the box and has been lucky
   */  
   createBoxPowerUp(number,x,y){
-    if(number===0)this.powerE=new Coffe( this,this.player, x, y,'coffe',false);
+    if(number===0)this.powerE=new Coffee( this,this.player, x, y,'coffee',false);
     else if(number==1)this.powerE=new Salmon(this, this.player, x, y,'salmonFish',false);
     else if(number==2)this.powerE=new Esmoquin(this,this.player, x, y,'esmoquin',false);
     this.powerE.setScale(.5,.5);
@@ -276,17 +276,17 @@ export default class Level extends Phaser.Scene {
     this.createSalmon(13000, -700);
     this.createSalmon(8500, 200);
     this.createSalmon(18700, -100);
-    this.createCoffe(3900, 250);
+    this.createCoffee(3900, 250);
     this.createAlcohol(8000, 300);
     this.createEsmoquin(10300, -500);
     this.createEsmoquin(5700, 200);
     this.createAlcohol(12300, -500);
-    this.createCoffe(15000, -700);
+    this.createCoffee(15000, -700);
     this.createRedTimer(22400, 300);
     this.createGreenTimer(20000, 200);
     this.createAlcohol(24500, 200);
     this.createAlcohol(19400, 300);
-    this.createCoffe(26000, 300);
+    this.createCoffee(26000, 300);
     this.createRedTimer(27500, 200);
     this.createSalmon(29300, 200);
     this.createAlcohol(31000, 300);
@@ -479,10 +479,10 @@ export default class Level extends Phaser.Scene {
   * @param {*} x - Initial pos x
   * @param {*} y - Initial pos y
   */  
-  createCoffe(x,y){
-    this.coffe= new Coffe( this,this.player, x, y,'coffe',true);
-    this.powerUpsArray.push(this.coffe);
-    this.powerUps.add(this.coffe);
+  createCoffee(x,y){
+    this.coffee= new Coffee( this,this.player, x, y,'coffee',true);
+    this.powerUpsArray.push(this.coffee);
+    this.powerUps.add(this.coffee);
   }
   /**
   * Used to create an alcohol
