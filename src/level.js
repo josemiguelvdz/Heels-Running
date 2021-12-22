@@ -173,7 +173,7 @@ export default class Level extends Phaser.Scene {
     this.police = new Police(this, -500, 300);
     this.changeBoundingBox(this.police, 1, 1.5);
     //-400, 300
-    this.player = new Player(this, -400, 300, 3);
+    this.player = new Player(this, 27000, 300, 3);
     // CAMBIAR BOUDING BOX DE TAMAÑO
     this.changeBoundingBox(this.player, 2, 1.5);
     this.createAllFallObjects();

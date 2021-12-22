@@ -62,19 +62,20 @@ export default class Interface extends Phaser.GameObjects.GameObject {
     */
     checkGangster(){
       //If player enter into AdviceRange this.scene.Gang[this.aux].y
-      if(Math.abs(this.scene.Gang[this.aux].x-Math.abs(this.player.x)) <= this.advideRange && !this.oneAdvice){
-        this.icon =  this.scene.add.image(this.scene.scale.width*0.9, this.scene.scale.height*0.5, 'advice').setScrollFactor(0);
-        this.oneAdvice = true;
-        this.iconExist = true;
+      if(this.aux < this.scene.Gang.length) {
+        if(Math.abs(this.scene.Gang[this.aux].x-this.player.x) <= this.advideRange && !this.oneAdvice) {
+          this.icon =  this.scene.add.image(this.scene.scale.width*0.9, this.scene.scale.height*0.5, 'advice').setScrollFactor(0);
+          this.oneAdvice = true;
+          this.iconExist = true;
+        }
+         //If player enter into VisionRange
+        if(this.visionRange >= Math.abs(this.scene.Gang[this.aux].x-this.player.x) && this.iconExist) {
+          this.icon.destroy();
+          this.iconExist = false;
+          this.oneAdvice = false;
+          this.aux++;
+        }
       }
-      //If player enter into VisionRange
-      else if(this.visionRange >= Math.abs(this.scene.Gang[this.aux].x-Math.abs(this.player.x)) && this.iconExist){
-        this.icon.destroy();
-        this.iconExist = false;
-        this.oneAdvice = false;
-        if(this.aux + 1 < this.scene.Gang.length)this.aux++;
-      }
-
     }
     /**
     * Used to display the police and helicopter icons
