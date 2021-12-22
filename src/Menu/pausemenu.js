@@ -74,7 +74,7 @@ export default class PauseMenu extends Phaser.Scene {
        this.volumeMute.setTexture(this.soundButtonName);
        });
       // TO CHANGE VOLUME
-      this.slide = this.add.image(this.level.SlidePos(), this.scale.height*0.3, 'idle').setInteractive();
+      this.slide = this.add.image(this.level.SlidePos(), this.scale.height*0.3, 'idle_slide').setScale(0.8, 1).setInteractive();
       this.slide.on('pointerdown', () => {
         this.pointerDown = true});
       this.slide.on('pointerup', () =>{

@@ -123,6 +123,7 @@ export default class Boot extends Phaser.Scene {
       this.load.image('volumeUnmute', 'volumeUnmute.png');
       this.load.image('rain', 'rain.png');
       this.load.image('roadSign', 'trainSignal2.png');
+      this.load.image('idle_slide', 'idle_roger.png')
 
 
       //Particles
@@ -148,6 +149,7 @@ export default class Boot extends Phaser.Scene {
       this.load.audio('winSound', 'Win.mp3');
       this.load.audio('startSound', 'A Hearty Fellow (LOOP).wav');
       this.load.audio('loseSound', 'changes.mp3');
+      this.load.audio('winSong', 'winSong.mp3');
     }
     /**
      * Creation of the scene. In this case, we only switch to the scene representing the

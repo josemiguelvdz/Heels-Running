@@ -37,8 +37,22 @@ export default class Win extends Phaser.Scene {
           delay: 0,
         };
 
-        this.winSong= this.sound.add("winSound",configSound);
+        this.winSound= this.sound.add("winSound",configSound);
+        this.winSound.play();
+
+        const configSound_2= {
+          mute: false,
+          volume: this.volumeSong,
+          rate: 1,
+          detune: 0,
+          seek: 0,
+          loop: true,
+          delay: 0,
+        };
+
+        this.winSong= this.sound.add("winSong",configSound_2);
         this.winSong.play();
+        
         this.spriteTrain.play('trainB');
 
         this.timeBar = this.add.sprite(this.scale.width*0.5, 240, 'timeBar', 'timeBar.png').setScale(1.5, 1.5);
@@ -56,10 +70,11 @@ export default class Win extends Phaser.Scene {
         // Play again
         this.playButton = this.add.image(this.scale.width*0.5, 400, 'playButton_').setInteractive();
         this.playButton.on('pointerdown', () => {
+          this.winSound.stop();
           this.winSong.stop();
           if(!this.down){
-            this.scene.start('level'); 
             this.down = true;
+            this.scene.start('level'); 
           }
         });
 
