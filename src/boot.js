@@ -30,7 +30,7 @@ export default class Boot extends Phaser.Scene {
 
       //Player Sprites
       this.load.setPath('./assets/Sprites/Player');
-      // this.load.spritesheet('idle','idlespritesheet.png',{frameWidth:64, frameHeight:64})
+      
 
       this.load.spritesheet('run','playerRun.png',{frameWidth:128, frameHeight:128});
       this.load.spritesheet('jump', 'playerJump.png',{frameWidth:128, frameHeight:128});
@@ -124,7 +124,9 @@ export default class Boot extends Phaser.Scene {
       this.load.image('volumeUnmute', 'volumeUnmute.png');
       this.load.image('rain', 'rain.png');
       this.load.image('roadSign', 'trainSignal2.png');
-      this.load.image('idle_slide', 'idle_roger.png')
+      this.load.spritesheet('idle_slide','idleSpritesheet.png',{frameWidth:64, frameHeight:64})
+      this.load.image('info', 'infoButton.png');
+      this.load.image('musicInfo', 'musicInfo.png');
 
 
       //Particles

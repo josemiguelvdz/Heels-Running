@@ -26,9 +26,6 @@ export default class PauseMenu extends Phaser.Scene {
 
       
 
-
-
-
       this.pointer = this.input.activePointer;
 
       this.pointerDown = false;
@@ -73,8 +70,23 @@ export default class PauseMenu extends Phaser.Scene {
        }
        this.volumeMute.setTexture(this.soundButtonName);
        });
-      // TO CHANGE VOLUME
-      this.slide = this.add.image(this.level.SlidePos(), this.scale.height*0.3, 'idle_slide').setScale(0.8, 1).setInteractive();
+
+      
+
+
+
+      this.anims.create({
+        key: 'idle_anim',
+        frames: this.anims.generateFrameNumbers('idle_slide', { start: 0, end: 3 }),
+        frameRate: 8, 
+        repeat: -1
+      });
+
+      this.funco = this.add.sprite(this.level.SlidePos(), this.scale.height*0.3, 'idle_slide');
+      this.funco.play('idle_anim');
+
+       // TO CHANGE VOLUME
+      this.slide = this.funco.setInteractive();
       this.slide.on('pointerdown', () => {
         this.pointerDown = true});
       this.slide.on('pointerup', () =>{
@@ -93,13 +105,29 @@ export default class PauseMenu extends Phaser.Scene {
 
       this.controlsTitle = this.add.image(this.scale.width*0.5, this.scale.height*0.5, 'controlsTitle').setScale(0.25, 0.25);
       this.controls = this.add.image(this.scale.width*0.5, this.scale.height*0.8, 'controls').setScale(1, 1).setScrollFactor(0);
+
+
+
+      this.infoButton = this.add.image(this.scale.width*0.5-200, this.scale.height*0.15, 'info').setScale(1.45, 1.45).setScrollFactor(0).setInteractive();
+      this.musicInfo = this.add.image(this.scale.width*0.5, this.scale.height*0.15, 'musicInfo').setVisible(false);
+      this.infoButton.on('pointermove', pointer => {
+       this.musicInfo.setVisible(true);
+       this.musicInfo.x = pointer.x + 150;
+       this.musicInfo.y = pointer.y + 10;
+       });
+      this.infoButton.on('pointerout', () => {
+        this.musicInfo.setVisible(false);
+      });
+
     
       //BACK TO PAUSE MENU
       this.backButton.on('pointerdown', () => {
         this.controlsTitle.destroy(), this.controls.destroy(), this.backButton.destroy(), this.pauseBackGround.destroy(), this.volumeTitle.destroy(), 
         this.volumeBar.destroy(), this.settingsLayout.destroy(),this.slide.destroy(), this.create(),this.volumeMute.destroy(),this.inSettings = false
-        ,this.level.SaveSoundMuted(this.soundButtonName);
+        , this.level.SaveSoundMuted(this.soundButtonName), this.infoButton.destroy(), this.musicInfo.destroy();
       });
+
+      
     }
   /** 
   * Destroy all buttons and layouts and resume the game

@@ -18,7 +18,7 @@ export default class Win extends Phaser.Scene {
   }
 
     create() {
-        this.spriteTrain=this.add.sprite(600, 300, 'trainBackground').setScale(2.3,2); 
+        this.spriteTrain= this.add.sprite(600, 300, 'trainBackground').setScale(2.3,2); 
 
         this.anims.create({
             key: 'trainB',
