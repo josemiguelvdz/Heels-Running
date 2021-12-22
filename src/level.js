@@ -146,6 +146,10 @@ export default class Level extends Phaser.Scene {
   SaveSlidePos(posX){
       this.slideX = posX;
   }
+  SaveSoundMuted(name){
+    this.nameSprite = name;
+  }
+ SoundMuted(){return this.nameSprite;}
   /**
   * Return the slide position
   */  
