@@ -47,8 +47,8 @@ export default class Menu extends Phaser.Scene {
       this.playButton.on('pointerdown', () => {
         this.startSong.stop();
         if(!this.down){
-          this.scene.start('level'); 
           this.down = true;
+          this.scene.start('level'); 
         }
       });
 

@@ -83,8 +83,8 @@ export default class Win extends Phaser.Scene {
         this.exitButton.on('pointerdown', () => {
           this.winSong.stop();
           if(!this.down){
-            this.scene.start('menu'); 
             this.down = true;
+            this.scene.start('menu'); 
           }
         })
     }
