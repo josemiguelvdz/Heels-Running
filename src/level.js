@@ -1,7 +1,7 @@
 import Player from './Player/player.js';
 import Police from './Police/police.js';
 import Salmon from './Interactuables/Life/Salmon.js';
-import Coffee from './Interactuables/PowerUps/Coffee.js';
+import Coffee from './Interactuables/PowerUps/coffee.js';
 import RedTimer from './Interactuables/Debuffs/RedTimer.js';
 import GreenTimer from './Interactuables/PowerUps/GreenTimer.js';
 import Box from './StaticObjects/Box.js';
@@ -480,7 +480,7 @@ export default class Level extends Phaser.Scene {
   * @param {*} y - Initial pos y
   */  
   createCoffee(x,y){
-    this.coffee= new Coffee( this,this.player, x, y,'coffee',true);
+    this.coffee= new Coffee(this,this.player, x, y,'coffee',true);
     this.powerUpsArray.push(this.coffee);
     this.powerUps.add(this.coffee);
   }
